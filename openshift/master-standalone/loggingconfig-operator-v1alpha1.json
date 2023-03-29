@@ -1,0 +1,28 @@
+{
+  "description": "LoggingConfig holds information about configuring logging",
+  "type": "object",
+  "required": [
+    "level",
+    "vmodule"
+  ],
+  "properties": {
+    "level": {
+      "description": "level is passed to glog.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "vmodule": {
+      "description": "vmodule is passed to glog.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

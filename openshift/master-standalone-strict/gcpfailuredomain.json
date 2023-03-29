@@ -1,0 +1,19 @@
+{
+  "description": "GCPFailureDomain configures failure domain information for the GCP platform",
+  "type": "object",
+  "required": [
+    "zone"
+  ],
+  "properties": {
+    "zone": {
+      "description": "Zone is the zone in which the GCP machine provider will create the VM.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

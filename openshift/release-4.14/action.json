@@ -1,0 +1,86 @@
+{
+  "description": "Action describes a request to the API server",
+  "type": "object",
+  "required": [
+    "namespace",
+    "verb",
+    "resourceAPIGroup",
+    "resourceAPIVersion",
+    "resource",
+    "resourceName",
+    "path",
+    "isNonResourceURL"
+  ],
+  "properties": {
+    "content": {
+      "description": "Content is the actual content of the request for create and update",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "isNonResourceURL": {
+      "description": "IsNonResourceURL is true if this is a request for a non-resource URL (outside of the resource hierarchy)",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "namespace": {
+      "description": "Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "path": {
+      "description": "Path is the path of a non resource URL",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "description": "Resource is one of the existing resource types",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resourceAPIGroup": {
+      "description": "Group is the API group of the resource Serialized as resourceAPIGroup to avoid confusion with the 'groups' field when inlined",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resourceAPIVersion": {
+      "description": "Version is the API version of the resource Serialized as resourceAPIVersion to avoid confusion with TypeMeta.apiVersion and ObjectMeta.resourceVersion when inlined",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resourceName": {
+      "description": "ResourceName is the name of the resource being requested for a \"get\" or deleted for a \"delete\"",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "verb": {
+      "description": "Verb is one of: get, list, watch, create, update, delete",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

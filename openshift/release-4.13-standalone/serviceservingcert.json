@@ -1,0 +1,33 @@
+{
+  "description": "ServiceServingCert holds configuration for service serving cert signer which creates cert/key pairs for pods fulfilling a service to serve with.",
+  "type": "object",
+  "required": [
+    "signer"
+  ],
+  "properties": {
+    "signer": {
+      "description": "CertInfo relates a certificate with a private key",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "certFile",
+        "keyFile"
+      ],
+      "properties": {
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

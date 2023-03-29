@@ -1,0 +1,40 @@
+{
+  "description": "PerNodeAPIRequestLog contains logs of requests to a certain node.",
+  "type": "object",
+  "required": [
+    "nodeName",
+    "requestCount",
+    "byUser"
+  ],
+  "properties": {
+    "byUser": {
+      "description": "byUser contains request details by top .spec.numberOfUsersToReport users. Note that because in the case of an apiserver, restart the list of top users is determined on a best-effort basis, the list might be imprecise. In addition, some system users may be explicitly included in the list.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerUserAPIRequestCount"
+      }
+    },
+    "nodeName": {
+      "description": "nodeName where the request are being handled.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "requestCount": {
+      "description": "requestCount is a sum of all requestCounts across all users, even those outside of the top 10 users.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

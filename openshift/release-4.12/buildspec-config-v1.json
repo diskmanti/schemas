@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "additionalTrustedCA": {
+      "description": "AdditionalTrustedCA is a reference to a ConfigMap containing additional CAs that should be trusted for image pushes and pulls during builds. The namespace for this config map is openshift-config.\n\nDEPRECATED: Additional CAs for image pull and push should be set on image.config.openshift.io/cluster instead.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapNameReference"
+    },
+    "buildDefaults": {
+      "description": "BuildDefaults controls the default information for Builds",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildDefaults"
+    },
+    "buildOverrides": {
+      "description": "BuildOverrides controls override settings for builds",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildOverrides"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

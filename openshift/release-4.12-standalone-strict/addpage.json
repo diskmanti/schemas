@@ -1,0 +1,22 @@
+{
+  "description": "AddPage allows customizing actions on the Add page in developer perspective.",
+  "type": "object",
+  "properties": {
+    "disabledActions": {
+      "description": "disabledActions is a list of actions that are not shown to users. Each action in the list is represented by its ID.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

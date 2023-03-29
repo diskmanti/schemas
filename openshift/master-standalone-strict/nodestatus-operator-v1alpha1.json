@@ -1,0 +1,64 @@
+{
+  "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+  "type": "object",
+  "required": [
+    "nodeName",
+    "currentDeploymentGeneration",
+    "targetDeploymentGeneration",
+    "lastFailedDeploymentGeneration",
+    "lastFailedDeploymentErrors"
+  ],
+  "properties": {
+    "currentDeploymentGeneration": {
+      "description": "currentDeploymentGeneration is the generation of the most recently successful deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "lastFailedDeploymentErrors": {
+      "description": "lastFailedDeploymentGenerationErrors is a list of the errors during the failed deployment referenced in lastFailedDeploymentGeneration",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "lastFailedDeploymentGeneration": {
+      "description": "lastFailedDeploymentGeneration is the generation of the deployment we tried and failed to deploy.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "nodeName": {
+      "description": "nodeName is the name of the node",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targetDeploymentGeneration": {
+      "description": "targetDeploymentGeneration is the generation of the deployment we're trying to apply",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

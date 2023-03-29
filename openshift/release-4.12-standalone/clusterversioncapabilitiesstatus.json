@@ -1,0 +1,37 @@
+{
+  "description": "ClusterVersionCapabilitiesStatus describes the state of optional, core cluster components.",
+  "type": "object",
+  "properties": {
+    "enabledCapabilities": {
+      "description": "enabledCapabilities lists all the capabilities that are currently managed.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "knownCapabilities": {
+      "description": "knownCapabilities lists all the capabilities known to the current cluster.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

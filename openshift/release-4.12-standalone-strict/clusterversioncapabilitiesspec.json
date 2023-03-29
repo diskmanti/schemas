@@ -1,0 +1,30 @@
+{
+  "description": "ClusterVersionCapabilitiesSpec selects the managed set of optional, core cluster components.",
+  "type": "object",
+  "properties": {
+    "additionalEnabledCapabilities": {
+      "description": "additionalEnabledCapabilities extends the set of managed capabilities beyond the baseline defined in baselineCapabilitySet.  The default is an empty set.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "baselineCapabilitySet": {
+      "description": "baselineCapabilitySet selects an initial set of optional capabilities to enable, which can be extended via additionalEnabledCapabilities.  If unset, the cluster will choose a default, and the default may change over time. The current default is vCurrent.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

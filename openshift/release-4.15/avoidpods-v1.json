@@ -1,0 +1,18 @@
+{
+  "description": "AvoidPods describes pods that should avoid this node. This is the value for a Node annotation with key scheduler.alpha.kubernetes.io/preferAvoidPods and will eventually become a field of NodeStatus.",
+  "type": "object",
+  "properties": {
+    "preferAvoidPods": {
+      "description": "Bounded-sized list of signatures of pods that should avoid this node, sorted in timestamp order from oldest to newest. Size of the slice is unspecified.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.PreferAvoidPodsEntry"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

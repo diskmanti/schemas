@@ -1,0 +1,21 @@
+{
+  "description": "AlertRelabelConfigsSpec is the desired state of an AlertRelabelConfig resource.",
+  "type": "object",
+  "required": [
+    "configs"
+  ],
+  "properties": {
+    "configs": {
+      "description": "configs is a list of sequentially evaluated alert relabel configs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.RelabelConfig"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

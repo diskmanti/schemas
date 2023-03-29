@@ -1,0 +1,5 @@
+{
+  "description": "ContainerLoggingDestinationParameters describes parameters for the Container logging destination type.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#"
+}

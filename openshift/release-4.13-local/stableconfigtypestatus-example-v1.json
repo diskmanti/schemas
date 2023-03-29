@@ -1,0 +1,31 @@
+{
+  "description": "StableConfigTypeStatus defines the observed status of the StableConfigType.",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Represents the observations of a foo's current state. Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "immutableField": {
+      "description": "immutableField is a field that is immutable once the object has been created. It is required at all times.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

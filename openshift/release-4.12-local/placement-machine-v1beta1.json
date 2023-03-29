@@ -1,0 +1,28 @@
+{
+  "description": "Placement indicates where to create the instance in AWS",
+  "type": "object",
+  "properties": {
+    "availabilityZone": {
+      "description": "AvailabilityZone is the availability zone of the instance",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "Region is the region to use to create the instance",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tenancy": {
+      "description": "Tenancy indicates if instance should run on shared or single-tenant hardware. There are supported 3 options: default, dedicated and host.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

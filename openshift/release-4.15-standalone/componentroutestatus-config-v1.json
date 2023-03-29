@@ -1,0 +1,168 @@
+{
+  "description": "ComponentRouteStatus contains information allowing configuration of a route's hostname and serving certificate.",
+  "type": "object",
+  "required": [
+    "namespace",
+    "name",
+    "defaultHostname",
+    "relatedObjects"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions are used to communicate the state of the componentRoutes entry.\n\nSupported conditions include Available, Degraded and Progressing.\n\nIf available is true, the content served by the route can be accessed by users. This includes cases where a default may continue to serve content while the customized route specified by the cluster-admin is being configured.\n\nIf Degraded is true, that means something has gone wrong trying to handle the componentRoutes entry. The currentHostnames field may or may not be in effect.\n\nIf Progressing is true, that means the component is taking some action related to the componentRoutes entry.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "Condition contains details for one aspect of the current state of this API Resource.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status",
+          "lastTransitionTime",
+          "reason",
+          "message"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
+            "type": "string",
+            "default": ""
+          },
+          "observedGeneration": {
+            "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          },
+          "reason": {
+            "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
+            "type": "string",
+            "default": ""
+          },
+          "status": {
+            "description": "status of the condition, one of True, False, Unknown.",
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "consumingUsers": {
+      "description": "consumingUsers is a slice of ServiceAccounts that need to have read permission on the servingCertKeyPairSecret secret.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "currentHostnames": {
+      "description": "currentHostnames is the list of current names used by the route. Typically, this list should consist of a single hostname, but if multiple hostnames are supported by the route the operator may write multiple entries to this list.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "defaultHostname": {
+      "description": "defaultHostname is the hostname of this route prior to customization.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "name is the logical name of the route to customize. It does not have to be the actual name of a route resource but it cannot be renamed.\n\nThe namespace and name of this componentRoute must match a corresponding entry in the list of spec.componentRoutes if the route is to be customized.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "namespace is the namespace of the route to customize. It must be a real namespace. Using an actual namespace ensures that no two components will conflict and the same component can be installed multiple times.\n\nThe namespace and name of this componentRoute must match a corresponding entry in the list of spec.componentRoutes if the route is to be customized.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "relatedObjects": {
+      "description": "relatedObjects is a list of resources which are useful when debugging or inspecting how spec.componentRoutes is applied.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "group",
+          "resource",
+          "name"
+        ],
+        "properties": {
+          "group": {
+            "description": "group of the referent.",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "description": "name of the referent.",
+            "type": "string",
+            "default": ""
+          },
+          "namespace": {
+            "description": "namespace of the referent.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resource": {
+            "description": "resource of the referent.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,35 @@
+{
+  "description": "ProviderLoadBalancerParameters holds desired load balancer information specific to the underlying infrastructure provider.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "aws": {
+      "description": "aws provides configuration settings that are specific to AWS load balancers.\n\nIf empty, defaults will be applied. See specific aws fields for details about their defaults.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSLoadBalancerParameters"
+    },
+    "gcp": {
+      "description": "gcp provides configuration settings that are specific to GCP load balancers.\n\nIf empty, defaults will be applied. See specific gcp fields for details about their defaults.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GCPLoadBalancerParameters"
+    },
+    "type": {
+      "description": "type is the underlying infrastructure provider for the load balancer. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Nutanix\", \"OpenStack\", and \"VSphere\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "aws": "AWS",
+        "gcp": "GCP"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

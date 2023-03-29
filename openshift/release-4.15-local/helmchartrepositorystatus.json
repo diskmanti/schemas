@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their statuses",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

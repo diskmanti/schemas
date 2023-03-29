@@ -1,0 +1,43 @@
+{
+  "description": "SyslogLoggingDestinationParameters describes parameters for the Syslog logging destination type.",
+  "type": "object",
+  "required": [
+    "address",
+    "port"
+  ],
+  "properties": {
+    "address": {
+      "description": "address is the IP address of the syslog endpoint that receives log messages.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "facility": {
+      "description": "facility specifies the syslog facility of log messages.\n\nIf this field is empty, the facility is \"local1\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxLength": {
+      "description": "maxLength is the maximum length of the syslog message\n\nIf this field is empty, the maxLength is set to \"1024\".",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "port": {
+      "description": "port is the UDP port number of the syslog endpoint that receives log messages.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

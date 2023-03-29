@@ -1,0 +1,101 @@
+{
+  "description": "VSphereMachineProviderSpec is the type that will be embedded in a Machine.Spec.ProviderSpec field for an VSphere virtual machine. It is used by the vSphere machine actuator to create a single Machine. Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "template",
+    "network"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cloneMode": {
+      "description": "CloneMode specifies the type of clone operation. The LinkedClone mode is only support for templates that have at least one snapshot. If the template has no snapshots, then CloneMode defaults to FullClone. When LinkedClone mode is enabled the DiskGiB field is ignored as it is not possible to expand disks of linked clones. Defaults to FullClone. When using LinkedClone, if no snapshots exist for the source template, falls back to FullClone.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "credentialsSecret": {
+      "description": "CredentialsSecret is a reference to the secret with vSphere credentials.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "diskGiB": {
+      "description": "DiskGiB is the size of a virtual machine's disk, in GiB. Defaults to the analogue property value in the template from which this machine is cloned. This parameter will be ignored if 'LinkedClone' CloneMode is set.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "memoryMiB": {
+      "description": "MemoryMiB is the size of a virtual machine's memory, in MiB. Defaults to the analogue property value in the template from which this machine is cloned.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "network": {
+      "description": "Network is the network configuration for this machine's VM.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.NetworkSpec"
+    },
+    "numCPUs": {
+      "description": "NumCPUs is the number of virtual processors in a virtual machine. Defaults to the analogue property value in the template from which this machine is cloned.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "numCoresPerSocket": {
+      "description": "NumCPUs is the number of cores among which to distribute CPUs in this virtual machine. Defaults to the analogue property value in the template from which this machine is cloned.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "snapshot": {
+      "description": "Snapshot is the name of the snapshot from which the VM was cloned",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "template": {
+      "description": "Template is the name, inventory path, or instance UUID of the template used to clone new machines.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "userDataSecret": {
+      "description": "UserDataSecret contains a local reference to a secret that contains the UserData to apply to the instance",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "workspace": {
+      "description": "Workspace describes the workspace to use for the machine.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Workspace"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,37 @@
+{
+  "description": "ProxyTypeServiceConfig holds information on Service to which console's backend will proxy the plugin's requests.",
+  "type": "object",
+  "required": [
+    "name",
+    "namespace",
+    "port"
+  ],
+  "properties": {
+    "name": {
+      "description": "name of Service that the plugin needs to connect to.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "namespace of Service that the plugin needs to connect to",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "port": {
+      "description": "port on which the Service that the plugin needs to connect to is listening on.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

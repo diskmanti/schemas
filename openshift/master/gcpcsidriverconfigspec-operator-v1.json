@@ -1,0 +1,11 @@
+{
+  "description": "GCPCSIDriverConfigSpec defines properties that can be configured for the GCP CSI driver.",
+  "type": "object",
+  "properties": {
+    "kmsKey": {
+      "description": "kmsKey sets the cluster default storage class to encrypt volumes with customer-supplied encryption keys, rather than the default keys managed by GCP.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GCPKMSKeyReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

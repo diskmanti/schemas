@@ -1,0 +1,30 @@
+{
+  "description": "DefaultNetworkDefinition represents a single network plugin's configuration. type must be specified, along with exactly one \"Config\" that matches the type.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "kuryrConfig": {
+      "description": "KuryrConfig configures the kuryr plugin",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.KuryrConfig"
+    },
+    "openshiftSDNConfig": {
+      "description": "openShiftSDNConfig configures the openshift-sdn plugin",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftSDNConfig"
+    },
+    "ovnKubernetesConfig": {
+      "description": "ovnKubernetesConfig configures the ovn-kubernetes plugin.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.OVNKubernetesConfig"
+    },
+    "type": {
+      "description": "type is the type of network All NetworkTypes are supported except for NetworkTypeRaw",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

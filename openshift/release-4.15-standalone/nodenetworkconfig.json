@@ -1,0 +1,28 @@
+{
+  "description": "NodeNetworkConfig provides network options for the node",
+  "type": "object",
+  "required": [
+    "networkPluginName",
+    "mtu"
+  ],
+  "properties": {
+    "mtu": {
+      "description": "Maximum transmission unit for the network packets",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "networkPluginName": {
+      "description": "NetworkPluginName is a string specifying the networking plugin",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

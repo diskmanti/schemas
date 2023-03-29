@@ -1,0 +1,45 @@
+{
+  "description": "AdditionalNetworkDefinition configures an extra network that is available but not created by default. Instead, pods must request them by name. type must be specified, along with exactly one \"Config\" that matches the type.",
+  "type": "object",
+  "required": [
+    "type",
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of the network. This will be populated in the resulting CRD This must be unique.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "namespace is the namespace of the network. This will be populated in the resulting CRD If not given the network will be created in the default namespace.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rawCNIConfig": {
+      "description": "rawCNIConfig is the raw CNI configuration json to create in the NetworkAttachmentDefinition CRD",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "simpleMacvlanConfig": {
+      "description": "SimpleMacvlanConfig configures the macvlan interface in case of type:NetworkTypeSimpleMacvlan",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.SimpleMacvlanConfig"
+    },
+    "type": {
+      "description": "type is the type of network The supported values are NetworkTypeRaw, NetworkTypeSimpleMacvlan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "properties": {
+    "customNoUpgrade": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "disabled": {
+          "description": "disabled is a list of all feature gates that you want to force off",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "enabled": {
+          "description": "enabled is a list of all feature gates that you want to force on",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      }
+    },
+    "featureSet": {
+      "description": "featureSet changes the list of features in the cluster.  The default is empty.  Be very careful adjusting this setting. Turning on or off features may cause irreversible changes in your cluster which cannot be undone.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "featureSet",
+      "fields-to-discriminateBy": {
+        "customNoUpgrade": "CustomNoUpgrade"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,26 @@
+{
+  "description": "RegistryLocation contains a location of the registry specified by the registry domain name. The domain name might include wildcards, like '*' or '??'.",
+  "type": "object",
+  "required": [
+    "domainName"
+  ],
+  "properties": {
+    "domainName": {
+      "description": "DomainName specifies a domain name for the registry In case the registry use non-standard (80 or 443) port, the port should be included in the domain name as well.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "insecure": {
+      "description": "Insecure indicates whether the registry is secure (https) or insecure (http) By default (if not specified) the registry is assumed as secure.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

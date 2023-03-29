@@ -1,0 +1,29 @@
+{
+  "description": "APIServerNamedServingCert maps a server DNS name, as understood by a client, to a certificate.",
+  "type": "object",
+  "required": [
+    "servingCertificate"
+  ],
+  "properties": {
+    "names": {
+      "description": "names is a optional list of explicit DNS names (leading wildcards allowed) that should use this certificate to serve secure traffic. If no names are provided, the implicit names will be extracted from the certificates. Exact names trump over wildcard names. Explicit names defined here trump over extracted implicit names.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "servingCertificate": {
+      "description": "servingCertificate references a kubernetes.io/tls type secret containing the TLS cert info for serving secure traffic. The secret must exist in the openshift-config namespace and contain the following required fields: - Secret.Data[\"tls.key\"] - TLS private key. - Secret.Data[\"tls.crt\"] - TLS certificate.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.SecretNameReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

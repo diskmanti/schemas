@@ -1,0 +1,50 @@
+{
+  "description": "AWSLoadBalancerParameters provides configuration settings that are specific to AWS load balancers.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "classicLoadBalancer": {
+      "description": "AWSClassicLoadBalancerParameters holds configuration parameters for an AWS Classic load balancer.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "connectionIdleTimeout": {
+          "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "networkLoadBalancer": {
+      "description": "AWSNetworkLoadBalancerParameters holds configuration parameters for an AWS Network load balancer.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "type is the type of AWS load balancer to instantiate for an ingresscontroller.\n\nValid values are:\n\n* \"Classic\": A Classic Load Balancer that makes routing decisions at either\n  the transport layer (TCP/SSL) or the application layer (HTTP/HTTPS). See\n  the following for additional details:\n\n    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html#clb\n\n* \"NLB\": A Network Load Balancer that makes routing decisions at the\n  transport layer (TCP/SSL). See the following for additional details:\n\n    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html#nlb",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "classicLoadBalancer": "ClassicLoadBalancerParameters",
+        "networkLoadBalancer": "NetworkLoadBalancerParameters"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

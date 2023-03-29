@@ -1,0 +1,215 @@
+{
+  "description": "GCPMachineProviderSpec is the type that will be embedded in a Machine.Spec.ProviderSpec field for an GCP virtual machine. It is used by the GCP machine actuator to create a single Machine. Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "canIPForward",
+    "deletionProtection",
+    "serviceAccounts",
+    "machineType",
+    "region",
+    "zone"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "canIPForward": {
+      "description": "CanIPForward Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "confidentialCompute": {
+      "description": "confidentialCompute Defines whether the instance should have confidential compute enabled. If enabled OnHostMaintenance is required to be set to \"Terminate\". If omitted, the platform chooses a default, which is subject to change over time, currently that default is false.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "credentialsSecret": {
+      "description": "CredentialsSecret is a reference to the secret with GCP credentials.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "deletionProtection": {
+      "description": "DeletionProtection whether the resource should be protected against deletion.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "disks": {
+      "description": "Disks is a list of disks to be attached to the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPDisk"
+      }
+    },
+    "gcpMetadata": {
+      "description": "Metadata key/value pairs to apply to the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPMetadata"
+      }
+    },
+    "gpus": {
+      "description": "GPUs is a list of GPUs to be attached to the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPGPUConfig"
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "Labels list of labels to apply to the VM.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "machineType": {
+      "description": "MachineType is the machine type to use for the VM.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "networkInterfaces": {
+      "description": "NetworkInterfaces is a list of network interfaces to be attached to the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPNetworkInterface"
+      }
+    },
+    "onHostMaintenance": {
+      "description": "OnHostMaintenance determines the behavior when a maintenance event occurs that might cause the instance to reboot. This is required to be set to \"Terminate\" if you want to provision machine with attached GPUs. Otherwise, allowed values are \"Migrate\" and \"Terminate\". If omitted, the platform chooses a default, which is subject to change over time, currently that default is \"Migrate\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preemptible": {
+      "description": "Preemptible indicates if created instance is preemptible.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "projectID": {
+      "description": "ProjectID is the project in which the GCP machine provider will create the VM.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "Region is the region in which the GCP machine provider will create the VM.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "restartPolicy": {
+      "description": "RestartPolicy determines the behavior when an instance crashes or the underlying infrastructure provider stops the instance as part of a maintenance event (default \"Always\"). Cannot be \"Always\" with preemptible instances. Otherwise, allowed values are \"Always\" and \"Never\". If omitted, the platform chooses a default, which is subject to change over time, currently that default is \"Always\". RestartPolicy represents AutomaticRestart in GCP compute api",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceAccounts": {
+      "description": "ServiceAccounts is a list of GCP service accounts to be used by the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPServiceAccount"
+      }
+    },
+    "shieldedInstanceConfig": {
+      "description": "ShieldedInstanceConfig is the Shielded VM configuration for the VM",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPShieldedInstanceConfig"
+    },
+    "tags": {
+      "description": "Tags list of tags to apply to the VM.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targetPools": {
+      "description": "TargetPools are used for network TCP/UDP load balancing. A target pool references member instances, an associated legacy HttpHealthCheck resource, and, optionally, a backup target pool",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "userDataSecret": {
+      "description": "UserDataSecret contains a local reference to a secret that contains the UserData to apply to the instance",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "zone": {
+      "description": "Zone is the zone in which the GCP machine provider will create the VM.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

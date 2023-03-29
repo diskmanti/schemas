@@ -1,0 +1,79 @@
+{
+  "description": "GoogleIdentityProvider provides identities for users authenticating using Google credentials\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientSecret",
+    "hostedDomain"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientID": {
+      "description": "clientID is the oauth client ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientSecret": {
+      "description": "StringSource allows specifying a string inline, or externally via env var or file. When it contains only a string value, it marshals to a simple JSON string.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "value",
+        "env",
+        "file",
+        "keyFile"
+      ],
+      "properties": {
+        "env": {
+          "description": "Env specifies an envvar containing the cleartext value, or an encrypted value if the keyFile is specified.",
+          "type": "string",
+          "default": ""
+        },
+        "file": {
+          "description": "File references a file containing the cleartext value, or an encrypted value if a keyFile is specified.",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile references a file containing the key to use to decrypt the value.",
+          "type": "string",
+          "default": ""
+        },
+        "value": {
+          "description": "Value specifies the cleartext value, or an encrypted value if keyFile is specified.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "hostedDomain": {
+      "description": "hostedDomain is the optional Google App domain (e.g. \"mycompany.com\") to restrict logins to",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

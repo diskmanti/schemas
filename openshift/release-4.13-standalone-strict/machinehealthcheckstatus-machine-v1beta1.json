@@ -1,0 +1,97 @@
+{
+  "description": "MachineHealthCheckStatus defines the observed state of MachineHealthCheck",
+  "type": "object",
+  "required": [
+    "expectedMachines",
+    "currentHealthy"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "Conditions defines the current state of the MachineHealthCheck",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "Condition defines an observation of a Machine API resource operational state.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "description": "A human readable message indicating details about the transition. This field may be empty.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "The reason for the condition's last transition in CamelCase. The specific API may choose whether or not this field is considered a guaranteed API. This field may not be empty.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "severity": {
+            "description": "Severity provides an explicit classification of Reason code, so the users or machines can immediately understand the current situation and act accordingly. The Severity field MUST be set only when Status=False.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status of the condition, one of True, False, Unknown.",
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "description": "Type of condition in CamelCase or in foo.example.com/CamelCase. Many .condition.type values are consistent across resources like Available, but because arbitrary conditions can be useful (see .node.status.conditions), the ability to deconflict is important.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "currentHealthy": {
+      "description": "total number of machines counted by this machine health check",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "expectedMachines": {
+      "description": "total number of machines counted by this machine health check",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "remediationsAllowed": {
+      "description": "RemediationsAllowed is the number of further remediations allowed by this machine health check before maxUnhealthy short circuiting will be applied",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

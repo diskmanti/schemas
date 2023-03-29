@@ -1,0 +1,314 @@
+{
+  "type": "object",
+  "required": [
+    "readyReplicas"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "OperatorCondition is just the standard condition fields.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "gatherStatus": {
+      "description": "gatherStatus provides information about the last known gather event.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "gatherers": {
+          "description": "gatherers is a list of active gatherers (and their statuses) in the last gathering.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "gathererStatus represents information about a particular data gatherer.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "conditions",
+              "name",
+              "lastGatherDuration"
+            ],
+            "properties": {
+              "conditions": {
+                "description": "conditions provide details on the status of each gatherer.",
+                "type": "array",
+                "items": {
+                  "description": "Condition contains details for one aspect of the current state of this API Resource.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "type",
+                    "status",
+                    "lastTransitionTime",
+                    "reason",
+                    "message"
+                  ],
+                  "properties": {
+                    "lastTransitionTime": {
+                      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "message": {
+                      "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "observedGeneration": {
+                      "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
+                      "type": [
+                        "integer",
+                        "null"
+                      ],
+                      "format": "int64"
+                    },
+                    "reason": {
+                      "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "status": {
+                      "description": "status of the condition, one of True, False, Unknown.",
+                      "type": "string",
+                      "default": ""
+                    },
+                    "type": {
+                      "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "x-kubernetes-list-type": "atomic"
+              },
+              "lastGatherDuration": {
+                "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+                "type": "string"
+              },
+              "name": {
+                "description": "name is the name of the gatherer.",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "lastGatherDuration": {
+          "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastGatherTime": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "generations": {
+      "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "GenerationStatus keeps track of the generation for a given resource so that decisions about forced updates can be made.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "group",
+          "resource",
+          "namespace",
+          "name",
+          "lastGeneration",
+          "hash"
+        ],
+        "properties": {
+          "group": {
+            "description": "group is the group of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "hash": {
+            "description": "hash is an optional field set for resources without generation that are content sensitive like secrets and configmaps",
+            "type": "string",
+            "default": ""
+          },
+          "lastGeneration": {
+            "description": "lastGeneration is the last generation of the workload controller involved",
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          "name": {
+            "description": "name is the name of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "namespace": {
+            "description": "namespace is where the thing you're tracking is",
+            "type": "string",
+            "default": ""
+          },
+          "resource": {
+            "description": "resource is the resource type of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "insightsReport": {
+      "description": "insightsReport provides Insights health check report based on the most recently sent Insights data.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "downloadedAt": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "healthChecks": {
+          "description": "healthChecks provides basic information about active Insights health checks in a cluster.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "healthCheck represents an Insights health check attributes.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "description",
+              "totalRisk",
+              "advisorURI",
+              "state"
+            ],
+            "properties": {
+              "advisorURI": {
+                "description": "advisorURI provides the URL link to the Insights Advisor.",
+                "type": "string",
+                "default": ""
+              },
+              "description": {
+                "description": "description provides basic description of the healtcheck.",
+                "type": "string",
+                "default": ""
+              },
+              "state": {
+                "description": "state determines what the current state of the health check is. Health check is enabled by default and can be disabled by the user in the Insights advisor user interface.",
+                "type": "string",
+                "default": ""
+              },
+              "totalRisk": {
+                "description": "totalRisk of the healthcheck. Indicator of the total risk posed by the detected issue; combination of impact and likelihood. The values can be from 1 to 4, and the higher the number, the more important the issue.",
+                "type": "integer",
+                "format": "int32",
+                "default": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-type": "atomic"
+        }
+      },
+      "additionalProperties": false
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "version": {
+      "description": "version is the level this availability applies to",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

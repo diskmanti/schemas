@@ -1,0 +1,14 @@
+{
+  "description": "GatewayConfig holds node gateway-related parsed config file parameters and command-line overrides",
+  "type": "object",
+  "properties": {
+    "routingViaHost": {
+      "description": "RoutingViaHost allows pod egress traffic to exit via the ovn-k8s-mp0 management port into the host before sending it out. If this is not set, traffic will always egress directly from OVN to outside without touching the host stack. Setting this to true means hardware offload will not be supported. Default is false if GatewayConfig is specified.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

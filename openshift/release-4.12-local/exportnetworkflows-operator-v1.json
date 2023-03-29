@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "ipfix": {
+      "description": "ipfix defines IPFIX configuration.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IPFIXConfig"
+    },
+    "netFlow": {
+      "description": "netFlow defines the NetFlow configuration.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetFlowConfig"
+    },
+    "sFlow": {
+      "description": "sFlow defines the SFlow configuration.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.SFlowConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

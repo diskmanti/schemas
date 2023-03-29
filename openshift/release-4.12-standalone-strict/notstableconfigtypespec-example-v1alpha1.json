@@ -1,0 +1,19 @@
+{
+  "description": "NotStableConfigTypeSpec is the desired state",
+  "type": "object",
+  "required": [
+    "newField"
+  ],
+  "properties": {
+    "newField": {
+      "description": "newField is a field that is tech preview, but because the entire type is gated, there is no marker on the field.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

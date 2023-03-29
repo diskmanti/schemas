@@ -1,0 +1,660 @@
+{
+  "description": "MendixApp is the Schema for the mendixapps API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "MendixAppSpec defines the desired state of MendixApp",
+      "properties": {
+        "allowOverrideSecretsWithSecretStoreCSIDriver": {
+          "description": "AllowOverrideSecretsWithSecretStoreCSIDriver when `true` allows to override secrets with Secret Store CSI Driver.",
+          "type": "boolean"
+        },
+        "appURL": {
+          "description": "AppURL specifies the URL where the app should be made available.",
+          "type": "string"
+        },
+        "database": {
+          "description": "Database specifies the database storage instance configuration.",
+          "properties": {
+            "serviceClass": {
+              "type": "string"
+            },
+            "servicePlan": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "endpointAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "EndpointAnnotations is annotations for endpoint (ingress/route). Merges with annotations from EndpointConfigurationSpec CR, EndpointConfigurationSpec has lower priority.",
+          "type": "object"
+        },
+        "ingressClassName": {
+          "description": "IngressClassName specifies IngressClassName for ingress.",
+          "type": "string"
+        },
+        "ingressPath": {
+          "description": "IngressPath ingress path value. By default (or when empty and OperatorConfiguration is empty as well), it uses \"/\" value. E.g. Google Cloud requires \"/*\" value. Overwrites value from OperatorConfiguration CRD.",
+          "type": "string"
+        },
+        "ingressPathType": {
+          "description": "IngressPathType ingress pathType. By default (when OperatorConfiguration is not specified as well), it's empty and not presented in the ingress object. Overwrites value from OperatorConfiguration CRD.",
+          "type": "string"
+        },
+        "mendixRuntimeVersion": {
+          "description": "MendixRuntimeVersion specifies version name which will be used to generate the base image name of the runtime base.",
+          "type": "string"
+        },
+        "replicas": {
+          "description": "Replicas sets the number of replicas (pods) to run for the app.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "resources": {
+          "description": "Resources specifies the resources for the Mendix app container.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtime": {
+          "description": "Runtime contains runtime parameters.",
+          "properties": {
+            "applicationRootURL": {
+              "description": "ApplicationRootURL specifies hostname to be used in the runtime. Generated based on AppURL from the Endpoint CR.",
+              "type": "string"
+            },
+            "clientCertificates": {
+              "description": "ClientCertificates specifies client certificates to be used for TLS (HTTPS) connections.",
+              "items": {
+                "description": "RuntimeClientCertificate contains details about a client certificate that can be provided to the Mendix Runtime.",
+                "properties": {
+                  "key": {
+                    "description": "Key is the certificate private key, a base64-encoded PKCS12 (.pfx).",
+                    "type": "string"
+                  },
+                  "password": {
+                    "description": "Password specifies the password for the key, required by the Mendix Runtime.",
+                    "type": "string"
+                  },
+                  "pinTo": {
+                    "description": "PinTo specifies the list of Mendix modules or domain names which this certificate should be pinned to. Leave empty to use this as the default certificate.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "key",
+                  "password"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array"
+            },
+            "customConfiguration": {
+              "description": "CustomConfiguration specifies Custom Runtime Settings The values should be provided in JSON format.",
+              "type": "string"
+            },
+            "debuggerPassword": {
+              "description": "DebuggerPassword specifies the password for mendix app debugger password.",
+              "type": "string"
+            },
+            "dtapMode": {
+              "description": "DTAPMode specifies the mode for running the Mendix application (Development, Test, Acceptance, Production). Always set this to P in production environments.",
+              "type": "string"
+            },
+            "environmentVariables": {
+              "description": "EnvironmentVariables allows to specify custom environment variables for the Mendix Runtime container. This can also be used to set Java options by providing in the JAVA_TOOL_OPTIONS environment variable.",
+              "items": {
+                "description": "EnvVar represents an environment variable present in a Container.",
+                "properties": {
+                  "name": {
+                    "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                    "type": "string"
+                  },
+                  "value": {
+                    "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                    "type": "string"
+                  },
+                  "valueFrom": {
+                    "description": "Source for the environment variable's value. Cannot be used if value is not empty.",
+                    "properties": {
+                      "configMapKeyRef": {
+                        "description": "Selects a key of a ConfigMap.",
+                        "properties": {
+                          "key": {
+                            "description": "The key to select.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                            "type": "string"
+                          },
+                          "optional": {
+                            "description": "Specify whether the ConfigMap or its key must be defined",
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "key"
+                        ],
+                        "type": "object",
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
+                      },
+                      "fieldRef": {
+                        "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+                        "properties": {
+                          "apiVersion": {
+                            "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                            "type": "string"
+                          },
+                          "fieldPath": {
+                            "description": "Path of the field to select in the specified API version.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "fieldPath"
+                        ],
+                        "type": "object",
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
+                      },
+                      "resourceFieldRef": {
+                        "description": "Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.",
+                        "properties": {
+                          "containerName": {
+                            "description": "Container name: required for volumes, optional for env vars",
+                            "type": "string"
+                          },
+                          "divisor": {
+                            "anyOf": [
+                              {
+                                "type": "integer"
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "description": "Specifies the output format of the exposed resources, defaults to \"1\"",
+                            "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                            "x-kubernetes-int-or-string": true
+                          },
+                          "resource": {
+                            "description": "Required: resource to select",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "resource"
+                        ],
+                        "type": "object",
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
+                      },
+                      "secretKeyRef": {
+                        "description": "Selects a key of a secret in the pod's namespace",
+                        "properties": {
+                          "key": {
+                            "description": "The key of the secret to select from.  Must be a valid secret key.",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names TODO: Add other useful fields. apiVersion, kind, uid?",
+                            "type": "string"
+                          },
+                          "optional": {
+                            "description": "Specify whether the Secret or its key must be defined",
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "key"
+                        ],
+                        "type": "object",
+                        "x-kubernetes-map-type": "atomic",
+                        "additionalProperties": false
+                      }
+                    },
+                    "type": "object",
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array"
+            },
+            "jettyOptions": {
+              "description": "JettyOptions can be used to specify options for the jetty webserver in the Mendix Runtime. The values should be provided in JSON format.",
+              "type": "string"
+            },
+            "logAutosubscribeLevel": {
+              "description": "LogAutosubscribeLevel specifies the default logging level for the Mendix Runtime.",
+              "type": "string"
+            },
+            "logLevels": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "LogLevels represents configuration of node name to its log level setting.",
+              "type": "object"
+            },
+            "microflowConstants": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "MicroflowConstants represents application constants (model options in the portal). This attribute should only be used in standalone mode.",
+              "type": "object"
+            },
+            "mxAdminPassword": {
+              "description": "MxAdminPassword specifies the password for the MxAdmin user. If left empty, the password will be left unchanged and the MxAdmin user will not be (re)-created.",
+              "type": "string"
+            },
+            "myScheduledEvents": {
+              "description": "MyScheduledEvents represents application scheduled events (model options in the portal). This attribute should only be used in standalone mode.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "runtimeLicense": {
+              "description": "RuntimeLicense specifies the runtime license configuration.",
+              "properties": {
+                "id": {
+                  "description": "ID specifies the LicenseId (UUID associated with the license) for an offline license.",
+                  "type": "string"
+                },
+                "key": {
+                  "description": "Key specifies the LicenseKey (the actual license) for an offline license.",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Type specifies the license type (empty for trial or no license).",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            },
+            "scheduledEventExecution": {
+              "description": "ScheduledEventExecution represents scheduled event execution (SPECIFIED/ALL/NONE). This attribute should only be used in standalone mode.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeDeploymentPodAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "RuntimeDeploymentPodAnnotations is deployment annotations for the `master` and `worker` deployments. Merges with the same field in the OperatorConfiguration CR, OperatorConfiguration has lower priority.",
+          "type": "object"
+        },
+        "runtimeMetricsConfiguration": {
+          "description": "RuntimeMetricsConfiguration specifies the configuration for collecting Prometheus metrics from the Mendix Runtime. Non-empty values override values from OperatorConfiguration CR.",
+          "properties": {
+            "interval": {
+              "description": "StepInterval specifies a custom step for windowed statistics such as max. This should be aligned with your Prometheus scrape interval (1 minute by default) and can be left empty. This value is only used when using the native scraping mode. The value should be provided in ISO 8601 Duration format (e.g. 'PT1M').",
+              "type": "string"
+            },
+            "mode": {
+              "description": "Mode specifies the metrics mode to use (native or compatibility). If left empty, metrics will not be collected.",
+              "type": "string"
+            },
+            "mxAgentConfig": {
+              "description": "MxAgentConfig specifies a configuration for MxAgent, a Mendix Java instrumentation agent. This parameter works exactly like `METRICS_AGENT_CONFIG` in CF Buildpack and Mendix Cloud V4. Specifying a non-empty MxAgentConfig will enable collection of additional metrics in Mendix Runtime 9.7 and later versions. Warning: a future version of the Mendix Runtime will replace MxAgent with a native tracing feature, and MxAgent is expected to be deprecated in Mendix 10.",
+              "type": "string"
+            },
+            "mxAgentInstrumentationConfig": {
+              "description": "MxAgentInstrumentationConfig specifies instrumentation configuration for MxAgent, a Mendix Java instrumentation agent. This parameter works exactly like `METRICS_AGENT_INSTRUMENTATION_CONFIG` in CF Buildpack and Mendix Cloud V4. Specifying a non-empty MxAgentInstrumentationConfig will use a custom instrumentation config instead of the MxAgent configuration. This parameter is only used when MxAgentConfig is not empty. Warning: a future version of the Mendix Runtime will replace MxAgent with a native tracing feature, and MxAgent is expected to be deprecated in Mendix 10.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "serviceAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "ServiceAnnotations annotations for the service. Supports templates.",
+          "type": "object"
+        },
+        "sourceURL": {
+          "description": "SourceURL specifies the HTTP(S) URL where the app source (e.g. MDA) can be downloaded so that it can be added to the image.",
+          "type": "string"
+        },
+        "sourceVersion": {
+          "description": "SourceVersion specifies the version of the source. In most cases this will be provided by Portunus. Can be used as templated parameter of `imageNameTemplate`.",
+          "type": "string"
+        },
+        "storage": {
+          "description": "Storage specifies the file storage instance configuration.",
+          "properties": {
+            "serviceClass": {
+              "type": "string"
+            },
+            "servicePlan": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "tls": {
+          "description": "TLS configures app's Ingress or Route TLS. If this is not specified, the Endpoint will use the default TLS configuration from OperatorConfiguration.",
+          "properties": {
+            "certificate": {
+              "description": "Certificate specifies the TLS encryption certificate value in plaintext PEM format. Requires Key to be provided as well. Cannot be used together with SecretName.",
+              "type": "string"
+            },
+            "enableTLS": {
+              "description": "EnableTLS specifies if TLS should be enabled.",
+              "type": "boolean"
+            },
+            "key": {
+              "description": "Key specifies the TLS encryption private key value in plaintext PEM format. Requires Certificate to be provided as well. Cannot be used together with SecretName.",
+              "type": "string"
+            },
+            "secretName": {
+              "description": "SecretName specifies the name of the secret containing TLS keys. Can be left empty to use the default secret, or to provide the secret through Key and Certificate.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "enableTLS"
+          ],
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "mendixRuntimeVersion",
+        "replicas",
+        "sourceURL"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "MendixAppStatus defines the observed state of MendixApp",
+      "properties": {
+        "appURL": {
+          "type": "string"
+        },
+        "buildStatus": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "databaseStatus": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "deployedSourceURL": {
+          "type": "string"
+        },
+        "endpointStatus": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "labelSelector": {
+          "description": "LabelSelector provides the Pod label selector, used for pod autoscaling.",
+          "type": "string"
+        },
+        "licenseStatus": {
+          "description": "LicenseStatus defines the license status of a MendixApp",
+          "properties": {
+            "expires": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "licenseID": {
+              "type": "string"
+            },
+            "mode": {
+              "description": "LicenseMode is the license mode of a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "readyReplicas": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "replicaStatuses": {
+          "items": {
+            "description": "ReplicaStatus represents the status of a given replica within a runtime deployment.",
+            "properties": {
+              "lastError": {
+                "type": "string"
+              },
+              "licenseStatus": {
+                "description": "RuntimeLicenseStatus represents the status of a particular license.",
+                "properties": {
+                  "licenseID": {
+                    "type": "string"
+                  },
+                  "licenseType": {
+                    "type": "string"
+                  },
+                  "runtimeMode": {
+                    "type": "string"
+                  }
+                },
+                "type": "object",
+                "additionalProperties": false
+              },
+              "replicaName": {
+                "type": "string"
+              },
+              "runtimeStatus": {
+                "type": "string"
+              },
+              "secretsStatus": {
+                "description": "RuntimeSecretsStatus represents the status of secrets needed for runtime.",
+                "properties": {
+                  "sources": {
+                    "description": "RuntimeSecretsStatusSources represents sources of secrets.",
+                    "properties": {
+                      "database": {
+                        "type": "string"
+                      },
+                      "mxAdminPassword": {
+                        "type": "string"
+                      },
+                      "mxConstants": {
+                        "type": "string"
+                      },
+                      "mxRuntimeSettings": {
+                        "type": "string"
+                      },
+                      "storage": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object",
+                    "additionalProperties": false
+                  }
+                },
+                "type": "object",
+                "additionalProperties": false
+              }
+            },
+            "type": "object",
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "replicas": {
+          "description": "Replicas provides the number of replicas assigned to the app, used for pod autoscaling.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "runtimeStatus": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "serviceAccountStatus": {
+          "description": "ServiceAccountStatus defines the observed attachment state of MendixApp service account.",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "serviceAccountName": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ServiceAccountState is the status of the service account attachment state.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "statusCounter": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "storageStatus": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "readyReplicas"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

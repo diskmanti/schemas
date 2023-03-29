@@ -1,0 +1,25 @@
+{
+  "description": "FSGroupStrategyOptions defines the strategy type and options used to create the strategy.",
+  "type": "object",
+  "properties": {
+    "ranges": {
+      "description": "Ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.security.v1.IDRange"
+      }
+    },
+    "type": {
+      "description": "Type is the strategy that will dictate what FSGroup is used in the SecurityContext.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

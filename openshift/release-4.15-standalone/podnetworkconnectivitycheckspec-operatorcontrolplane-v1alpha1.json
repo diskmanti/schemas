@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "required": [
+    "sourcePod",
+    "targetEndpoint"
+  ],
+  "properties": {
+    "sourcePod": {
+      "description": "SourcePod names the pod from which the condition will be checked",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targetEndpoint": {
+      "description": "EndpointAddress to check. A TCP address of the form host:port. Note that if host is a DNS name, then the check would fail if the DNS name cannot be resolved. Specify an IP address for host to bypass DNS name lookup.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsClientCert": {
+      "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced secret",
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,40 @@
+{
+  "description": "EgressRouterSpec contains the configuration for an egress router. Mode, networkInterface and addresses fields must be specified along with exactly one \"Config\" that matches the mode. Each config consists of parameters specific to that mode.",
+  "type": "object",
+  "required": [
+    "mode",
+    "networkInterface",
+    "addresses"
+  ],
+  "properties": {
+    "addresses": {
+      "description": "List of IP addresses to configure on the pod's secondary interface.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.networkoperator.v1.EgressRouterAddress"
+      }
+    },
+    "mode": {
+      "description": "Mode depicts the mode that is used for the egress router. The default mode is \"Redirect\" and is the only supported mode currently.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "networkInterface": {
+      "description": "Specification of interface to create/use. The default is macvlan. Currently only macvlan is supported.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.networkoperator.v1.EgressRouterInterface"
+    },
+    "redirect": {
+      "description": "Redirect represents the configuration parameters specific to redirect mode.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.networkoperator.v1.RedirectConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "ServiceServingCert holds configuration for service serving cert signer which creates cert/key pairs for pods fulfilling a service to serve with.",
+  "type": "object",
+  "required": [
+    "signer"
+  ],
+  "properties": {
+    "signer": {
+      "description": "Signer holds the signing information used to automatically sign serving certificates. If this value is nil, then certs are not signed automatically.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.CertInfo"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

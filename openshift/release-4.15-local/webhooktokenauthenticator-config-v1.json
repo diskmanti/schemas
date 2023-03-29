@@ -1,0 +1,15 @@
+{
+  "description": "webhookTokenAuthenticator holds the necessary configuration options for a remote token authenticator",
+  "type": "object",
+  "required": [
+    "kubeConfig"
+  ],
+  "properties": {
+    "kubeConfig": {
+      "description": "kubeConfig references a secret that contains kube config file data which describes how to access the remote webhook service. The namespace for the referenced secret is openshift-config.\n\nFor further details, see:\n\nhttps://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication\n\nThe key \"kubeConfig\" is used to locate the data. If the secret or expected key is not found, the webhook is not honored. If the specified kube config data is not valid, the webhook is not honored.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.SecretNameReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,127 @@
+{
+  "description": "NetworkSpec is the top-level network configuration object.",
+  "type": "object",
+  "required": [
+    "managementState",
+    "clusterNetwork",
+    "serviceNetwork",
+    "defaultNetwork"
+  ],
+  "properties": {
+    "additionalNetworks": {
+      "description": "additionalNetworks is a list of extra networks to make available to pods when multiple networks are enabled.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AdditionalNetworkDefinition"
+      }
+    },
+    "clusterNetwork": {
+      "description": "clusterNetwork is the IP address pool to use for pod IPs. Some network providers, e.g. OpenShift SDN, support multiple ClusterNetworks. Others only support one. This is equivalent to the cluster-cidr.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterNetworkEntry"
+      }
+    },
+    "defaultNetwork": {
+      "description": "defaultNetwork is the \"default\" network that all pods will receive",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DefaultNetworkDefinition"
+    },
+    "deployKubeProxy": {
+      "description": "deployKubeProxy specifies whether or not a standalone kube-proxy should be deployed by the operator. Some network providers include kube-proxy or similar functionality. If unset, the plugin will attempt to select the correct value, which is false when OpenShift SDN and ovn-kubernetes are used and true otherwise.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableMultiNetwork": {
+      "description": "disableMultiNetwork specifies whether or not multiple pod network support should be disabled. If unset, this property defaults to 'false' and multiple network support is enabled.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableNetworkDiagnostics": {
+      "description": "disableNetworkDiagnostics specifies whether or not PodNetworkConnectivityCheck CRs from a test pod to every node, apiserver and LB should be disabled or not. If unset, this property defaults to 'false' and network diagnostics is enabled. Setting this to 'true' would reduce the additional load of the pods performing the checks.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "exportNetworkFlows": {
+      "description": "exportNetworkFlows enables and configures the export of network flow metadata from the pod network by using protocols NetFlow, SFlow or IPFIX. Currently only supported on OVN-Kubernetes plugin. If unset, flows will not be exported to any collector.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ExportNetworkFlows"
+    },
+    "kubeProxyConfig": {
+      "description": "kubeProxyConfig lets us configure desired proxy configuration. If not specified, sensible defaults will be chosen by OpenShift directly. Not consumed by all network providers - currently only openshift-sdn.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ProxyConfig"
+    },
+    "logLevel": {
+      "description": "logLevel is an intent based logging for an overall component.  It does not give fine grained control, but it is a simple way to manage coarse grained logging choices that operators have to interpret for their operands.\n\nValid values are: \"Normal\", \"Debug\", \"Trace\", \"TraceAll\". Defaults to \"Normal\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "managementState": {
+      "description": "managementState indicates whether and how the operator should manage the component",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "migration": {
+      "description": "migration enables and configures the cluster network migration. The migration procedure allows to change the network type and the MTU.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetworkMigration"
+    },
+    "observedConfig": {
+      "description": "observedConfig holds a sparse config that controller has observed from the cluster state.  It exists in spec because it is an input to the level for the operator",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "operatorLogLevel": {
+      "description": "operatorLogLevel is an intent based logging for the operator itself.  It does not give fine grained control, but it is a simple way to manage coarse grained logging choices that operators have to interpret for themselves.\n\nValid values are: \"Normal\", \"Debug\", \"Trace\", \"TraceAll\". Defaults to \"Normal\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceNetwork": {
+      "description": "serviceNetwork is the ip address pool to use for Service IPs Currently, all existing network providers only support a single value here, but this is an array to allow for growth.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "unsupportedConfigOverrides": {
+      "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "useMultiNetworkPolicy": {
+      "description": "useMultiNetworkPolicy enables a controller which allows for MultiNetworkPolicy objects to be used on additional networks as created by Multus CNI. MultiNetworkPolicy are similar to NetworkPolicy objects, but NetworkPolicy objects only apply to the primary interface. With MultiNetworkPolicy, you can control the traffic that a pod can receive over the secondary interfaces. If unset, this property defaults to 'false' and MultiNetworkPolicy objects are ignored. If 'disableMultiNetwork' is 'true' then the value of this field is ignored.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

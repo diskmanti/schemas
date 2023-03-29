@@ -1,0 +1,18 @@
+{
+  "description": "Package contains fields to configure which OLM package this PlatformOperator will install",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name contains the desired OLM-based Operator package name that is defined in an existing CatalogSource resource in the cluster.\n\nThis configured package will be managed with the cluster's lifecycle. In the current implementation, it will be retrieving this name from a list of supported operators out of the catalogs included with OpenShift.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

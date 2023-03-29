@@ -1,0 +1,60 @@
+{
+  "description": "JenkinsPipelineConfig holds configuration for the Jenkins pipeline strategy",
+  "type": "object",
+  "required": [
+    "autoProvisionEnabled",
+    "templateNamespace",
+    "templateName",
+    "serviceName",
+    "parameters"
+  ],
+  "properties": {
+    "autoProvisionEnabled": {
+      "description": "autoProvisionEnabled determines whether a Jenkins server will be spawned from the provided template when the first build config in the project with type JenkinsPipeline is created. When not specified this option defaults to true.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "parameters": {
+      "description": "parameters specifies a set of optional parameters to the Jenkins template.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "serviceName": {
+      "description": "serviceName is the name of the Jenkins service OpenShift uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "templateName": {
+      "description": "templateName is the name of the default Jenkins template",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "templateNamespace": {
+      "description": "templateNamespace contains the namespace name where the Jenkins template is stored",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

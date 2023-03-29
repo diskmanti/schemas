@@ -1,0 +1,334 @@
+{
+  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked.",
+  "type": "object",
+  "required": [
+    "latestAvailableDeploymentGeneration",
+    "nodeStatuses"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "OperatorCondition is just the standard condition fields.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "currentVersionAvailability": {
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "version",
+        "updatedReplicas",
+        "readyReplicas",
+        "errors",
+        "generations"
+      ],
+      "properties": {
+        "errors": {
+          "description": "errors indicates what failures are associated with the operator trying to manage this version",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "generations": {
+          "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
+          "type": "array",
+          "items": {
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "group",
+              "resource",
+              "namespace",
+              "name",
+              "lastGeneration"
+            ],
+            "properties": {
+              "group": {
+                "description": "group is the group of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              },
+              "lastGeneration": {
+                "description": "lastGeneration is the last generation of the workload controller involved",
+                "type": "integer",
+                "format": "int64",
+                "default": 0
+              },
+              "name": {
+                "description": "name is the name of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              },
+              "namespace": {
+                "description": "namespace is where the thing you're tracking is",
+                "type": "string",
+                "default": ""
+              },
+              "resource": {
+                "description": "resource is the resource type of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "readyReplicas": {
+          "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "updatedReplicas": {
+          "description": "updatedReplicas indicates how many replicas are at the desired state",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "version": {
+          "description": "version is the level this availability applies to",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "latestAvailableDeploymentGeneration": {
+      "description": "latestAvailableDeploymentGeneration is the deploymentID of the most recent deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "nodeStatuses": {
+      "description": "nodeStatuses track the deployment values and errors across individual nodes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "nodeName",
+          "currentDeploymentGeneration",
+          "targetDeploymentGeneration",
+          "lastFailedDeploymentGeneration",
+          "lastFailedDeploymentErrors"
+        ],
+        "properties": {
+          "currentDeploymentGeneration": {
+            "description": "currentDeploymentGeneration is the generation of the most recently successful deployment",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "lastFailedDeploymentErrors": {
+            "description": "lastFailedDeploymentGenerationErrors is a list of the errors during the failed deployment referenced in lastFailedDeploymentGeneration",
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          },
+          "lastFailedDeploymentGeneration": {
+            "description": "lastFailedDeploymentGeneration is the generation of the deployment we tried and failed to deploy.",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "nodeName": {
+            "description": "nodeName is the name of the node",
+            "type": "string",
+            "default": ""
+          },
+          "targetDeploymentGeneration": {
+            "description": "targetDeploymentGeneration is the generation of the deployment we're trying to apply",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "state": {
+      "description": "state indicates what the operator has observed to be its current operational status.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetVersionAvailability": {
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "version",
+        "updatedReplicas",
+        "readyReplicas",
+        "errors",
+        "generations"
+      ],
+      "properties": {
+        "errors": {
+          "description": "errors indicates what failures are associated with the operator trying to manage this version",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "generations": {
+          "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
+          "type": "array",
+          "items": {
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "group",
+              "resource",
+              "namespace",
+              "name",
+              "lastGeneration"
+            ],
+            "properties": {
+              "group": {
+                "description": "group is the group of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              },
+              "lastGeneration": {
+                "description": "lastGeneration is the last generation of the workload controller involved",
+                "type": "integer",
+                "format": "int64",
+                "default": 0
+              },
+              "name": {
+                "description": "name is the name of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              },
+              "namespace": {
+                "description": "namespace is where the thing you're tracking is",
+                "type": "string",
+                "default": ""
+              },
+              "resource": {
+                "description": "resource is the resource type of the thing you're tracking",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "readyReplicas": {
+          "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "updatedReplicas": {
+          "description": "updatedReplicas indicates how many replicas are at the desired state",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "version": {
+          "description": "version is the level this availability applies to",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "taskSummary": {
+      "description": "taskSummary is a high level summary of what the controller is currently attempting to do.  It is high-level, human-readable and not guaranteed in any way. (I needed this for debugging and realized it made a great summary).",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

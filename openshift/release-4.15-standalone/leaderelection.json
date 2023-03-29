@@ -1,0 +1,54 @@
+{
+  "description": "LeaderElection provides information to elect a leader",
+  "type": "object",
+  "required": [
+    "leaseDuration",
+    "renewDeadline",
+    "retryPeriod"
+  ],
+  "properties": {
+    "disable": {
+      "description": "disable allows leader election to be suspended while allowing a fully defaulted \"normal\" startup case.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "leaseDuration": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "name indicates what name to use for the resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "namespace indicates which namespace the resource is in",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "renewDeadline": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retryPeriod": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

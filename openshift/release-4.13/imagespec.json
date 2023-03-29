@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "additionalTrustedCA": {
+      "description": "additionalTrustedCA is a reference to a ConfigMap containing additional CAs that should be trusted during imagestream import, pod image pull, build image pull, and imageregistry pullthrough. The namespace for this config map is openshift-config.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapNameReference"
+    },
+    "allowedRegistriesForImport": {
+      "description": "allowedRegistriesForImport limits the container image registries that normal users may import images from. Set this list to the registries that you trust to contain valid Docker images and that you want applications to be able to import from. Users with permission to create Images or ImageStreamMappings via the API are not affected by this policy - typically only administrators or system integrations will have those permissions.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.RegistryLocation"
+      }
+    },
+    "externalRegistryHostnames": {
+      "description": "externalRegistryHostnames provides the hostnames for the default external image registry. The external hostname should be set only when the image registry is exposed externally. The first value is used in 'publicDockerImageRepository' field in ImageStreams. The value must be in \"hostname[:port]\" format.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "registrySources": {
+      "description": "registrySources contains configuration that determines how the container runtime should treat individual registries when accessing images for builds+pods. (e.g. whether or not to allow insecure access).  It does not contain configuration for the internal cluster registry.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.RegistrySources"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,39 @@
+{
+  "description": "TableRow is an individual row in a table.",
+  "type": "object",
+  "required": [
+    "cells"
+  ],
+  "properties": {
+    "cells": {
+      "description": "cells will be as wide as the column definitions array and may contain strings, numbers (float64 or int64), booleans, simple maps, lists, or null. See the type field of the column definition for a more detailed description.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ]
+      }
+    },
+    "conditions": {
+      "description": "conditions describe additional status of a row that are relevant for a human user. These conditions apply to the row, not to the object, and will be specific to table output. The only defined condition type is 'Completed', for a row that indicates a resource that has run to completion and can be given less visual priority.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TableRowCondition"
+      }
+    },
+    "object": {
+      "description": "This field contains the requested additional information about each object based on the includeObject policy when requesting the Table. If \"None\", this field is empty, if \"Object\" this will be the default serialization of the object for the current API version, and if \"Metadata\" (the default) will contain the object metadata. Check the returned kind and apiVersion of the object before parsing. The media type of the object will always match the enclosing list - if this as a JSON table, these will be JSON encoded objects.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

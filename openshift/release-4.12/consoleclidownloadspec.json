@@ -1,0 +1,39 @@
+{
+  "description": "ConsoleCLIDownloadSpec is the desired cli download configuration.",
+  "type": "object",
+  "required": [
+    "displayName",
+    "description",
+    "links"
+  ],
+  "properties": {
+    "description": {
+      "description": "description is the description of the CLI download (can include markdown).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "displayName": {
+      "description": "displayName is the display name of the CLI download.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "links": {
+      "description": "links is a list of objects that provide CLI download link details.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.console.v1.CLIDownloadLink"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

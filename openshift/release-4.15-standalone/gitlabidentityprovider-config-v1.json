@@ -1,0 +1,62 @@
+{
+  "description": "GitLabIdentityProvider provides identities for users authenticating using GitLab credentials",
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientSecret",
+    "url"
+  ],
+  "properties": {
+    "ca": {
+      "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced config map",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "clientID": {
+      "description": "clientID is the oauth client ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientSecret": {
+      "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced secret",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "url": {
+      "description": "url is the oauth server base URL",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

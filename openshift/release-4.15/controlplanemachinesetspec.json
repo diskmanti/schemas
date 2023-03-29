@@ -1,0 +1,43 @@
+{
+  "description": "ControlPlaneMachineSet represents the configuration of the ControlPlaneMachineSet.",
+  "type": "object",
+  "required": [
+    "replicas",
+    "selector",
+    "template"
+  ],
+  "properties": {
+    "replicas": {
+      "description": "Replicas defines how many Control Plane Machines should be created by this ControlPlaneMachineSet. This field is immutable and cannot be changed after cluster installation. The ControlPlaneMachineSet only operates with 3 or 5 node control planes, 3 and 5 are the only valid values for this field.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "selector": {
+      "description": "Label selector for Machines. Existing Machines selected by this selector will be the ones affected by this ControlPlaneMachineSet. It must match the template's labels. This field is considered immutable after creation of the resource.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "state": {
+      "description": "State defines whether the ControlPlaneMachineSet is Active or Inactive. When Inactive, the ControlPlaneMachineSet will not take any action on the state of the Machines within the cluster. When Active, the ControlPlaneMachineSet will reconcile the Machines and will update the Machines as necessary. Once Active, a ControlPlaneMachineSet cannot be made Inactive. To prevent further action please remove the ControlPlaneMachineSet.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "Inactive"
+    },
+    "strategy": {
+      "description": "Strategy defines how the ControlPlaneMachineSet will update Machines when it detects a change to the ProviderSpec.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetStrategy"
+    },
+    "template": {
+      "description": "Template describes the Control Plane Machines that will be created by this ControlPlaneMachineSet.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetTemplate"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

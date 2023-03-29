@@ -1,0 +1,45 @@
+{
+  "description": "EndpointPublishingStrategy is a way to publish the endpoints of an IngressController, and represents the type and any additional configuration for a specific type.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "hostNetwork": {
+      "description": "hostNetwork holds parameters for the HostNetwork endpoint publishing strategy. Present only if type is HostNetwork.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.HostNetworkStrategy"
+    },
+    "loadBalancer": {
+      "description": "loadBalancer holds parameters for the load balancer. Present only if type is LoadBalancerService.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.LoadBalancerStrategy"
+    },
+    "nodePort": {
+      "description": "nodePort holds parameters for the NodePortService endpoint publishing strategy. Present only if type is NodePortService.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.NodePortStrategy"
+    },
+    "private": {
+      "description": "private holds parameters for the Private endpoint publishing strategy. Present only if type is Private.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.PrivateStrategy"
+    },
+    "type": {
+      "description": "type is the publishing strategy to use. Valid values are:\n\n* LoadBalancerService\n\nPublishes the ingress controller using a Kubernetes LoadBalancer Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A LoadBalancer Service is created to publish the deployment.\n\nSee: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer\n\nIf domain is set, a wildcard DNS record will be managed to point at the LoadBalancer Service's external name. DNS records are managed only in DNS zones defined by dns.config.openshift.io/cluster .spec.publicZone and .spec.privateZone.\n\nWildcard DNS management is currently supported only on the AWS, Azure, and GCP platforms.\n\n* HostNetwork\n\nPublishes the ingress controller on node ports where the ingress controller is deployed.\n\nIn this configuration, the ingress controller deployment uses host networking, bound to node ports 80 and 443. The user is responsible for configuring an external load balancer to publish the ingress controller via the node ports.\n\n* Private\n\nDoes not publish the ingress controller.\n\nIn this configuration, the ingress controller deployment uses container networking, and is not explicitly published. The user must manually publish the ingress controller.\n\n* NodePortService\n\nPublishes the ingress controller using a Kubernetes NodePort Service.\n\nIn this configuration, the ingress controller deployment uses container networking. A NodePort Service is created to publish the deployment. The specific node ports are dynamically allocated by OpenShift; however, to support static port allocations, user changes to the node port field of the managed NodePort Service will preserved.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "hostNetwork": "HostNetwork",
+        "loadBalancer": "LoadBalancer",
+        "nodePort": "NodePort",
+        "private": "Private"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

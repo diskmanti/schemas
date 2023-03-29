@@ -1,0 +1,27 @@
+{
+  "description": "WebhookTokenAuthenticators holds the necessary configuation options for external token authenticators",
+  "type": "object",
+  "required": [
+    "configFile",
+    "cacheTTL"
+  ],
+  "properties": {
+    "cacheTTL": {
+      "description": "CacheTTL indicates how long an authentication result should be cached. It takes a valid time duration string (e.g. \"5m\"). If empty, you get a default timeout of 2 minutes. If zero (e.g. \"0m\"), caching is disabled",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "configFile": {
+      "description": "ConfigFile is a path to a Kubeconfig file with the webhook configuration",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

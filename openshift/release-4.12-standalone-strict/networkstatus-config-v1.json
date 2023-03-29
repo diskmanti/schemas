@@ -1,0 +1,149 @@
+{
+  "description": "NetworkStatus is the current network configuration.",
+  "type": "object",
+  "properties": {
+    "clusterNetwork": {
+      "description": "IP address pool to use for pod IPs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ClusterNetworkEntry is a contiguous block of IP addresses from which pod IPs are allocated.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "cidr"
+        ],
+        "properties": {
+          "cidr": {
+            "description": "The complete block for pod IPs.",
+            "type": "string",
+            "default": ""
+          },
+          "hostPrefix": {
+            "description": "The size (prefix) of block to allocate to each node. If this field is not used by the plugin, it can be left unset.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "clusterNetworkMTU": {
+      "description": "ClusterNetworkMTU is the MTU for inter-pod networking.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "migration": {
+      "description": "NetworkMigration represents the cluster network configuration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "mtu": {
+          "description": "MTUMigration contains infomation about MTU migration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "machine": {
+              "description": "MTUMigrationValues contains the values for a MTU migration.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "to"
+              ],
+              "properties": {
+                "from": {
+                  "description": "From is the MTU to migrate from.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int64"
+                },
+                "to": {
+                  "description": "To is the MTU to migrate to.",
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "additionalProperties": false
+            },
+            "network": {
+              "description": "MTUMigrationValues contains the values for a MTU migration.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "to"
+              ],
+              "properties": {
+                "from": {
+                  "description": "From is the MTU to migrate from.",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int64"
+                },
+                "to": {
+                  "description": "To is the MTU to migrate to.",
+                  "type": "integer",
+                  "format": "int64"
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "networkType": {
+          "description": "NetworkType is the target plugin that is to be deployed. Currently supported values are: OpenShiftSDN, OVNKubernetes",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "networkType": {
+      "description": "NetworkType is the plugin that is deployed (e.g. OpenShiftSDN).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceNetwork": {
+      "description": "IP address pool for services. Currently, we only support a single entry here.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

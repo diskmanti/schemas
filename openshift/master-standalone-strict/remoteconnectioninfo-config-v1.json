@@ -1,0 +1,46 @@
+{
+  "description": "RemoteConnectionInfo holds information necessary for establishing a remote connection",
+  "type": "object",
+  "required": [
+    "url",
+    "ca",
+    "certFile",
+    "keyFile"
+  ],
+  "properties": {
+    "ca": {
+      "description": "CA is the CA for verifying TLS connections",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "certFile": {
+      "description": "CertFile is a file containing a PEM-encoded certificate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyFile": {
+      "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "URL is the remote URL to connect to",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

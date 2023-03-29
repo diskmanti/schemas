@@ -1,0 +1,250 @@
+{
+  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked.",
+  "type": "object",
+  "required": [
+    "readyReplicas"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "OperatorCondition is just the standard condition fields.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "generations": {
+      "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "GenerationStatus keeps track of the generation for a given resource so that decisions about forced updates can be made.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "group",
+          "resource",
+          "namespace",
+          "name",
+          "lastGeneration",
+          "hash"
+        ],
+        "properties": {
+          "group": {
+            "description": "group is the group of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "hash": {
+            "description": "hash is an optional field set for resources without generation that are content sensitive like secrets and configmaps",
+            "type": "string",
+            "default": ""
+          },
+          "lastGeneration": {
+            "description": "lastGeneration is the last generation of the workload controller involved",
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          "name": {
+            "description": "name is the name of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "namespace": {
+            "description": "namespace is where the thing you're tracking is",
+            "type": "string",
+            "default": ""
+          },
+          "resource": {
+            "description": "resource is the resource type of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "latestAvailableRevision": {
+      "description": "latestAvailableRevision is the deploymentID of the most recent deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "latestAvailableRevisionReason": {
+      "description": "latestAvailableRevisionReason describe the detailed reason for the most recent deployment",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "nodeStatuses": {
+      "description": "nodeStatuses track the deployment values and errors across individual nodes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "nodeName",
+          "currentRevision"
+        ],
+        "properties": {
+          "currentRevision": {
+            "description": "currentRevision is the generation of the most recently successful deployment",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "lastFailedCount": {
+            "description": "lastFailedCount is how often the installer pod of the last failed revision failed.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32"
+          },
+          "lastFailedReason": {
+            "description": "lastFailedReason is a machine readable failure reason string.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lastFailedRevision": {
+            "description": "lastFailedRevision is the generation of the deployment we tried and failed to deploy.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32"
+          },
+          "lastFailedRevisionErrors": {
+            "description": "lastFailedRevisionErrors is a list of human readable errors during the failed deployment referenced in lastFailedRevision.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          },
+          "lastFailedTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "lastFallbackCount": {
+            "description": "lastFallbackCount is how often a fallback to a previous revision happened.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32"
+          },
+          "nodeName": {
+            "description": "nodeName is the name of the node",
+            "type": "string",
+            "default": ""
+          },
+          "targetRevision": {
+            "description": "targetRevision is the generation of the deployment we're trying to apply",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "version": {
+      "description": "version is the level this availability applies to",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

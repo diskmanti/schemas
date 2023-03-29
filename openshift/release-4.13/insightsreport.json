@@ -1,0 +1,24 @@
+{
+  "description": "insightsReport provides Insights health check report based on the most recently sent Insights data.",
+  "type": "object",
+  "properties": {
+    "downloadedAt": {
+      "description": "downloadedAt is the time when the last Insights report was downloaded. An empty value means that there has not been any Insights report downloaded yet and it usually appears in disconnected clusters (or clusters when the Insights data gathering is disabled).",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "healthChecks": {
+      "description": "healthChecks provides basic information about active Insights health checks in a cluster.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.HealthCheck"
+      },
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

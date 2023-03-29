@@ -1,0 +1,59 @@
+{
+  "description": "Rule describes an alerting rule. See Prometheus documentation: - https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules",
+  "type": "object",
+  "required": [
+    "alert",
+    "expr"
+  ],
+  "properties": {
+    "alert": {
+      "description": "alert is the name of the alert. Must be a valid label value, i.e. only contain ASCII letters, numbers, and underscores.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "annotations": {
+      "description": "annotations to add to each alert.  These are values that can be used to store longer additional information that you won't query on, such as alert descriptions or runbook links, e.g.:\n\n  annotations:\n    summary: HAProxy reload failure\n    description: |\n      This alert fires when HAProxy fails to reload its\n      configuration, which will result in the router not picking up\n      recently created or modified routes.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "expr": {
+      "description": "expr is the PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending or firing alerts.  This is most often a string representing a PromQL expression, e.g.:\n\n  mapi_current_pending_csr > mapi_max_pending_csr\n\nIn rare cases this could be a simple integer, e.g. a simple \"1\" if the intent is to create an alert that is always firing.  This is sometimes used to create an always-firing \"Watchdog\" alert in order to ensure the alerting pipeline is functional.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "for": {
+      "description": "for is the time period after which alerts are considered firing after first returning results.  Alerts which have not yet fired for long enough are considered pending. This is represented as a Prometheus duration, for details on the format see: - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#duration",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "labels to add or overwrite for each alert.  The results of the PromQL expression for the alert will result in an existing set of labels for the alert, after evaluating the expression, for any label specified here with the same name as a label in that set, the label here wins and overwrites the previous value.  These should typically be short identifying values that may be useful to query against.  A common example is the alert severity:\n\n  labels:\n    severity: warning",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

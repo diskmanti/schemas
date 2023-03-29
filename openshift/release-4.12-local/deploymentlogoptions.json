@@ -1,0 +1,92 @@
+{
+  "description": "DeploymentLogOptions is the REST options for a deployment log\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "container": {
+      "description": "The container for which to stream logs. Defaults to only container if there is one container in the pod.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "follow": {
+      "description": "Follow if true indicates that the build log should be streamed until the build terminates.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "limitBytes": {
+      "description": "If set, the number of bytes to read from the server before terminating the log output. This may not display a complete final line of logging, and may return slightly more or slightly less than the specified limit.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "nowait": {
+      "description": "NoWait if true causes the call to return immediately even if the deployment is not available yet. Otherwise the server will wait until the deployment has started.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "previous": {
+      "description": "Return previous deployment logs. Defaults to false.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sinceSeconds": {
+      "description": "A relative time in seconds before the current time from which to show logs. If this value precedes the time a pod was started, only logs since the pod start will be returned. If this value is in the future, no logs will be returned. Only one of sinceSeconds or sinceTime may be specified.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "sinceTime": {
+      "description": "An RFC3339 timestamp from which to show logs. If this value precedes the time a pod was started, only logs since the pod start will be returned. If this value is in the future, no logs will be returned. Only one of sinceSeconds or sinceTime may be specified.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "tailLines": {
+      "description": "If set, the number of lines from the end of the logs to show. If not specified, logs are shown from the creation of the container or sinceSeconds or sinceTime",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "timestamps": {
+      "description": "If true, add an RFC3339 or RFC3339Nano timestamp at the beginning of every line of log output. Defaults to false.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "Version of the deployment for which to view logs.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

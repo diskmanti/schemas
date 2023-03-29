@@ -1,0 +1,16 @@
+{
+  "description": "CloudPrivateIPConfigSpec consists of a node name which the private IP should be assigned to.",
+  "type": "object",
+  "properties": {
+    "node": {
+      "description": "node is the node name, as specified by the Kubernetes field: node.metadata.name",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

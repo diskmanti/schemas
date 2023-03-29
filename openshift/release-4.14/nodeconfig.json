@@ -1,0 +1,229 @@
+{
+  "description": "NodeConfig is the fully specified config starting an OpenShift node\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "nodeName",
+    "nodeIP",
+    "servingInfo",
+    "masterKubeConfig",
+    "masterClientConnectionOverrides",
+    "dnsDomain",
+    "dnsIP",
+    "dnsBindAddress",
+    "dnsNameservers",
+    "dnsRecursiveResolvConf",
+    "networkConfig",
+    "volumeDirectory",
+    "imageConfig",
+    "allowDisabledDocker",
+    "podManifestConfig",
+    "authConfig",
+    "dockerConfig",
+    "iptablesSyncPeriod",
+    "enableUnidling",
+    "volumeConfig"
+  ],
+  "properties": {
+    "allowDisabledDocker": {
+      "description": "AllowDisabledDocker if true, the Kubelet will ignore errors from Docker.  This means that a node can start on a machine that doesn't have docker started.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authConfig": {
+      "description": "AuthConfig holds authn/authz configuration options",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeAuthConfig"
+    },
+    "dnsBindAddress": {
+      "description": "DNSBindAddress is the ip:port to serve DNS on. If this is not set, the DNS server will not be started. Because most DNS resolvers will only listen on port 53, if you select an alternative port you will need a DNS proxy like dnsmasq to answer queries for containers. A common configuration is dnsmasq configured on a node IP listening on 53 and delegating queries for dnsDomain to this process, while sending other queries to the host environments nameservers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dnsDomain": {
+      "description": "DNSDomain holds the domain suffix that will be used for the DNS search path inside each container. Defaults to 'cluster.local'.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dnsIP": {
+      "description": "DNSIP is the IP address that pods will use to access cluster DNS. Defaults to the service IP of the Kubernetes master. This IP must be listening on port 53 for compatibility with libc resolvers (which cannot be configured to resolve names from any other port). When running more complex local DNS configurations, this is often set to the local address of a DNS proxy like dnsmasq, which then will consult either the local DNS (see dnsBindAddress) or the master DNS.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dnsNameservers": {
+      "description": "DNSNameservers is a list of ip:port values of recursive nameservers to forward queries to when running a local DNS server if dnsBindAddress is set. If this value is empty, the DNS server will default to the nameservers listed in /etc/resolv.conf. If you have configured dnsmasq or another DNS proxy on the system, this value should be set to the upstream nameservers dnsmasq resolves with.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "dnsRecursiveResolvConf": {
+      "description": "DNSRecursiveResolvConf is a path to a resolv.conf file that contains settings for an upstream server. Only the nameservers and port fields are used. The file must exist and parse correctly. It adds extra nameservers to DNSNameservers if set.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dockerConfig": {
+      "description": "DockerConfig holds Docker related configuration options.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DockerConfig"
+    },
+    "enableUnidling": {
+      "description": "EnableUnidling controls whether or not the hybrid unidling proxy will be set up",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "imageConfig": {
+      "description": "ImageConfig holds options that describe how to build image names for system components",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ImageConfig"
+    },
+    "iptablesSyncPeriod": {
+      "description": "IPTablesSyncPeriod is how often iptable rules are refreshed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeletArguments": {
+      "description": "KubeletArguments are key value pairs that will be passed directly to the Kubelet that match the Kubelet's command line arguments.  These are not migrated or validated, so if you use them they may become invalid. These values override other settings in NodeConfig which may cause invalid configurations.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "masterClientConnectionOverrides": {
+      "description": "MasterClientConnectionOverrides provides overrides to the client connection used to connect to the master.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ClientConnectionOverrides"
+    },
+    "masterKubeConfig": {
+      "description": "MasterKubeConfig is a filename for the .kubeconfig file that describes how to connect this node to the master",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "networkConfig": {
+      "description": "NetworkConfig provides network options for the node",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeNetworkConfig"
+    },
+    "networkPluginName": {
+      "description": "Deprecated and maintained for backward compatibility, use NetworkConfig.NetworkPluginName instead",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nodeIP": {
+      "description": "Node may have multiple IPs, specify the IP to use for pod traffic routing If not specified, network parse/lookup on the nodeName is performed and the first non-loopback address is used",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "nodeName": {
+      "description": "NodeName is the value used to identify this particular node in the cluster.  If possible, this should be your fully qualified hostname. If you're describing a set of static nodes to the master, this value must match one of the values in the list",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "podManifestConfig": {
+      "description": "PodManifestConfig holds the configuration for enabling the Kubelet to create pods based from a manifest file(s) placed locally on the node",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.PodManifestConfig"
+    },
+    "proxyArguments": {
+      "description": "ProxyArguments are key value pairs that will be passed directly to the Proxy that match the Proxy's command line arguments.  These are not migrated or validated, so if you use them they may become invalid. These values override other settings in NodeConfig which may cause invalid configurations.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "servingInfo": {
+      "description": "ServingInfo describes how to start serving",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServingInfo"
+    },
+    "volumeConfig": {
+      "description": "VolumeConfig contains options for configuring volumes on the node.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeVolumeConfig"
+    },
+    "volumeDirectory": {
+      "description": "VolumeDirectory is the directory that volumes will be stored under",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

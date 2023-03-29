@@ -1,0 +1,45 @@
+{
+  "description": "CSIDriverConfigSpec defines configuration spec that can be used to optionally configure a specific CSI Driver.",
+  "type": "object",
+  "required": [
+    "driverType"
+  ],
+  "properties": {
+    "aws": {
+      "description": "aws is used to configure the AWS CSI driver.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSCSIDriverConfigSpec"
+    },
+    "azure": {
+      "description": "azure is used to configure the Azure CSI driver.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AzureCSIDriverConfigSpec"
+    },
+    "driverType": {
+      "description": "driverType indicates type of CSI driver for which the driverConfig is being applied to. Valid values are: AWS, Azure, GCP, vSphere and omitted. Consumers should treat unknown values as a NO-OP.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "gcp": {
+      "description": "gcp is used to configure the GCP CSI driver.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GCPCSIDriverConfigSpec"
+    },
+    "vSphere": {
+      "description": "vsphere is used to configure the vsphere CSI driver.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.VSphereCSIDriverConfigSpec"
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "driverType",
+      "fields-to-discriminateBy": {
+        "aws": "AWS",
+        "azure": "Azure",
+        "gcp": "GCP",
+        "vSphere": "VSphere"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

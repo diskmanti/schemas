@@ -1,0 +1,49 @@
+{
+  "description": "OutageEntry records time period of an outage",
+  "type": "object",
+  "required": [
+    "start"
+  ],
+  "properties": {
+    "end": {
+      "description": "End of outage detected",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "endLogs": {
+      "description": "EndLogs contains log entries related to the end of this outage. Should contain the success entry that resolved the outage and possibly a few of the failure log entries that preceded it.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.LogEntry"
+      }
+    },
+    "message": {
+      "description": "Message summarizes outage details in a human readable format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "start": {
+      "description": "Start of outage detected",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "startLogs": {
+      "description": "StartLogs contains log entries related to the start of this outage. Should contain the original failure, any entries where the failure mode changed.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.LogEntry"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

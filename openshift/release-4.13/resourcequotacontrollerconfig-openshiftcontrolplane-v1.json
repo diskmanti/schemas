@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "concurrentSyncs",
+    "syncPeriod",
+    "minResyncPeriod"
+  ],
+  "properties": {
+    "concurrentSyncs": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "minResyncPeriod": {
+      "default": 0,
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    "syncPeriod": {
+      "default": 0,
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

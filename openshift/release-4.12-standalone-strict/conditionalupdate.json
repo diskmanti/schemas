@@ -1,0 +1,205 @@
+{
+  "description": "ConditionalUpdate represents an update which is recommended to some clusters on the version the current cluster is reconciling, but which may not be recommended for the current cluster.",
+  "type": "object",
+  "required": [
+    "release",
+    "risks"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions represents the observations of the conditional update's current status. Known types are: * Evaluating, for whether the cluster-version operator will attempt to evaluate any risks[].matchingRules. * Recommended, for whether the update is recommended for the current cluster.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "Condition contains details for one aspect of the current state of this API Resource.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status",
+          "lastTransitionTime",
+          "reason",
+          "message"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
+            "type": "string",
+            "default": ""
+          },
+          "observedGeneration": {
+            "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          },
+          "reason": {
+            "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
+            "type": "string",
+            "default": ""
+          },
+          "status": {
+            "description": "status of the condition, one of True, False, Unknown.",
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "release": {
+      "description": "Release represents an OpenShift release image and associated metadata.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "version",
+        "image"
+      ],
+      "properties": {
+        "channels": {
+          "description": "channels is the set of Cincinnati channels to which the release currently belongs.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "image": {
+          "description": "image is a container image location that contains the update. When this field is part of spec, image is optional if version is specified and the availableUpdates field contains a matching version.",
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "description": "url contains information about this release. This URL is set by the 'url' metadata property on a release or the metadata returned by the update API and should be displayed as a link in user interfaces. The URL field may not be set for test or nightly releases.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "description": "version is a semantic versioning identifying the update version. When this field is part of spec, version is optional if image is specified.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "risks": {
+      "description": "risks represents the range of issues associated with updating to the target release. The cluster-version operator will evaluate all entries, and only recommend the update if there is at least one entry and all entries recommend the update.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ConditionalUpdateRisk represents a reason and cluster-state for not recommending a conditional update.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "url",
+          "name",
+          "message",
+          "matchingRules"
+        ],
+        "properties": {
+          "matchingRules": {
+            "description": "matchingRules is a slice of conditions for deciding which clusters match the risk and which do not. The slice is ordered by decreasing precedence. The cluster-version operator will walk the slice in order, and stop after the first it can successfully evaluate. If no condition can be successfully evaluated, the update will not be recommended.",
+            "type": "array",
+            "items": {
+              "description": "ClusterCondition is a union of typed cluster conditions.  The 'type' property determines which of the type-specific properties are relevant. When evaluated on a cluster, the condition may match, not match, or fail to evaluate.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "type"
+              ],
+              "properties": {
+                "promql": {
+                  "description": "PromQLClusterCondition represents a cluster condition based on PromQL.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "promql"
+                  ],
+                  "properties": {
+                    "promql": {
+                      "description": "PromQL is a PromQL query classifying clusters. This query query should return a 1 in the match case and a 0 in the does-not-match case. Queries which return no time series, or which return values besides 0 or 1, are evaluation failures.",
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "type": {
+                  "description": "type represents the cluster-condition type. This defines the members and semantics of any additional properties.",
+                  "type": "string",
+                  "default": ""
+                }
+              },
+              "additionalProperties": false
+            },
+            "x-kubernetes-list-type": "atomic"
+          },
+          "message": {
+            "description": "message provides additional information about the risk of updating, in the event that matchingRules match the cluster state. This is only to be consumed by humans. It may contain Line Feed characters (U+000A), which should be rendered as new lines.",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "description": "name is the CamelCase reason for not recommending a conditional update, in the event that matchingRules match the cluster state.",
+            "type": "string",
+            "default": ""
+          },
+          "url": {
+            "description": "url contains information about this risk.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "name",
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

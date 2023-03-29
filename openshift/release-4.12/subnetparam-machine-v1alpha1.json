@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "filter": {
+      "description": "Filters for optional network query",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SubnetFilter"
+    },
+    "portSecurity": {
+      "description": "PortSecurity optionally enables or disables security on ports managed by OpenStack",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "portTags": {
+      "description": "PortTags are tags that are added to ports created on this subnet",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "uuid": {
+      "description": "The UUID of the network. Required if you omit the port attribute.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,18 @@
+{
+  "description": "GCPEncryptionKeyReference describes the encryptionKey to use for a disk's encryption.",
+  "type": "object",
+  "properties": {
+    "kmsKey": {
+      "description": "KMSKeyName is the reference KMS key, in the format",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPKMSKeyReference"
+    },
+    "kmsKeyServiceAccount": {
+      "description": "KMSKeyServiceAccount is the service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. See https://cloud.google.com/compute/docs/access/service-accounts#compute_engine_service_account for details on the default service account.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

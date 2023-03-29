@@ -1,0 +1,43 @@
+{
+  "description": "WorkspaceConfig defines a workspace configuration for the vSphere cloud provider.",
+  "type": "object",
+  "properties": {
+    "datacenter": {
+      "description": "Datacenter is the datacenter in which VMs are created/located.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "datastore": {
+      "description": "Datastore is the datastore in which VMs are created/located.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "folder": {
+      "description": "Folder is the folder in which VMs are created/located.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resourcePool": {
+      "description": "ResourcePool is the resource pool in which VMs are created/located.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "server": {
+      "description": "Server is the IP address or FQDN of the vSphere endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

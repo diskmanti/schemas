@@ -1,0 +1,34 @@
+{
+  "description": "AdmissionConfig holds the necessary configuration options for admission",
+  "type": "object",
+  "required": [
+    "pluginConfig"
+  ],
+  "properties": {
+    "pluginConfig": {
+      "description": "PluginConfig allows specifying a configuration file per admission control plugin",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AdmissionPluginConfig"
+      }
+    },
+    "pluginOrderOverride": {
+      "description": "PluginOrderOverride is a list of admission control plugin names that will be installed on the master. Order is significant. If empty, a default list of plugins is used.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

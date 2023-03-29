@@ -1,0 +1,48 @@
+{
+  "description": "NodeAuthConfig holds authn/authz configuration options",
+  "type": "object",
+  "required": [
+    "authenticationCacheTTL",
+    "authenticationCacheSize",
+    "authorizationCacheTTL",
+    "authorizationCacheSize"
+  ],
+  "properties": {
+    "authenticationCacheSize": {
+      "description": "AuthenticationCacheSize indicates how many authentication results should be cached. If 0, the default cache size is used.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "authenticationCacheTTL": {
+      "description": "AuthenticationCacheTTL indicates how long an authentication result should be cached. It takes a valid time duration string (e.g. \"5m\"). If empty, you get the default timeout. If zero (e.g. \"0m\"), caching is disabled",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "authorizationCacheSize": {
+      "description": "AuthorizationCacheSize indicates how many authorization results should be cached. If 0, the default cache size is used.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "authorizationCacheTTL": {
+      "description": "AuthorizationCacheTTL indicates how long an authorization result should be cached. It takes a valid time duration string (e.g. \"5m\"). If empty, you get the default timeout. If zero (e.g. \"0m\"), caching is disabled",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

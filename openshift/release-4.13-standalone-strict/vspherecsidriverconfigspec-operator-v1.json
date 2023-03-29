@@ -1,0 +1,22 @@
+{
+  "description": "VSphereCSIDriverConfigSpec defines properties that can be configured for vsphere CSI driver.",
+  "type": "object",
+  "properties": {
+    "topologyCategories": {
+      "description": "topologyCategories indicates tag categories with which vcenter resources such as hostcluster or datacenter were tagged with. If cluster Infrastructure object has a topology, values specified in Infrastructure object will be used and modifications to topologyCategories will be rejected.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

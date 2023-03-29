@@ -1,0 +1,24 @@
+{
+  "description": "NamedRole relates a Role with a name",
+  "type": "object",
+  "required": [
+    "name",
+    "role"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name is the name of the role",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "role": {
+      "description": "Role is the role being named",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.Role"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

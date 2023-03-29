@@ -1,0 +1,37 @@
+{
+  "description": "OAuthTemplates allow for customization of pages like the login page",
+  "type": "object",
+  "required": [
+    "login",
+    "providerSelection",
+    "error"
+  ],
+  "properties": {
+    "error": {
+      "description": "Error is a path to a file containing a go template used to render error pages during the authentication or grant flow If unspecified, the default error page is used.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "login": {
+      "description": "Login is a path to a file containing a go template used to render the login page. If unspecified, the default login page is used.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "providerSelection": {
+      "description": "ProviderSelection is a path to a file containing a go template used to render the provider selection page. If unspecified, the default provider selection page is used.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

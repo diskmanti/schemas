@@ -1,0 +1,58 @@
+{
+  "description": "ovnKubernetesConfig contains the configuration parameters for networks using the ovn-kubernetes network project",
+  "type": "object",
+  "properties": {
+    "egressIPConfig": {
+      "description": "egressIPConfig holds the configuration for EgressIP options.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.EgressIPConfig"
+    },
+    "gatewayConfig": {
+      "description": "gatewayConfig holds the configuration for node gateway options.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GatewayConfig"
+    },
+    "genevePort": {
+      "description": "geneve port is the UDP port to be used by geneve encapulation. Default is 6081",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "hybridOverlayConfig": {
+      "description": "HybridOverlayConfig configures an additional overlay network for peers that are not using OVN.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.HybridOverlayConfig"
+    },
+    "ipsecConfig": {
+      "description": "ipsecConfig enables and configures IPsec for pods on the pod network within the cluster.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.IPsecConfig"
+    },
+    "mtu": {
+      "description": "mtu is the MTU to use for the tunnel interface. This must be 100 bytes smaller than the uplink mtu. Default is 1400",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "policyAuditConfig": {
+      "description": "policyAuditConfig is the configuration for network policy audit events. If unset, reported defaults are used.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.PolicyAuditConfig"
+    },
+    "v4InternalSubnet": {
+      "description": "v4InternalSubnet is a v4 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is 100.64.0.0/16",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "v6InternalSubnet": {
+      "description": "v6InternalSubnet is a v6 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is fd98::/48",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

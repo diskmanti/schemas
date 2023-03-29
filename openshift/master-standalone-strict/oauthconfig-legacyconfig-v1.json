@@ -1,0 +1,226 @@
+{
+  "description": "OAuthConfig holds the necessary configuration options for OAuth authentication",
+  "type": "object",
+  "required": [
+    "masterCA",
+    "masterURL",
+    "masterPublicURL",
+    "assetPublicURL",
+    "alwaysShowProviderSelection",
+    "identityProviders",
+    "grantConfig",
+    "sessionConfig",
+    "tokenConfig",
+    "templates"
+  ],
+  "properties": {
+    "alwaysShowProviderSelection": {
+      "description": "AlwaysShowProviderSelection will force the provider selection page to render even when there is only a single provider.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "assetPublicURL": {
+      "description": "AssetPublicURL is used for building valid client redirect URLs for external access",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "grantConfig": {
+      "description": "GrantConfig holds the necessary configuration options for grant handlers",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "method",
+        "serviceAccountMethod"
+      ],
+      "properties": {
+        "method": {
+          "description": "Method determines the default strategy to use when an OAuth client requests a grant. This method will be used only if the specific OAuth client doesn't provide a strategy of their own. Valid grant handling methods are:\n - auto:   always approves grant requests, useful for trusted clients\n - prompt: prompts the end user for approval of grant requests, useful for third-party clients\n - deny:   always denies grant requests, useful for black-listed clients",
+          "type": "string",
+          "default": ""
+        },
+        "serviceAccountMethod": {
+          "description": "ServiceAccountMethod is used for determining client authorization for service account oauth client. It must be either: deny, prompt",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "identityProviders": {
+      "description": "IdentityProviders is an ordered list of ways for a user to identify themselves",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "IdentityProvider provides identities for users authenticating using credentials",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "challenge",
+          "login",
+          "mappingMethod",
+          "provider"
+        ],
+        "properties": {
+          "challenge": {
+            "description": "UseAsChallenger indicates whether to issue WWW-Authenticate challenges for this provider",
+            "type": "boolean",
+            "default": false
+          },
+          "login": {
+            "description": "UseAsLogin indicates whether to use this identity provider for unauthenticated browsers to login against",
+            "type": "boolean",
+            "default": false
+          },
+          "mappingMethod": {
+            "description": "MappingMethod determines how identities from this provider are mapped to users",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "description": "Name is used to qualify the identities returned by this provider",
+            "type": "string",
+            "default": ""
+          },
+          "provider": {
+            "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "masterCA": {
+      "description": "MasterCA is the CA for verifying the TLS connection back to the MasterURL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "masterPublicURL": {
+      "description": "MasterPublicURL is used for building valid client redirect URLs for internal and external access",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "masterURL": {
+      "description": "MasterURL is used for making server-to-server calls to exchange authorization codes for access tokens",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sessionConfig": {
+      "description": "SessionConfig specifies options for cookie-based sessions. Used by AuthRequestHandlerSession",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "sessionSecretsFile",
+        "sessionMaxAgeSeconds",
+        "sessionName"
+      ],
+      "properties": {
+        "sessionMaxAgeSeconds": {
+          "description": "SessionMaxAgeSeconds specifies how long created sessions last. Used by AuthRequestHandlerSession",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "sessionName": {
+          "description": "SessionName is the cookie name used to store the session",
+          "type": "string",
+          "default": ""
+        },
+        "sessionSecretsFile": {
+          "description": "SessionSecretsFile is a reference to a file containing a serialized SessionSecrets object If no file is specified, a random signing and encryption key are generated at each server start",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "templates": {
+      "description": "OAuthTemplates allow for customization of pages like the login page",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "login",
+        "providerSelection",
+        "error"
+      ],
+      "properties": {
+        "error": {
+          "description": "Error is a path to a file containing a go template used to render error pages during the authentication or grant flow If unspecified, the default error page is used.",
+          "type": "string",
+          "default": ""
+        },
+        "login": {
+          "description": "Login is a path to a file containing a go template used to render the login page. If unspecified, the default login page is used.",
+          "type": "string",
+          "default": ""
+        },
+        "providerSelection": {
+          "description": "ProviderSelection is a path to a file containing a go template used to render the provider selection page. If unspecified, the default provider selection page is used.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "tokenConfig": {
+      "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "authorizeTokenMaxAgeSeconds",
+        "accessTokenMaxAgeSeconds"
+      ],
+      "properties": {
+        "accessTokenInactivityTimeoutSeconds": {
+          "description": "AccessTokenInactivityTimeoutSeconds defined the default token inactivity timeout for tokens granted by any client. Setting it to nil means the feature is completely disabled (default) The default setting can be overriden on OAuthClient basis. The value represents the maximum amount of time that can occur between consecutive uses of the token. Tokens become invalid if they are not used within this temporal window. The user will need to acquire a new token to regain access once a token times out. Valid values are: - 0: Tokens never time out - X: Tokens time out if there is no activity for X seconds The current minimum allowed value for X is 300 (5 minutes)",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "accessTokenMaxAgeSeconds": {
+          "description": "AccessTokenMaxAgeSeconds defines the maximum age of access tokens",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "authorizeTokenMaxAgeSeconds": {
+          "description": "AuthorizeTokenMaxAgeSeconds defines the maximum age of authorize tokens",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

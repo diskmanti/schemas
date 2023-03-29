@@ -1,0 +1,29 @@
+{
+  "description": "CloudPrivateIPConfigStatus specifies the node assignment together with its assignment condition.",
+  "type": "object",
+  "required": [
+    "conditions"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "condition is the assignment condition of the private IP and its status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      }
+    },
+    "node": {
+      "description": "node is the node name, as specified by the Kubernetes field: node.metadata.name",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

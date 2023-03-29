@@ -1,0 +1,554 @@
+{
+  "description": "InfrastructureSpec contains settings that apply to the cluster infrastructure.",
+  "type": "object",
+  "properties": {
+    "cloudConfig": {
+      "description": "ConfigMapFileReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "key": {
+          "description": "Key allows pointing to a specific key/value inside of the configmap.  This is useful for logical file references.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "platformSpec": {
+      "description": "PlatformSpec holds the desired state specific to the underlying infrastructure provider of the current cluster. Since these are used at spec-level for the underlying cluster, it is supposed that only one of the spec structs is set.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "alibabaCloud": {
+          "description": "AlibabaCloudPlatformSpec holds the desired state of the Alibaba Cloud infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "aws": {
+          "description": "AWSPlatformSpec holds the desired state of the Amazon Web Services infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "serviceEndpoints": {
+              "description": "serviceEndpoints list contains custom endpoints which will override default service endpoint of AWS Services. There must be only one ServiceEndpoint for a service.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "AWSServiceEndpoint store the configuration of a custom url to override existing defaults of AWS Services.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the name of the AWS service. The list of all the service names can be found at https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html This must be provided and cannot be empty.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "url": {
+                    "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "azure": {
+          "description": "AzurePlatformSpec holds the desired state of the Azure infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "baremetal": {
+          "description": "BareMetalPlatformSpec holds the desired state of the BareMetal infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "equinixMetal": {
+          "description": "EquinixMetalPlatformSpec holds the desired state of the Equinix Metal infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "external": {
+          "description": "ExternalPlatformSpec holds the desired state for the generic External infrastructure provider.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "platformName": {
+              "description": "PlatformName holds the arbitrary string representing the infrastructure provider name, expected to be set at the installation time. This field is solely for informational and reporting purposes and is not expected to be used for decision-making.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": "Unknown"
+            }
+          },
+          "additionalProperties": false
+        },
+        "gcp": {
+          "description": "GCPPlatformSpec holds the desired state of the Google Cloud Platform infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "ibmcloud": {
+          "description": "IBMCloudPlatformSpec holds the desired state of the IBMCloud infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "kubevirt": {
+          "description": "KubevirtPlatformSpec holds the desired state of the kubevirt infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "nutanix": {
+          "description": "NutanixPlatformSpec holds the desired state of the Nutanix infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "prismCentral",
+            "prismElements"
+          ],
+          "properties": {
+            "prismCentral": {
+              "description": "NutanixPrismEndpoint holds the endpoint address and port to access the Nutanix Prism Central or Element (cluster)",
+              "type": "object",
+              "required": [
+                "address",
+                "port"
+              ],
+              "properties": {
+                "address": {
+                  "description": "address is the endpoint address (DNS name or IP address) of the Nutanix Prism Central or Element (cluster)",
+                  "type": "string",
+                  "default": ""
+                },
+                "port": {
+                  "description": "port is the port number to access the Nutanix Prism Central or Element (cluster)",
+                  "type": "integer",
+                  "format": "int32",
+                  "default": 0
+                }
+              },
+              "additionalProperties": false
+            },
+            "prismElements": {
+              "description": "prismElements holds one or more endpoint address and port data to access the Nutanix Prism Elements (clusters) of the Nutanix Prism Central. Currently we only support one Prism Element (cluster) for an OpenShift cluster, where all the Nutanix resources (VMs, subnets, volumes, etc.) used in the OpenShift cluster are located. In the future, we may support Nutanix resources (VMs, etc.) spread over multiple Prism Elements (clusters) of the Prism Central.",
+              "type": "array",
+              "items": {
+                "description": "NutanixPrismElementEndpoint holds the name and endpoint data for a Prism Element (cluster)",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "endpoint"
+                ],
+                "properties": {
+                  "endpoint": {
+                    "description": "NutanixPrismEndpoint holds the endpoint address and port to access the Nutanix Prism Central or Element (cluster)",
+                    "type": "object",
+                    "required": [
+                      "address",
+                      "port"
+                    ],
+                    "properties": {
+                      "address": {
+                        "description": "address is the endpoint address (DNS name or IP address) of the Nutanix Prism Central or Element (cluster)",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "port": {
+                        "description": "port is the port number to access the Nutanix Prism Central or Element (cluster)",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": 0
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "name": {
+                    "description": "name is the name of the Prism Element (cluster). This value will correspond with the cluster field configured on other resources (eg Machines, PVCs, etc).",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              },
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            }
+          },
+          "additionalProperties": false
+        },
+        "openstack": {
+          "description": "OpenStackPlatformSpec holds the desired state of the OpenStack infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "ovirt": {
+          "description": "OvirtPlatformSpec holds the desired state of the oVirt infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "powervs": {
+          "description": "PowerVSPlatformSpec holds the desired state of the IBM Power Systems Virtual Servers infrastructure provider. This only includes fields that can be modified in the cluster.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "serviceEndpoints": {
+              "description": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "PowervsServiceEndpoint stores the configuration of a custom url to override existing defaults of PowerVS Services.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "url"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the name of the Power VS service. Few of the services are IAM - https://cloud.ibm.com/apidocs/iam-identity-token-api ResourceController - https://cloud.ibm.com/apidocs/resource-controller/resource-controller Power Cloud - https://cloud.ibm.com/apidocs/power-cloud",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "url": {
+                    "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              },
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            }
+          },
+          "additionalProperties": false
+        },
+        "type": {
+          "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"KubeVirt\", \"EquinixMetal\", \"PowerVS\", \"AlibabaCloud\", \"Nutanix\" and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform.",
+          "type": "string",
+          "default": ""
+        },
+        "vsphere": {
+          "description": "VSpherePlatformSpec holds the desired state of the vSphere infrastructure provider. In the future the cloud provider operator, storage operator and machine operator will use these fields for configuration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "failureDomains": {
+              "description": "failureDomains contains the definition of region, zone and the vCenter topology. If this is omitted failure domains (regions and zones) will not be used.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "VSpherePlatformFailureDomainSpec holds the region and zone failure domain and the vCenter topology of that failure domain.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "region",
+                  "zone",
+                  "server",
+                  "topology"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name defines the arbitrary but unique name of a failure domain.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "region": {
+                    "description": "region defines the name of a region tag that will be attached to a vCenter datacenter. The tag category in vCenter must be named openshift-region.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "server": {
+                    "description": "server is the fully-qualified domain name or the IP address of the vCenter server.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "topology": {
+                    "description": "VSpherePlatformTopology holds the required and optional vCenter objects - datacenter, computeCluster, networks, datastore and resourcePool - to provision virtual machines.",
+                    "type": "object",
+                    "required": [
+                      "datacenter",
+                      "computeCluster",
+                      "networks",
+                      "datastore"
+                    ],
+                    "properties": {
+                      "computeCluster": {
+                        "description": "computeCluster the absolute path of the vCenter cluster in which virtual machine will be located. The absolute path is of the form /<datacenter>/host/<cluster>. The maximum length of the path is 2048 characters.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "datacenter": {
+                        "description": "datacenter is the name of vCenter datacenter in which virtual machines will be located. The maximum length of the datacenter name is 80 characters.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "datastore": {
+                        "description": "datastore is the absolute path of the datastore in which the virtual machine is located. The absolute path is of the form /<datacenter>/datastore/<datastore> The maximum length of the path is 2048 characters.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "folder": {
+                        "description": "folder is the absolute path of the folder where virtual machines are located. The absolute path is of the form /<datacenter>/vm/<folder>. The maximum length of the path is 2048 characters.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "networks": {
+                        "description": "networks is the list of port group network names within this failure domain. Currently, we only support a single interface per RHCOS virtual machine. The available networks (port groups) can be listed using `govc ls 'network/*'` The single interface should be the absolute path of the form /<datacenter>/network/<portgroup>.",
+                        "type": "array",
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "default": ""
+                        }
+                      },
+                      "resourcePool": {
+                        "description": "resourcePool is the absolute path of the resource pool where virtual machines will be created. The absolute path is of the form /<datacenter>/host/<cluster>/Resources/<resourcepool>. The maximum length of the path is 2048 characters.",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "zone": {
+                    "description": "zone defines the name of a zone tag that will be attached to a vCenter cluster. The tag category in vCenter must be named openshift-zone.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "nodeNetworking": {
+              "description": "VSpherePlatformNodeNetworking holds the external and internal node networking spec.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "external": {
+                  "description": "VSpherePlatformNodeNetworkingSpec holds the network CIDR(s) and port group name for including and excluding IP ranges in the cloud provider. This would be used for example when multiple network adapters are attached to a guest to help determine which IP address the cloud config manager should use for the external and internal node networking.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "excludeNetworkSubnetCidr": {
+                      "description": "excludeNetworkSubnetCidr IP addresses in subnet ranges will be excluded when selecting the IP address from the VirtualMachine's VM for use in the status.addresses fields.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    },
+                    "network": {
+                      "description": "network VirtualMachine's VM Network names that will be used to when searching for status.addresses fields. Note that if internal.networkSubnetCIDR and external.networkSubnetCIDR are not set, then the vNIC associated to this network must only have a single IP address assigned to it. The available networks (port groups) can be listed using `govc ls 'network/*'`",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "networkSubnetCidr": {
+                      "description": "networkSubnetCidr IP address on VirtualMachine's network interfaces included in the fields' CIDRs that will be used in respective status.addresses fields.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "internal": {
+                  "description": "VSpherePlatformNodeNetworkingSpec holds the network CIDR(s) and port group name for including and excluding IP ranges in the cloud provider. This would be used for example when multiple network adapters are attached to a guest to help determine which IP address the cloud config manager should use for the external and internal node networking.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "excludeNetworkSubnetCidr": {
+                      "description": "excludeNetworkSubnetCidr IP addresses in subnet ranges will be excluded when selecting the IP address from the VirtualMachine's VM for use in the status.addresses fields.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    },
+                    "network": {
+                      "description": "network VirtualMachine's VM Network names that will be used to when searching for status.addresses fields. Note that if internal.networkSubnetCIDR and external.networkSubnetCIDR are not set, then the vNIC associated to this network must only have a single IP address assigned to it. The available networks (port groups) can be listed using `govc ls 'network/*'`",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "networkSubnetCidr": {
+                      "description": "networkSubnetCidr IP address on VirtualMachine's network interfaces included in the fields' CIDRs that will be used in respective status.addresses fields.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "vcenters": {
+              "description": "vcenters holds the connection details for services to communicate with vCenter. Currently, only a single vCenter is supported.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "VSpherePlatformVCenterSpec stores the vCenter connection fields. This is used by the vSphere CCM.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "server",
+                  "datacenters"
+                ],
+                "properties": {
+                  "datacenters": {
+                    "description": "The vCenter Datacenters in which the RHCOS vm guests are located. This field will be used by the Cloud Controller Manager. Each datacenter listed here should be used within a topology.",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "port": {
+                    "description": "port is the TCP port that will be used to communicate to the vCenter endpoint. When omitted, this means the user has no opinion and it is up to the platform to choose a sensible default, which is subject to change over time.",
+                    "type": [
+                      "integer",
+                      "null"
+                    ],
+                    "format": "int32"
+                  },
+                  "server": {
+                    "description": "server is the fully-qualified domain name or the IP address of the vCenter server.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

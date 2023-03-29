@@ -1,0 +1,33 @@
+{
+  "description": "GenericWebHookEvent is the payload expected for a generic webhook post",
+  "type": "object",
+  "properties": {
+    "dockerStrategyOptions": {
+      "description": "DockerStrategyOptions contains additional docker-strategy specific options for the build",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.build.v1.DockerStrategyOptions"
+    },
+    "env": {
+      "description": "env contains additional environment variables you want to pass into a builder container. ValueFrom is not supported.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+      }
+    },
+    "git": {
+      "description": "git is the git information if the Type is BuildSourceGit",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.build.v1.GitInfo"
+    },
+    "type": {
+      "description": "type is the type of source repository",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,71 @@
+{
+  "description": "PerUserAPIRequestCount contains logs of a user's requests.",
+  "type": "object",
+  "required": [
+    "username",
+    "userAgent",
+    "requestCount",
+    "byVerb"
+  ],
+  "properties": {
+    "byVerb": {
+      "description": "byVerb details by verb.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "PerVerbAPIRequestCount requestCounts requests by API request verb.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "verb",
+          "requestCount"
+        ],
+        "properties": {
+          "requestCount": {
+            "description": "requestCount of requests for verb.",
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          "verb": {
+            "description": "verb of API request (get, list, create, etc...)",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "requestCount": {
+      "description": "requestCount of requests by the user across all verbs.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "userAgent": {
+      "description": "userAgent that made the request. The same user often has multiple binaries which connect (pods with many containers).  The different binaries will have different userAgents, but the same user.  In addition, we have userAgents with version information embedded and the userName isn't likely to change.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "username": {
+      "description": "userName that made the request.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

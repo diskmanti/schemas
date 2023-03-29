@@ -1,0 +1,31 @@
+{
+  "description": "Update represents an administrator update request.",
+  "type": "object",
+  "properties": {
+    "force": {
+      "description": "force allows an administrator to update to an image that has failed verification or upgradeable checks. This option should only be used when the authenticity of the provided image has been verified out of band because the provided image will run with full administrative access to the cluster. Do not use this flag with images that comes from unknown or potentially malicious sources.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "image": {
+      "description": "image is a container image location that contains the update. When this field is part of spec, image is optional if version is specified and the availableUpdates field contains a matching version.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "version": {
+      "description": "version is a semantic versioning identifying the update version. When this field is part of spec, version is optional if image is specified.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

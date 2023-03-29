@@ -1,0 +1,54 @@
+{
+  "description": "DockerImageReference points to a container image.",
+  "type": "object",
+  "required": [
+    "Registry",
+    "Namespace",
+    "Name",
+    "Tag",
+    "ID"
+  ],
+  "properties": {
+    "ID": {
+      "description": "ID is the identifier for the container image",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "Name": {
+      "description": "Name is the name of the container image",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "Namespace": {
+      "description": "Namespace is the namespace that contains the container image",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "Registry": {
+      "description": "Registry is the registry that contains the container image",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "Tag": {
+      "description": "Tag is which tag of the container image is being referenced",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

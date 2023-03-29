@@ -1,0 +1,21 @@
+{
+  "description": "ProjectAccess contains options for project access roles",
+  "type": "object",
+  "properties": {
+    "availableClusterRoles": {
+      "description": "availableClusterRoles is the list of ClusterRole names that are assignable to users through the project access tab.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

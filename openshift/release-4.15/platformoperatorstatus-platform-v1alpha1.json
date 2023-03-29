@@ -1,0 +1,29 @@
+{
+  "description": "PlatformOperatorStatus defines the observed state of PlatformOperator",
+  "type": "object",
+  "properties": {
+    "activeBundleDeployment": {
+      "description": "activeBundleDeployment is the reference to the BundleDeployment resource that's being managed by this PO resource. If this field is not populated in the status then it means the PlatformOperator has either not been installed yet or is failing to install.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.ActiveBundleDeployment"
+    },
+    "conditions": {
+      "description": "conditions represent the latest available observations of a platform operator's current state.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

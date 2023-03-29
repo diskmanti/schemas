@@ -1,0 +1,53 @@
+{
+  "description": "ControllerElectionConfig contains configuration values for deciding how a controller will be elected to act as leader.",
+  "type": "object",
+  "required": [
+    "lockName",
+    "lockNamespace",
+    "lockResource"
+  ],
+  "properties": {
+    "lockName": {
+      "description": "LockName is the resource name used to act as the lock for determining which controller instance should lead.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "lockNamespace": {
+      "description": "LockNamespace is the resource namespace used to act as the lock for determining which controller instance should lead. It defaults to \"kube-system\"",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "lockResource": {
+      "description": "GroupResource points to a resource by its name and API group.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "group",
+        "resource"
+      ],
+      "properties": {
+        "group": {
+          "description": "Group is the name of an API group",
+          "type": "string",
+          "default": ""
+        },
+        "resource": {
+          "description": "Resource is the name of a resource.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

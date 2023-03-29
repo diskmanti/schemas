@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "required": [
+    "concurrentSyncs",
+    "syncPeriod",
+    "minResyncPeriod"
+  ],
+  "properties": {
+    "concurrentSyncs": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "minResyncPeriod": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "syncPeriod": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

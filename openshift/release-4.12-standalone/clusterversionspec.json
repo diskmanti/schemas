@@ -1,0 +1,144 @@
+{
+  "description": "ClusterVersionSpec is the desired version state of the cluster. It includes the version the cluster should be at, how the cluster is identified, and where the cluster should look for version updates.",
+  "type": "object",
+  "required": [
+    "clusterID"
+  ],
+  "properties": {
+    "capabilities": {
+      "description": "ClusterVersionCapabilitiesSpec selects the managed set of optional, core cluster components.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "additionalEnabledCapabilities": {
+          "description": "additionalEnabledCapabilities extends the set of managed capabilities beyond the baseline defined in baselineCapabilitySet.  The default is an empty set.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "baselineCapabilitySet": {
+          "description": "baselineCapabilitySet selects an initial set of optional capabilities to enable, which can be extended via additionalEnabledCapabilities.  If unset, the cluster will choose a default, and the default may change over time. The current default is vCurrent.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "channel": {
+      "description": "channel is an identifier for explicitly requesting that a non-default set of updates be applied to this cluster. The default channel will be contain stable updates that are appropriate for production clusters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clusterID": {
+      "description": "clusterID uniquely identifies this cluster. This is expected to be an RFC4122 UUID value (xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx in hexadecimal values). This is a required field.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "desiredUpdate": {
+      "description": "Update represents an administrator update request.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "force": {
+          "description": "force allows an administrator to update to an image that has failed verification or upgradeable checks. This option should only be used when the authenticity of the provided image has been verified out of band because the provided image will run with full administrative access to the cluster. Do not use this flag with images that comes from unknown or potentially malicious sources.",
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "default": false
+        },
+        "image": {
+          "description": "image is a container image location that contains the update. When this field is part of spec, image is optional if version is specified and the availableUpdates field contains a matching version.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        },
+        "version": {
+          "description": "version is a semantic versioning identifying the update version. When this field is part of spec, version is optional if image is specified.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "overrides": {
+      "description": "overrides is list of overides for components that are managed by cluster version operator. Marking a component unmanaged will prevent the operator from creating or updating the object.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ComponentOverride allows overriding cluster version operator's behavior for a component.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "kind",
+          "group",
+          "namespace",
+          "name",
+          "unmanaged"
+        ],
+        "properties": {
+          "group": {
+            "description": "group identifies the API group that the kind is in.",
+            "type": "string",
+            "default": ""
+          },
+          "kind": {
+            "description": "kind indentifies which object to override.",
+            "type": "string",
+            "default": ""
+          },
+          "name": {
+            "description": "name is the component's name.",
+            "type": "string",
+            "default": ""
+          },
+          "namespace": {
+            "description": "namespace is the component's namespace. If the resource is cluster scoped, the namespace should be empty.",
+            "type": "string",
+            "default": ""
+          },
+          "unmanaged": {
+            "description": "unmanaged controls if cluster version operator should stop managing the resources in this cluster. Default: false",
+            "type": "boolean",
+            "default": false
+          }
+        }
+      }
+    },
+    "upstream": {
+      "description": "upstream may be used to specify the preferred update server. By default it will use the appropriate update server for the cluster and region.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

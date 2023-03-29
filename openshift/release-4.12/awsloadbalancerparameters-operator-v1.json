@@ -1,0 +1,35 @@
+{
+  "description": "AWSLoadBalancerParameters provides configuration settings that are specific to AWS load balancers.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "classicLoadBalancer": {
+      "description": "classicLoadBalancerParameters holds configuration parameters for an AWS classic load balancer. Present only if type is Classic.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSClassicLoadBalancerParameters"
+    },
+    "networkLoadBalancer": {
+      "description": "networkLoadBalancerParameters holds configuration parameters for an AWS network load balancer. Present only if type is NLB.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSNetworkLoadBalancerParameters"
+    },
+    "type": {
+      "description": "type is the type of AWS load balancer to instantiate for an ingresscontroller.\n\nValid values are:\n\n* \"Classic\": A Classic Load Balancer that makes routing decisions at either\n  the transport layer (TCP/SSL) or the application layer (HTTP/HTTPS). See\n  the following for additional details:\n\n    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html#clb\n\n* \"NLB\": A Network Load Balancer that makes routing decisions at the\n  transport layer (TCP/SSL). See the following for additional details:\n\n    https://docs.aws.amazon.com/AmazonECS/latest/developerguide/load-balancer-types.html#nlb",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "classicLoadBalancer": "ClassicLoadBalancerParameters",
+        "networkLoadBalancer": "NetworkLoadBalancerParameters"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

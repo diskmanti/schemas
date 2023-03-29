@@ -1,0 +1,51 @@
+{
+  "description": "IdentityProvider provides identities for users authenticating using credentials",
+  "type": "object",
+  "required": [
+    "name",
+    "challenge",
+    "login",
+    "mappingMethod",
+    "provider"
+  ],
+  "properties": {
+    "challenge": {
+      "description": "UseAsChallenger indicates whether to issue WWW-Authenticate challenges for this provider",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "login": {
+      "description": "UseAsLogin indicates whether to use this identity provider for unauthenticated browsers to login against",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "mappingMethod": {
+      "description": "MappingMethod determines how identities from this provider are mapped to users",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name is used to qualify the identities returned by this provider",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "provider": {
+      "description": "Provider contains the information about how to set up a specific identity provider",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

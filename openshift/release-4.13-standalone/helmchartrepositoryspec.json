@@ -1,0 +1,81 @@
+{
+  "description": "Helm chart repository exposed within the cluster",
+  "type": "object",
+  "required": [
+    "connectionConfig"
+  ],
+  "properties": {
+    "connectionConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "ca": {
+          "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced config map",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "tlsClientConfig": {
+          "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced secret",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "url": {
+          "description": "Chart repository URL",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "description": {
+      "description": "Optional human readable repository description, it can be used by UI for displaying purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "disabled": {
+      "description": "If set to true, disable the repo usage in the cluster/namespace",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Optional associated human readable repository name, it can be used by UI for displaying purposes",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "AWSFailureDomainPlacement configures the placement information for the AWSFailureDomain.",
+  "type": "object",
+  "required": [
+    "availabilityZone"
+  ],
+  "properties": {
+    "availabilityZone": {
+      "description": "AvailabilityZone is the availability zone of the instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "customNoUpgrade": {
+      "description": "customNoUpgrade allows the enabling or disabling of any feature. Turning this feature set on IS NOT SUPPORTED, CANNOT BE UNDONE, and PREVENTS UPGRADES. Because of its nature, this setting cannot be validated.  If you have any typos or accidentally apply invalid combinations your cluster may fail in an unrecoverable way.  featureSet must equal \"CustomNoUpgrade\" must be set to use this field.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.CustomFeatureGates"
+    },
+    "featureSet": {
+      "description": "featureSet changes the list of features in the cluster.  The default is empty.  Be very careful adjusting this setting. Turning on or off features may cause irreversible changes in your cluster which cannot be undone.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "featureSet",
+      "fields-to-discriminateBy": {
+        "customNoUpgrade": "CustomNoUpgrade"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

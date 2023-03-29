@@ -1,0 +1,866 @@
+{
+  "description": "OAuthSpec contains desired cluster auth configuration",
+  "type": "object",
+  "required": [
+    "tokenConfig"
+  ],
+  "properties": {
+    "identityProviders": {
+      "description": "identityProviders is an ordered list of ways for a user to identify themselves. When this list is empty, no identities are provisioned for users.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "IdentityProvider provides identities for users authenticating using credentials",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "basicAuth": {
+            "description": "BasicAuthPasswordIdentityProvider provides identities for users authenticating using HTTP basic auth credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "tlsClientCert": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "tlsClientKey": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "url": {
+                "description": "url is the remote URL to connect to",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "github": {
+            "description": "GitHubIdentityProvider provides identities for users authenticating using GitHub credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "clientID",
+              "clientSecret"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "clientID": {
+                "description": "clientID is the oauth client ID",
+                "type": "string",
+                "default": ""
+              },
+              "clientSecret": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "hostname": {
+                "description": "hostname is the optional domain (e.g. \"mycompany.com\") for use with a hosted instance of GitHub Enterprise. It must match the GitHub Enterprise settings value configured at /setup/settings#hostname.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              },
+              "organizations": {
+                "description": "organizations optionally restricts which organizations are allowed to log in",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "teams": {
+                "description": "teams optionally restricts which teams are allowed to log in. Format is <org>/<team>.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          },
+          "gitlab": {
+            "description": "GitLabIdentityProvider provides identities for users authenticating using GitLab credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "clientID",
+              "clientSecret",
+              "url"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "clientID": {
+                "description": "clientID is the oauth client ID",
+                "type": "string",
+                "default": ""
+              },
+              "clientSecret": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "url": {
+                "description": "url is the oauth server base URL",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "google": {
+            "description": "GoogleIdentityProvider provides identities for users authenticating using Google credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "clientID",
+              "clientSecret"
+            ],
+            "properties": {
+              "clientID": {
+                "description": "clientID is the oauth client ID",
+                "type": "string",
+                "default": ""
+              },
+              "clientSecret": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "hostedDomain": {
+                "description": "hostedDomain is the optional Google App domain (e.g. \"mycompany.com\") to restrict logins to",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            }
+          },
+          "htpasswd": {
+            "description": "HTPasswdPasswordIdentityProvider provides identities for users authenticating using htpasswd credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "fileData"
+            ],
+            "properties": {
+              "fileData": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "keystone": {
+            "description": "KeystonePasswordIdentityProvider provides identities for users authenticating using keystone password credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "url",
+              "domainName"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "domainName": {
+                "description": "domainName is required for keystone v3",
+                "type": "string",
+                "default": ""
+              },
+              "tlsClientCert": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "tlsClientKey": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "url": {
+                "description": "url is the remote URL to connect to",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "ldap": {
+            "description": "LDAPPasswordIdentityProvider provides identities for users authenticating using LDAP credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "url",
+              "insecure",
+              "attributes"
+            ],
+            "properties": {
+              "attributes": {
+                "description": "LDAPAttributeMapping maps LDAP attributes to OpenShift identity fields",
+                "type": "object",
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "email is the list of attributes whose values should be used as the email address. Optional. If unspecified, no email is set for the identity",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "id": {
+                    "description": "id is the list of attributes whose values should be used as the user ID. Required. First non-empty attribute is used. At least one attribute is required. If none of the listed attribute have a value, authentication fails. LDAP standard identity attribute is \"dn\"",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "name": {
+                    "description": "name is the list of attributes whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity LDAP standard display name attribute is \"cn\"",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "preferredUsername": {
+                    "description": "preferredUsername is the list of attributes whose values should be used as the preferred username. LDAP standard login attribute is \"uid\"",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  }
+                }
+              },
+              "bindDN": {
+                "description": "bindDN is an optional DN to bind with during the search phase.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              },
+              "bindPassword": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "insecure": {
+                "description": "insecure, if true, indicates the connection should not use TLS WARNING: Should not be set to `true` with the URL scheme \"ldaps://\" as \"ldaps://\" URLs always\n         attempt to connect using TLS, even when `insecure` is set to `true`\nWhen `true`, \"ldap://\" URLS connect insecurely. When `false`, \"ldap://\" URLs are upgraded to a TLS connection using StartTLS as specified in https://tools.ietf.org/html/rfc2830.",
+                "type": "boolean",
+                "default": false
+              },
+              "url": {
+                "description": "url is an RFC 2255 URL which specifies the LDAP search parameters to use. The syntax of the URL is: ldap://host:port/basedn?attribute?scope?filter",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "mappingMethod": {
+            "description": "mappingMethod determines how identities from this provider are mapped to users Defaults to \"claim\"",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "description": "name is used to qualify the identities returned by this provider. - It MUST be unique and not shared by any other identity provider used - It MUST be a valid path segment: name cannot equal \".\" or \"..\" or contain \"/\" or \"%\" or \":\"\n  Ref: https://godoc.org/github.com/openshift/origin/pkg/user/apis/user/validation#ValidateIdentityProviderName",
+            "type": "string",
+            "default": ""
+          },
+          "openID": {
+            "description": "OpenIDIdentityProvider provides identities for users authenticating using OpenID credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "clientID",
+              "clientSecret",
+              "issuer",
+              "claims"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "claims": {
+                "description": "OpenIDClaims contains a list of OpenID claims to use when authenticating with an OpenID identity provider",
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "email is the list of claims whose values should be used as the email address. Optional. If unspecified, no email is set for the identity",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    },
+                    "x-kubernetes-list-type": "atomic"
+                  },
+                  "groups": {
+                    "description": "groups is the list of claims value of which should be used to synchronize groups from the OIDC provider to OpenShift for the user. If multiple claims are specified, the first one with a non-empty value is used.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    },
+                    "x-kubernetes-list-type": "atomic"
+                  },
+                  "name": {
+                    "description": "name is the list of claims whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    },
+                    "x-kubernetes-list-type": "atomic"
+                  },
+                  "preferredUsername": {
+                    "description": "preferredUsername is the list of claims whose values should be used as the preferred username. If unspecified, the preferred username is determined from the value of the sub claim",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    },
+                    "x-kubernetes-list-type": "atomic"
+                  }
+                }
+              },
+              "clientID": {
+                "description": "clientID is the oauth client ID",
+                "type": "string",
+                "default": ""
+              },
+              "clientSecret": {
+                "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced secret",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "extraAuthorizeParameters": {
+                "description": "extraAuthorizeParameters are any custom parameters to add to the authorize request.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "extraScopes": {
+                "description": "extraScopes are any scopes to request in addition to the standard \"openid\" scope.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "issuer": {
+                "description": "issuer is the URL that the OpenID Provider asserts as its Issuer Identifier. It must use the https scheme with no query or fragment component.",
+                "type": "string",
+                "default": ""
+              }
+            }
+          },
+          "requestHeader": {
+            "description": "RequestHeaderIdentityProvider provides identities for users authenticating using request header credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "loginURL",
+              "challengeURL",
+              "ca",
+              "headers",
+              "preferredUsernameHeaders",
+              "nameHeaders",
+              "emailHeaders"
+            ],
+            "properties": {
+              "ca": {
+                "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name is the metadata.name of the referenced config map",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              "challengeURL": {
+                "description": "challengeURL is a URL to redirect unauthenticated /authorize requests to Unauthenticated requests from OAuth clients which expect WWW-Authenticate challenges will be redirected here. ${url} is replaced with the current URL, escaped to be safe in a query parameter\n  https://www.example.com/sso-login?then=${url}\n${query} is replaced with the current query string\n  https://www.example.com/auth-proxy/oauth/authorize?${query}\nRequired when challenge is set to true.",
+                "type": "string",
+                "default": ""
+              },
+              "clientCommonNames": {
+                "description": "clientCommonNames is an optional list of common names to require a match from. If empty, any client certificate validated against the clientCA bundle is considered authoritative.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "emailHeaders": {
+                "description": "emailHeaders is the set of headers to check for the email address",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "headers": {
+                "description": "headers is the set of headers to check for identity information",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "loginURL": {
+                "description": "loginURL is a URL to redirect unauthenticated /authorize requests to Unauthenticated requests from OAuth clients which expect interactive logins will be redirected here ${url} is replaced with the current URL, escaped to be safe in a query parameter\n  https://www.example.com/sso-login?then=${url}\n${query} is replaced with the current query string\n  https://www.example.com/auth-proxy/oauth/authorize?${query}\nRequired when login is set to true.",
+                "type": "string",
+                "default": ""
+              },
+              "nameHeaders": {
+                "description": "nameHeaders is the set of headers to check for the display name",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              },
+              "preferredUsernameHeaders": {
+                "description": "preferredUsernameHeaders is the set of headers to check for the preferred username",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          },
+          "type": {
+            "description": "type identifies the identity provider type for this entry.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "templates": {
+      "description": "OAuthTemplates allow for customization of pages like the login page",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "error": {
+          "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced secret",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "login": {
+          "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced secret",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "providerSelection": {
+          "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced secret",
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "tokenConfig": {
+      "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "accessTokenInactivityTimeout": {
+          "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accessTokenInactivityTimeoutSeconds": {
+          "description": "accessTokenInactivityTimeoutSeconds - DEPRECATED: setting this field has no effect.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "accessTokenMaxAgeSeconds": {
+          "description": "accessTokenMaxAgeSeconds defines the maximum age of access tokens",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,25 @@
+{
+  "description": "ClusterNetworkEntry is a subnet from which to allocate PodIPs. A network of size HostPrefix (in CIDR notation) will be allocated when nodes join the cluster. If the HostPrefix field is not used by the plugin, it can be left unset. Not all network providers support multiple ClusterNetworks",
+  "type": "object",
+  "required": [
+    "cidr"
+  ],
+  "properties": {
+    "cidr": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "hostPrefix": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

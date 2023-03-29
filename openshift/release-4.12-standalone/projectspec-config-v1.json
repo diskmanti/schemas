@@ -1,0 +1,32 @@
+{
+  "description": "ProjectSpec holds the project creation configuration.",
+  "type": "object",
+  "properties": {
+    "projectRequestMessage": {
+      "description": "projectRequestMessage is the string presented to a user if they are unable to request a project via the projectrequest api endpoint",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "projectRequestTemplate": {
+      "description": "TemplateReference references a template in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced project request template",
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

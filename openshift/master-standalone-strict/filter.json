@@ -1,0 +1,33 @@
+{
+  "description": "Filter is a filter used to identify an AWS resource",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name of the filter. Filter names are case-sensitive.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "values": {
+      "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

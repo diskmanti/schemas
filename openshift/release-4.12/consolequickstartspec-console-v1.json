@@ -1,0 +1,125 @@
+{
+  "description": "ConsoleQuickStartSpec is the desired quick start configuration.",
+  "type": "object",
+  "required": [
+    "displayName",
+    "durationMinutes",
+    "description",
+    "introduction",
+    "tasks"
+  ],
+  "properties": {
+    "accessReviewResources": {
+      "description": "accessReviewResources contains a list of resources that the user's access will be reviewed against in order for the user to complete the Quick Start. The Quick Start will be hidden if any of the access reviews fail.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+      }
+    },
+    "conclusion": {
+      "description": "conclusion sums up the Quick Start and suggests the possible next steps. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "description is the description of the Quick Start. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "displayName": {
+      "description": "displayName is the display name of the Quick Start.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "durationMinutes": {
+      "description": "durationMinutes describes approximately how many minutes it will take to complete the Quick Start.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "icon": {
+      "description": "icon is a base64 encoded image that will be displayed beside the Quick Start display name. The icon should be an vector image for easy scaling. The size of the icon should be 40x40.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "introduction": {
+      "description": "introduction describes the purpose of the Quick Start. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "nextQuickStart": {
+      "description": "nextQuickStart is a list of the following Quick Starts, suggested for the user to try.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "prerequisites": {
+      "description": "prerequisites contains all prerequisites that need to be met before taking a Quick Start. (includes markdown)",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tags": {
+      "description": "tags is a list of strings that describe the Quick Start.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tasks": {
+      "description": "tasks is the list of steps the user has to perform to complete the Quick Start.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTask"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

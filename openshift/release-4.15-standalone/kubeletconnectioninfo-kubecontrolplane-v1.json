@@ -1,0 +1,46 @@
+{
+  "description": "KubeletConnectionInfo holds information necessary for connecting to a kubelet",
+  "type": "object",
+  "required": [
+    "port",
+    "ca",
+    "certFile",
+    "keyFile"
+  ],
+  "properties": {
+    "ca": {
+      "description": "ca is the CA for verifying TLS connections to kubelets",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "certFile": {
+      "description": "CertFile is a file containing a PEM-encoded certificate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyFile": {
+      "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "port": {
+      "description": "port is the port to connect to kubelets on",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,113 @@
+{
+  "description": "OperatorVersion is the Schema for the operatorversions API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "OperatorVersionSpec defines the desired state of OperatorVersion",
+      "properties": {
+        "versions": {
+          "description": "Versions represents the Operator's internal component versions.",
+          "properties": {
+            "builder_version": {
+              "type": "string"
+            },
+            "metrics_sidecar_version": {
+              "type": "string"
+            },
+            "operator_version": {
+              "type": "string"
+            },
+            "repository_url": {
+              "type": "string"
+            },
+            "sidecar_version": {
+              "type": "string"
+            },
+            "storage_provisioner_version": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "OperatorVersionStatus defines the observed state of OperatorVersion",
+      "properties": {
+        "internal_details": {
+          "description": "InternalDetails represents the Operator's internal build and runtime details.",
+          "properties": {
+            "build_branch": {
+              "type": "string"
+            },
+            "build_date": {
+              "type": "string"
+            },
+            "build_hash": {
+              "type": "string"
+            },
+            "operator_sdk": {
+              "type": "string"
+            },
+            "runtime_go_version": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "license_manager_details": {
+          "description": "LicenseManagerDetails represents the License Manager details.",
+          "properties": {
+            "server_url": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "versions": {
+          "description": "Versions represents the Operator's internal component versions.",
+          "properties": {
+            "builder_version": {
+              "type": "string"
+            },
+            "metrics_sidecar_version": {
+              "type": "string"
+            },
+            "operator_version": {
+              "type": "string"
+            },
+            "repository_url": {
+              "type": "string"
+            },
+            "sidecar_version": {
+              "type": "string"
+            },
+            "storage_provisioner_version": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

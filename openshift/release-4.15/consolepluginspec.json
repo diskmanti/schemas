@@ -1,0 +1,33 @@
+{
+  "description": "ConsolePluginSpec is the desired plugin configuration.",
+  "type": "object",
+  "required": [
+    "service"
+  ],
+  "properties": {
+    "displayName": {
+      "description": "displayName is the display name of the plugin.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxy": {
+      "description": "proxy is a list of proxies that describe various service type to which the plugin needs to connect to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginProxy"
+      }
+    },
+    "service": {
+      "description": "service is a Kubernetes Service that exposes the plugin using a deployment with an HTTP server. The Service must use HTTPS and Service serving certificate. The console backend will proxy the plugins assets from the Service using the service CA bundle.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginService"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

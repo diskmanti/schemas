@@ -1,0 +1,79 @@
+{
+  "description": "StorageInstance is the Schema for the storageinstances API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "StorageInstanceSpec defines the desired state of StorageInstance",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "trust": {
+          "description": "Trust specifies the trust certificates CA's.",
+          "properties": {
+            "customCASecretName": {
+              "description": "CustomCASecretName the secret's name that contains custom.crt with additional trusted Certificate Authorities.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "type": {
+          "description": "StorageType is the type of Storage (database, blob files etc.).",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "StorageInstanceStatus defines the observed state of StorageInstance",
+      "properties": {
+        "class": {
+          "type": "string"
+        },
+        "plan": {
+          "type": "string"
+        },
+        "secretName": {
+          "type": "string"
+        },
+        "state": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "type": {
+          "description": "StorageType is the type of Storage (database, blob files etc.).",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

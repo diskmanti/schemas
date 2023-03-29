@@ -1,0 +1,36 @@
+{
+  "description": "LastOperation represents the detail of the last performed operation on the MachineObject.",
+  "type": "object",
+  "properties": {
+    "description": {
+      "description": "Description is the human-readable description of the last operation.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastUpdated": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "state": {
+      "description": "State is the current status of the last performed operation. E.g. Processing, Failed, Successful etc",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type is the type of operation which was last performed. E.g. Create, Delete, Update etc",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

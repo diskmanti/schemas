@@ -1,0 +1,49 @@
+{
+  "description": "PerUserAPIRequestCount contains logs of a user's requests.",
+  "type": "object",
+  "required": [
+    "username",
+    "userAgent",
+    "requestCount",
+    "byVerb"
+  ],
+  "properties": {
+    "byVerb": {
+      "description": "byVerb details by verb.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerVerbAPIRequestCount"
+      }
+    },
+    "requestCount": {
+      "description": "requestCount of requests by the user across all verbs.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "userAgent": {
+      "description": "userAgent that made the request. The same user often has multiple binaries which connect (pods with many containers).  The different binaries will have different userAgents, but the same user.  In addition, we have userAgents with version information embedded and the userName isn't likely to change.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "username": {
+      "description": "userName that made the request.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

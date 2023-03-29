@@ -1,0 +1,61 @@
+{
+  "description": "DNSRecordSpec contains the details of a DNS record.",
+  "type": "object",
+  "required": [
+    "dnsName",
+    "targets",
+    "recordType",
+    "recordTTL"
+  ],
+  "properties": {
+    "dnsManagementPolicy": {
+      "description": "dnsManagementPolicy denotes the current policy applied on the DNS record. Records that have policy set as \"Unmanaged\" are ignored by the ingress operator.  This means that the DNS record on the cloud provider is not managed by the operator, and the \"Published\" status condition will be updated to \"Unknown\" status, since it is externally managed. Any existing record on the cloud provider can be deleted at the discretion of the cluster admin.\n\nThis field defaults to Managed. Valid values are \"Managed\" and \"Unmanaged\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "Managed"
+    },
+    "dnsName": {
+      "description": "dnsName is the hostname of the DNS record",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "recordTTL": {
+      "description": "recordTTL is the record TTL in seconds. If zero, the default is 30. RecordTTL will not be used in AWS regions Alias targets, but will be used in CNAME targets, per AWS API contract.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "recordType": {
+      "description": "recordType is the DNS record type. For example, \"A\" or \"CNAME\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targets": {
+      "description": "targets are record targets.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

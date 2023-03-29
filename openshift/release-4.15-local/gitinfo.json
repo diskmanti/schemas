@@ -1,0 +1,82 @@
+{
+  "description": "GitInfo is the aggregated git information for a generic webhook post",
+  "type": "object",
+  "required": [
+    "uri",
+    "refs"
+  ],
+  "properties": {
+    "author": {
+      "description": "author is the author of a specific commit",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
+    },
+    "commit": {
+      "description": "commit is the commit hash identifying a specific commit",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "committer": {
+      "description": "committer is the committer of a specific commit",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
+    },
+    "httpProxy": {
+      "description": "httpProxy is a proxy used to reach the git repository over http",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpsProxy": {
+      "description": "httpsProxy is a proxy used to reach the git repository over https",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "description": "message is the description of a specific commit",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy is the list of domains for which the proxy should not be used",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ref": {
+      "description": "ref is the branch/tag/ref to build.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "refs": {
+      "description": "Refs is a list of GitRefs for the provided repo - generally sent when used from a post-receive hook. This field is optional and is used when sending multiple refs",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitRefInfo"
+      }
+    },
+    "uri": {
+      "description": "uri points to the source that will be built. The structure of the source will depend on the type of build to run",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

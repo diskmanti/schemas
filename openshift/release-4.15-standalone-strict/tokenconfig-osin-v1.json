@@ -1,0 +1,39 @@
+{
+  "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+  "type": "object",
+  "properties": {
+    "accessTokenInactivityTimeout": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "accessTokenInactivityTimeoutSeconds": {
+      "description": "accessTokenInactivityTimeoutSeconds - DEPRECATED: setting this field has no effect.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "accessTokenMaxAgeSeconds": {
+      "description": "accessTokenMaxAgeSeconds defines the maximum age of access tokens",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "authorizeTokenMaxAgeSeconds": {
+      "description": "authorizeTokenMaxAgeSeconds defines the maximum age of authorize tokens",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

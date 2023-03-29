@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "numberOfUsersToReport": {
+      "description": "numberOfUsersToReport is the number of users to include in the report. If unspecified or zero, the default is ten.  This is default is subject to change.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

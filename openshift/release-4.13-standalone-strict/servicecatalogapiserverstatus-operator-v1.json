@@ -1,0 +1,139 @@
+{
+  "type": "object",
+  "required": [
+    "readyReplicas"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "OperatorCondition is just the standard condition fields.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "generations": {
+      "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "GenerationStatus keeps track of the generation for a given resource so that decisions about forced updates can be made.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "group",
+          "resource",
+          "namespace",
+          "name",
+          "lastGeneration",
+          "hash"
+        ],
+        "properties": {
+          "group": {
+            "description": "group is the group of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "hash": {
+            "description": "hash is an optional field set for resources without generation that are content sensitive like secrets and configmaps",
+            "type": "string",
+            "default": ""
+          },
+          "lastGeneration": {
+            "description": "lastGeneration is the last generation of the workload controller involved",
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          },
+          "name": {
+            "description": "name is the name of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          },
+          "namespace": {
+            "description": "namespace is where the thing you're tracking is",
+            "type": "string",
+            "default": ""
+          },
+          "resource": {
+            "description": "resource is the resource type of the thing you're tracking",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "version": {
+      "description": "version is the level this availability applies to",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

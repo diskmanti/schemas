@@ -1,0 +1,89 @@
+{
+  "description": "GitHubIdentityProvider provides identities for users authenticating using GitHub credentials",
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientSecret"
+  ],
+  "properties": {
+    "ca": {
+      "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced config map",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "clientID": {
+      "description": "clientID is the oauth client ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientSecret": {
+      "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced secret",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "hostname": {
+      "description": "hostname is the optional domain (e.g. \"mycompany.com\") for use with a hosted instance of GitHub Enterprise. It must match the GitHub Enterprise settings value configured at /setup/settings#hostname.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "organizations": {
+      "description": "organizations optionally restricts which organizations are allowed to log in",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "teams": {
+      "description": "teams optionally restricts which teams are allowed to log in. Format is <org>/<team>.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

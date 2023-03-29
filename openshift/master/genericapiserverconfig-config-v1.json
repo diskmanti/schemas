@@ -1,0 +1,53 @@
+{
+  "description": "GenericAPIServerConfig is an inline-able struct for aggregated apiservers that need to store data in etcd",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "corsAllowedOrigins",
+    "auditConfig",
+    "storageConfig",
+    "admission",
+    "kubeClientConfig"
+  ],
+  "properties": {
+    "admission": {
+      "description": "admissionConfig holds information about how to configure admission.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.AdmissionConfig"
+    },
+    "auditConfig": {
+      "description": "auditConfig describes how to configure audit information",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.AuditConfig"
+    },
+    "corsAllowedOrigins": {
+      "description": "corsAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kubeClientConfig": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.KubeClientConfig"
+    },
+    "servingInfo": {
+      "description": "servingInfo describes how to start serving",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.HTTPServingInfo"
+    },
+    "storageConfig": {
+      "description": "storageConfig contains information about how to use",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.EtcdStorageConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

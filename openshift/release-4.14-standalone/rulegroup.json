@@ -1,0 +1,102 @@
+{
+  "description": "RuleGroup is a list of sequentially evaluated alerting rules.",
+  "type": "object",
+  "required": [
+    "name",
+    "rules"
+  ],
+  "properties": {
+    "interval": {
+      "description": "interval is how often rules in the group are evaluated.  If not specified, it defaults to the global.evaluation_interval configured in Prometheus, which itself defaults to 30 seconds.  You can check if this value has been modified from the default on your cluster by inspecting the platform Prometheus configuration:\n\n$ oc -n openshift-monitoring describe prometheus k8s\n\nThe relevant field in that resource is: spec.evaluationInterval\n\nThis is represented as a Prometheus duration, e.g. 1d, 1h30m, 5m, 10s.  You can find the upstream documentation here:\n\nhttps://prometheus.io/docs/prometheus/latest/configuration/configuration/#duration",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "name is the name of the group.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "rules": {
+      "description": "rules is a list of sequentially evaluated alerting rules.  Prometheus may process rule groups in parallel, but rules within a single group are always processed sequentially, and all rules are processed.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "Rule describes an alerting rule. See Prometheus documentation: - https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "alert",
+          "expr"
+        ],
+        "properties": {
+          "alert": {
+            "description": "alert is the name of the alert. Must be a valid label value, i.e. only contain ASCII letters, numbers, and underscores.",
+            "type": "string",
+            "default": ""
+          },
+          "annotations": {
+            "description": "annotations to add to each alert.  These are values that can be used to store longer additional information that you won't query on, such as alert descriptions or runbook links, e.g.:\n\n  annotations:\n    summary: HAProxy reload failure\n    description: |\n      This alert fires when HAProxy fails to reload its\n      configuration, which will result in the router not picking up\n      recently created or modified routes.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          },
+          "expr": {
+            "oneOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              }
+            ]
+          },
+          "for": {
+            "description": "for is the time period after which alerts are considered firing after first returning results.  Alerts which have not yet fired for long enough are considered pending. This is represented as a Prometheus duration, for details on the format see: - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#duration",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "labels": {
+            "description": "labels to add or overwrite for each alert.  The results of the PromQL expression for the alert will result in an existing set of labels for the alert, after evaluating the expression, for any label specified here with the same name as a label in that set, the label here wins and overwrites the previous value.  These should typically be short identifying values that may be useful to query against.  A common example is the alert severity:\n\n  labels:\n    severity: warning",
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

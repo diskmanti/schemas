@@ -1,0 +1,425 @@
+{
+  "type": "object",
+  "properties": {
+    "defaultProxy": {
+      "description": "ProxySpec contains cluster proxy creation configuration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "httpProxy": {
+          "description": "httpProxy is the URL of the proxy for HTTP requests.  Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "httpsProxy": {
+          "description": "httpsProxy is the URL of the proxy for HTTPS requests.  Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "noProxy": {
+          "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used. Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "readinessEndpoints": {
+          "description": "readinessEndpoints is a list of endpoints used to verify readiness of the proxy.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "trustedCA": {
+          "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced config map",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "env": {
+      "description": "Env is a set of default environment variables that will be applied to the build if the specified variables do not exist on the build",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "EnvVar represents an environment variable present in a Container.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+            "type": "string",
+            "default": ""
+          },
+          "value": {
+            "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "valueFrom": {
+            "description": "EnvVarSource represents a source for the value of an EnvVar.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "configMapKeyRef": {
+                "description": "Selects a key from a ConfigMap.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "description": "The key to select.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "description": "Specify whether the ConfigMap or its key must be defined",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              },
+              "fieldRef": {
+                "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "fieldPath"
+                ],
+                "properties": {
+                  "apiVersion": {
+                    "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "fieldPath": {
+                    "description": "Path of the field to select in the specified API version.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              },
+              "resourceFieldRef": {
+                "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "resource"
+                ],
+                "properties": {
+                  "containerName": {
+                    "description": "Container name: required for volumes, optional for env vars",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "divisor": {
+                    "oneOf": [
+                      {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    ]
+                  },
+                  "resource": {
+                    "description": "Required: resource to select",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              },
+              "secretKeyRef": {
+                "description": "SecretKeySelector selects a key of a Secret.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "description": "The key of the secret to select from.  Must be a valid secret key.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "description": "Specify whether the Secret or its key must be defined",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic",
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "gitProxy": {
+      "description": "ProxySpec contains cluster proxy creation configuration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "httpProxy": {
+          "description": "httpProxy is the URL of the proxy for HTTP requests.  Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "httpsProxy": {
+          "description": "httpsProxy is the URL of the proxy for HTTPS requests.  Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "noProxy": {
+          "description": "noProxy is a comma-separated list of hostnames and/or CIDRs and/or IPs for which the proxy should not be used. Empty means unset and will not result in an env var.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "readinessEndpoints": {
+          "description": "readinessEndpoints is a list of endpoints used to verify readiness of the proxy.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "trustedCA": {
+          "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "name": {
+              "description": "name is the metadata.name of the referenced config map",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "imageLabels": {
+      "description": "ImageLabels is a list of docker labels that are applied to the resulting image. User can override a default label by providing a label with the same name in their Build/BuildConfig.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "Name defines the name of the label. It must have non-zero length.",
+            "type": "string",
+            "default": ""
+          },
+          "value": {
+            "description": "Value defines the literal value of the label.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "resources": {
+      "description": "ResourceRequirements describes the compute resource requirements.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "claims": {
+          "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.\n\nThis is an alpha field and requires enabling the DynamicResourceAllocation feature gate.\n\nThis field is immutable.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-map-keys": [
+            "name"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "limits": {
+          "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            ]
+          }
+        },
+        "requests": {
+          "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

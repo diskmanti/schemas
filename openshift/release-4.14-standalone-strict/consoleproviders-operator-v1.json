@@ -1,0 +1,26 @@
+{
+  "description": "ConsoleProviders defines a list of optional additional providers of functionality to the console.",
+  "type": "object",
+  "properties": {
+    "statuspage": {
+      "description": "StatuspageProvider provides identity for statuspage account.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "pageID"
+      ],
+      "properties": {
+        "pageID": {
+          "description": "pageID is the unique ID assigned by Statuspage for your page. This must be a public page.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

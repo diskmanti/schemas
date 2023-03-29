@@ -1,0 +1,36 @@
+{
+  "description": "OSDiskManagedDiskParameters is the parameters of a OSDisk managed disk.",
+  "type": "object",
+  "required": [
+    "storageAccountType"
+  ],
+  "properties": {
+    "diskEncryptionSet": {
+      "description": "DiskEncryptionSetParameters is the disk encryption set properties",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID is the disk encryption set ID Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is: \"Default\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "storageAccountType": {
+      "description": "StorageAccountType is the storage account type to use. Possible values include \"Standard_LRS\", \"Premium_LRS\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

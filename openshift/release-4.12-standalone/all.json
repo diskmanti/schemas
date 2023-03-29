@@ -1,0 +1,3916 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.APIRequestCount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.APIRequestCountList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.APIRequestCountSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.APIRequestCountStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerNodeAPIRequestLog"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerResourceAPIRequestLog"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerUserAPIRequestCount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerVerbAPIRequestCount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.CustomDeploymentStrategyParams"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentCauseImageTrigger"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfigRollback"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfigRollbackSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentDetails"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentLog"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentLogOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentTriggerImageChangeParams"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.DeploymentTriggerPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.ExecNewPodHook"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.LifecycleHook"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.RecreateDeploymentStrategyParams"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.RollingDeploymentStrategyParams"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.apps.v1.TagImageHook"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.Action"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ClusterRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ClusterRoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ClusterRoleBindingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ClusterRoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.GroupRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.IsPersonalSubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.LocalResourceAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.LocalSubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.NamedClusterRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.NamedClusterRoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.NamedRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.NamedRoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.PolicyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ResourceAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ResourceAccessReviewResponse"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.Role"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBindingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBindingRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBindingRestrictionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBindingRestrictionSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SelfSubjectRulesReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SelfSubjectRulesReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ServiceAccountReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ServiceAccountRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectAccessReviewResponse"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.SubjectRulesReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.authorization.v1.UserRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BinaryBuildRequestOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BinaryBuildSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BitbucketWebHookCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.Build"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildLog"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildLogOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildOutput"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildPostCommitSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStatusOutput"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStatusOutputTo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildTriggerCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildTriggerPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeMount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.BuildVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.CommonSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.CommonWebHookCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ConfigMapBuildSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.CustomBuildStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.DockerBuildStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.DockerStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GenericWebHookCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GenericWebHookEvent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitBuildSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitHubWebHookCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitLabWebHookCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitRefInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.GitSourceRevision"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageChangeCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageChangeTrigger"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageChangeTriggerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageLabel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageSourcePath"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ImageStreamTagReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.JenkinsPipelineBuildStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.ProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SecretBuildSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SecretLocalReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceBuildStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceControlUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceRevision"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.SourceStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.StageInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.StepInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.build.v1.WebHookTrigger"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.cloudnetwork.v1.CloudPrivateIPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.cloudnetwork.v1.CloudPrivateIPConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.cloudnetwork.v1.CloudPrivateIPConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerEncryption"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerNamedServingCert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerServingCerts"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSIngressSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSResourceTag"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSServiceEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AdmissionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AdmissionPluginConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AlibabaCloudPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AlibabaCloudPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AlibabaCloudResourceTag"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Audit"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AuditConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AuditCustomRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Authentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AuthenticationSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AuthenticationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AzurePlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AzurePlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BareMetalPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BareMetalPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BasicAuthIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Build"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildDefaults"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildOverrides"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.BuildSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.CertInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClientConnectionOverrides"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterNetworkEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterOperator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterOperatorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterOperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterOperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterOperatorStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersionCapabilitiesSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersionCapabilitiesStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersionSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterVersionStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ComponentOverride"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ComponentRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ComponentRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConditionalUpdate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConditionalUpdateRisk"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapFileReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapNameReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Console"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConsoleAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConsoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConsoleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ConsoleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.CustomFeatureGates"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.CustomTLSProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSZone"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DelegatedAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DelegatedAuthorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DeprecatedWebhookTokenAuthenticator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.EquinixMetalPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.EquinixMetalPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.EtcdConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.EtcdStorageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ExternalIPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ExternalIPPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateEnabledDisabled"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateSelection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GCPPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GCPPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GenericAPIServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GenericControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GitHubIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GitLabIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.GoogleIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.HTPasswdIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.HTTPServingInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.HubSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.HubSourceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IBMCloudPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IBMCloudPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IdentityProviderConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageContentPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageContentPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageContentPolicySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageDigestMirrorSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageDigestMirrorSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageDigestMirrorSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageDigestMirrorSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageDigestMirrors"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageLabel"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageTagMirrorSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageTagMirrorSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageTagMirrorSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageTagMirrorSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageTagMirrors"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Infrastructure"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.InfrastructureList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.InfrastructureSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.InfrastructureStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Ingress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IngressList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IngressPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IngressSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IngressStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IntermediateTLSProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.KeystoneIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.KubeClientConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.KubevirtPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.KubevirtPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.LDAPAttributeMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.LDAPIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.LeaderElection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.LoadBalancer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.MTUMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.MTUMigrationValues"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.MaxAgePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ModernTLSProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NamedCertificate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Network"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NetworkList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NetworkMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NetworkSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NetworkStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Node"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NodeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NodeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NodeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NutanixPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NutanixPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NutanixPrismElementEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.NutanixPrismEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthRemoteConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthTemplates"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OldTLSProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenIDClaims"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenIDIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenStackPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenStackPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OperandVersion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OperatorHub"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OperatorHubList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OperatorHubSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OperatorHubStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OvirtPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.OvirtPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSPlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSPlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSServiceEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Project"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProjectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProjectSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProjectStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PromQLClusterCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Proxy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProxyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProxySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ProxyStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RegistryLocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RegistrySources"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Release"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RemoteConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RepositoryDigestMirrors"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RequestHeaderIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.RequiredHSTSPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Scheduler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.SchedulerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.SchedulerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.SchedulerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.SecretNameReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ServingInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.StringSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.StringSourceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.TLSProfileSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.TLSSecurityProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.TemplateReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.TokenConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.Update"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.UpdateHistory"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformFailureDomainSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformNodeNetworking"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformNodeNetworkingSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformTopology"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformVCenterSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.WebhookTokenAuthenticator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.featureSetBuilder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1alpha1.GatherConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1alpha1.InsightsDataGather"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1alpha1.InsightsDataGatherList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1alpha1.InsightsDataGatherSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1alpha1.InsightsDataGatherStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ApplicationMenuSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.CLIDownloadLink"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleCLIDownload"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleCLIDownloadList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleCLIDownloadSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleExternalLogLink"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleExternalLogLinkList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleExternalLogLinkSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleLink"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleLinkList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleLinkSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleNotification"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleNotificationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleNotificationSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginBackend"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginI18n"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginProxy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginProxyEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginProxyServiceConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStart"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTask"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTaskReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTaskSummary"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleYAMLSample"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleYAMLSampleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleYAMLSampleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.Link"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1.NamespaceDashboardSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginProxy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginProxyServiceConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginService"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.console.v1alpha1.ConsolePluginSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.CELUnion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.EvolvingUnion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.StableConfigType"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.StableConfigTypeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.StableConfigTypeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.StableConfigTypeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigType"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigTypeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigTypeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigTypeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.ConnectionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.ConnectionConfigNamespaceScoped"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.HelmChartRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.HelmChartRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.HelmChartRepositorySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.HelmChartRepositoryStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.ProjectHelmChartRepository"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.ProjectHelmChartRepositoryList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.helm.v1beta1.ProjectHelmChartRepositorySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.DockerImageReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageBlobReferences"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageImportSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageImportStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLayer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLayerData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageLookupPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageManifest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageSignature"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStream"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImportSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamImportStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamLayers"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamTag"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageStreamTagList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageTag"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.ImageTagList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.NamedTagEventList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.RepositoryImportSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.RepositoryImportStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.SecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.SignatureCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.SignatureGenericEntity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.SignatureIssuer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.SignatureSubject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagEvent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagEventCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagImportPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.image.v1.TagReferencePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.AggregatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeAPIServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeAPIServerImagePolicyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeAPIServerProjectConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeControllerManagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeControllerManagerProjectConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeletConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.MasterAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.RequestHeaderAuthenticationOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.ServiceServingCert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentDenyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentMatchRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentMatchingConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.WebhookTokenAuthenticator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ActiveDirectoryConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AdmissionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AdmissionPluginConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AggregatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AllowAllPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AuditConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AugmentedActiveDirectoryConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.BasicAuthPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.BuildDefaultsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.BuildOverridesConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.CertInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ClientConnectionOverrides"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ClusterNetworkEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ControllerElectionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DNSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DefaultAdmissionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DenyAllPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DockerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdStorageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GitHubIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GitLabIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GoogleIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GrantConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GroupResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.HTPasswdPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.HTTPServingInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.IdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ImageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ImagePolicyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.JenkinsPipelineConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.KeystonePasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.KubeletConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.KubernetesMasterConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPAttributeMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPQuery"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPSyncConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LocalQuota"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterClients"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterNetworkConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterVolumeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NamedCertificate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeNetworkConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.NodeVolumeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OAuthTemplates"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OpenIDClaims"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OpenIDIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OpenIDURLs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.PodManifestConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.PolicyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ProjectConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RFC2307Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RegistryLocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RemoteConnectionInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RequestHeaderAuthenticationOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RequestHeaderIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RoutingConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SecurityAllocator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServiceAccountConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServiceServingCert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServingInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SessionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SessionSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SessionSecrets"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SourceStrategyDefaultsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.StringSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.StringSourceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.TokenConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.UserAgentDenyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.UserAgentMatchRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.UserAgentMatchingConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.WebhookTokenAuthenticator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSFailureDomain"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSFailureDomainPlacement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSResourceFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSResourceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaCloudMachineProviderConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaCloudMachineProviderConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaCloudMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaResourceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AzureFailureDomain"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.BandwidthProperties"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.ControlPlaneMachineSetTemplateObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.DataDiskProperties"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.FailureDomains"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.GCPFailureDomain"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.NutanixMachineProviderConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.NutanixMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.NutanixResourceIdentifier"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenShiftMachineV1Beta1MachineTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSMachineProviderConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSSecretReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.SystemDiskProperties"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.Tag"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.AddressPair"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.Filter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.FixedIPs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.NetworkParam"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.OpenstackProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.PortOpts"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.RootVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SecurityGroupFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SecurityGroupParam"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SubnetFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SubnetParam"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSMachineProviderConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSMachineProviderConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureBootDiagnostics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureCustomerManagedBootDiagnostics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureDiagnostics"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureMachineProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.BlockDeviceMappingSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Condition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DataDisk"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DataDiskManagedDiskParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DiskEncryptionSetParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DiskSettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.EBSBlockDeviceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Filter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPDisk"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPEncryptionKeyReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPGPUConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPKMSKeyReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPMachineProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPNetworkInterface"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.GCPServiceAccount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.LastOperation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.LifecycleHook"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.LifecycleHooks"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.LoadBalancerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Machine"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineHealthCheck"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineHealthCheckList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineHealthCheckSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineHealthCheckStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MetadataServiceOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.NetworkDeviceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.NetworkSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.OSDisk"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.OSDiskManagedDiskParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Placement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.ProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.SecurityProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.SpotMarketOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.SpotVMOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.TagSpecification"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.UnhealthyCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.VSphereMachineProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.VSphereMachineProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Workspace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertingRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertingRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertingRuleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertingRuleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.PrometheusRuleRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.RelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.Rule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.RuleGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.ClusterNetwork"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.ClusterNetworkEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.ClusterNetworkList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.EgressNetworkPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.EgressNetworkPolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.EgressNetworkPolicyPeer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.EgressNetworkPolicyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.EgressNetworkPolicySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.HostSubnet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.HostSubnetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.NetNamespace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.network.v1.NetNamespaceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.networkoperator.v1.EgressRouter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.networkoperator.v1.EgressRouterSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.ClusterRoleScopeRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthAuthorizeToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthAuthorizeTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthClient"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthClientAuthorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthClientAuthorizationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthClientList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.OAuthRedirectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.RedirectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.ScopeRestriction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.UserOAuthAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.oauth.v1.UserOAuthAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildDefaultsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildOverridesConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ClusterNetworkEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.DeployerControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.DockerPullSecretControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.FrontProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImageImportControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImagePolicyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.IngressControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.JenkinsPipelineConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.NetworkControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.OpenShiftAPIServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.OpenShiftControllerManagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ProjectConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.RegistryLocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ResourceQuotaControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.RoutingConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.SecurityAllocator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ServiceAccountControllerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ServiceServingCert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.SourceStrategyDefaultsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSClassicLoadBalancerParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSLoadBalancerParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSNetworkLoadBalancerParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AccessLogging"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AddPage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AdditionalNetworkDefinition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Authentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AuthenticationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AuthenticationSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.AuthenticationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CSIDriverConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CSISnapshotController"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CSISnapshotControllerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CSISnapshotControllerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CSISnapshotControllerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClientTLS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CloudCredential"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CloudCredentialList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CloudCredentialSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.CloudCredentialStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterCSIDriver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterCSIDriverList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterCSIDriverSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterCSIDriverStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterNetworkEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Console"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleConfigRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleCustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleProviders"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ContainerLoggingDestinationParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSCache"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSNodePlacement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSOverTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DNSTransportConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DefaultNetworkDefinition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogCategory"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogCategoryMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogCustomization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogTypes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.EgressIPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.EndpointPublishingStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Etcd"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.EtcdList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.EtcdSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.EtcdStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ExportNetworkFlows"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.FeaturesMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ForwardPlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GCPLoadBalancerParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GatewayConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GatherStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GathererStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.GenerationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.HTTPCompressionPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.HealthCheck"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.HostNetworkStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.HybridOverlayConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IPAMConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IPFIXConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IPsecConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressController"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerCaptureHTTPCookie"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerCaptureHTTPCookieUnion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerCaptureHTTPHeader"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerCaptureHTTPHeaders"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerHTTPHeaders"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerHTTPUniqueIdHeaderPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerLogging"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.IngressControllerTuningOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.InsightsOperator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.InsightsOperatorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.InsightsOperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.InsightsOperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.InsightsReport"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeAPIServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeAPIServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeAPIServerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeAPIServerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeControllerManager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeControllerManagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeControllerManagerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeControllerManagerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeScheduler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeSchedulerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeSchedulerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeSchedulerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeStorageVersionMigrator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeStorageVersionMigratorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeStorageVersionMigratorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KubeStorageVersionMigratorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.KuryrConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.LoadBalancerStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.LoggingDestination"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MTUMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MTUMigrationValues"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MyOperatorResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MyOperatorResourceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MyOperatorResourceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetFlowConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Network"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetworkList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetworkMigration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetworkSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NetworkStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NodePlacement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NodePortStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.NodeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OAuthAPIServerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OVNKubernetesConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftAPIServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftAPIServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftAPIServerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftAPIServerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftControllerManager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftControllerManagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftControllerManagerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftControllerManagerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OpenShiftSDNConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Perspective"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.PerspectiveVisibility"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.PolicyAuditConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.PrivateStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ProjectAccess"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ProviderLoadBalancerParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ProxyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.QuickStarts"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ResourceAttributesAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.RouteAdmissionPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.SFlowConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Server"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceAccountIssuerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCA"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCAList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCASpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCAStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogAPIServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogAPIServerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogAPIServerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogAPIServerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogControllerManager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogControllerManagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogControllerManagerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceCatalogControllerManagerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.SimpleMacvlanConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticIPAMAddresses"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticIPAMConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticIPAMDNS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticIPAMRoutes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticPodOperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StaticPodOperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StatuspageProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Storage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StorageList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StorageSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.StorageStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.SyslogLoggingDestinationParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.Upstream"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.UpstreamResolvers"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.VSphereCSIDriverConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.DelegatedAuthentication"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.DelegatedAuthorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.GenerationHistory"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.GenericOperatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.ImageContentSourcePolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.ImageContentSourcePolicyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.ImageContentSourcePolicySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.LoggingConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.NodeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.OperatorCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.OperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.OperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.RepositoryDigestMirrors"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.StaticPodOperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.VersionAvailability"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.LogEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.OutageEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheck"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheckCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheckList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheckSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheckStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSRecord"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSRecordList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSRecordSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSRecordStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSZoneCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operatoringress.v1.DNSZoneStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.AllowAllPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.BasicAuthPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.DenyAllPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.GitHubIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.GitLabIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.GoogleIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.GrantConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.HTPasswdPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.IdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.KeystonePasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.LDAPAttributeMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.LDAPPasswordIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OAuthTemplates"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OpenIDClaims"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OpenIDIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OpenIDURLs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.OsinServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.RequestHeaderIdentityProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.SessionConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.SessionSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.SessionSecrets"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.osin.v1.TokenConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.ActiveBundleDeployment"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.Package"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.PlatformOperator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.PlatformOperatorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.PlatformOperatorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.PlatformOperatorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.project.v1.Project"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.project.v1.ProjectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.project.v1.ProjectRequest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.project.v1.ProjectSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.project.v1.ProjectStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.AppliedClusterResourceQuota"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.AppliedClusterResourceQuotaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ClusterResourceQuota"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ClusterResourceQuotaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ClusterResourceQuotaSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ClusterResourceQuotaSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ClusterResourceQuotaStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.quota.v1.ResourceQuotaStatusByNamespace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.Route"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteIngress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteIngressCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RoutePort"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouteTargetReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.RouterShard"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.route.v1.TLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.samples.v1.Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.samples.v1.ConfigCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.samples.v1.ConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.samples.v1.ConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.samples.v1.ConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.AllowedFlexVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.FSGroupStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.IDRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicyReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicySelfSubjectReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicySelfSubjectReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicySubjectReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicySubjectReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.PodSecurityPolicySubjectReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.RangeAllocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.RangeAllocationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.RunAsUserStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.SELinuxContextStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.SecurityContextConstraints"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.SecurityContextConstraintsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.ServiceAccountPodSecurityPolicyReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.security.v1.SupplementalGroupsStrategyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.securityinternal.v1.RangeAllocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.securityinternal.v1.RangeAllocationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.servicecertsigner.v1alpha1.ServiceCertSignerOperatorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.servicecertsigner.v1alpha1.ServiceCertSignerOperatorConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.servicecertsigner.v1alpha1.ServiceCertSignerOperatorConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.servicecertsigner.v1alpha1.ServiceCertSignerOperatorConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMap"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMapList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMapReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMapSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMapStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedSecretReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedSecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedSecretStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.BrokerTemplateInstance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.BrokerTemplateInstanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.BrokerTemplateInstanceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.Parameter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.Template"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstance"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceRequester"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateInstanceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.template.v1.TemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.Group"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.GroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.Identity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.IdentityList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.User"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.UserIdentityMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.user.v1.UserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.LocalSubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceAttributes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.NonResourceRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceAttributes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.ResourceRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectAccessReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectRulesReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SelfSubjectRulesReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectAccessReview"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectAccessReviewSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectAccessReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.authorization.v1.SubjectRulesReviewStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AttachedVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AvoidPods"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AzureDiskVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AzureFilePersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AzureFileVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Binding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CSIPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CSIVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Capabilities"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CephFSPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CephFSVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CinderPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.CinderVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ClientIPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ComponentCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ComponentStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ComponentStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMap"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapEnvSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapNodeConfigSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapProjection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerImage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerState"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStateRunning"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStateTerminated"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStateWaiting"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DaemonEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DownwardAPIProjection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DownwardAPIVolumeFile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.DownwardAPIVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EmptyDirVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointPort"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointSubset"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Endpoints"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EndpointsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVarSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralContainerCommon"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Event"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EventList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EventSeries"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EventSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.FCVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.FlexPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.FlexVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.FlockerVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GRPCAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GitRepoVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GlusterfsPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.GlusterfsVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HTTPHeader"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostPathVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ISCSIPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ISCSIVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.KeyToPath"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Lifecycle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LifecycleHandler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LimitRangeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerIngress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LoadBalancerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NFSVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Namespace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NamespaceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Node"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeAffinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeDaemonEndpoints"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeProxyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeResources"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSystemInfo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectFieldSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Pod"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAffinityTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAntiAffinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodAttachOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfigOption"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodExecOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodIP"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodLogOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodOS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodPortForwardOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodProxyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSecurityContext"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSignature"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodStatusResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PortStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PortworxVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PreferAvoidPodsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PreferredSchedulingTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ProbeHandler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ProjectedVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.QuobyteVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.RBDPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.RBDVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.RangeAllocation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationController"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ReplicationControllerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceFieldSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuota"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceQuotaStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScaleIOVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopeSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ScopedResourceSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Secret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretEnvSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretProjection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecurityContext"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SerializedReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Service"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceAccount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceAccountList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceAccountTokenProjection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServicePort"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceProxyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SessionAffinityConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.StorageOSPersistentVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.StorageOSVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Sysctl"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TCPSocketAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySelectorTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TypedLocalObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeNodeAffinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeProjection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WeightedPodAffinityTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.AggregationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.ClusterRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.ClusterRoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.ClusterRoleBindingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.ClusterRoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.PolicyRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.Role"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleBinding"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleBindingList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.RoleRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.rbac.v1.Subject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.int64Amount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIGroupList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIResourceList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.APIVersions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ApplyOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.CreateOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.DeleteOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GetOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupKind"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersion"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionForDiscovery"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionKind"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupVersionResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.InternalEvent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.List"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.MicroTime"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.PartialObjectMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.PartialObjectMetadataList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.PatchOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.RootPaths"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ServerAddressByClientCIDR"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Status"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Table"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TableColumnDefinition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TableOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TableRow"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TableRowCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Timestamp"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.TypeMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.UpdateOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.WatchEvent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.TypeMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.Unknown"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  ]
+}

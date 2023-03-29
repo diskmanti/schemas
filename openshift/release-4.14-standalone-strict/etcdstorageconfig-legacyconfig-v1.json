@@ -1,0 +1,46 @@
+{
+  "description": "EtcdStorageConfig holds the necessary configuration options for the etcd storage underlying OpenShift and Kubernetes",
+  "type": "object",
+  "required": [
+    "kubernetesStorageVersion",
+    "kubernetesStoragePrefix",
+    "openShiftStorageVersion",
+    "openShiftStoragePrefix"
+  ],
+  "properties": {
+    "kubernetesStoragePrefix": {
+      "description": "KubernetesStoragePrefix is the path within etcd that the Kubernetes resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'kubernetes.io'.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kubernetesStorageVersion": {
+      "description": "KubernetesStorageVersion is the API version that Kube resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "openShiftStoragePrefix": {
+      "description": "OpenShiftStoragePrefix is the path within etcd that the OpenShift resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'openshift.io'.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "openShiftStorageVersion": {
+      "description": "OpenShiftStorageVersion is the API version that OS resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

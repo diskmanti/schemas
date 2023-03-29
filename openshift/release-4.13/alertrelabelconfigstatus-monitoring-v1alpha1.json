@@ -1,0 +1,18 @@
+{
+  "description": "AlertRelabelConfigStatus is the status of an AlertRelabelConfig resource.",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "conditions contains details on the state of the AlertRelabelConfig, may be empty.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

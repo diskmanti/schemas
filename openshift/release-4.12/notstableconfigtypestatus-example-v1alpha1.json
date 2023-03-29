@@ -1,0 +1,24 @@
+{
+  "description": "NotStableConfigTypeStatus defines the observed status of the NotStableConfigType.",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Represents the observations of a foo's current state. Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

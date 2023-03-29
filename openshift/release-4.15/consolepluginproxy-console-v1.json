@@ -1,0 +1,38 @@
+{
+  "description": "ConsolePluginProxy holds information on various service types to which console's backend will proxy the plugin's requests.",
+  "type": "object",
+  "required": [
+    "endpoint",
+    "alias"
+  ],
+  "properties": {
+    "alias": {
+      "description": "alias is a proxy name that identifies the plugin's proxy. An alias name should be unique per plugin. The console backend exposes following proxy endpoint:\n\n/api/proxy/plugin/<plugin-name>/<proxy-alias>/<request-path>?<optional-query-parameters>\n\nRequest example path:\n\n/api/proxy/plugin/acm/search/pods?namespace=openshift-apiserver",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "authorization": {
+      "description": "authorization provides information about authorization type, which the proxied request should contain",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caCertificate": {
+      "description": "caCertificate provides the cert authority certificate contents, in case the proxied Service is using custom service CA. By default, the service CA bundle provided by the service-ca operator is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endpoint": {
+      "description": "endpoint provides information about endpoint to which the request is proxied to.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginProxyEndpoint"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

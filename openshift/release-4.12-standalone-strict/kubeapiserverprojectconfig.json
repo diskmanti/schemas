@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "defaultNodeSelector"
+  ],
+  "properties": {
+    "defaultNodeSelector": {
+      "description": "defaultNodeSelector holds default project node label selector",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

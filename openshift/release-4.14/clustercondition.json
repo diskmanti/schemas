@@ -1,0 +1,22 @@
+{
+  "description": "ClusterCondition is a union of typed cluster conditions.  The 'type' property determines which of the type-specific properties are relevant. When evaluated on a cluster, the condition may match, not match, or fail to evaluate.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "promql": {
+      "description": "promQL represents a cluster condition based on PromQL.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.PromQLClusterCondition"
+    },
+    "type": {
+      "description": "type represents the cluster-condition type. This defines the members and semantics of any additional properties.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

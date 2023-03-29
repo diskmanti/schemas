@@ -1,0 +1,128 @@
+{
+  "description": "Schema for the repository API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/  api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "Spec defines the desired state of Repository",
+      "properties": {
+        "git_provider": {
+          "properties": {
+            "secret": {
+              "properties": {
+                "key": {
+                  "default": "provider.token",
+                  "description": "Key inside the secret",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "The secret name",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            },
+            "type": {
+              "description": "The Git provider type",
+              "type": "string"
+            },
+            "url": {
+              "description": "The Git provider api url",
+              "type": "string"
+            },
+            "user": {
+              "description": "The Git provider api user",
+              "type": "string"
+            },
+            "webhook_secret": {
+              "properties": {
+                "key": {
+                  "default": "webhook.secret",
+                  "description": "Key inside the secret",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "The secret name",
+                  "type": "string"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "incoming": {
+          "items": {
+            "properties": {
+              "secret": {
+                "description": "Secret to use for the webhook",
+                "properties": {
+                  "key": {
+                    "default": "secret",
+                    "description": "Key of the secret",
+                    "type": "string"
+                  },
+                  "name": {
+                    "description": "Name of the secret",
+                    "type": "string"
+                  }
+                },
+                "type": "object",
+                "additionalProperties": false
+              },
+              "targets": {
+                "description": "List of target branches or ref to trigger webhooks on",
+                "items": {
+                  "description": "Branch name",
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "type": {
+                "description": "Type of webhook",
+                "enum": [
+                  "webhook-url"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "type": {
+          "description": "Git repository provider",
+          "enum": [
+            "github",
+            "gitea",
+            "bitbucket",
+            "gitlab",
+            "bitbucket-enteprise"
+          ],
+          "type": "string"
+        },
+        "url": {
+          "description": "Repository URL",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "x-kubernetes-preserve-unknown-fields": true
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Describes the class of pods that should avoid this node. Exactly one field should be set.",
+  "type": "object",
+  "properties": {
+    "podController": {
+      "description": "Reference to controller whose pods should avoid this node.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

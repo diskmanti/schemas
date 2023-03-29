@@ -1,0 +1,72 @@
+{
+  "description": "IngressControllerStatus defines the observed status of the IngressController.",
+  "type": "object",
+  "required": [
+    "availableReplicas",
+    "selector",
+    "domain"
+  ],
+  "properties": {
+    "availableReplicas": {
+      "description": "availableReplicas is number of observed available replicas according to the ingress controller deployment.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "conditions": {
+      "description": "conditions is a list of conditions and their status.\n\nAvailable means the ingress controller deployment is available and servicing route and ingress resources (i.e, .status.availableReplicas equals .spec.replicas)\n\nThere are additional conditions which indicate the status of other ingress controller features and capabilities.\n\n  * LoadBalancerManaged\n  - True if the following conditions are met:\n    * The endpoint publishing strategy requires a service load balancer.\n  - False if any of those conditions are unsatisfied.\n\n  * LoadBalancerReady\n  - True if the following conditions are met:\n    * A load balancer is managed.\n    * The load balancer is ready.\n  - False if any of those conditions are unsatisfied.\n\n  * DNSManaged\n  - True if the following conditions are met:\n    * The endpoint publishing strategy and platform support DNS.\n    * The ingress controller domain is set.\n    * dns.config.openshift.io/cluster configures DNS zones.\n  - False if any of those conditions are unsatisfied.\n\n  * DNSReady\n  - True if the following conditions are met:\n    * DNS is managed.\n    * DNS records have been successfully created.\n  - False if any of those conditions are unsatisfied.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorCondition"
+      }
+    },
+    "domain": {
+      "description": "domain is the actual domain in use.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "endpointPublishingStrategy": {
+      "description": "endpointPublishingStrategy is the actual strategy in use.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.EndpointPublishingStrategy"
+    },
+    "namespaceSelector": {
+      "description": "namespaceSelector is the actual namespaceSelector in use.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the most recent generation observed.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "routeSelector": {
+      "description": "routeSelector is the actual routeSelector in use.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "selector": {
+      "description": "selector is a label selector, in string format, for ingress controller pods corresponding to the IngressController. The number of matching pods should equal the value of availableReplicas.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsProfile": {
+      "description": "tlsProfile is the TLS connection configuration that is in effect.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.TLSProfileSpec"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,41 @@
+{
+  "description": "ProxyConfig defines the configuration knobs for kubeproxy All of these are optional and have sensible defaults",
+  "type": "object",
+  "properties": {
+    "bindAddress": {
+      "description": "The address to \"bind\" on Defaults to 0.0.0.0",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "iptablesSyncPeriod": {
+      "description": "An internal kube-proxy parameter. In older releases of OCP, this sometimes needed to be adjusted in large clusters for performance reasons, but this is no longer necessary, and there is no reason to change this from the default value. Default: 30s",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxyArguments": {
+      "description": "Any additional arguments to pass to the kubeproxy process",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

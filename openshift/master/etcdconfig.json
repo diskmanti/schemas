@@ -1,0 +1,48 @@
+{
+  "description": "EtcdConfig holds the necessary configuration options for connecting with an etcd database",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "address",
+    "peerServingInfo",
+    "peerAddress",
+    "storageDirectory"
+  ],
+  "properties": {
+    "address": {
+      "description": "Address is the advertised host:port for client connections to etcd",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "peerAddress": {
+      "description": "PeerAddress is the advertised host:port for peer connections to etcd",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "peerServingInfo": {
+      "description": "PeerServingInfo describes how to start serving the etcd peer",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServingInfo"
+    },
+    "servingInfo": {
+      "description": "ServingInfo describes how to start serving the etcd master",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServingInfo"
+    },
+    "storageDirectory": {
+      "description": "StorageDir is the path to the etcd storage directory",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

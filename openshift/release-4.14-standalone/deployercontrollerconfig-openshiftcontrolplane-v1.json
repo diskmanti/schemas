@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "imageTemplateFormat"
+  ],
+  "properties": {
+    "imageTemplateFormat": {
+      "description": "ImageConfig holds the necessary configuration options for building image names for system components",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "format",
+        "latest"
+      ],
+      "properties": {
+        "format": {
+          "description": "Format is the format of the name to be built for the system component",
+          "type": "string",
+          "default": ""
+        },
+        "latest": {
+          "description": "Latest determines if the latest tag will be pulled from the registry",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

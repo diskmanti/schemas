@@ -1,0 +1,37 @@
+{
+  "description": "OpenIDURLs are URLs to use when authenticating with an OpenID identity provider",
+  "type": "object",
+  "required": [
+    "authorize",
+    "token",
+    "userInfo"
+  ],
+  "properties": {
+    "authorize": {
+      "description": "Authorize is the oauth authorization URL",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "token": {
+      "description": "Token is the oauth token granting URL",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "userInfo": {
+      "description": "UserInfo is the optional userinfo URL. If present, a granted access_token is used to request claims If empty, a granted id_token is parsed for claims",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,69 @@
+{
+  "description": "LDAPAttributeMapping maps LDAP attributes to OpenShift identity fields",
+  "type": "object",
+  "required": [
+    "id",
+    "preferredUsername",
+    "name",
+    "email"
+  ],
+  "properties": {
+    "email": {
+      "description": "Email is the list of attributes whose values should be used as the email address. Optional. If unspecified, no email is set for the identity",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "id": {
+      "description": "ID is the list of attributes whose values should be used as the user ID. Required. LDAP standard identity attribute is \"dn\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "name": {
+      "description": "Name is the list of attributes whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity LDAP standard display name attribute is \"cn\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "preferredUsername": {
+      "description": "PreferredUsername is the list of attributes whose values should be used as the preferred username. LDAP standard login attribute is \"uid\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

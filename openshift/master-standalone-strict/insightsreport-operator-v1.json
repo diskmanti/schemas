@@ -1,0 +1,61 @@
+{
+  "description": "insightsReport provides Insights health check report based on the most recently sent Insights data.",
+  "type": "object",
+  "properties": {
+    "downloadedAt": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "healthChecks": {
+      "description": "healthChecks provides basic information about active Insights health checks in a cluster.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "healthCheck represents an Insights health check attributes.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "description",
+          "totalRisk",
+          "advisorURI",
+          "state"
+        ],
+        "properties": {
+          "advisorURI": {
+            "description": "advisorURI provides the URL link to the Insights Advisor.",
+            "type": "string",
+            "default": ""
+          },
+          "description": {
+            "description": "description provides basic description of the healtcheck.",
+            "type": "string",
+            "default": ""
+          },
+          "state": {
+            "description": "state determines what the current state of the health check is. Health check is enabled by default and can be disabled by the user in the Insights advisor user interface.",
+            "type": "string",
+            "default": ""
+          },
+          "totalRisk": {
+            "description": "totalRisk of the healthcheck. Indicator of the total risk posed by the detected issue; combination of impact and likelihood. The values can be from 1 to 4, and the higher the number, the more important the issue.",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-list-type": "atomic"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

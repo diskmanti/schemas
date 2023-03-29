@@ -1,0 +1,29 @@
+{
+  "description": "ProxyStatus shows current known state of the cluster proxy.",
+  "type": "object",
+  "properties": {
+    "httpProxy": {
+      "description": "httpProxy is the URL of the proxy for HTTP requests.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpsProxy": {
+      "description": "httpsProxy is the URL of the proxy for HTTPS requests.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy is a comma-separated list of hostnames and/or CIDRs for which the proxy should not be used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

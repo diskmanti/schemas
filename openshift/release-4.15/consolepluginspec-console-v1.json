@@ -1,0 +1,40 @@
+{
+  "description": "ConsolePluginSpec is the desired plugin configuration.",
+  "type": "object",
+  "required": [
+    "displayName",
+    "backend"
+  ],
+  "properties": {
+    "backend": {
+      "description": "backend holds the configuration of backend which is serving console's plugin .",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginBackend"
+    },
+    "displayName": {
+      "description": "displayName is the display name of the plugin. The dispalyName should be between 1 and 128 characters.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "i18n": {
+      "description": "i18n is the configuration of plugin's localization resources.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginI18n"
+    },
+    "proxy": {
+      "description": "proxy is a list of proxies that describe various service type to which the plugin needs to connect to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsolePluginProxy"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

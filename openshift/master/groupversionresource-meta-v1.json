@@ -1,0 +1,33 @@
+{
+  "description": "GroupVersionResource unambiguously identifies a resource.  It doesn't anonymously include GroupVersion to avoid automatic coercion.  It doesn't use a GroupVersion to avoid custom marshalling",
+  "type": "object",
+  "required": [
+    "group",
+    "version",
+    "resource"
+  ],
+  "properties": {
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

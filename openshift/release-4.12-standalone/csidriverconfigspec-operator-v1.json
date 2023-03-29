@@ -1,0 +1,49 @@
+{
+  "description": "CSIDriverConfigSpec defines configuration spec that can be used to optionally configure a specific CSI Driver.",
+  "type": "object",
+  "required": [
+    "driverType"
+  ],
+  "properties": {
+    "driverType": {
+      "description": "driverType indicates type of CSI driver for which the driverConfig is being applied to.\n\nValid values are:\n\n* vSphere\n\nAllows configuration of vsphere CSI driver topology.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "vSphere": {
+      "description": "VSphereCSIDriverConfigSpec defines properties that can be configured for vsphere CSI driver.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "topologyCategories": {
+          "description": "topologyCategories indicates tag categories with which vcenter resources such as hostcluster or datacenter were tagged with. If cluster Infrastructure object has a topology, values specified in Infrastructure object will be used and modifications to topologyCategories will be rejected.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      }
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "driverType",
+      "fields-to-discriminateBy": {
+        "vSphere": "VSphere"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

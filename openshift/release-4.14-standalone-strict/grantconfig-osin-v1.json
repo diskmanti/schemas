@@ -1,0 +1,28 @@
+{
+  "description": "GrantConfig holds the necessary configuration options for grant handlers",
+  "type": "object",
+  "required": [
+    "method",
+    "serviceAccountMethod"
+  ],
+  "properties": {
+    "method": {
+      "description": "method determines the default strategy to use when an OAuth client requests a grant. This method will be used only if the specific OAuth client doesn't provide a strategy of their own. Valid grant handling methods are:\n - auto:   always approves grant requests, useful for trusted clients\n - prompt: prompts the end user for approval of grant requests, useful for third-party clients\n - deny:   always denies grant requests, useful for black-listed clients",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "serviceAccountMethod": {
+      "description": "serviceAccountMethod is used for determining client authorization for service account oauth client. It must be either: deny, prompt",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

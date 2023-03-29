@@ -1,0 +1,52 @@
+{
+  "description": "PowerVSPlatformStatus holds the current status of the IBM Power Systems Virtual Servers infrastrucutre provider.",
+  "type": "object",
+  "required": [
+    "region",
+    "zone"
+  ],
+  "properties": {
+    "cisInstanceCRN": {
+      "description": "CISInstanceCRN is the CRN of the Cloud Internet Services instance managing the DNS zone for the cluster's base domain",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dnsInstanceCRN": {
+      "description": "DNSInstanceCRN is the CRN of the DNS Services instance managing the DNS zone for the cluster's base domain",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "region holds the default Power VS region for new Power VS resources created by the cluster.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "serviceEndpoints": {
+      "description": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSServiceEndpoint"
+      }
+    },
+    "zone": {
+      "description": "zone holds the default zone for the new Power VS resources created by the cluster. Note: Currently only single-zone OCP clusters are supported",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

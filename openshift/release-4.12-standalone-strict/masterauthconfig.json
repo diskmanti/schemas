@@ -1,0 +1,118 @@
+{
+  "description": "MasterAuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
+  "type": "object",
+  "required": [
+    "requestHeader",
+    "webhookTokenAuthenticators",
+    "oauthMetadataFile"
+  ],
+  "properties": {
+    "oauthMetadataFile": {
+      "description": "OAuthMetadataFile is a path to a file containing the discovery endpoint for OAuth 2.0 Authorization Server Metadata for an external OAuth server. See IETF Draft: // https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 This option is mutually exclusive with OAuthConfig",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "requestHeader": {
+      "description": "RequestHeaderAuthenticationOptions provides options for setting up a front proxy against the entire API instead of against the /oauth endpoint.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "clientCA",
+        "clientCommonNames",
+        "usernameHeaders",
+        "groupHeaders",
+        "extraHeaderPrefixes"
+      ],
+      "properties": {
+        "clientCA": {
+          "description": "ClientCA is a file with the trusted signer certs.  It is required.",
+          "type": "string",
+          "default": ""
+        },
+        "clientCommonNames": {
+          "description": "ClientCommonNames is a required list of common names to require a match from.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "extraHeaderPrefixes": {
+          "description": "ExtraHeaderPrefixes is the set of request header prefixes to inspect for user extra. X-Remote-Extra- is suggested.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "groupHeaders": {
+          "description": "GroupNameHeader is the set of headers to check for group information.  All are unioned.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "usernameHeaders": {
+          "description": "UsernameHeaders is the list of headers to check for user information.  First hit wins.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "webhookTokenAuthenticators": {
+      "description": "WebhookTokenAuthnConfig, if present configures remote token reviewers",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "WebhookTokenAuthenticators holds the necessary configuation options for external token authenticators",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "configFile",
+          "cacheTTL"
+        ],
+        "properties": {
+          "cacheTTL": {
+            "description": "CacheTTL indicates how long an authentication result should be cached. It takes a valid time duration string (e.g. \"5m\"). If empty, you get a default timeout of 2 minutes. If zero (e.g. \"0m\"), caching is disabled",
+            "type": "string",
+            "default": ""
+          },
+          "configFile": {
+            "description": "ConfigFile is a path to a Kubeconfig file with the webhook configuration",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

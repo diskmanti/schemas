@@ -1,0 +1,230 @@
+{
+  "description": "IngressControllerLogging describes what should be logged where.",
+  "type": "object",
+  "properties": {
+    "access": {
+      "description": "AccessLogging describes how client requests should be logged.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "destination"
+      ],
+      "properties": {
+        "destination": {
+          "description": "LoggingDestination describes a destination for log messages.",
+          "type": "object",
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "container": {
+              "description": "ContainerLoggingDestinationParameters describes parameters for the Container logging destination type.",
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "syslog": {
+              "description": "SyslogLoggingDestinationParameters describes parameters for the Syslog logging destination type.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "address",
+                "port"
+              ],
+              "properties": {
+                "address": {
+                  "description": "address is the IP address of the syslog endpoint that receives log messages.",
+                  "type": "string",
+                  "default": ""
+                },
+                "facility": {
+                  "description": "facility specifies the syslog facility of log messages.\n\nIf this field is empty, the facility is \"local1\".",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "maxLength": {
+                  "description": "maxLength is the maximum length of the syslog message\n\nIf this field is empty, the maxLength is set to \"1024\".",
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int64"
+                },
+                "port": {
+                  "description": "port is the UDP port number of the syslog endpoint that receives log messages.",
+                  "type": "integer",
+                  "format": "int64",
+                  "default": 0
+                }
+              }
+            },
+            "type": {
+              "description": "type is the type of destination for logs.  It must be one of the following:\n\n* Container\n\nThe ingress operator configures the sidecar container named \"logs\" on the ingress controller pod and configures the ingress controller to write logs to the sidecar.  The logs are then available as container logs.  The expectation is that the administrator configures a custom logging solution that reads logs from this sidecar.  Note that using container logs means that logs may be dropped if the rate of logs exceeds the container runtime's or the custom logging solution's capacity.\n\n* Syslog\n\nLogs are sent to a syslog endpoint.  The administrator must specify an endpoint that can receive syslog messages.  The expectation is that the administrator has configured a custom syslog instance.",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "x-kubernetes-unions": [
+            {
+              "discriminator": "type",
+              "fields-to-discriminateBy": {
+                "container": "Container",
+                "syslog": "Syslog"
+              }
+            }
+          ]
+        },
+        "httpCaptureCookies": {
+          "description": "httpCaptureCookies specifies HTTP cookies that should be captured in access logs.  If this field is empty, no cookies are captured.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "IngressControllerCaptureHTTPCookie describes an HTTP cookie that should be captured.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "maxLength"
+            ],
+            "properties": {
+              "matchType": {
+                "description": "matchType specifies the type of match to be performed on the cookie name.  Allowed values are \"Exact\" for an exact string match and \"Prefix\" for a string prefix match.  If \"Exact\" is specified, a name must be specified in the name field.  If \"Prefix\" is provided, a prefix must be specified in the namePrefix field.  For example, specifying matchType \"Prefix\" and namePrefix \"foo\" will capture a cookie named \"foo\" or \"foobar\" but not one named \"bar\".  The first matching cookie is captured.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "maxLength": {
+                "description": "maxLength specifies a maximum length of the string that will be logged, which includes the cookie name, cookie value, and one-character delimiter.  If the log entry exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+                "type": "integer",
+                "format": "int32",
+                "default": 0
+              },
+              "name": {
+                "description": "name specifies a cookie name.  Its value must be a valid HTTP cookie name as defined in RFC 6265 section 4.1.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              },
+              "namePrefix": {
+                "description": "namePrefix specifies a cookie name prefix.  Its value must be a valid HTTP cookie name as defined in RFC 6265 section 4.1.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "x-kubernetes-unions": [
+              {
+                "discriminator": "matchType",
+                "fields-to-discriminateBy": {
+                  "name": "Name",
+                  "namePrefix": "NamePrefix"
+                }
+              }
+            ]
+          }
+        },
+        "httpCaptureHeaders": {
+          "description": "IngressControllerCaptureHTTPHeaders specifies which HTTP headers the IngressController captures.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "request": {
+              "description": "request specifies which HTTP request headers to capture.\n\nIf this field is empty, no request headers are captured.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "IngressControllerCaptureHTTPHeader describes an HTTP header that should be captured.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "maxLength"
+                ],
+                "properties": {
+                  "maxLength": {
+                    "description": "maxLength specifies a maximum length for the header value.  If a header value exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                  },
+                  "name": {
+                    "description": "name specifies a header name.  Its value must be a valid HTTP header name as defined in RFC 2616 section 4.2.",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            },
+            "response": {
+              "description": "response specifies which HTTP response headers to capture.\n\nIf this field is empty, no response headers are captured.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "IngressControllerCaptureHTTPHeader describes an HTTP header that should be captured.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "maxLength"
+                ],
+                "properties": {
+                  "maxLength": {
+                    "description": "maxLength specifies a maximum length for the header value.  If a header value exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                  },
+                  "name": {
+                    "description": "name specifies a header name.  Its value must be a valid HTTP header name as defined in RFC 2616 section 4.2.",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        },
+        "httpLogFormat": {
+          "description": "httpLogFormat specifies the format of the log message for an HTTP request.\n\nIf this field is empty, log messages use the implementation's default HTTP log format.  For HAProxy's default HTTP log format, see the HAProxy documentation: http://cbonte.github.io/haproxy-dconv/2.0/configuration.html#8.2.3\n\nNote that this format only applies to cleartext HTTP connections and to secure HTTP connections for which the ingress controller terminates encryption (that is, edge-terminated or reencrypt connections).  It does not affect the log format for TLS passthrough connections.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "logEmptyRequests": {
+          "description": "logEmptyRequests specifies how connections on which no request is received should be logged.  Typically, these empty requests come from load balancers' health probes or Web browsers' speculative connections (\"preconnect\"), in which case logging these requests may be undesirable.  However, these requests may also be caused by network errors, in which case logging empty requests may be useful for diagnosing the errors.  In addition, these requests may be caused by port scans, in which case logging empty requests may aid in detecting intrusion attempts.  Allowed values for this field are \"Log\" and \"Ignore\".  The default value is \"Log\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

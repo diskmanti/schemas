@@ -1,0 +1,46 @@
+{
+  "description": "StringSource allows specifying a string inline, or externally via env var or file. When it contains only a string value, it marshals to a simple JSON string.",
+  "type": "object",
+  "required": [
+    "value",
+    "env",
+    "file",
+    "keyFile"
+  ],
+  "properties": {
+    "env": {
+      "description": "Env specifies an envvar containing the cleartext value, or an encrypted value if the keyFile is specified.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "file": {
+      "description": "File references a file containing the cleartext value, or an encrypted value if a keyFile is specified.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyFile": {
+      "description": "KeyFile references a file containing the key to use to decrypt the value.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "value": {
+      "description": "Value specifies the cleartext value, or an encrypted value if keyFile is specified.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

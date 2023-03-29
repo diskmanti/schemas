@@ -1,0 +1,19 @@
+{
+  "description": "ConsoleStatus defines the observed status of the Console.",
+  "type": "object",
+  "required": [
+    "consoleURL"
+  ],
+  "properties": {
+    "consoleURL": {
+      "description": "The URL for the console. This will be derived from the host for the route that is created for the console.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

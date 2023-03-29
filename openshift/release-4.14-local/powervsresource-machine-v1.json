@@ -1,0 +1,45 @@
+{
+  "description": "PowerVSResource is a reference to a specific PowerVS resource by ID, Name or RegEx Only one of ID, Name or RegEx may be specified. Specifying more than one will result in a validation error.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "ID of resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "regex": {
+      "description": "Regex to find resource Regex contains the pattern to match to find a resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type identifies the resource type for this entry. Valid values are ID, Name and RegEx",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "fields-to-discriminateBy": {
+        "id": "ID",
+        "name": "Name",
+        "regex": "RegEx",
+        "type": "Type"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

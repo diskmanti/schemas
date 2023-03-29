@@ -1,0 +1,54 @@
+{
+  "description": "IdentityProviderConfig contains configuration for using a specific identity provider",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "basicAuth": {
+      "description": "basicAuth contains configuration options for the BasicAuth IdP",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.BasicAuthIdentityProvider"
+    },
+    "github": {
+      "description": "github enables user authentication using GitHub credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.GitHubIdentityProvider"
+    },
+    "gitlab": {
+      "description": "gitlab enables user authentication using GitLab credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.GitLabIdentityProvider"
+    },
+    "google": {
+      "description": "google enables user authentication using Google credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.GoogleIdentityProvider"
+    },
+    "htpasswd": {
+      "description": "htpasswd enables user authentication using an HTPasswd file to validate credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.HTPasswdIdentityProvider"
+    },
+    "keystone": {
+      "description": "keystone enables user authentication using keystone password credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.KeystoneIdentityProvider"
+    },
+    "ldap": {
+      "description": "ldap enables user authentication using LDAP credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.LDAPIdentityProvider"
+    },
+    "openID": {
+      "description": "openID enables user authentication using OpenID credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenIDIdentityProvider"
+    },
+    "requestHeader": {
+      "description": "requestHeader enables user authentication using request header credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.RequestHeaderIdentityProvider"
+    },
+    "type": {
+      "description": "type identifies the identity provider type for this entry.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

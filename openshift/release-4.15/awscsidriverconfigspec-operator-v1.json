@@ -1,0 +1,14 @@
+{
+  "description": "AWSCSIDriverConfigSpec defines properties that can be configured for the AWS CSI driver.",
+  "type": "object",
+  "properties": {
+    "kmsKeyARN": {
+      "description": "kmsKeyARN sets the cluster default storage class to encrypt volumes with a user-defined KMS key, rather than the default KMS key used by AWS. The value may be either the ARN or Alias ARN of a KMS key.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,28 @@
+{
+  "description": "IngressControllerCaptureHTTPHeader describes an HTTP header that should be captured.",
+  "type": "object",
+  "required": [
+    "name",
+    "maxLength"
+  ],
+  "properties": {
+    "maxLength": {
+      "description": "maxLength specifies a maximum length for the header value.  If a header value exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "name": {
+      "description": "name specifies a header name.  Its value must be a valid HTTP header name as defined in RFC 2616 section 4.2.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

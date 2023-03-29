@@ -1,0 +1,68 @@
+{
+  "description": "MasterNetworkConfig to be passed to the compiled in network plugin",
+  "type": "object",
+  "required": [
+    "networkPluginName",
+    "clusterNetworks",
+    "serviceNetworkCIDR",
+    "vxlanPort"
+  ],
+  "properties": {
+    "clusterNetworks": {
+      "description": "clusterNetworks contains a list of cluster networks that defines the global overlay networks L3 space.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ClusterNetworkEntry defines an individual cluster network. The CIDRs cannot overlap with other cluster network CIDRs, CIDRs reserved for external ips, CIDRs reserved for service networks, and CIDRs reserved for ingress ips.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "cidr",
+          "hostSubnetLength"
+        ],
+        "properties": {
+          "cidr": {
+            "description": "CIDR defines the total range of a cluster networks address space.",
+            "type": "string",
+            "default": ""
+          },
+          "hostSubnetLength": {
+            "description": "HostSubnetLength is the number of bits of the accompanying CIDR address to allocate to each node. eg, 8 would mean that each node would have a /24 slice of the overlay network for its pod.",
+            "type": "integer",
+            "format": "int64",
+            "default": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "networkPluginName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "serviceNetworkCIDR": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "vxlanPort": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

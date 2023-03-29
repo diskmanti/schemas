@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "required": [
+    "conditions",
+    "requestCount"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions contains details of the current status of this API Resource.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "currentHour": {
+      "description": "currentHour contains request history for the current hour. This is porcelain to make the API easier to read by humans seeing if they addressed a problem. This field is reset on the hour.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerResourceAPIRequestLog"
+    },
+    "last24h": {
+      "description": "last24h contains request history for the last 24 hours, indexed by the hour, so 12:00AM-12:59 is in index 0, 6am-6:59am is index 6, etc. The index of the current hour is updated live and then duplicated into the requestsLastHour field.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.apiserver.v1.PerResourceAPIRequestLog"
+      }
+    },
+    "removedInRelease": {
+      "description": "removedInRelease is when the API will be removed.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requestCount": {
+      "description": "requestCount is a sum of all requestCounts across all current hours, nodes, and users.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

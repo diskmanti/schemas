@@ -1,0 +1,57 @@
+{
+  "description": "MTUMigration MTU contains infomation about MTU migration.",
+  "type": "object",
+  "properties": {
+    "machine": {
+      "description": "MTUMigrationValues contains the values for a MTU migration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "to"
+      ],
+      "properties": {
+        "from": {
+          "description": "from is the MTU to migrate from.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "to": {
+          "description": "to is the MTU to migrate to.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "network": {
+      "description": "MTUMigrationValues contains the values for a MTU migration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "to"
+      ],
+      "properties": {
+        "from": {
+          "description": "from is the MTU to migrate from.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "to": {
+          "description": "to is the MTU to migrate to.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

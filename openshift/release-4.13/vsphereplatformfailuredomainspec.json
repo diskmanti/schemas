@@ -1,0 +1,51 @@
+{
+  "description": "VSpherePlatformFailureDomainSpec holds the region and zone failure domain and the vCenter topology of that failure domain.",
+  "type": "object",
+  "required": [
+    "name",
+    "region",
+    "zone",
+    "server",
+    "topology"
+  ],
+  "properties": {
+    "name": {
+      "description": "name defines the arbitrary but unique name of a failure domain.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "region": {
+      "description": "region defines the name of a region tag that will be attached to a vCenter datacenter. The tag category in vCenter must be named openshift-region.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "server": {
+      "description": "server is the fully-qualified domain name or the IP address of the vCenter server.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "topology": {
+      "description": "Topology describes a given failure domain using vSphere constructs",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformTopology"
+    },
+    "zone": {
+      "description": "zone defines the name of a zone tag that will be attached to a vCenter cluster. The tag category in vCenter must be named openshift-zone.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

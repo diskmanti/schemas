@@ -1,0 +1,47 @@
+{
+  "description": "MachineHealthCheckStatus defines the observed state of MachineHealthCheck",
+  "type": "object",
+  "required": [
+    "expectedMachines",
+    "currentHealthy"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "Conditions defines the current state of the MachineHealthCheck",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Condition"
+      }
+    },
+    "currentHealthy": {
+      "description": "total number of machines counted by this machine health check",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "expectedMachines": {
+      "description": "total number of machines counted by this machine health check",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "remediationsAllowed": {
+      "description": "RemediationsAllowed is the number of further remediations allowed by this machine health check before maxUnhealthy short circuiting will be applied",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

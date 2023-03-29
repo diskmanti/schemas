@@ -1,0 +1,36 @@
+{
+  "description": "PinnedResourceReference includes the group, version and type of resource",
+  "type": "object",
+  "required": [
+    "group",
+    "version",
+    "resource"
+  ],
+  "properties": {
+    "group": {
+      "description": "group is the API Group of the Resource. Enter empty string for the core group. This value should consist of only lowercase alphanumeric characters, hyphens and periods. Example: \"\", \"apps\", \"build.openshift.io\", etc.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "description": "resource is the type that is being referenced. It is normally the plural form of the resource kind in lowercase. This value should consist of only lowercase alphanumeric characters and hyphens. Example: \"deployments\", \"deploymentconfigs\", \"pods\", etc.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "version": {
+      "description": "version is the API Version of the Resource. This value should consist of only lowercase alphanumeric characters. Example: \"v1\", \"v1beta1\", etc.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

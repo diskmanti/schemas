@@ -1,0 +1,866 @@
+{
+  "description": "AWSMachineProviderConfig is the Schema for the awsmachineproviderconfigs API Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "ami",
+    "instanceType",
+    "deviceIndex",
+    "subnet",
+    "placement"
+  ],
+  "properties": {
+    "ami": {
+      "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "arn": {
+          "description": "ARN of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "filters": {
+          "description": "Filters is a set of filters used to identify a resource",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Filter is a filter used to identify an AWS resource",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the filter. Filter names are case-sensitive.",
+                "type": "string",
+                "default": ""
+              },
+              "values": {
+                "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "description": "ID of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "blockDevices": {
+      "description": "BlockDevices is the set of block device mapping associated to this instance, block device without a name will be used as a root device and only one device without a name is allowed https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "BlockDeviceMappingSpec describes a block device mapping",
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "deviceName": {
+            "description": "The device name exposed to the machine (for example, /dev/sdh or xvdh).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ebs": {
+            "description": "EBSBlockDeviceSpec describes a block device for an EBS volume. https://docs.aws.amazon.com/goto/WebAPI/ec2-2016-11-15/EbsBlockDevice",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "deleteOnTermination": {
+                "description": "Indicates whether the EBS volume is deleted on machine termination.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "encrypted": {
+                "description": "Indicates whether the EBS volume is encrypted. Encrypted Amazon EBS volumes may only be attached to machines that support Amazon EBS encryption.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "iops": {
+                "description": "The number of I/O operations per second (IOPS) that the volume supports. For io1, this represents the number of IOPS that are provisioned for the volume. For gp2, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting. For more information about General Purpose SSD baseline performance, I/O credits, and bursting, see Amazon EBS Volume Types (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the Amazon Elastic Compute Cloud User Guide.\n\nMinimal and maximal IOPS for io1 and gp2 are constrained. Please, check https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html for precise boundaries for individual volumes.\n\nCondition: This parameter is required for requests to create io1 volumes; it is not used in requests to create gp2, st1, sc1, or standard volumes.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "kmsKey": {
+                "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "arn": {
+                    "description": "ARN of resource",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "filters": {
+                    "description": "Filters is a set of filters used to identify a resource",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "description": "Filter is a filter used to identify an AWS resource",
+                      "type": [
+                        "object",
+                        "null"
+                      ],
+                      "required": [
+                        "name"
+                      ],
+                      "properties": {
+                        "name": {
+                          "description": "Name of the filter. Filter names are case-sensitive.",
+                          "type": "string",
+                          "default": ""
+                        },
+                        "values": {
+                          "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+                          "type": [
+                            "array",
+                            "null"
+                          ],
+                          "items": {
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "default": ""
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "id": {
+                    "description": "ID of resource",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "volumeSize": {
+                "description": "The size of the volume, in GiB.\n\nConstraints: 1-16384 for General Purpose SSD (gp2), 4-16384 for Provisioned IOPS SSD (io1), 500-16384 for Throughput Optimized HDD (st1), 500-16384 for Cold HDD (sc1), and 1-1024 for Magnetic (standard) volumes. If you specify a snapshot, the volume size must be equal to or larger than the snapshot size.\n\nDefault: If you're creating the volume from a snapshot and don't specify a volume size, the default is the snapshot size.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "volumeType": {
+                "description": "The volume type: gp2, io1, st1, sc1, or standard. Default: standard",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "noDevice": {
+            "description": "Suppresses the specified device included in the block device mapping of the AMI.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "virtualName": {
+            "description": "The virtual device name (ephemeralN). Machine store volumes are numbered starting from 0. An machine type with 2 available machine store volumes can specify mappings for ephemeral0 and ephemeral1.The number of available machine store volumes depends on the machine type. After you connect to the machine, you must mount the volume.\n\nConstraints: For M3 machines, you must specify machine store volumes in the block device mapping for the machine. When you launch an M3 machine, we ignore any machine store volumes specified in the block device mapping for the AMI.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "credentialsSecret": {
+      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "x-kubernetes-map-type": "atomic"
+    },
+    "deviceIndex": {
+      "description": "DeviceIndex is the index of the device on the instance for the network interface attachment. Defaults to 0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "iamInstanceProfile": {
+      "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "arn": {
+          "description": "ARN of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "filters": {
+          "description": "Filters is a set of filters used to identify a resource",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Filter is a filter used to identify an AWS resource",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the filter. Filter names are case-sensitive.",
+                "type": "string",
+                "default": ""
+              },
+              "values": {
+                "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "description": "ID of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "instanceType": {
+      "description": "InstanceType is the type of instance to create. Example: m4.xlarge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyName": {
+      "description": "KeyName is the name of the KeyPair to use for SSH",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "loadBalancers": {
+      "description": "LoadBalancers is the set of load balancers to which the new instance should be added once it is created.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "LoadBalancerReference is a reference to a load balancer on AWS.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "type"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "metadata": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: http://kubernetes.io/docs/user-guide/annotations",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "creationTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "deletionGracePeriodSeconds": {
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "deletionTimestamp": {
+          "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "finalizers": {
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          },
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "generateName": {
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generation": {
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "managedFields": {
+          "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsType": {
+                "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fieldsV1": {
+                "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "manager": {
+                "description": "Manager is an identifier of the workflow managing these fields.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operation": {
+                "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "subresource": {
+                "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "time": {
+                "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time"
+              }
+            }
+          }
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: http://kubernetes.io/docs/user-guide/namespaces",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ownerReferences": {
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "apiVersion",
+              "kind",
+              "name",
+              "uid"
+            ],
+            "properties": {
+              "apiVersion": {
+                "description": "API version of the referent.",
+                "type": "string",
+                "default": ""
+              },
+              "blockOwnerDeletion": {
+                "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "controller": {
+                "description": "If true, this reference points to the managing controller.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "kind": {
+                "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "description": "Name of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+                "type": "string",
+                "default": ""
+              },
+              "uid": {
+                "description": "UID of the referent. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "x-kubernetes-map-type": "atomic"
+          },
+          "x-kubernetes-patch-merge-key": "uid",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "resourceVersion": {
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: http://kubernetes.io/docs/user-guide/identifiers#uids",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "metadataServiceOptions": {
+      "description": "MetadataServiceOptions defines the options available to a user when configuring Instance Metadata Service (IMDS) Options.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "authentication": {
+          "description": "Authentication determines whether or not the host requires the use of authentication when interacting with the metadata service. When using authentication, this enforces v2 interaction method (IMDSv2) with the metadata service. When omitted, this means the user has no opinion and the value is left to the platform to choose a good default, which is subject to change over time. The current default is optional. At this point this field represents `HttpTokens` parameter from `InstanceMetadataOptionsRequest` structure in AWS EC2 API https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMetadataOptionsRequest.html",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "networkInterfaceType": {
+      "description": "NetworkInterfaceType specifies the type of network interface to be used for the primary network interface. Valid values are \"ENA\", \"EFA\", and omitted, which means no opinion and the platform chooses a good default which may change over time. The current default value is \"ENA\". Please visit https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html to learn more about the AWS Elastic Fabric Adapter interface option.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "placement": {
+      "description": "Placement indicates where to create the instance in AWS",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "availabilityZone": {
+          "description": "AvailabilityZone is the availability zone of the instance",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "region": {
+          "description": "Region is the region to use to create the instance",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tenancy": {
+          "description": "Tenancy indicates if instance should run on shared or single-tenant hardware. There are supported 3 options: default, dedicated and host.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "publicIp": {
+      "description": "PublicIP specifies whether the instance should get a public IP. If not present, it should use the default of its subnet.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "securityGroups": {
+      "description": "SecurityGroups is an array of references to security groups that should be applied to the instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "arn": {
+            "description": "ARN of resource",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "filters": {
+            "description": "Filters is a set of filters used to identify a resource",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "description": "Filter is a filter used to identify an AWS resource",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "description": "Name of the filter. Filter names are case-sensitive.",
+                  "type": "string",
+                  "default": ""
+                },
+                "values": {
+                  "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "default": ""
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "description": "ID of resource",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "spotMarketOptions": {
+      "description": "SpotMarketOptions defines the options available to a user when configuring Machines to run on Spot instances. Most users should provide an empty struct.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "maxPrice": {
+          "description": "The maximum price the user is willing to pay for their instances Default: On-Demand price",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "subnet": {
+      "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "arn": {
+          "description": "ARN of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "filters": {
+          "description": "Filters is a set of filters used to identify a resource",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Filter is a filter used to identify an AWS resource",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the filter. Filter names are case-sensitive.",
+                "type": "string",
+                "default": ""
+              },
+              "values": {
+                "description": "Values includes one or more filter values. Filter values are case-sensitive.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "description": "ID of resource",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "tags": {
+      "description": "Tags is the set of tags to add to apply to an instance, in addition to the ones added by default by the actuator. These tags are additive. The actuator will ensure these tags are present, but will not remove any other tags that may exist on the instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "TagSpecification is the name/value pair for a tag",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "value"
+        ],
+        "properties": {
+          "name": {
+            "description": "Name of the tag",
+            "type": "string",
+            "default": ""
+          },
+          "value": {
+            "description": "Value of the tag",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "userDataSecret": {
+      "description": "LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "x-kubernetes-map-type": "atomic"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

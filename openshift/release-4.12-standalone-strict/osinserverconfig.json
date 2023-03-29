@@ -1,0 +1,620 @@
+{
+  "description": "Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "corsAllowedOrigins",
+    "auditConfig",
+    "storageConfig",
+    "admission",
+    "kubeClientConfig",
+    "oauthConfig"
+  ],
+  "properties": {
+    "admission": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "disabledPlugins": {
+          "description": "disabledPlugins is a list of admission plugins that must be off.  Putting something in this list is almost always a mistake and likely to result in cluster instability.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "enabledPlugins": {
+          "description": "enabledPlugins is a list of admission plugins that must be on in addition to the default list. Some admission plugins are disabled by default, but certain configurations require them.  This is fairly uncommon and can result in performance penalties and unexpected behavior.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "pluginConfig": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "description": "AdmissionPluginConfig holds the necessary configuration options for admission plugins",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "location",
+              "configuration"
+            ],
+            "properties": {
+              "configuration": {
+                "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+                "type": "object"
+              },
+              "location": {
+                "description": "Location is the path to a configuration file that contains the plugin's configuration",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auditConfig": {
+      "description": "AuditConfig holds configuration for the audit capabilities",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "enabled",
+        "auditFilePath",
+        "maximumFileRetentionDays",
+        "maximumRetainedFiles",
+        "maximumFileSizeMegabytes",
+        "policyFile",
+        "policyConfiguration",
+        "logFormat",
+        "webHookKubeConfig",
+        "webHookMode"
+      ],
+      "properties": {
+        "auditFilePath": {
+          "description": "All requests coming to the apiserver will be logged to this file.",
+          "type": "string",
+          "default": ""
+        },
+        "enabled": {
+          "description": "If this flag is set, audit log will be printed in the logs. The logs contains, method, user and a requested URL.",
+          "type": "boolean",
+          "default": false
+        },
+        "logFormat": {
+          "description": "Format of saved audits (legacy or json).",
+          "type": "string",
+          "default": ""
+        },
+        "maximumFileRetentionDays": {
+          "description": "Maximum number of days to retain old log files based on the timestamp encoded in their filename.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "maximumFileSizeMegabytes": {
+          "description": "Maximum size in megabytes of the log file before it gets rotated. Defaults to 100MB.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "maximumRetainedFiles": {
+          "description": "Maximum number of old log files to retain.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "policyConfiguration": {
+          "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+          "type": "object"
+        },
+        "policyFile": {
+          "description": "PolicyFile is a path to the file that defines the audit policy configuration.",
+          "type": "string",
+          "default": ""
+        },
+        "webHookKubeConfig": {
+          "description": "Path to a .kubeconfig formatted file that defines the audit webhook configuration.",
+          "type": "string",
+          "default": ""
+        },
+        "webHookMode": {
+          "description": "Strategy for sending audit events (block or batch).",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "corsAllowedOrigins": {
+      "description": "corsAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeClientConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "kubeConfig",
+        "connectionOverrides"
+      ],
+      "properties": {
+        "connectionOverrides": {
+          "type": "object",
+          "required": [
+            "acceptContentTypes",
+            "contentType",
+            "qps",
+            "burst"
+          ],
+          "properties": {
+            "acceptContentTypes": {
+              "description": "acceptContentTypes defines the Accept header sent by clients when connecting to a server, overriding the default value of 'application/json'. This field will control all connections to the server used by a particular client.",
+              "type": "string",
+              "default": ""
+            },
+            "burst": {
+              "description": "burst allows extra queries to accumulate when a client is exceeding its rate.",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "contentType": {
+              "description": "contentType is the content type used when sending data to the server from this client.",
+              "type": "string",
+              "default": ""
+            },
+            "qps": {
+              "description": "qps controls the number of queries per second allowed for this connection.",
+              "type": "number",
+              "format": "float",
+              "default": 0
+            }
+          },
+          "additionalProperties": false
+        },
+        "kubeConfig": {
+          "description": "kubeConfig is a .kubeconfig filename for going to the owning kube-apiserver.  Empty uses an in-cluster-config",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "oauthConfig": {
+      "description": "OAuthConfig holds the necessary configuration options for OAuth authentication",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "masterCA",
+        "masterURL",
+        "masterPublicURL",
+        "loginURL",
+        "assetPublicURL",
+        "alwaysShowProviderSelection",
+        "identityProviders",
+        "grantConfig",
+        "sessionConfig",
+        "tokenConfig",
+        "templates"
+      ],
+      "properties": {
+        "alwaysShowProviderSelection": {
+          "description": "alwaysShowProviderSelection will force the provider selection page to render even when there is only a single provider.",
+          "type": "boolean",
+          "default": false
+        },
+        "assetPublicURL": {
+          "description": "assetPublicURL is used for building valid client redirect URLs for external access",
+          "type": "string",
+          "default": ""
+        },
+        "grantConfig": {
+          "description": "GrantConfig holds the necessary configuration options for grant handlers",
+          "type": "object",
+          "required": [
+            "method",
+            "serviceAccountMethod"
+          ],
+          "properties": {
+            "method": {
+              "description": "method determines the default strategy to use when an OAuth client requests a grant. This method will be used only if the specific OAuth client doesn't provide a strategy of their own. Valid grant handling methods are:\n - auto:   always approves grant requests, useful for trusted clients\n - prompt: prompts the end user for approval of grant requests, useful for third-party clients\n - deny:   always denies grant requests, useful for black-listed clients",
+              "type": "string",
+              "default": ""
+            },
+            "serviceAccountMethod": {
+              "description": "serviceAccountMethod is used for determining client authorization for service account oauth client. It must be either: deny, prompt",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        },
+        "identityProviders": {
+          "description": "identityProviders is an ordered list of ways for a user to identify themselves",
+          "type": "array",
+          "items": {
+            "description": "IdentityProvider provides identities for users authenticating using credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name",
+              "challenge",
+              "login",
+              "mappingMethod",
+              "provider"
+            ],
+            "properties": {
+              "challenge": {
+                "description": "challenge indicates whether to issue WWW-Authenticate challenges for this provider",
+                "type": "boolean",
+                "default": false
+              },
+              "login": {
+                "description": "login indicates whether to use this identity provider for unauthenticated browsers to login against",
+                "type": "boolean",
+                "default": false
+              },
+              "mappingMethod": {
+                "description": "mappingMethod determines how identities from this provider are mapped to users",
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "description": "name is used to qualify the identities returned by this provider",
+                "type": "string",
+                "default": ""
+              },
+              "provider": {
+                "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+                "type": "object"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "loginURL": {
+          "description": "loginURL, along with masterCA, masterURL and masterPublicURL have distinct meanings depending on how the OAuth server is run.  The two states are: 1. embedded in the kube api server (all 3.x releases) 2. as a standalone external process (all 4.x releases) in the embedded configuration, loginURL is equivalent to masterPublicURL and the other fields have functionality that matches their docs. in the standalone configuration, the fields are used as: loginURL is the URL required to login to the cluster: oc login --server=<loginURL> masterPublicURL is the issuer URL it is accessible from inside (service network) and outside (ingress) of the cluster masterURL is the loopback variation of the token_endpoint URL with no path component it is only accessible from inside (service network) of the cluster masterCA is used to perform TLS verification for connections made to masterURL For further details, see the IETF Draft: https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2",
+          "type": "string",
+          "default": ""
+        },
+        "masterCA": {
+          "description": "masterCA is the CA for verifying the TLS connection back to the MasterURL. This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+          "type": "string"
+        },
+        "masterPublicURL": {
+          "description": "masterPublicURL is used for building valid client redirect URLs for internal and external access This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+          "type": "string",
+          "default": ""
+        },
+        "masterURL": {
+          "description": "masterURL is used for making server-to-server calls to exchange authorization codes for access tokens This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+          "type": "string",
+          "default": ""
+        },
+        "sessionConfig": {
+          "description": "SessionConfig specifies options for cookie-based sessions. Used by AuthRequestHandlerSession",
+          "type": "object",
+          "required": [
+            "sessionSecretsFile",
+            "sessionMaxAgeSeconds",
+            "sessionName"
+          ],
+          "properties": {
+            "sessionMaxAgeSeconds": {
+              "description": "sessionMaxAgeSeconds specifies how long created sessions last. Used by AuthRequestHandlerSession",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "sessionName": {
+              "description": "sessionName is the cookie name used to store the session",
+              "type": "string",
+              "default": ""
+            },
+            "sessionSecretsFile": {
+              "description": "sessionSecretsFile is a reference to a file containing a serialized SessionSecrets object If no file is specified, a random signing and encryption key are generated at each server start",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        },
+        "templates": {
+          "description": "OAuthTemplates allow for customization of pages like the login page",
+          "type": "object",
+          "required": [
+            "login",
+            "providerSelection",
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "description": "error is a path to a file containing a go template used to render error pages during the authentication or grant flow If unspecified, the default error page is used.",
+              "type": "string",
+              "default": ""
+            },
+            "login": {
+              "description": "login is a path to a file containing a go template used to render the login page. If unspecified, the default login page is used.",
+              "type": "string",
+              "default": ""
+            },
+            "providerSelection": {
+              "description": "providerSelection is a path to a file containing a go template used to render the provider selection page. If unspecified, the default provider selection page is used.",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        },
+        "tokenConfig": {
+          "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+          "type": "object",
+          "properties": {
+            "accessTokenInactivityTimeout": {
+              "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "accessTokenInactivityTimeoutSeconds": {
+              "description": "accessTokenInactivityTimeoutSeconds - DEPRECATED: setting this field has no effect.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "accessTokenMaxAgeSeconds": {
+              "description": "accessTokenMaxAgeSeconds defines the maximum age of access tokens",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "authorizeTokenMaxAgeSeconds": {
+              "description": "authorizeTokenMaxAgeSeconds defines the maximum age of authorize tokens",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "servingInfo": {
+      "description": "HTTPServingInfo holds configuration for serving HTTP",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "bindAddress",
+        "bindNetwork",
+        "certFile",
+        "keyFile",
+        "maxRequestsInFlight",
+        "requestTimeoutSeconds"
+      ],
+      "properties": {
+        "bindAddress": {
+          "description": "BindAddress is the ip:port to serve on",
+          "type": "string",
+          "default": ""
+        },
+        "bindNetwork": {
+          "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "cipherSuites": {
+          "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "clientCA": {
+          "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "maxRequestsInFlight": {
+          "description": "MaxRequestsInFlight is the number of concurrent requests allowed to the server. If zero, no limit.",
+          "type": "integer",
+          "format": "int64",
+          "default": 0
+        },
+        "minTLSVersion": {
+          "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namedCertificates": {
+          "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "certFile",
+              "keyFile"
+            ],
+            "properties": {
+              "certFile": {
+                "description": "CertFile is a file containing a PEM-encoded certificate",
+                "type": "string",
+                "default": ""
+              },
+              "keyFile": {
+                "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                "type": "string",
+                "default": ""
+              },
+              "names": {
+                "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "requestTimeoutSeconds": {
+          "description": "RequestTimeoutSeconds is the number of seconds before requests are timed out. The default is 60 minutes, if -1 there is no limit on requests.",
+          "type": "integer",
+          "format": "int64",
+          "default": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "storageConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "ca",
+        "certFile",
+        "keyFile",
+        "storagePrefix"
+      ],
+      "properties": {
+        "ca": {
+          "description": "CA is a file containing trusted roots for the etcd server certificates",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "storagePrefix": {
+          "description": "StoragePrefix is the path within etcd that the OpenShift resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located.",
+          "type": "string",
+          "default": ""
+        },
+        "urls": {
+          "description": "URLs are the URLs for etcd",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

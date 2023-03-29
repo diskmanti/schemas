@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "required": [
+    "forceOn",
+    "forceOff"
+  ],
+  "properties": {
+    "forceOff": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "forceOn": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

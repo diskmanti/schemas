@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "namedCertificates": {
+      "description": "namedCertificates references secrets containing the TLS cert info for serving secure traffic to specific hostnames. If no named certificates are provided, or no named certificates match the server name as understood by a client, the defaultServingCertificate will be used.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerNamedServingCert"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

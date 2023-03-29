@@ -1,0 +1,60 @@
+{
+  "description": "ExternalIPConfig specifies some IP blocks relevant for the ExternalIP field of a Service resource.",
+  "type": "object",
+  "properties": {
+    "autoAssignCIDRs": {
+      "description": "autoAssignCIDRs is a list of CIDRs from which to automatically assign Service.ExternalIP. These are assigned when the service is of type LoadBalancer. In general, this is only useful for bare-metal clusters. In Openshift 3.x, this was misleadingly called \"IngressIPs\". Automatically assigned External IPs are not affected by any ExternalIPPolicy rules. Currently, only one entry may be provided.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "policy": {
+      "description": "ExternalIPPolicy configures exactly which IPs are allowed for the ExternalIP field in a Service. If the zero struct is supplied, then none are permitted. The policy controller always allows automatically assigned external IPs.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "allowedCIDRs": {
+          "description": "allowedCIDRs is the list of allowed CIDRs.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "rejectedCIDRs": {
+          "description": "rejectedCIDRs is the list of disallowed CIDRs. These take precedence over allowedCIDRs.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

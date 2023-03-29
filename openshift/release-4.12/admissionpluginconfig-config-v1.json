@@ -1,0 +1,24 @@
+{
+  "description": "AdmissionPluginConfig holds the necessary configuration options for admission plugins",
+  "type": "object",
+  "required": [
+    "location",
+    "configuration"
+  ],
+  "properties": {
+    "configuration": {
+      "description": "Configuration is an embedded configuration object to be used as the plugin's configuration. If present, it will be used instead of the path to the configuration file.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "location": {
+      "description": "Location is the path to a configuration file that contains the plugin's configuration",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

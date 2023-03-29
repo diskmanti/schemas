@@ -1,0 +1,15 @@
+{
+  "description": "MTUMigration MTU contains infomation about MTU migration.",
+  "type": "object",
+  "properties": {
+    "machine": {
+      "description": "machine contains MTU migration configuration for the machine's uplink. Needs to be migrated along with the default network MTU unless the current uplink MTU already accommodates the default network MTU.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MTUMigrationValues"
+    },
+    "network": {
+      "description": "network contains information about MTU migration for the default network. Migrations are only allowed to MTU values lower than the machine's uplink MTU by the minimum appropriate offset.",
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.MTUMigrationValues"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

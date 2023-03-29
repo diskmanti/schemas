@@ -1,0 +1,69 @@
+{
+  "description": "IngressControllerCaptureHTTPHeaders specifies which HTTP headers the IngressController captures.",
+  "type": "object",
+  "properties": {
+    "request": {
+      "description": "request specifies which HTTP request headers to capture.\n\nIf this field is empty, no request headers are captured.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "IngressControllerCaptureHTTPHeader describes an HTTP header that should be captured.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "maxLength"
+        ],
+        "properties": {
+          "maxLength": {
+            "description": "maxLength specifies a maximum length for the header value.  If a header value exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "name": {
+            "description": "name specifies a header name.  Its value must be a valid HTTP header name as defined in RFC 2616 section 4.2.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "response": {
+      "description": "response specifies which HTTP response headers to capture.\n\nIf this field is empty, no response headers are captured.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "IngressControllerCaptureHTTPHeader describes an HTTP header that should be captured.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "maxLength"
+        ],
+        "properties": {
+          "maxLength": {
+            "description": "maxLength specifies a maximum length for the header value.  If a header value exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+            "type": "integer",
+            "format": "int32",
+            "default": 0
+          },
+          "name": {
+            "description": "name specifies a header name.  Its value must be a valid HTTP header name as defined in RFC 2616 section 4.2.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

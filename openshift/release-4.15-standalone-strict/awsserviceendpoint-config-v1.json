@@ -1,0 +1,28 @@
+{
+  "description": "AWSServiceEndpoint store the configuration of a custom url to override existing defaults of AWS Services.",
+  "type": "object",
+  "required": [
+    "name",
+    "url"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of the AWS service. The list of all the service names can be found at https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html This must be provided and cannot be empty.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,301 @@
+{
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Conditions summarize the status of the check",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "PodNetworkConnectivityCheckCondition represents the overall status of the pod network connectivity.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status",
+          "lastTransitionTime"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "message": {
+            "description": "Message indicating details about last transition in a human readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Reason for the condition's last status transition in a machine readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "Status of the condition",
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "description": "Type of the condition",
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "failures": {
+      "description": "Failures contains logs of unsuccessful check actions",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "LogEntry records events",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "time",
+          "success"
+        ],
+        "properties": {
+          "latency": {
+            "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "description": "Message explaining status in a human readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Reason for status in a machine readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "success": {
+            "description": "Success indicates if the log entry indicates a success or failure.",
+            "type": "boolean",
+            "default": false
+          },
+          "time": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "outages": {
+      "description": "Outages contains logs of time periods of outages",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "OutageEntry records time period of an outage",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "start"
+        ],
+        "properties": {
+          "end": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "endLogs": {
+            "description": "EndLogs contains log entries related to the end of this outage. Should contain the success entry that resolved the outage and possibly a few of the failure log entries that preceded it.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "description": "LogEntry records events",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "time",
+                "success"
+              ],
+              "properties": {
+                "latency": {
+                  "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "message": {
+                  "description": "Message explaining status in a human readable format.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "reason": {
+                  "description": "Reason for status in a machine readable format.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "success": {
+                  "description": "Success indicates if the log entry indicates a success or failure.",
+                  "type": "boolean",
+                  "default": false
+                },
+                "time": {
+                  "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          },
+          "message": {
+            "description": "Message summarizes outage details in a human readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "start": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "startLogs": {
+            "description": "StartLogs contains log entries related to the start of this outage. Should contain the original failure, any entries where the failure mode changed.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "description": "LogEntry records events",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "time",
+                "success"
+              ],
+              "properties": {
+                "latency": {
+                  "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "message": {
+                  "description": "Message explaining status in a human readable format.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "reason": {
+                  "description": "Reason for status in a machine readable format.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "success": {
+                  "description": "Success indicates if the log entry indicates a success or failure.",
+                  "type": "boolean",
+                  "default": false
+                },
+                "time": {
+                  "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "successes": {
+      "description": "Successes contains logs successful check actions",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "LogEntry records events",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "time",
+          "success"
+        ],
+        "properties": {
+          "latency": {
+            "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "message": {
+            "description": "Message explaining status in a human readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "description": "Reason for status in a machine readable format.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "success": {
+            "description": "Success indicates if the log entry indicates a success or failure.",
+            "type": "boolean",
+            "default": false
+          },
+          "time": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

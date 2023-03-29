@@ -1,0 +1,62 @@
+{
+  "description": "UpdateHistory is a single attempted update to the cluster.",
+  "type": "object",
+  "required": [
+    "state",
+    "startedTime",
+    "completionTime",
+    "image",
+    "verified"
+  ],
+  "properties": {
+    "acceptedRisks": {
+      "description": "acceptedRisks records risks which were accepted to initiate the update. For example, it may menition an Upgradeable=False or missing signature that was overriden via desiredUpdate.force, or an update that was initiated despite not being in the availableUpdates set of recommended update targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "completionTime": {
+      "description": "completionTime, if set, is when the update was fully applied. The update that is currently being applied will have a null completion time. Completion time will always be set for entries that are not the current update (usually to the started time of the next update).",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "image": {
+      "description": "image is a container image location that contains the update. This value is always populated.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "startedTime": {
+      "description": "startedTime is the time at which the update was started.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "state": {
+      "description": "state reflects whether the update was fully applied. The Partial state indicates the update is not fully applied, while the Completed state indicates the update was successfully rolled out at least once (all parts of the update successfully applied).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "verified": {
+      "description": "verified indicates whether the provided update was properly verified before it was installed. If this is false the cluster may not be trusted. Verified does not cover upgradeable checks that depend on the cluster state at the time when the update target was accepted.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "version": {
+      "description": "version is a semantic version identifying the update version. If the requested image does not define a version, or if a failure occurs retrieving the image, this value may be empty.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

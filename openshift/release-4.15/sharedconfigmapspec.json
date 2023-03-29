@@ -1,0 +1,22 @@
+{
+  "description": "SharedConfigMapSpec defines the desired state of a SharedConfigMap",
+  "type": "object",
+  "required": [
+    "configMapRef"
+  ],
+  "properties": {
+    "configMapRef": {
+      "description": "configMapRef is a reference to the ConfigMap to share",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.sharedresource.v1alpha1.SharedConfigMapReference"
+    },
+    "description": {
+      "description": "description is a user readable explanation of what the backing resource provides.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

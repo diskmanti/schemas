@@ -1,0 +1,73 @@
+{
+  "description": "ConsoleQuickStartTask is a single step in a Quick Start.",
+  "type": "object",
+  "required": [
+    "title",
+    "description"
+  ],
+  "properties": {
+    "description": {
+      "description": "description describes the steps needed to complete the task. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "review": {
+      "description": "ConsoleQuickStartTaskReview contains instructions that validate a task was completed successfully.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "instructions",
+        "failedTaskHelp"
+      ],
+      "properties": {
+        "failedTaskHelp": {
+          "description": "failedTaskHelp contains suggestions for a failed task review and is shown at the end of task. (includes markdown)",
+          "type": "string",
+          "default": ""
+        },
+        "instructions": {
+          "description": "instructions contains steps that user needs to take in order to validate his work after going through a task. (includes markdown)",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "summary": {
+      "description": "ConsoleQuickStartTaskSummary contains information about a passed step.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "success",
+        "failed"
+      ],
+      "properties": {
+        "failed": {
+          "description": "failed briefly describes the unsuccessfully passed task. (includes markdown)",
+          "type": "string",
+          "default": ""
+        },
+        "success": {
+          "description": "success describes the succesfully passed task.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "title": {
+      "description": "title describes the task and is displayed as a step heading.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,42 @@
+{
+  "description": "UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!",
+  "type": "object",
+  "required": [
+    "requiredClients",
+    "deniedClients",
+    "defaultRejectionMessage"
+  ],
+  "properties": {
+    "defaultRejectionMessage": {
+      "description": "defaultRejectionMessage is the message shown when rejecting a client.  If it is not a set, a generic message is given.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "deniedClients": {
+      "description": "deniedClients if this list is non-empty, then a User-Agent must not match any of the UserAgentRegexes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentDenyRule"
+      }
+    },
+    "requiredClients": {
+      "description": "requiredClients if this list is non-empty, then a User-Agent must match one of the UserAgentRegexes to be allowed",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentMatchRule"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

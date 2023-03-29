@@ -1,0 +1,127 @@
+{
+  "description": "ConsolePluginSpec is the desired plugin configuration.",
+  "type": "object",
+  "required": [
+    "service"
+  ],
+  "properties": {
+    "displayName": {
+      "description": "displayName is the display name of the plugin.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxy": {
+      "description": "proxy is a list of proxies that describe various service type to which the plugin needs to connect to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ConsolePluginProxy holds information on various service types to which console's backend will proxy the plugin's requests.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "alias"
+        ],
+        "properties": {
+          "alias": {
+            "description": "alias is a proxy name that identifies the plugin's proxy. An alias name should be unique per plugin. The console backend exposes following proxy endpoint:\n\n/api/proxy/plugin/<plugin-name>/<proxy-alias>/<request-path>?<optional-query-parameters>\n\nRequest example path:\n\n/api/proxy/plugin/acm/search/pods?namespace=openshift-apiserver",
+            "type": "string",
+            "default": ""
+          },
+          "authorize": {
+            "description": "authorize indicates if the proxied request should contain the logged-in user's OpenShift access token in the \"Authorization\" request header. For example:\n\nAuthorization: Bearer sha256~kV46hPnEYhCWFnB85r5NrprAxggzgb6GOeLbgcKNsH0\n\nBy default the access token is not part of the proxied request.",
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "caCertificate": {
+            "description": "caCertificate provides the cert authority certificate contents, in case the proxied Service is using custom service CA. By default, the service CA bundle provided by the service-ca operator is used.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "service": {
+            "description": "ProxyTypeServiceConfig holds information on Service to which console's backend will proxy the plugin's requests.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name",
+              "namespace",
+              "port"
+            ],
+            "properties": {
+              "name": {
+                "description": "name of Service that the plugin needs to connect to.",
+                "type": "string",
+                "default": ""
+              },
+              "namespace": {
+                "description": "namespace of Service that the plugin needs to connect to",
+                "type": "string",
+                "default": ""
+              },
+              "port": {
+                "description": "port on which the Service that the plugin needs to connect to is listening on.",
+                "type": "integer",
+                "format": "int32",
+                "default": 0
+              }
+            }
+          },
+          "type": {
+            "description": "type is the type of the console plugin's proxy. Currently only \"Service\" is supported.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "service": {
+      "description": "ConsolePluginService holds information on Service that is serving console dynamic plugin assets.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name",
+        "namespace",
+        "port",
+        "basePath"
+      ],
+      "properties": {
+        "basePath": {
+          "description": "basePath is the path to the plugin's assets. The primary asset it the manifest file called `plugin-manifest.json`, which is a JSON document that contains metadata about the plugin and the extensions.",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "name of Service that is serving the plugin assets.",
+          "type": "string",
+          "default": ""
+        },
+        "namespace": {
+          "description": "namespace of Service that is serving the plugin assets.",
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "description": "port on which the Service that is serving the plugin is listening to.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,86 @@
+{
+  "description": "GitHubIdentityProvider provides identities for users authenticating using GitHub credentials\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientSecret",
+    "organizations",
+    "teams",
+    "hostname",
+    "ca"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ca": {
+      "description": "CA is the optional trusted certificate authority bundle to use when making requests to the server. If empty, the default system roots are used.  This can only be configured when hostname is set to a non-empty value.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientID": {
+      "description": "ClientID is the oauth client ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientSecret": {
+      "description": "ClientSecret is the oauth client secret",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.StringSource"
+    },
+    "hostname": {
+      "description": "Hostname is the optional domain (e.g. \"mycompany.com\") for use with a hosted instance of GitHub Enterprise. It must match the GitHub Enterprise settings value that is configured at /setup/settings#hostname.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "organizations": {
+      "description": "Organizations optionally restricts which organizations are allowed to log in",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "teams": {
+      "description": "Teams optionally restricts which teams are allowed to log in. Format is <org>/<team>.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

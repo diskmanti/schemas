@@ -1,0 +1,18 @@
+{
+  "description": "NetworkMigration represents the cluster network configuration.",
+  "type": "object",
+  "properties": {
+    "mtu": {
+      "description": "MTU contains the MTU migration configuration.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.MTUMigration"
+    },
+    "networkType": {
+      "description": "NetworkType is the target plugin that is to be deployed. Currently supported values are: OpenShiftSDN, OVNKubernetes",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

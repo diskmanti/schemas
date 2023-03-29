@@ -1,0 +1,38 @@
+{
+  "description": "SessionConfig specifies options for cookie-based sessions. Used by AuthRequestHandlerSession",
+  "type": "object",
+  "required": [
+    "sessionSecretsFile",
+    "sessionMaxAgeSeconds",
+    "sessionName"
+  ],
+  "properties": {
+    "sessionMaxAgeSeconds": {
+      "description": "SessionMaxAgeSeconds specifies how long created sessions last. Used by AuthRequestHandlerSession",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "sessionName": {
+      "description": "SessionName is the cookie name used to store the session",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sessionSecretsFile": {
+      "description": "SessionSecretsFile is a reference to a file containing a serialized SessionSecrets object If no file is specified, a random signing and encryption key are generated at each server start",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

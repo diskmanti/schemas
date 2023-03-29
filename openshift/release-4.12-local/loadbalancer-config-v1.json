@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "platform": {
+      "description": "platform holds configuration specific to the underlying infrastructure provider for the ingress load balancers. When omitted, this means the user has no opinion and the platform is left to choose reasonable defaults. These defaults are subject to change over time.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.IngressPlatformSpec"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

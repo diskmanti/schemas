@@ -1,0 +1,64 @@
+{
+  "description": "ConsoleNotificationSpec is the desired console notification configuration.",
+  "type": "object",
+  "required": [
+    "text"
+  ],
+  "properties": {
+    "backgroundColor": {
+      "description": "backgroundColor is the color of the background for the notification as CSS data type color.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "color": {
+      "description": "color is the color of the text for the notification as CSS data type color.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "link": {
+      "description": "Represents a standard link that could be generated in HTML",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "text",
+        "href"
+      ],
+      "properties": {
+        "href": {
+          "description": "href is the absolute secure URL for the link (must use https)",
+          "type": "string",
+          "default": ""
+        },
+        "text": {
+          "description": "text is the display text for the link",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "location": {
+      "description": "location is the location of the notification in the console. Valid values are: \"BannerTop\", \"BannerBottom\", \"BannerTopBottom\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "text is the visible text of the notification.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

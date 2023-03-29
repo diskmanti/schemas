@@ -1,0 +1,21 @@
+{
+  "description": "HubSourceStatus is used to reflect the current state of applying the configuration to a default source",
+  "type": "object",
+  "properties": {
+    "message": {
+      "description": "message provides more information regarding failures",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "status indicates success or failure in applying the configuration",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

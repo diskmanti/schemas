@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "required": [
+    "osType",
+    "managedDisk",
+    "diskSizeGB"
+  ],
+  "properties": {
+    "cachingType": {
+      "description": "CachingType specifies the caching requirements. Possible values include: 'None', 'ReadOnly', 'ReadWrite'. Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is `None`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diskSettings": {
+      "description": "DiskSettings describe ephemeral disk settings for the os disk.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ephemeralStorageLocation": {
+          "description": "EphemeralStorageLocation enables ephemeral OS when set to 'Local'. Possible values include: 'Local'. See https://docs.microsoft.com/en-us/azure/virtual-machines/ephemeral-os-disks for full details. Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is that disks are saved to remote Azure storage.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "diskSizeGB": {
+      "description": "DiskSizeGB is the size in GB to assign to the data disk.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "managedDisk": {
+      "description": "OSDiskManagedDiskParameters is the parameters of a OSDisk managed disk.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "storageAccountType"
+      ],
+      "properties": {
+        "diskEncryptionSet": {
+          "description": "DiskEncryptionSetParameters is the disk encryption set properties",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "id": {
+              "description": "ID is the disk encryption set ID Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is: \"Default\".",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "storageAccountType": {
+          "description": "StorageAccountType is the storage account type to use. Possible values include \"Standard_LRS\", \"Premium_LRS\".",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "osType": {
+      "description": "OSType is the operating system type of the OS disk. Possible values include \"Linux\" and \"Windows\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

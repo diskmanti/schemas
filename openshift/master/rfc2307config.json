@@ -1,0 +1,102 @@
+{
+  "description": "RFC2307Config holds the necessary configuration options to define how an LDAP group sync interacts with an LDAP server using the RFC2307 schema",
+  "type": "object",
+  "required": [
+    "groupsQuery",
+    "groupUIDAttribute",
+    "groupNameAttributes",
+    "groupMembershipAttributes",
+    "usersQuery",
+    "userUIDAttribute",
+    "userNameAttributes",
+    "tolerateMemberNotFoundErrors",
+    "tolerateMemberOutOfScopeErrors"
+  ],
+  "properties": {
+    "groupMembershipAttributes": {
+      "description": "GroupMembershipAttributes defines which attributes on an LDAP group entry will be interpreted  as its members. The values contained in those attributes must be queryable by your UserUIDAttribute",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "groupNameAttributes": {
+      "description": "GroupNameAttributes defines which attributes on an LDAP group entry will be interpreted as its name to use for an OpenShift group",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "groupUIDAttribute": {
+      "description": "GroupUIDAttributes defines which attribute on an LDAP group entry will be interpreted as its unique identifier. (ldapGroupUID)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "groupsQuery": {
+      "description": "AllGroupsQuery holds the template for an LDAP query that returns group entries.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPQuery"
+    },
+    "tolerateMemberNotFoundErrors": {
+      "description": "TolerateMemberNotFoundErrors determines the behavior of the LDAP sync job when missing user entries are encountered. If 'true', an LDAP query for users that doesn't find any will be tolerated and an only and error will be logged. If 'false', the LDAP sync job will fail if a query for users doesn't find any. The default value is 'false'. Misconfigured LDAP sync jobs with this flag set to 'true' can cause group membership to be removed, so it is recommended to use this flag with caution.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "tolerateMemberOutOfScopeErrors": {
+      "description": "TolerateMemberOutOfScopeErrors determines the behavior of the LDAP sync job when out-of-scope user entries are encountered. If 'true', an LDAP query for a user that falls outside of the base DN given for the all user query will be tolerated and only an error will be logged. If 'false', the LDAP sync job will fail if a user query would search outside of the base DN specified by the all user query. Misconfigured LDAP sync jobs with this flag set to 'true' can result in groups missing users, so it is recommended to use this flag with caution.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "userNameAttributes": {
+      "description": "UserNameAttributes defines which attributes on an LDAP user entry will be used, in order, as its OpenShift user name. The first attribute with a non-empty value is used. This should match your PreferredUsername setting for your LDAPPasswordIdentityProvider",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "userUIDAttribute": {
+      "description": "UserUIDAttribute defines which attribute on an LDAP user entry will be interpreted as its unique identifier. It must correspond to values that will be found from the GroupMembershipAttributes",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "usersQuery": {
+      "description": "AllUsersQuery holds the template for an LDAP query that returns user entries.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPQuery"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

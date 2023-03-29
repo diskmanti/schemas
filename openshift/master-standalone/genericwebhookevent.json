@@ -1,0 +1,585 @@
+{
+  "description": "GenericWebHookEvent is the payload expected for a generic webhook post",
+  "type": "object",
+  "properties": {
+    "dockerStrategyOptions": {
+      "description": "DockerStrategyOptions contains extra strategy options for container image builds",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "buildArgs": {
+          "description": "Args contains any build arguments that are to be passed to Docker.  See https://docs.docker.com/engine/reference/builder/#/arg for more details",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "EnvVar represents an environment variable present in a Container.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                "type": "string",
+                "default": ""
+              },
+              "value": {
+                "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "valueFrom": {
+                "description": "EnvVarSource represents a source for the value of an EnvVar.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "configMapKeyRef": {
+                    "description": "Selects a key from a ConfigMap.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key to select.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the ConfigMap or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic"
+                  },
+                  "fieldRef": {
+                    "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "fieldPath"
+                    ],
+                    "properties": {
+                      "apiVersion": {
+                        "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "fieldPath": {
+                        "description": "Path of the field to select in the specified API version.",
+                        "type": "string",
+                        "default": ""
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic"
+                  },
+                  "resourceFieldRef": {
+                    "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "resource"
+                    ],
+                    "properties": {
+                      "containerName": {
+                        "description": "Container name: required for volumes, optional for env vars",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "divisor": {
+                        "oneOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          }
+                        ]
+                      },
+                      "resource": {
+                        "description": "Required: resource to select",
+                        "type": "string",
+                        "default": ""
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic"
+                  },
+                  "secretKeyRef": {
+                    "description": "SecretKeySelector selects a key of a Secret.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key of the secret to select from.  Must be a valid secret key.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the Secret or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "noCache": {
+          "description": "noCache overrides the docker-strategy noCache option in the build config",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "env": {
+      "description": "env contains additional environment variables you want to pass into a builder container. ValueFrom is not supported.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "EnvVar represents an environment variable present in a Container.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+            "type": "string",
+            "default": ""
+          },
+          "value": {
+            "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "valueFrom": {
+            "description": "EnvVarSource represents a source for the value of an EnvVar.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "configMapKeyRef": {
+                "description": "Selects a key from a ConfigMap.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "description": "The key to select.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "description": "Specify whether the ConfigMap or its key must be defined",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic"
+              },
+              "fieldRef": {
+                "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "fieldPath"
+                ],
+                "properties": {
+                  "apiVersion": {
+                    "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "fieldPath": {
+                    "description": "Path of the field to select in the specified API version.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "x-kubernetes-map-type": "atomic"
+              },
+              "resourceFieldRef": {
+                "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "resource"
+                ],
+                "properties": {
+                  "containerName": {
+                    "description": "Container name: required for volumes, optional for env vars",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "divisor": {
+                    "oneOf": [
+                      {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      {
+                        "type": [
+                          "number",
+                          "null"
+                        ]
+                      }
+                    ]
+                  },
+                  "resource": {
+                    "description": "Required: resource to select",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "x-kubernetes-map-type": "atomic"
+              },
+              "secretKeyRef": {
+                "description": "SecretKeySelector selects a key of a Secret.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "key"
+                ],
+                "properties": {
+                  "key": {
+                    "description": "The key of the secret to select from.  Must be a valid secret key.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "name": {
+                    "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "optional": {
+                    "description": "Specify whether the Secret or its key must be defined",
+                    "type": [
+                      "boolean",
+                      "null"
+                    ]
+                  }
+                },
+                "x-kubernetes-map-type": "atomic"
+              }
+            }
+          }
+        }
+      }
+    },
+    "git": {
+      "description": "GitInfo is the aggregated git information for a generic webhook post",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "uri",
+        "refs"
+      ],
+      "properties": {
+        "author": {
+          "description": "SourceControlUser defines the identity of a user of source control",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "email": {
+              "description": "email of the source control user",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "name of the source control user",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "commit": {
+          "description": "commit is the commit hash identifying a specific commit",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "committer": {
+          "description": "SourceControlUser defines the identity of a user of source control",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "email": {
+              "description": "email of the source control user",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "name": {
+              "description": "name of the source control user",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "httpProxy": {
+          "description": "httpProxy is a proxy used to reach the git repository over http",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "httpsProxy": {
+          "description": "httpsProxy is a proxy used to reach the git repository over https",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "message": {
+          "description": "message is the description of a specific commit",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "noProxy": {
+          "description": "noProxy is the list of domains for which the proxy should not be used",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ref": {
+          "description": "ref is the branch/tag/ref to build.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "refs": {
+          "description": "Refs is a list of GitRefs for the provided repo - generally sent when used from a post-receive hook. This field is optional and is used when sending multiple refs",
+          "type": "array",
+          "items": {
+            "description": "GitRefInfo is a single ref",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "uri"
+            ],
+            "properties": {
+              "author": {
+                "description": "SourceControlUser defines the identity of a user of source control",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "email of the source control user",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "name of the source control user",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "commit": {
+                "description": "commit is the commit hash identifying a specific commit",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "committer": {
+                "description": "SourceControlUser defines the identity of a user of source control",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "email": {
+                    "description": "email of the source control user",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "name": {
+                    "description": "name of the source control user",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "httpProxy": {
+                "description": "httpProxy is a proxy used to reach the git repository over http",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "httpsProxy": {
+                "description": "httpsProxy is a proxy used to reach the git repository over https",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "message": {
+                "description": "message is the description of a specific commit",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "noProxy": {
+                "description": "noProxy is the list of domains for which the proxy should not be used",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ref": {
+                "description": "ref is the branch/tag/ref to build.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "uri": {
+                "description": "uri points to the source that will be built. The structure of the source will depend on the type of build to run",
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "uri": {
+          "description": "uri points to the source that will be built. The structure of the source will depend on the type of build to run",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "type": {
+      "description": "type is the type of source repository",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

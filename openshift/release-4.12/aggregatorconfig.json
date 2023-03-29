@@ -1,0 +1,15 @@
+{
+  "description": "AggregatorConfig holds information required to make the aggregator function.",
+  "type": "object",
+  "required": [
+    "proxyClientInfo"
+  ],
+  "properties": {
+    "proxyClientInfo": {
+      "description": "ProxyClientInfo specifies the client cert/key to use when proxying to aggregated API servers",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.CertInfo"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

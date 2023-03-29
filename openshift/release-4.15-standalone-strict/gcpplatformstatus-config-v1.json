@@ -1,0 +1,28 @@
+{
+  "description": "GCPPlatformStatus holds the current status of the Google Cloud Platform infrastructure provider.",
+  "type": "object",
+  "required": [
+    "projectID",
+    "region"
+  ],
+  "properties": {
+    "projectID": {
+      "description": "resourceGroupName is the Project ID for new GCP resources created for the cluster.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "region": {
+      "description": "region holds the region for new GCP resources created for the cluster.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

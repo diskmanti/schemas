@@ -1,0 +1,30 @@
+{
+  "description": "AzureBootDiagnostics configures the boot diagnostics settings for the virtual machine. This allows you to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues.",
+  "type": "object",
+  "required": [
+    "storageAccountType"
+  ],
+  "properties": {
+    "customerManaged": {
+      "description": "CustomerManaged provides reference to the customer manager storage account.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureCustomerManagedBootDiagnostics"
+    },
+    "storageAccountType": {
+      "description": "StorageAccountType determines if the storage account for storing the diagnostics data should be provisioned by Azure (AzureManaged) or by the customer (CustomerManaged).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "storageAccountType",
+      "fields-to-discriminateBy": {
+        "customerManaged": "CustomerManaged"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

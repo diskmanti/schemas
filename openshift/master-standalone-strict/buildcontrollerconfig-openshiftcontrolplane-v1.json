@@ -1,0 +1,581 @@
+{
+  "type": "object",
+  "required": [
+    "imageTemplateFormat",
+    "buildDefaults",
+    "buildOverrides",
+    "additionalTrustedCA"
+  ],
+  "properties": {
+    "additionalTrustedCA": {
+      "description": "additionalTrustedCA is a path to a pem bundle file containing additional CAs that should be trusted for image pushes and pulls during builds.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "buildDefaults": {
+      "description": "BuildDefaultsConfig controls the default information for Builds\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "annotations": {
+          "description": "annotations are annotations that will be added to the build pod",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "env": {
+          "description": "env is a set of default environment variables that will be applied to the build if the specified variables do not exist on the build",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "EnvVar represents an environment variable present in a Container.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "Name of the environment variable. Must be a C_IDENTIFIER.",
+                "type": "string",
+                "default": ""
+              },
+              "value": {
+                "description": "Variable references $(VAR_NAME) are expanded using the previously defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. Double $$ are reduced to a single $, which allows for escaping the $(VAR_NAME) syntax: i.e. \"$$(VAR_NAME)\" will produce the string literal \"$(VAR_NAME)\". Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\".",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "valueFrom": {
+                "description": "EnvVarSource represents a source for the value of an EnvVar.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "configMapKeyRef": {
+                    "description": "Selects a key from a ConfigMap.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key to select.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the ConfigMap or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  },
+                  "fieldRef": {
+                    "description": "ObjectFieldSelector selects an APIVersioned field of an object.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "fieldPath"
+                    ],
+                    "properties": {
+                      "apiVersion": {
+                        "description": "Version of the schema the FieldPath is written in terms of, defaults to \"v1\".",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "fieldPath": {
+                        "description": "Path of the field to select in the specified API version.",
+                        "type": "string",
+                        "default": ""
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  },
+                  "resourceFieldRef": {
+                    "description": "ResourceFieldSelector represents container resources (cpu, memory) and their output format",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "resource"
+                    ],
+                    "properties": {
+                      "containerName": {
+                        "description": "Container name: required for volumes, optional for env vars",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "divisor": {
+                        "oneOf": [
+                          {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          {
+                            "type": [
+                              "number",
+                              "null"
+                            ]
+                          }
+                        ]
+                      },
+                      "resource": {
+                        "description": "Required: resource to select",
+                        "type": "string",
+                        "default": ""
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  },
+                  "secretKeyRef": {
+                    "description": "SecretKeySelector selects a key of a Secret.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key of the secret to select from.  Must be a valid secret key.",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "name": {
+                        "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the Secret or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "gitHTTPProxy": {
+          "description": "gitHTTPProxy is the location of the HTTPProxy for Git source",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitHTTPSProxy": {
+          "description": "gitHTTPSProxy is the location of the HTTPSProxy for Git source",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gitNoProxy": {
+          "description": "gitNoProxy is the list of domains for which the proxy should not be used",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "imageLabels": {
+          "description": "imageLabels is a list of labels that are applied to the resulting image. User can override a default label by providing a label with the same name in their Build/BuildConfig.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ImageLabel represents a label applied to the resulting image.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "name defines the name of the label. It must have non-zero length.",
+                "type": "string",
+                "default": ""
+              },
+              "value": {
+                "description": "value defines the literal value of the label.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nodeSelector": {
+          "description": "nodeSelector is a selector which must be true for the build pod to fit on a node",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "resources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container.\n\nThis is an alpha field and requires enabling the DynamicResourceAllocation feature gate.\n\nThis field is immutable.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string",
+                    "default": ""
+                  }
+                },
+                "additionalProperties": false
+              },
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                ]
+              }
+            },
+            "requests": {
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": [
+                "object",
+                "null"
+              ],
+              "additionalProperties": {
+                "oneOf": [
+                  {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  {
+                    "type": [
+                      "number",
+                      "null"
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "sourceStrategyDefaults": {
+          "description": "SourceStrategyDefaultsConfig contains values that apply to builds using the source strategy.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "incremental": {
+              "description": "incremental indicates if s2i build strategies should perform an incremental build or not",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "buildOverrides": {
+      "description": "BuildOverridesConfig controls override settings for builds\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "annotations": {
+          "description": "annotations are annotations that will be added to the build pod",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "forcePull": {
+          "description": "forcePull overrides, if set, the equivalent value in the builds, i.e. false disables force pull for all builds, true enables force pull for all builds, independently of what each build specifies itself",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "imageLabels": {
+          "description": "imageLabels is a list of labels that are applied to the resulting image. If user provided a label in their Build/BuildConfig with the same name as one in this list, the user's label will be overwritten.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ImageLabel represents a label applied to the resulting image.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "name defines the name of the label. It must have non-zero length.",
+                "type": "string",
+                "default": ""
+              },
+              "value": {
+                "description": "value defines the literal value of the label.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nodeSelector": {
+          "description": "nodeSelector is a selector which must be true for the build pod to fit on a node",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "tolerations": {
+          "description": "tolerations is a list of Tolerations that will override any existing tolerations set on a build pod.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "effect": {
+                "description": "Effect indicates the taint effect to match. Empty means match all taint effects. When specified, allowed values are NoSchedule, PreferNoSchedule and NoExecute.\n\nPossible enum values:\n - `\"NoExecute\"` Evict any already-running pods that do not tolerate the taint. Currently enforced by NodeController.\n - `\"NoSchedule\"` Do not allow new pods to schedule onto the node unless they tolerate the taint, but allow all pods submitted to Kubelet without going through the scheduler to start, and allow all already-running pods to continue running. Enforced by the scheduler.\n - `\"PreferNoSchedule\"` Like TaintEffectNoSchedule, but the scheduler tries not to schedule new pods onto the node, rather than prohibiting new pods from scheduling onto the node entirely. Enforced by the scheduler.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "NoExecute",
+                  "NoSchedule",
+                  "PreferNoSchedule"
+                ]
+              },
+              "key": {
+                "description": "Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "operator": {
+                "description": "Operator represents a key's relationship to the value. Valid operators are Exists and Equal. Defaults to Equal. Exists is equivalent to wildcard for value, so that a pod can tolerate all taints of a particular category.\n\nPossible enum values:\n - `\"Equal\"`\n - `\"Exists\"`",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "Equal",
+                  "Exists"
+                ]
+              },
+              "tolerationSeconds": {
+                "description": "TolerationSeconds represents the period of time the toleration (which must be of effect NoExecute, otherwise this field is ignored) tolerates the taint. By default, it is not set, which means tolerate the taint forever (do not evict). Zero and negative values will be treated as 0 (evict immediately) by the system.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "value": {
+                "description": "Value is the taint value the toleration matches to. If the operator is Exists, the value should be empty, otherwise just a regular string.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "imageTemplateFormat": {
+      "description": "ImageConfig holds the necessary configuration options for building image names for system components",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "format",
+        "latest"
+      ],
+      "properties": {
+        "format": {
+          "description": "Format is the format of the name to be built for the system component",
+          "type": "string",
+          "default": ""
+        },
+        "latest": {
+          "description": "Latest determines if the latest tag will be pulled from the registry",
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

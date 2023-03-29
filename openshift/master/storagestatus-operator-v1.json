@@ -1,0 +1,56 @@
+{
+  "description": "StorageStatus defines the observed status of the cluster storage operator.",
+  "type": "object",
+  "required": [
+    "readyReplicas"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorCondition"
+      }
+    },
+    "generations": {
+      "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GenerationStatus"
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "version": {
+      "description": "version is the level this availability applies to",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,73 @@
+{
+  "description": "Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "corsAllowedOrigins",
+    "auditConfig",
+    "storageConfig",
+    "admission",
+    "kubeClientConfig",
+    "oauthConfig"
+  ],
+  "properties": {
+    "admission": {
+      "description": "admissionConfig holds information about how to configure admission.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.AdmissionConfig"
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auditConfig": {
+      "description": "auditConfig describes how to configure audit information",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.AuditConfig"
+    },
+    "corsAllowedOrigins": {
+      "description": "corsAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeClientConfig": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.KubeClientConfig"
+    },
+    "oauthConfig": {
+      "description": "oauthConfig holds the necessary configuration options for OAuth authentication",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.osin.v1.OAuthConfig"
+    },
+    "servingInfo": {
+      "description": "servingInfo describes how to start serving",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.HTTPServingInfo"
+    },
+    "storageConfig": {
+      "description": "storageConfig contains information about how to use",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.EtcdStorageConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,206 @@
+{
+  "description": "MasterConfig holds the necessary configuration options for the OpenShift master\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "authConfig",
+    "aggregatorConfig",
+    "corsAllowedOrigins",
+    "apiLevels",
+    "masterPublicURL",
+    "controllers",
+    "admissionConfig",
+    "controllerConfig",
+    "etcdStorageConfig",
+    "etcdClientInfo",
+    "kubeletClientInfo",
+    "kubernetesMasterConfig",
+    "etcdConfig",
+    "oauthConfig",
+    "dnsConfig",
+    "serviceAccountConfig",
+    "masterClients",
+    "imageConfig",
+    "imagePolicyConfig",
+    "policyConfig",
+    "projectConfig",
+    "routingConfig",
+    "networkConfig",
+    "volumeConfig",
+    "jenkinsPipelineConfig",
+    "auditConfig"
+  ],
+  "properties": {
+    "admissionConfig": {
+      "description": "AdmissionConfig contains admission control plugin configuration.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AdmissionConfig"
+    },
+    "aggregatorConfig": {
+      "description": "AggregatorConfig has options for configuring the aggregator component of the API server.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AggregatorConfig"
+    },
+    "apiLevels": {
+      "description": "APILevels is a list of API levels that should be enabled on startup: v1 as examples",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auditConfig": {
+      "description": "AuditConfig holds information related to auditing capabilities.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.AuditConfig"
+    },
+    "authConfig": {
+      "description": "AuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterAuthConfig"
+    },
+    "controllerConfig": {
+      "description": "ControllerConfig holds configuration values for controllers",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ControllerConfig"
+    },
+    "controllers": {
+      "description": "Controllers is a list of the controllers that should be started. If set to \"none\", no controllers will start automatically. The default value is \"*\" which will start all controllers. When using \"*\", you may exclude controllers by prepending a \"-\" in front of their name. No other values are recognized at this time.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "corsAllowedOrigins": {
+      "description": "CORSAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "dnsConfig": {
+      "description": "DNSConfig, if present start the DNS server in this process",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.DNSConfig"
+    },
+    "etcdClientInfo": {
+      "description": "EtcdClientInfo contains information about how to connect to etcd",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdConnectionInfo"
+    },
+    "etcdConfig": {
+      "description": "EtcdConfig, if present start etcd in this process",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdConfig"
+    },
+    "etcdStorageConfig": {
+      "description": "EtcdStorageConfig contains information about how API resources are stored in Etcd. These values are only relevant when etcd is the backing store for the cluster.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.EtcdStorageConfig"
+    },
+    "imageConfig": {
+      "description": "ImageConfig holds options that describe how to build image names for system components",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ImageConfig"
+    },
+    "imagePolicyConfig": {
+      "description": "ImagePolicyConfig controls limits and behavior for importing images",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ImagePolicyConfig"
+    },
+    "jenkinsPipelineConfig": {
+      "description": "JenkinsPipelineConfig holds information about the default Jenkins template used for JenkinsPipeline build strategy.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.JenkinsPipelineConfig"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeletClientInfo": {
+      "description": "KubeletClientInfo contains information about how to connect to kubelets",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.KubeletConnectionInfo"
+    },
+    "kubernetesMasterConfig": {
+      "description": "KubernetesMasterConfig, if present start the kubernetes master in this process",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.KubernetesMasterConfig"
+    },
+    "masterClients": {
+      "description": "MasterClients holds all the client connection information for controllers and other system components",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterClients"
+    },
+    "masterPublicURL": {
+      "description": "MasterPublicURL is how clients can access the OpenShift API server",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "networkConfig": {
+      "description": "NetworkConfig to be passed to the compiled in network plugin",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterNetworkConfig"
+    },
+    "oauthConfig": {
+      "description": "OAuthConfig, if present start the /oauth endpoint in this process",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OAuthConfig"
+    },
+    "policyConfig": {
+      "description": "PolicyConfig holds information about where to locate critical pieces of bootstrapping policy",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.PolicyConfig"
+    },
+    "projectConfig": {
+      "description": "ProjectConfig holds information about project creation and defaults",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ProjectConfig"
+    },
+    "routingConfig": {
+      "description": "RoutingConfig holds information about routing and route generation",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RoutingConfig"
+    },
+    "serviceAccountConfig": {
+      "description": "ServiceAccountConfig holds options related to service accounts",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ServiceAccountConfig"
+    },
+    "servingInfo": {
+      "description": "ServingInfo describes how to start serving",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.HTTPServingInfo"
+    },
+    "volumeConfig": {
+      "description": "MasterVolumeConfig contains options for configuring volume plugins in the master node.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.MasterVolumeConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

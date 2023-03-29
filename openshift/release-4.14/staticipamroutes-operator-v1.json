@@ -1,0 +1,25 @@
+{
+  "description": "StaticIPAMRoutes provides Destination/Gateway pairs for static IPAM routes",
+  "type": "object",
+  "required": [
+    "destination"
+  ],
+  "properties": {
+    "destination": {
+      "description": "Destination points the IP route destination",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "gateway": {
+      "description": "Gateway is the route's next-hop IP address If unset, a default gateway is assumed (as determined by the CNI plugin).",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

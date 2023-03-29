@@ -1,0 +1,36 @@
+{
+  "description": "ExternalIPPolicy configures exactly which IPs are allowed for the ExternalIP field in a Service. If the zero struct is supplied, then none are permitted. The policy controller always allows automatically assigned external IPs.",
+  "type": "object",
+  "properties": {
+    "allowedCIDRs": {
+      "description": "allowedCIDRs is the list of allowed CIDRs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "rejectedCIDRs": {
+      "description": "rejectedCIDRs is the list of disallowed CIDRs. These take precedence over allowedCIDRs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

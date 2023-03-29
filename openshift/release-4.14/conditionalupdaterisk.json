@@ -1,0 +1,49 @@
+{
+  "description": "ConditionalUpdateRisk represents a reason and cluster-state for not recommending a conditional update.",
+  "type": "object",
+  "required": [
+    "url",
+    "name",
+    "message",
+    "matchingRules"
+  ],
+  "properties": {
+    "matchingRules": {
+      "description": "matchingRules is a slice of conditions for deciding which clusters match the risk and which do not. The slice is ordered by decreasing precedence. The cluster-version operator will walk the slice in order, and stop after the first it can successfully evaluate. If no condition can be successfully evaluated, the update will not be recommended.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterCondition"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "message": {
+      "description": "message provides additional information about the risk of updating, in the event that matchingRules match the cluster state. This is only to be consumed by humans. It may contain Line Feed characters (U+000A), which should be rendered as new lines.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "name is the CamelCase reason for not recommending a conditional update, in the event that matchingRules match the cluster state.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "url contains information about this risk.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

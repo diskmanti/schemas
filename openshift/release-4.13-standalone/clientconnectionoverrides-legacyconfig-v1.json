@@ -1,0 +1,47 @@
+{
+  "description": "ClientConnectionOverrides are a set of overrides to the default client connection settings.",
+  "type": "object",
+  "required": [
+    "acceptContentTypes",
+    "contentType",
+    "qps",
+    "burst"
+  ],
+  "properties": {
+    "acceptContentTypes": {
+      "description": "AcceptContentTypes defines the Accept header sent by clients when connecting to a server, overriding the default value of 'application/json'. This field will control all connections to the server used by a particular client.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "burst": {
+      "description": "Burst allows extra queries to accumulate when a client is exceeding its rate.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "contentType": {
+      "description": "ContentType is the content type used when sending data to the server from this client.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "qps": {
+      "description": "QPS controls the number of queries per second allowed for this connection.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "float",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,35 @@
+{
+  "description": "MasterAuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
+  "type": "object",
+  "required": [
+    "requestHeader",
+    "webhookTokenAuthenticators",
+    "oauthMetadataFile"
+  ],
+  "properties": {
+    "oauthMetadataFile": {
+      "description": "OAuthMetadataFile is a path to a file containing the discovery endpoint for OAuth 2.0 Authorization Server Metadata for an external OAuth server. See IETF Draft: // https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 This option is mutually exclusive with OAuthConfig",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "requestHeader": {
+      "description": "RequestHeader holds options for setting up a front proxy against the API.  It is optional.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RequestHeaderAuthenticationOptions"
+    },
+    "webhookTokenAuthenticators": {
+      "description": "WebhookTokenAuthnConfig, if present configures remote token reviewers",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.WebhookTokenAuthenticator"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

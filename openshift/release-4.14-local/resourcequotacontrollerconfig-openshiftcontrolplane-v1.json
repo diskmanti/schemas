@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": [
+    "concurrentSyncs",
+    "syncPeriod",
+    "minResyncPeriod"
+  ],
+  "properties": {
+    "concurrentSyncs": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "minResyncPeriod": {
+      "default": 0,
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    "syncPeriod": {
+      "default": 0,
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

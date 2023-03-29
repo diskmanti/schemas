@@ -1,0 +1,23 @@
+{
+  "description": "ProbeHandler defines a specific action that should be taken in a probe. One and only one of the fields must be specified.",
+  "type": "object",
+  "properties": {
+    "exec": {
+      "description": "Exec specifies the action to take.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.api.core.v1.ExecAction"
+    },
+    "grpc": {
+      "description": "GRPC specifies an action involving a GRPC port. This is a beta field and requires enabling GRPCContainerProbe feature gate.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.api.core.v1.GRPCAction"
+    },
+    "httpGet": {
+      "description": "HTTPGet specifies the http request to perform.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.api.core.v1.HTTPGetAction"
+    },
+    "tcpSocket": {
+      "description": "TCPSocket specifies an action involving a TCP port.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.api.core.v1.TCPSocketAction"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

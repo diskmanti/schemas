@@ -1,0 +1,48 @@
+{
+  "description": "Release represents an OpenShift release image and associated metadata.",
+  "type": "object",
+  "required": [
+    "version",
+    "image"
+  ],
+  "properties": {
+    "channels": {
+      "description": "channels is the set of Cincinnati channels to which the release currently belongs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "image": {
+      "description": "image is a container image location that contains the update. When this field is part of spec, image is optional if version is specified and the availableUpdates field contains a matching version.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "url contains information about this release. This URL is set by the 'url' metadata property on a release or the metadata returned by the update API and should be displayed as a link in user interfaces. The URL field may not be set for test or nightly releases.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "version is a semantic versioning identifying the update version. When this field is part of spec, version is optional if image is specified.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

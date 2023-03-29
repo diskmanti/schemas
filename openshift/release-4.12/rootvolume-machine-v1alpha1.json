@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "availabilityZone": {
+      "description": "availabilityZone specifies the Cinder availability where the root volume will be created.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "deviceType": {
+      "description": "Deprecated: deviceType will be silently ignored. There is no replacement.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diskSize": {
+      "description": "diskSize specifies the size, in GB, of the created root volume.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "sourceType": {
+      "description": "Deprecated: sourceType will be silently ignored. There is no replacement.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceUUID": {
+      "description": "sourceUUID specifies the UUID of a glance image used to populate the root volume. Deprecated: set image in the platform spec instead. This will be ignored if image is set in the platform spec.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volumeType": {
+      "description": "volumeType specifies a volume type to use when creating the root volume. If not specified the default volume type will be used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

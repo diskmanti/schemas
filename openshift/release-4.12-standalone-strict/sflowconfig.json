@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "collectors": {
+      "description": "sFlowCollectors is list of strings formatted as ip:port with a maximum of ten items",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

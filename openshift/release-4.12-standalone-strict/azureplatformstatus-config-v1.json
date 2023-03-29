@@ -1,0 +1,40 @@
+{
+  "description": "AzurePlatformStatus holds the current status of the Azure infrastructure provider.",
+  "type": "object",
+  "required": [
+    "resourceGroupName"
+  ],
+  "properties": {
+    "armEndpoint": {
+      "description": "armEndpoint specifies a URL to use for resource management in non-soverign clouds such as Azure Stack.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cloudName": {
+      "description": "cloudName is the name of the Azure cloud environment which can be used to configure the Azure SDK with the appropriate Azure API endpoints. If empty, the value is equal to `AzurePublicCloud`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "networkResourceGroupName": {
+      "description": "networkResourceGroupName is the Resource Group for network resources like the Virtual Network and Subnets used by the cluster. If empty, the value is same as ResourceGroupName.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resourceGroupName": {
+      "description": "resourceGroupName is the Resource Group for new Azure resources created for the cluster.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

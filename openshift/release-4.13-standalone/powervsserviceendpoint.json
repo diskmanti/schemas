@@ -1,0 +1,27 @@
+{
+  "description": "PowervsServiceEndpoint stores the configuration of a custom url to override existing defaults of PowerVS Services.",
+  "type": "object",
+  "required": [
+    "name",
+    "url"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of the Power VS service. Few of the services are IAM - https://cloud.ibm.com/apidocs/iam-identity-token-api ResourceController - https://cloud.ibm.com/apidocs/resource-controller/resource-controller Power Cloud - https://cloud.ibm.com/apidocs/power-cloud",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

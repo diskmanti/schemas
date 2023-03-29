@@ -1,0 +1,17 @@
+{
+  "description": "MasterVolumeConfig contains options for configuring volume plugins in the master node.",
+  "type": "object",
+  "required": [
+    "dynamicProvisioningEnabled"
+  ],
+  "properties": {
+    "dynamicProvisioningEnabled": {
+      "description": "DynamicProvisioningEnabled is a boolean that toggles dynamic provisioning off when false, defaults to true",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "AzureBootDiagnostics configures the boot diagnostics settings for the virtual machine. This allows you to configure capturing serial output from the virtual machine on boot. This is useful for debugging software based launch issues.",
+  "type": "object",
+  "required": [
+    "storageAccountType"
+  ],
+  "properties": {
+    "customerManaged": {
+      "description": "AzureCustomerManagedBootDiagnostics provides reference to a customer managed storage account.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "storageAccountURI"
+      ],
+      "properties": {
+        "storageAccountURI": {
+          "description": "StorageAccountURI is the URI of the customer managed storage account. The URI typically will be `https://<mystorageaccountname>.blob.core.windows.net/` but may differ if you are using Azure DNS zone endpoints. You can find the correct endpoint by looking for the Blob Primary Endpoint in the endpoints tab in the Azure console.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "storageAccountType": {
+      "description": "StorageAccountType determines if the storage account for storing the diagnostics data should be provisioned by Azure (AzureManaged) or by the customer (CustomerManaged).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "storageAccountType",
+      "fields-to-discriminateBy": {
+        "customerManaged": "CustomerManaged"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

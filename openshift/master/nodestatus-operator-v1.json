@@ -1,0 +1,85 @@
+{
+  "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+  "type": "object",
+  "required": [
+    "nodeName",
+    "currentRevision"
+  ],
+  "properties": {
+    "currentRevision": {
+      "description": "currentRevision is the generation of the most recently successful deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "lastFailedCount": {
+      "description": "lastFailedCount is how often the installer pod of the last failed revision failed.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "lastFailedReason": {
+      "description": "lastFailedReason is a machine readable failure reason string.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastFailedRevision": {
+      "description": "lastFailedRevision is the generation of the deployment we tried and failed to deploy.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "lastFailedRevisionErrors": {
+      "description": "lastFailedRevisionErrors is a list of human readable errors during the failed deployment referenced in lastFailedRevision.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "lastFailedTime": {
+      "description": "lastFailedTime is the time the last failed revision failed the last time.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "lastFallbackCount": {
+      "description": "lastFallbackCount is how often a fallback to a previous revision happened.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "nodeName": {
+      "description": "nodeName is the name of the node",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targetRevision": {
+      "description": "targetRevision is the generation of the deployment we're trying to apply",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

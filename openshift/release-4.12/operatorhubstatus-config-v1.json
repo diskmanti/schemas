@@ -1,0 +1,18 @@
+{
+  "description": "OperatorHubStatus defines the observed state of OperatorHub. The current state of the default hub sources will always be reflected here.",
+  "type": "object",
+  "properties": {
+    "sources": {
+      "description": "sources encapsulates the result of applying the configuration for each hub source",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.HubSourceStatus"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

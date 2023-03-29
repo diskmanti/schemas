@@ -1,0 +1,14 @@
+{
+  "description": "DelegatedAuthentication allows authentication to be disabled.",
+  "type": "object",
+  "properties": {
+    "disabled": {
+      "description": "disabled indicates that authentication should be disabled.  By default it will use delegated authentication.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,28 @@
+{
+  "description": "ProxyConfig defines what proxies to use for an operation",
+  "type": "object",
+  "properties": {
+    "httpProxy": {
+      "description": "httpProxy is a proxy used to reach the git repository over http",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpsProxy": {
+      "description": "httpsProxy is a proxy used to reach the git repository over https",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy is the list of domains for which the proxy should not be used",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

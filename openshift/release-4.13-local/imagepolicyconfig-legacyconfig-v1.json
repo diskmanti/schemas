@@ -1,0 +1,80 @@
+{
+  "description": "ImagePolicyConfig holds the necessary configuration options for limits and behavior for importing images",
+  "type": "object",
+  "required": [
+    "maxImagesBulkImportedPerRepository",
+    "disableScheduledImport",
+    "scheduledImageImportMinimumIntervalSeconds",
+    "maxScheduledImageImportsPerMinute"
+  ],
+  "properties": {
+    "additionalTrustedCA": {
+      "description": "AdditionalTrustedCA is a path to a pem bundle file containing additional CAs that should be trusted during imagestream import.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "allowedRegistriesForImport": {
+      "description": "AllowedRegistriesForImport limits the container image registries that normal users may import images from. Set this list to the registries that you trust to contain valid Docker images and that you want applications to be able to import from. Users with permission to create Images or ImageStreamMappings via the API are not affected by this policy - typically only administrators or system integrations will have those permissions.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.RegistryLocation"
+      }
+    },
+    "disableScheduledImport": {
+      "description": "DisableScheduledImport allows scheduled background import of images to be disabled.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "externalRegistryHostname": {
+      "description": "ExternalRegistryHostname sets the hostname for the default external image registry. The external hostname should be set only when the image registry is exposed externally. The value is used in 'publicDockerImageRepository' field in ImageStreams. The value must be in \"hostname[:port]\" format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "internalRegistryHostname": {
+      "description": "InternalRegistryHostname sets the hostname for the default internal image registry. The value must be in \"hostname[:port]\" format. For backward compatibility, users can still use OPENSHIFT_DEFAULT_REGISTRY environment variable but this setting overrides the environment variable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxImagesBulkImportedPerRepository": {
+      "description": "MaxImagesBulkImportedPerRepository controls the number of images that are imported when a user does a bulk import of a container repository. This number defaults to 50 to prevent users from importing large numbers of images accidentally. Set -1 for no limit.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "maxScheduledImageImportsPerMinute": {
+      "description": "MaxScheduledImageImportsPerMinute is the maximum number of scheduled image streams that will be imported in the background per minute. The default value is 60. Set to -1 for unlimited.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "scheduledImageImportMinimumIntervalSeconds": {
+      "description": "ScheduledImageImportMinimumIntervalSeconds is the minimum number of seconds that can elapse between when image streams scheduled for background import are checked against the upstream repository. The default value is 15 minutes.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

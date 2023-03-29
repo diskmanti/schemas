@@ -1,0 +1,34 @@
+name: cron
+on:
+  workflow_dispatch:
+    inputs:
+      prefix:
+        description: 'Prefix to regenerate'
+        required: true
+        default: master
+  schedule:
+    - cron: "10 10 */28 * *"
+jobs:
+  gen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      DEFAULT_PREFIX: master
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      # Overide PREFIX if run manualy
+      - name: set PREFIX
+        run: echo "PREFIX=${{ github.event.input.prefix || env.DEFAULT_PREFIX }}"
+          >> $GITHUB_ENV
+      - name: delete folders to regenerate
+        run: "rm -rf ${{ env.PREFIX}}"
+      - name: generate
+        run: make gen
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Adding new schemas
+          commit_user_name: diskmanti
+          commit_user_email: diskmanti@yahoo.co.uk
+          commit_author: diskmanti <diskmanti@yahoo.co.uk>

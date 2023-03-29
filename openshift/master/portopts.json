@@ -1,0 +1,151 @@
+{
+  "type": "object",
+  "required": [
+    "networkID"
+  ],
+  "properties": {
+    "adminStateUp": {
+      "description": "adminStateUp sets the administrative state of the created port to up (true), or down (false).",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "allowedAddressPairs": {
+      "description": "allowedAddressPairs specifies a set of allowed address pairs to add to the port.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.AddressPair"
+      }
+    },
+    "description": {
+      "description": "description specifies the description of the created port.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fixedIPs": {
+      "description": "fixedIPs specifies a set of fixed IPs to assign to the port. They must all be valid for the port's network.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.FixedIPs"
+      }
+    },
+    "hostID": {
+      "description": "The ID of the host where the port is allocated. Do not use this field: it cannot be used correctly. Deprecated: hostID is silently ignored. It will be removed with no replacement.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "macAddress": {
+      "description": "macAddress specifies the MAC address of the created port.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nameSuffix": {
+      "description": "If nameSuffix is specified the created port will be named <machine name>-<nameSuffix>. If not specified the port will be named <machine-name>-<index of this port>.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "networkID": {
+      "description": "networkID is the ID of the network the port will be created in. It is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "portSecurity": {
+      "description": "enable or disable security on a given port incompatible with securityGroups and allowedAddressPairs",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "profile": {
+      "description": "A dictionary that enables the application running on the specified host to pass and receive virtual network interface (VIF) port-specific information to the plug-in.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "projectID": {
+      "description": "projectID specifies the project ID of the created port. Note that this requires OpenShift to have administrative permissions, which is typically not the case. Use of this field is not recommended.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "securityGroups": {
+      "description": "securityGroups specifies a set of security group UUIDs to use instead of the machine's default security groups. The default security groups will be used if this is left empty or not specified.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tags": {
+      "description": "tags species a set of tags to add to the port.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tenantID": {
+      "description": "tenantID specifies the tenant ID of the created port. Note that this requires OpenShift to have administrative permissions, which is typically not the case. Use of this field is not recommended. Deprecated: use projectID instead. It will be ignored if projectID is set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "trunk": {
+      "description": "Enables and disables trunk at port level. If not provided, openStackMachine.Spec.Trunk is inherited.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "vnicType": {
+      "description": "The virtual network interface card (vNIC) type that is bound to the neutron port.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "ConsoleProviders defines a list of optional additional providers of functionality to the console.",
+  "type": "object",
+  "properties": {
+    "statuspage": {
+      "description": "statuspage contains ID for statuspage.io page that provides status info about.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.StatuspageProvider"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

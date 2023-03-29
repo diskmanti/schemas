@@ -1,0 +1,91 @@
+{
+  "description": "DNSZoneStatus is the status of a record within a specific zone.",
+  "type": "object",
+  "required": [
+    "dnsZone"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions are any conditions associated with the record in the zone.\n\nIf publishing the record succeeds, the \"Published\" condition will be set with status \"True\" and upon failure it will be set to \"False\" along with the reason and message describing the cause of the failure.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "DNSZoneCondition is just the standard condition fields.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "type",
+          "status"
+        ],
+        "properties": {
+          "lastTransitionTime": {
+            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "message": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "default": ""
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dnsZone": {
+      "description": "DNSZone is used to define a DNS hosted zone. A zone can be identified by an ID or tags.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "id": {
+          "description": "id is the identifier that can be used to find the DNS hosted zone.\n\non AWS zone can be fetched using `ID` as id in [1] on Azure zone can be fetched using `ID` as a pre-determined name in [2], on GCP zone can be fetched using `ID` as a pre-determined name in [3].\n\n[1]: https://docs.aws.amazon.com/cli/latest/reference/route53/get-hosted-zone.html#options [2]: https://docs.microsoft.com/en-us/cli/azure/network/dns/zone?view=azure-cli-latest#az-network-dns-zone-show [3]: https://cloud.google.com/dns/docs/reference/v1/managedZones/get",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tags": {
+          "description": "tags can be used to query the DNS hosted zone.\n\non AWS, resourcegroupstaggingapi [1] can be used to fetch a zone using `Tags` as tag-filters,\n\n[1]: https://docs.aws.amazon.com/cli/latest/reference/resourcegroupstaggingapi/get-resources.html#options",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

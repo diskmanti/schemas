@@ -1,0 +1,15 @@
+{
+  "description": "SourceStrategyDefaultsConfig contains values that apply to builds using the source strategy.",
+  "type": "object",
+  "properties": {
+    "incremental": {
+      "description": "incremental indicates if s2i build strategies should perform an incremental build or not",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

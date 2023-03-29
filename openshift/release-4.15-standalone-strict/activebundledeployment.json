@@ -1,0 +1,19 @@
+{
+  "description": "ActiveBundleDeployment references a BundleDeployment resource.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the metadata.name of the referenced BundleDeployment object.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

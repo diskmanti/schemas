@@ -1,0 +1,23 @@
+{
+  "description": "MasterClients holds references to `.kubeconfig` files that qualify master clients for OpenShift and Kubernetes",
+  "type": "object",
+  "required": [
+    "openshiftLoopbackKubeConfig",
+    "openshiftLoopbackClientConnectionOverrides"
+  ],
+  "properties": {
+    "openshiftLoopbackClientConnectionOverrides": {
+      "description": "OpenShiftLoopbackClientConnectionOverrides specifies client overrides for system components to loop back to this master.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.ClientConnectionOverrides"
+    },
+    "openshiftLoopbackKubeConfig": {
+      "description": "OpenShiftLoopbackKubeConfig is a .kubeconfig filename for system components to loopback to this master",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

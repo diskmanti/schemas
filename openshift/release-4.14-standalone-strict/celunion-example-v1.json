@@ -1,0 +1,38 @@
+{
+  "description": "CELUnion demonstrates how to use a discriminated union and how to validate it using CEL.",
+  "type": "object",
+  "properties": {
+    "optionalMember": {
+      "description": "optionalMember is a union member that is optional.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requiredMember": {
+      "description": "requiredMember is a union member that is required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "type determines which of the union members should be populated.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "optionalMember": "OptionalMember",
+        "requiredMember": "RequiredMember"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

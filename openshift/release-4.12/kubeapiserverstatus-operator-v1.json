@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "required": [
+    "readyReplicas"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.OperatorCondition"
+      }
+    },
+    "generations": {
+      "description": "generations are used to determine when an item needs to be reconciled or has changed in a way that needs a reaction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GenerationStatus"
+      }
+    },
+    "latestAvailableRevision": {
+      "description": "latestAvailableRevision is the deploymentID of the most recent deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "latestAvailableRevisionReason": {
+      "description": "latestAvailableRevisionReason describe the detailed reason for the most recent deployment",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "nodeStatuses": {
+      "description": "nodeStatuses track the deployment values and errors across individual nodes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.NodeStatus"
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "readyReplicas": {
+      "description": "readyReplicas indicates how many replicas are ready and at the desired state",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "serviceAccountIssuers": {
+      "description": "serviceAccountIssuers tracks history of used service account issuers. The item without expiration time represents the currently used service account issuer. The other items represents service account issuers that were used previously and are still being trusted. The default expiration for the items is set by the platform and it defaults to 24h. see: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#service-account-token-volume-projection",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ServiceAccountIssuerStatus"
+      }
+    },
+    "version": {
+      "description": "version is the level this availability applies to",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

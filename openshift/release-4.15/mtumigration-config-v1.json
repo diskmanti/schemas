@@ -1,0 +1,15 @@
+{
+  "description": "MTUMigration contains infomation about MTU migration.",
+  "type": "object",
+  "properties": {
+    "machine": {
+      "description": "Machine contains MTU migration configuration for the machine's uplink.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.MTUMigrationValues"
+    },
+    "network": {
+      "description": "Network contains MTU migration configuration for the default network.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.MTUMigrationValues"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

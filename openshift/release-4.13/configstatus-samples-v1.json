@@ -1,0 +1,95 @@
+{
+  "description": "ConfigStatus contains the actual configuration in effect, as well as various details that describe the state of the Samples Operator.",
+  "type": "object",
+  "properties": {
+    "architectures": {
+      "description": "architectures determine which hardware architecture(s) to install, where x86_64 and ppc64le are the supported choices.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "conditions": {
+      "description": "conditions represents the available maintenance status of the sample imagestreams and templates.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.samples.v1.ConfigCondition"
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "managementState": {
+      "description": "managementState reflects the current operational status of the on/off switch for the operator.  This operator compares the ManagementState as part of determining that we are turning the operator back on (i.e. \"Managed\") when it was previously \"Unmanaged\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "samplesRegistry": {
+      "description": "samplesRegistry allows for the specification of which registry is accessed by the ImageStreams for their image content.  Defaults on the content in https://github.com/openshift/library that are pulled into this github repository, but based on our pulling only ocp content it typically defaults to registry.redhat.io.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "skippedImagestreams": {
+      "description": "skippedImagestreams specifies names of image streams that should NOT be created/updated.  Admins can use this to allow them to delete content they don\u2019t want.  They will still have to manually delete the content but the operator will not recreate(or update) anything listed here.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "skippedTemplates": {
+      "description": "skippedTemplates specifies names of templates that should NOT be created/updated.  Admins can use this to allow them to delete content they don\u2019t want.  They will still have to manually delete the content but the operator will not recreate(or update) anything listed here.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "version": {
+      "description": "version is the value of the operator's payload based version indicator when it was last successfully processed",
+      "type": [
+        "string",
+        "null"
+      ],
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

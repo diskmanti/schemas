@@ -1,0 +1,124 @@
+{
+  "description": "Endpoint is the Schema for the endpoints API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "EndpointSpec defines the desired state of Endpoint",
+      "properties": {
+        "annotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Annotations specifies the annotations which should be added to the Endpoint's Ingress or OpenShift Route.",
+          "type": "object"
+        },
+        "appURL": {
+          "description": "AppURL specifies a custom hostname to be used for the Mendix App. If left empty, a domain will be automatically generated based on the Endpoint CR name and DefaultDomain.",
+          "type": "string"
+        },
+        "defaultDomain": {
+          "description": "DefaultDomain will be used to generate an AppURL if no AppURL is provided. It's not used when the AppURL is not empty. It's can be left blank for OpenShift - in that case, the default OpenShift apps domain will be used.",
+          "type": "string"
+        },
+        "ingressClassName": {
+          "description": "IngressClassName ingresses class name. Based on OperatorConfiguration CRD and MendixApp CRD. Works only with Type == EndpointTypeIngress.",
+          "type": "string"
+        },
+        "ingressPath": {
+          "description": "IngressPath is path of ingress. Based on OperatorConfiguration CRD and MendixApp CRD.",
+          "type": "string"
+        },
+        "ingressPathType": {
+          "description": "IngressPathType is pathType of ingress. Based on OperatorConfiguration CRD and MendixApp CRD.",
+          "type": "string"
+        },
+        "serviceAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "ServiceAnnotations annotations for the service. Supports templates.",
+          "type": "object"
+        },
+        "servicePorts": {
+          "description": "ServicePorts opens specified ports in service with target port \"mendix-app\". If empty uses 8080 port.",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "serviceType": {
+          "description": "ServiceType is service type. By default it equals to \"ClusterIP\". Also supports \"LoadBalancer\".",
+          "type": "string"
+        },
+        "tls": {
+          "description": "TLS configures the endpoint's TLS.",
+          "properties": {
+            "certificate": {
+              "description": "Certificate specifies the TLS encryption certificate value in plaintext PEM format. Requires Key to be provided as well. Cannot be used together with SecretName.",
+              "type": "string"
+            },
+            "enableTLS": {
+              "description": "EnableTLS specifies if TLS should be enabled.",
+              "type": "boolean"
+            },
+            "key": {
+              "description": "Key specifies the TLS encryption private key value in plaintext PEM format. Requires Certificate to be provided as well. Cannot be used together with SecretName.",
+              "type": "string"
+            },
+            "secretName": {
+              "description": "SecretName specifies the name of the secret containing TLS keys. Can be left empty to use the default secret, or to provide the secret through Key and Certificate.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "enableTLS"
+          ],
+          "type": "object",
+          "additionalProperties": false
+        },
+        "type": {
+          "description": "Type specifies the Endpoint type. TODO: omitempty is used to make this field non-optional for compatibility with previous versions of the Operator.",
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "EndpointStatus defines the observed state of Endpoint",
+      "properties": {
+        "appURL": {
+          "type": "string"
+        },
+        "state": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

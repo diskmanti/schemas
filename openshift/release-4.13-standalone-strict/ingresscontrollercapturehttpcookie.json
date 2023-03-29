@@ -1,0 +1,52 @@
+{
+  "description": "IngressControllerCaptureHTTPCookie describes an HTTP cookie that should be captured.",
+  "type": "object",
+  "required": [
+    "maxLength"
+  ],
+  "properties": {
+    "matchType": {
+      "description": "matchType specifies the type of match to be performed on the cookie name.  Allowed values are \"Exact\" for an exact string match and \"Prefix\" for a string prefix match.  If \"Exact\" is specified, a name must be specified in the name field.  If \"Prefix\" is provided, a prefix must be specified in the namePrefix field.  For example, specifying matchType \"Prefix\" and namePrefix \"foo\" will capture a cookie named \"foo\" or \"foobar\" but not one named \"bar\".  The first matching cookie is captured.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxLength": {
+      "description": "maxLength specifies a maximum length of the string that will be logged, which includes the cookie name, cookie value, and one-character delimiter.  If the log entry exceeds this length, the value will be truncated in the log message.  Note that the ingress controller may impose a separate bound on the total length of HTTP headers in a request.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "name": {
+      "description": "name specifies a cookie name.  Its value must be a valid HTTP cookie name as defined in RFC 6265 section 4.1.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namePrefix": {
+      "description": "namePrefix specifies a cookie name prefix.  Its value must be a valid HTTP cookie name as defined in RFC 6265 section 4.1.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "matchType",
+      "fields-to-discriminateBy": {
+        "name": "Name",
+        "namePrefix": "NamePrefix"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

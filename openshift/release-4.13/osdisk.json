@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "required": [
+    "osType",
+    "managedDisk",
+    "diskSizeGB"
+  ],
+  "properties": {
+    "cachingType": {
+      "description": "CachingType specifies the caching requirements. Possible values include: 'None', 'ReadOnly', 'ReadWrite'. Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is `None`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "diskSettings": {
+      "description": "DiskSettings describe ephemeral disk settings for the os disk.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DiskSettings"
+    },
+    "diskSizeGB": {
+      "description": "DiskSizeGB is the size in GB to assign to the data disk.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "managedDisk": {
+      "description": "ManagedDisk specifies the Managed Disk parameters for the OS disk.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.OSDiskManagedDiskParameters"
+    },
+    "osType": {
+      "description": "OSType is the operating system type of the OS disk. Possible values include \"Linux\" and \"Windows\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

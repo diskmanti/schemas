@@ -1,0 +1,64 @@
+{
+  "description": "ConsolePluginBackend holds information about the endpoint which serves the console's plugin",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "service": {
+      "description": "ConsolePluginService holds information on Service that is serving console dynamic plugin assets.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name",
+        "namespace",
+        "port"
+      ],
+      "properties": {
+        "basePath": {
+          "description": "basePath is the path to the plugin's assets. The primary asset it the manifest file called `plugin-manifest.json`, which is a JSON document that contains metadata about the plugin and the extensions.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        },
+        "name": {
+          "description": "name of Service that is serving the plugin assets.",
+          "type": "string",
+          "default": ""
+        },
+        "namespace": {
+          "description": "namespace of Service that is serving the plugin assets.",
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "description": "port on which the Service that is serving the plugin is listening to.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "type": {
+      "description": "type is the backend type which servers the console's plugin. Currently only \"Service\" is supported.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "service": "Service"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

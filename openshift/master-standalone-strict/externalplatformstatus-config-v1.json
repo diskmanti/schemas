@@ -1,0 +1,6 @@
+{
+  "description": "ExternalPlatformStatus holds the current status of the generic External infrastructure provider.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "additionalProperties": false
+}

@@ -1,0 +1,52 @@
+{
+  "description": "StableConfigTypeSpec is the desired state",
+  "type": "object",
+  "required": [
+    "immutableField"
+  ],
+  "properties": {
+    "celUnion": {
+      "description": "celUnion demonstrates how to validate a discrminated union using CEL",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.CELUnion"
+    },
+    "coolNewField": {
+      "description": "coolNewField is a field that is for tech preview only.  On normal clusters this shouldn't be present",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "evolvingUnion": {
+      "description": "evolvingUnion demonstrates how to phase in new values into discriminated union",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1.EvolvingUnion"
+    },
+    "immutableField": {
+      "description": "immutableField is a field that is immutable once the object has been created. It is required at all times.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "optionalImmutableField": {
+      "description": "optionalImmutableField is a field that is immutable once set. It is optional but may not be changed once set.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "stableField": {
+      "description": "stableField is a field that is present on default clusters and on tech preview clusters\n\nIf empty, the platform will choose a good default, which may change over time without notice.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Conditions summarize the status of the check",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.PodNetworkConnectivityCheckCondition"
+      },
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "failures": {
+      "description": "Failures contains logs of unsuccessful check actions",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.LogEntry"
+      }
+    },
+    "outages": {
+      "description": "Outages contains logs of time periods of outages",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.OutageEntry"
+      }
+    },
+    "successes": {
+      "description": "Successes contains logs successful check actions",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operatorcontrolplane.v1alpha1.LogEntry"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

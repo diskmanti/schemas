@@ -1,0 +1,11 @@
+{
+  "description": "IngressControllerLogging describes what should be logged where.",
+  "type": "object",
+  "properties": {
+    "access": {
+      "description": "access describes how the client requests should be logged.\n\nIf this field is empty, access logging is disabled.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AccessLogging"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

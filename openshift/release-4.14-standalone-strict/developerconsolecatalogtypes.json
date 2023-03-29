@@ -1,0 +1,55 @@
+{
+  "description": "DeveloperConsoleCatalogTypes defines the state of the sub-catalog types.",
+  "type": "object",
+  "properties": {
+    "disabled": {
+      "description": "disabled is a list of developer catalog types (sub-catalogs IDs) that are not shown to users. Types (sub-catalogs) are added via console plugins, the available types (sub-catalog IDs) are available in the console on the cluster configuration page, or when editing the YAML in the console. Example: \"Devfile\", \"HelmChart\", \"BuilderImage\" If the list is empty or all the available sub-catalog types are added, then the complete developer catalog should be hidden.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "set"
+    },
+    "enabled": {
+      "description": "enabled is a list of developer catalog types (sub-catalogs IDs) that will be shown to users. Types (sub-catalogs) are added via console plugins, the available types (sub-catalog IDs) are available in the console on the cluster configuration page, or when editing the YAML in the console. Example: \"Devfile\", \"HelmChart\", \"BuilderImage\" If the list is non-empty, a new type will not be shown to the user until it is added to list. If the list is empty the complete developer catalog will be shown.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "set"
+    },
+    "state": {
+      "description": "state defines if a list of catalog types should be enabled or disabled.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": "Enabled"
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "state",
+      "fields-to-discriminateBy": {
+        "disabled": "Disabled",
+        "enabled": "Enabled"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

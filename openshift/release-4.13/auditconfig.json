@@ -1,0 +1,99 @@
+{
+  "description": "AuditConfig holds configuration for the audit capabilities",
+  "type": "object",
+  "required": [
+    "enabled",
+    "auditFilePath",
+    "maximumFileRetentionDays",
+    "maximumRetainedFiles",
+    "maximumFileSizeMegabytes",
+    "policyFile",
+    "policyConfiguration",
+    "logFormat",
+    "webHookKubeConfig",
+    "webHookMode"
+  ],
+  "properties": {
+    "auditFilePath": {
+      "description": "All requests coming to the apiserver will be logged to this file.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "enabled": {
+      "description": "If this flag is set, audit log will be printed in the logs. The logs contains, method, user and a requested URL.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "logFormat": {
+      "description": "Format of saved audits (legacy or json).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "maximumFileRetentionDays": {
+      "description": "Maximum number of days to retain old log files based on the timestamp encoded in their filename.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "maximumFileSizeMegabytes": {
+      "description": "Maximum size in megabytes of the log file before it gets rotated. Defaults to 100MB.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "maximumRetainedFiles": {
+      "description": "Maximum number of old log files to retain.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "policyConfiguration": {
+      "description": "PolicyConfiguration is an embedded policy configuration object to be used as the audit policy configuration. If present, it will be used instead of the path to the policy file.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "policyFile": {
+      "description": "PolicyFile is a path to the file that defines the audit policy configuration.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "webHookKubeConfig": {
+      "description": "Path to a .kubeconfig formatted file that defines the audit webhook configuration.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "webHookMode": {
+      "description": "Strategy for sending audit events (block or batch).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

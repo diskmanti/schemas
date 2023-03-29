@@ -1,0 +1,170 @@
+{
+  "description": "Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "corsAllowedOrigins",
+    "auditConfig",
+    "storageConfig",
+    "admission",
+    "kubeClientConfig",
+    "authConfig",
+    "aggregatorConfig",
+    "kubeletClientInfo",
+    "servicesSubnet",
+    "servicesNodePortRange",
+    "consolePublicURL",
+    "userAgentMatchingConfig",
+    "imagePolicyConfig",
+    "projectConfig",
+    "serviceAccountPublicKeyFiles",
+    "oauthConfig",
+    "apiServerArguments"
+  ],
+  "properties": {
+    "admission": {
+      "description": "admissionConfig holds information about how to configure admission.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.AdmissionConfig"
+    },
+    "aggregatorConfig": {
+      "description": "aggregatorConfig has options for configuring the aggregator component of the API server.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.AggregatorConfig"
+    },
+    "apiServerArguments": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auditConfig": {
+      "description": "auditConfig describes how to configure audit information",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.AuditConfig"
+    },
+    "authConfig": {
+      "description": "authConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.MasterAuthConfig"
+    },
+    "consolePublicURL": {
+      "description": "DEPRECATED: consolePublicURL has been deprecated and setting it has no effect.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "corsAllowedOrigins": {
+      "description": "corsAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "imagePolicyConfig": {
+      "description": "imagePolicyConfig feeds the image policy admission plugin",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeAPIServerImagePolicyConfig"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeClientConfig": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.KubeClientConfig"
+    },
+    "kubeletClientInfo": {
+      "description": "kubeletClientInfo contains information about how to connect to kubelets",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeletConnectionInfo"
+    },
+    "oauthConfig": {
+      "description": "oauthConfig, if present start the /oauth endpoint in this process",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.osin.v1.OAuthConfig"
+    },
+    "projectConfig": {
+      "description": "projectConfig feeds an admission plugin",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.KubeAPIServerProjectConfig"
+    },
+    "serviceAccountPublicKeyFiles": {
+      "description": "serviceAccountPublicKeyFiles is a list of files, each containing a PEM-encoded public RSA key. (If any file contains a private key, the public portion of the key is used) The list of public keys is used to verify presented service account tokens. Each key is tried in order until the list is exhausted or verification succeeds. If no keys are specified, no service account authentication will be available.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "servicesNodePortRange": {
+      "description": "servicesNodePortRange is the range to use for assigning service public ports on a host.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "servicesSubnet": {
+      "description": "servicesSubnet is the subnet to use for assigning service IPs",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "servingInfo": {
+      "description": "servingInfo describes how to start serving",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.HTTPServingInfo"
+    },
+    "storageConfig": {
+      "description": "storageConfig contains information about how to use",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.EtcdStorageConfig"
+    },
+    "userAgentMatchingConfig": {
+      "description": "UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.kubecontrolplane.v1.UserAgentMatchingConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

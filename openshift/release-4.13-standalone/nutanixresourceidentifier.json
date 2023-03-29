@@ -1,0 +1,41 @@
+{
+  "description": "NutanixResourceIdentifier holds the identity of a Nutanix PC resource (cluster, image, subnet, etc.)",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the resource name in the PC",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type is the identifier type to use for this resource.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "uuid": {
+      "description": "uuid is the UUID of the resource in the PC.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "name": "Name",
+        "uuid": "UUID"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,139 @@
+{
+  "description": "HTTPServingInfo holds configuration for serving HTTP",
+  "type": "object",
+  "required": [
+    "bindAddress",
+    "bindNetwork",
+    "certFile",
+    "keyFile",
+    "maxRequestsInFlight",
+    "requestTimeoutSeconds"
+  ],
+  "properties": {
+    "bindAddress": {
+      "description": "BindAddress is the ip:port to serve on",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "bindNetwork": {
+      "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "certFile": {
+      "description": "CertFile is a file containing a PEM-encoded certificate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "cipherSuites": {
+      "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "clientCA": {
+      "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keyFile": {
+      "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "maxRequestsInFlight": {
+      "description": "MaxRequestsInFlight is the number of concurrent requests allowed to the server. If zero, no limit.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "minTLSVersion": {
+      "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namedCertificates": {
+      "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "certFile",
+          "keyFile"
+        ],
+        "properties": {
+          "certFile": {
+            "description": "CertFile is a file containing a PEM-encoded certificate",
+            "type": "string",
+            "default": ""
+          },
+          "keyFile": {
+            "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+            "type": "string",
+            "default": ""
+          },
+          "names": {
+            "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "requestTimeoutSeconds": {
+      "description": "RequestTimeoutSeconds is the number of seconds before requests are timed out. The default is 60 minutes, if -1 there is no limit on requests.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

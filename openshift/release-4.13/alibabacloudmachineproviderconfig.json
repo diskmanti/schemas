@@ -1,0 +1,149 @@
+{
+  "description": "AlibabaCloudMachineProviderConfig is the Schema for the alibabacloudmachineproviderconfig API Compatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "instanceType",
+    "vpcId",
+    "regionId",
+    "zoneId",
+    "imageId",
+    "vSwitch",
+    "resourceGroup"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bandwidth": {
+      "description": "Bandwidth describes the internet bandwidth strategy for the instance",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.BandwidthProperties"
+    },
+    "credentialsSecret": {
+      "description": "CredentialsSecret is a reference to the secret with alibabacloud credentials. Otherwise, defaults to permissions provided by attached RAM role where the actuator is running.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "dataDisk": {
+      "description": "DataDisks holds information regarding the extra disks attached to the instance",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.DataDiskProperties"
+      }
+    },
+    "imageId": {
+      "description": "The ID of the image used to create the instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "instanceType": {
+      "description": "The instance type of the instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "ramRoleName": {
+      "description": "RAMRoleName is the name of the instance Resource Access Management (RAM) role. This allows the instance to perform API calls as this specified RAM role.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "regionId": {
+      "description": "The ID of the region in which to create the instance. You can call the DescribeRegions operation to query the most recent region list.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resourceGroup": {
+      "description": "ResourceGroup references the resource group to which to assign the instance. A reference holds either the resource group ID, the resource name, or the required tags to search. When more than one resource group are returned for a search, an error will be produced and the Machine will not be created. Resource Groups do not support searching by tags.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaResourceReference"
+    },
+    "securityGroups": {
+      "description": "SecurityGroups is a list of security group references to assign to the instance. A reference holds either the security group ID, the resource name, or the required tags to search. When more than one security group is returned for a tag search, all the groups are associated with the instance up to the maximum number of security groups to which an instance can belong. For more information, see the \"Security group limits\" section in Limits. https://www.alibabacloud.com/help/en/doc-detail/25412.htm",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaResourceReference"
+      }
+    },
+    "systemDisk": {
+      "description": "SystemDisk holds the properties regarding the system disk for the instance",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.SystemDiskProperties"
+    },
+    "tag": {
+      "description": "Tags are the set of metadata to add to an instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.Tag"
+      }
+    },
+    "tenancy": {
+      "description": "Tenancy specifies whether to create the instance on a dedicated host. Valid values:\n\ndefault: creates the instance on a non-dedicated host. host: creates the instance on a dedicated host. If you do not specify the DedicatedHostID parameter, Alibaba Cloud automatically selects a dedicated host for the instance. Empty value means no opinion and the platform chooses the a default, which is subject to change over time. Currently the default is `default`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "userDataSecret": {
+      "description": "UserDataSecret contains a local reference to a secret that contains the UserData to apply to the instance",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "vSwitch": {
+      "description": "VSwitch is a reference to the vswitch to use for this instance. A reference holds either the vSwitch ID, the resource name, or the required tags to search. When more than one vSwitch is returned for a tag search, only the first vSwitch returned will be used. This parameter is required when you create an instance of the VPC type. You can call the DescribeVSwitches operation to query the created vSwitches.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1.AlibabaResourceReference"
+    },
+    "vpcId": {
+      "description": "The ID of the vpc",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "zoneId": {
+      "description": "The ID of the zone in which to create the instance. You can call the DescribeZones operation to query the most recent region list.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

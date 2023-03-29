@@ -1,0 +1,204 @@
+{
+  "description": "AdditionalNetworkDefinition configures an extra network that is available but not created by default. Instead, pods must request them by name. type must be specified, along with exactly one \"Config\" that matches the type.",
+  "type": "object",
+  "required": [
+    "type",
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of the network. This will be populated in the resulting CRD This must be unique.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "namespace is the namespace of the network. This will be populated in the resulting CRD If not given the network will be created in the default namespace.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rawCNIConfig": {
+      "description": "rawCNIConfig is the raw CNI configuration json to create in the NetworkAttachmentDefinition CRD",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "simpleMacvlanConfig": {
+      "description": "SimpleMacvlanConfig contains configurations for macvlan interface.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "ipamConfig": {
+          "description": "IPAMConfig contains configurations for IPAM (IP Address Management)",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "staticIPAMConfig": {
+              "description": "StaticIPAMConfig contains configurations for static IPAM (IP Address Management)",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "addresses": {
+                  "description": "Addresses configures IP address for the interface",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "StaticIPAMAddresses provides IP address and Gateway for static IPAM addresses",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "address": {
+                        "description": "Address is the IP address in CIDR format",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      },
+                      "gateway": {
+                        "description": "Gateway is IP inside of subnet to designate as the gateway",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                },
+                "dns": {
+                  "description": "StaticIPAMDNS provides DNS related information for static IPAM",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "domain": {
+                      "description": "Domain configures the domainname the local domain used for short hostname lookups",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "nameservers": {
+                      "description": "Nameservers points DNS servers for IP lookup",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    },
+                    "search": {
+                      "description": "Search configures priority ordered search domains for short hostname lookups",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": ""
+                      }
+                    }
+                  }
+                },
+                "routes": {
+                  "description": "Routes configures IP routes for the interface",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "StaticIPAMRoutes provides Destination/Gateway pairs for static IPAM routes",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "destination"
+                    ],
+                    "properties": {
+                      "destination": {
+                        "description": "Destination points the IP route destination",
+                        "type": "string",
+                        "default": ""
+                      },
+                      "gateway": {
+                        "description": "Gateway is the route's next-hop IP address If unset, a default gateway is assumed (as determined by the CNI plugin).",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "type": {
+              "description": "Type is the type of IPAM module will be used for IP Address Management(IPAM). The supported values are IPAMTypeDHCP, IPAMTypeStatic",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "master": {
+          "description": "master is the host interface to create the macvlan interface from. If not specified, it will be default route interface",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "description": "mode is the macvlan mode: bridge, private, vepa, passthru. The default is bridge",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mtu": {
+          "description": "mtu is the mtu to use for the macvlan interface. if unset, host's kernel will select the value.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        }
+      }
+    },
+    "type": {
+      "description": "type is the type of network The supported values are NetworkTypeRaw, NetworkTypeSimpleMacvlan",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,37 @@
+{
+  "description": "OperatorHubStatus defines the observed state of OperatorHub. The current state of the default hub sources will always be reflected here.",
+  "type": "object",
+  "properties": {
+    "sources": {
+      "description": "sources encapsulates the result of applying the configuration for each hub source",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "HubSourceStatus is used to reflect the current state of applying the configuration to a default source",
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "message": {
+            "description": "message provides more information regarding failures",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "description": "status indicates success or failure in applying the configuration",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

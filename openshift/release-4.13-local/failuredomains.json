@@ -1,0 +1,61 @@
+{
+  "description": "FailureDomain represents the different configurations required to spread Machines across failure domains on different platforms.",
+  "type": "object",
+  "required": [
+    "platform"
+  ],
+  "properties": {
+    "aws": {
+      "description": "AWS configures failure domain information for the AWS platform.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSFailureDomain"
+      }
+    },
+    "azure": {
+      "description": "Azure configures failure domain information for the Azure platform.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.AzureFailureDomain"
+      }
+    },
+    "gcp": {
+      "description": "GCP configures failure domain information for the GCP platform.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.GCPFailureDomain"
+      }
+    },
+    "platform": {
+      "description": "Platform identifies the platform for which the FailureDomain represents. Currently supported values are AWS, Azure, and GCP.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "platform",
+      "fields-to-discriminateBy": {
+        "aws": "AWS",
+        "azure": "Azure",
+        "gcp": "GCP"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

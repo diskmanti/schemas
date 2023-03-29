@@ -1,0 +1,43 @@
+{
+  "description": "IBMCloudPlatformStatus holds the current status of the IBMCloud infrastructure provider.",
+  "type": "object",
+  "properties": {
+    "cisInstanceCRN": {
+      "description": "CISInstanceCRN is the CRN of the Cloud Internet Services instance managing the DNS zone for the cluster's base domain",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dnsInstanceCRN": {
+      "description": "DNSInstanceCRN is the CRN of the DNS Services instance managing the DNS zone for the cluster's base domain",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "location": {
+      "description": "Location is where the cluster has been deployed",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "providerType": {
+      "description": "ProviderType indicates the type of cluster that was created",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resourceGroupName": {
+      "description": "ResourceGroupName is the Resource Group for new IBMCloud resources created for the cluster.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "PlatformOperatorSpec defines the desired state of PlatformOperator.",
+  "type": "object",
+  "required": [
+    "package"
+  ],
+  "properties": {
+    "package": {
+      "description": "package contains the desired package and its configuration for this PlatformOperator.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.platform.v1alpha1.Package"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

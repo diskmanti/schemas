@@ -1,0 +1,66 @@
+{
+  "description": "LDAPQuery holds the options necessary to build an LDAP query",
+  "type": "object",
+  "required": [
+    "baseDN",
+    "scope",
+    "derefAliases",
+    "timeout",
+    "filter",
+    "pageSize"
+  ],
+  "properties": {
+    "baseDN": {
+      "description": "The DN of the branch of the directory where all searches should start from",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "derefAliases": {
+      "description": "The (optional) behavior of the search with regards to alisases. Can be: never:  never dereference aliases, search: only dereference in searching, base:   only dereference in finding the base object, always: always dereference Defaults to always dereferencing if not set",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "filter": {
+      "description": "Filter is a valid LDAP search filter that retrieves all relevant entries from the LDAP server with the base DN",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "pageSize": {
+      "description": "PageSize is the maximum preferred page size, measured in LDAP entries. A page size of 0 means no paging will be done.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "scope": {
+      "description": "The (optional) scope of the search. Can be: base: only the base object, one:  all object on the base level, sub:  the entire subtree Defaults to the entire subtree if not set",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "timeout": {
+      "description": "TimeLimit holds the limit of time in seconds that any request to the server can remain outstanding before the wait for a response is given up. If this is 0, no client-side limit is imposed",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

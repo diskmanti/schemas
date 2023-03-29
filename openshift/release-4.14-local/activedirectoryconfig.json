@@ -1,0 +1,45 @@
+{
+  "description": "ActiveDirectoryConfig holds the necessary configuration options to define how an LDAP group sync interacts with an LDAP server using the Active Directory schema",
+  "type": "object",
+  "required": [
+    "usersQuery",
+    "userNameAttributes",
+    "groupMembershipAttributes"
+  ],
+  "properties": {
+    "groupMembershipAttributes": {
+      "description": "GroupMembershipAttributes defines which attributes on an LDAP user entry will be interpreted as the groups it is a member of",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "userNameAttributes": {
+      "description": "UserNameAttributes defines which attributes on an LDAP user entry will be interpreted as its OpenShift user name.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "usersQuery": {
+      "description": "AllUsersQuery holds the template for an LDAP query that returns user entries.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LDAPQuery"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

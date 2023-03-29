@@ -1,0 +1,188 @@
+{
+  "description": "Build is the Schema for the builds API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "BuildSpec defines the desired state of Build",
+      "properties": {
+        "builderImage": {
+          "type": "string"
+        },
+        "builderServiceAccount": {
+          "type": "string"
+        },
+        "customCASecretName": {
+          "description": "DEPRECATED - This attribute is being replaced with other configuration options.",
+          "type": "string"
+        },
+        "dockerfileURL": {
+          "description": "DEPRECATED - This attribute is unused since Operator ~v1.5.0.",
+          "type": "string"
+        },
+        "mendixRuntimeVersion": {
+          "description": "MendixRuntimeVersion specifies version name which will be used to generate the base image name of the runtime base.",
+          "type": "string"
+        },
+        "proxySecretName": {
+          "type": "string"
+        },
+        "registry": {
+          "description": "RegistrySpec defines optional registry settings for specific build",
+          "properties": {
+            "credentials": {
+              "type": "string"
+            },
+            "imageNameTemplate": {
+              "description": "ImageNameTemplate is the template used to generate the image+tag, if it's not specified in OperatorConfiguration. It's a go template which is used to generate the image name and tag and allows to use both OpenShift-style \"repository per app\" and ECR-style \"tag per app\". \n Available parameters: - uses internal app name.  - uses the current value of the Build CR\u2019s Generation attribute (https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace#generation). - uses the value of `sourceVersion` key from MendixApp CR.  - uses the current UNIX timestamp, with at least millisecond precision.  - uses the current timestamp in the next format: 20211231.081224.789 is the next date - 2021-12-31 08:12:24.789. \n Examples: * \"my-ecr-repository:\" (ECR repository called my-ecr-repository, each app will be saved in its own tag) * \"my-ns/\" (OpenShift repository for namespace my-ns, each app will be saved in its own image) * \"my-username/\" (Docker Hub repository for user my-username, each app will be saved in its own image)",
+              "type": "string"
+            },
+            "pullURL": {
+              "type": "string"
+            },
+            "pushURL": {
+              "type": "string"
+            },
+            "type": {
+              "description": "RegistryType represents the type of docker registry",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "resources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeBaseImage": {
+          "description": "RuntimeBaseImage it the templatized name of the runtime base image used to build Mendix app images.",
+          "type": "string"
+        },
+        "sourceURL": {
+          "description": "SourceURL specifies the HTTP(S) URL where the app source (e.g. MDA) can be downloaded so that it can be added to the image.",
+          "type": "string"
+        },
+        "sourceVersion": {
+          "description": "SourceVersion specifies the version of the source. In most cases this will be provided by Portunus. Can be used as templated parameter of `imageNameTemplate`.",
+          "type": "string"
+        },
+        "trust": {
+          "description": "Trust specifies the trust certificates CA's.",
+          "properties": {
+            "customCASecretName": {
+              "description": "CustomCASecretName the secret's name that contains custom.crt with additional trusted Certificate Authorities.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "mendixRuntimeVersion",
+        "sourceURL"
+      ],
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "BuildStatus defines the observed state of Build",
+      "properties": {
+        "buildStatus": {
+          "description": "PodPhase is a label for the condition of a pod at the current time.",
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "sourceURL": {
+          "type": "string"
+        },
+        "state": {
+          "description": "ResourceStatus defines the observed state of a resource",
+          "properties": {
+            "explanation": {
+              "type": "string"
+            },
+            "state": {
+              "description": "ResourceState is the state of a resource provisioned for a Mendix App.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

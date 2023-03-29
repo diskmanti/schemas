@@ -1,0 +1,56 @@
+{
+  "description": "ConsolePluginProxyEndpoint holds information about the endpoint to which request will be proxied to.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "service": {
+      "description": "ProxyTypeServiceConfig holds information on Service to which console's backend will proxy the plugin's requests.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name",
+        "namespace",
+        "port"
+      ],
+      "properties": {
+        "name": {
+          "description": "name of Service that the plugin needs to connect to.",
+          "type": "string",
+          "default": ""
+        },
+        "namespace": {
+          "description": "namespace of Service that the plugin needs to connect to",
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "description": "port on which the Service that the plugin needs to connect to is listening on.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "type": {
+      "description": "type is the type of the console plugin's proxy. Currently only \"Service\" is supported.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "service": "Service"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

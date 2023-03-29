@@ -1,0 +1,50 @@
+{
+  "description": "ClusterOperatorStatusCondition represents the state of the operator's managed and monitored components.",
+  "type": "object",
+  "required": [
+    "type",
+    "status",
+    "lastTransitionTime"
+  ],
+  "properties": {
+    "lastTransitionTime": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "message": {
+      "description": "message provides additional information about the current condition. This is only to be consumed by humans.  It may contain Line Feed characters (U+000A), which should be rendered as new lines.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "reason is the CamelCase reason for the condition's current status.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "status of the condition, one of True, False, Unknown.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "type specifies the aspect reported by this condition.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

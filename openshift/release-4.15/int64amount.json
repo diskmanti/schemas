@@ -1,0 +1,27 @@
+{
+  "description": "int64Amount represents a fixed precision numerator and arbitrary scale exponent. It is faster than operations on inf.Dec for values that can be represented as int64.",
+  "type": "object",
+  "required": [
+    "value",
+    "scale"
+  ],
+  "properties": {
+    "scale": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "value": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "ConsoleConfigRoute holds information on external route access to console. DEPRECATED",
+  "type": "object",
+  "required": [
+    "hostname"
+  ],
+  "properties": {
+    "hostname": {
+      "description": "hostname is the desired custom domain under which console will be available.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "secret": {
+      "description": "secret points to secret in the openshift-config namespace that contains custom certificate and key and needs to be created manually by the cluster admin. Referenced Secret is required to contain following key value pairs: - \"tls.crt\" - to specifies custom certificate - \"tls.key\" - to specifies private key of the custom certificate If the custom hostname uses the default routing suffix of the cluster, the Secret specification for a serving certificate will not be needed.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.SecretNameReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

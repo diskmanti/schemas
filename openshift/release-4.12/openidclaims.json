@@ -1,0 +1,84 @@
+{
+  "description": "OpenIDClaims contains a list of OpenID claims to use when authenticating with an OpenID identity provider",
+  "type": "object",
+  "required": [
+    "id",
+    "preferredUsername",
+    "name",
+    "email",
+    "groups"
+  ],
+  "properties": {
+    "email": {
+      "description": "email is the list of claims whose values should be used as the email address. Optional. If unspecified, no email is set for the identity",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "groups": {
+      "description": "groups is the list of claims value of which should be used to synchronize groups from the OIDC provider to OpenShift for the user",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "id": {
+      "description": "id is the list of claims whose values should be used as the user ID. Required. OpenID standard identity claim is \"sub\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "name": {
+      "description": "name is the list of claims whose values should be used as the display name. Optional. If unspecified, no display name is set for the identity",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "preferredUsername": {
+      "description": "preferredUsername is the list of claims whose values should be used as the preferred username. If unspecified, the preferred username is determined from the value of the id claim",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,35 @@
+{
+  "description": "ConsoleQuickStartTask is a single step in a Quick Start.",
+  "type": "object",
+  "required": [
+    "title",
+    "description"
+  ],
+  "properties": {
+    "description": {
+      "description": "description describes the steps needed to complete the task. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "review": {
+      "description": "review contains instructions to validate the task is complete. The user will select 'Yes' or 'No'. using a radio button, which indicates whether the step was completed successfully.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTaskReview"
+    },
+    "summary": {
+      "description": "summary contains information about the passed step.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.console.v1.ConsoleQuickStartTaskSummary"
+    },
+    "title": {
+      "description": "title describes the task and is displayed as a step heading.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

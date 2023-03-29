@@ -1,0 +1,160 @@
+{
+  "description": "ovnKubernetesConfig contains the configuration parameters for networks using the ovn-kubernetes network project",
+  "type": "object",
+  "properties": {
+    "egressIPConfig": {
+      "description": "EgressIPConfig defines the configuration knobs for egressip",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "reachabilityTotalTimeoutSeconds": {
+          "description": "reachabilityTotalTimeout configures the EgressIP node reachability check total timeout in seconds. If the EgressIP node cannot be reached within this timeout, the node is declared down. Setting a large value may cause the EgressIP feature to react slowly to node changes. In particular, it may react slowly for EgressIP nodes that really have a genuine problem and are unreachable. When omitted, this means the user has no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 1 second. A value of 0 disables the EgressIP node's reachability check.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        }
+      }
+    },
+    "gatewayConfig": {
+      "description": "GatewayConfig holds node gateway-related parsed config file parameters and command-line overrides",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "routingViaHost": {
+          "description": "RoutingViaHost allows pod egress traffic to exit via the ovn-k8s-mp0 management port into the host before sending it out. If this is not set, traffic will always egress directly from OVN to outside without touching the host stack. Setting this to true means hardware offload will not be supported. Default is false if GatewayConfig is specified.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "genevePort": {
+      "description": "geneve port is the UDP port to be used by geneve encapulation. Default is 6081",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "hybridOverlayConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "hybridClusterNetwork"
+      ],
+      "properties": {
+        "hybridClusterNetwork": {
+          "description": "HybridClusterNetwork defines a network space given to nodes on an additional overlay network.",
+          "type": "array",
+          "items": {
+            "description": "ClusterNetworkEntry is a subnet from which to allocate PodIPs. A network of size HostPrefix (in CIDR notation) will be allocated when nodes join the cluster. If the HostPrefix field is not used by the plugin, it can be left unset. Not all network providers support multiple ClusterNetworks",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "cidr"
+            ],
+            "properties": {
+              "cidr": {
+                "type": "string",
+                "default": ""
+              },
+              "hostPrefix": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              }
+            }
+          }
+        },
+        "hybridOverlayVXLANPort": {
+          "description": "HybridOverlayVXLANPort defines the VXLAN port number to be used by the additional overlay network. Default is 4789",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        }
+      }
+    },
+    "ipsecConfig": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "mtu": {
+      "description": "mtu is the MTU to use for the tunnel interface. This must be 100 bytes smaller than the uplink mtu. Default is 1400",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "policyAuditConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "destination": {
+          "description": "destination is the location for policy log messages. Regardless of this config, persistent logs will always be dumped to the host at /var/log/ovn/ however Additionally syslog output may be configured as follows. Valid values are: - \"libc\" -> to use the libc syslog() function of the host node's journdald process - \"udp:host:port\" -> for sending syslog over UDP - \"unix:file\" -> for using the UNIX domain socket directly - \"null\" -> to discard all messages logged to syslog The default is \"null\"",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "maxFileSize": {
+          "description": "maxFilesSize is the max size an ACL_audit log file is allowed to reach before rotation occurs Units are in MB and the Default is 50MB",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "rateLimit": {
+          "description": "rateLimit is the approximate maximum number of messages to generate per-second per-node. If unset the default of 20 msg/sec is used.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "syslogFacility": {
+          "description": "syslogFacility the RFC5424 facility for generated messages, e.g. \"kern\". Default is \"local0\"",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "v4InternalSubnet": {
+      "description": "v4InternalSubnet is a v4 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is 100.64.0.0/16",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "v6InternalSubnet": {
+      "description": "v6InternalSubnet is a v6 subnet used internally by ovn-kubernetes in case the default one is being already used by something else. It must not overlap with any other subnet being used by OpenShift or by the node network. The size of the subnet must be larger than the number of nodes. The value cannot be changed after installation. Default is fd98::/48",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

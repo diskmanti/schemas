@@ -1,0 +1,17 @@
+{
+  "description": "MachineTemplateSpec describes the data needed to create a Machine from a template",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.ObjectMeta"
+    },
+    "spec": {
+      "description": "Specification of the desired behavior of the machine. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MachineSpec"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

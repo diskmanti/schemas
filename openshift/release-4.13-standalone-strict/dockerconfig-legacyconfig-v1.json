@@ -1,0 +1,37 @@
+{
+  "description": "DockerConfig holds Docker related configuration options.",
+  "type": "object",
+  "required": [
+    "execHandlerName",
+    "dockerShimSocket",
+    "dockerShimRootDirectory"
+  ],
+  "properties": {
+    "dockerShimRootDirectory": {
+      "description": "DockershimRootDirectory is the dockershim root directory.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dockerShimSocket": {
+      "description": "DockerShimSocket is the location of the dockershim socket the kubelet uses. Currently unix socket is supported on Linux, and tcp is supported on windows. Examples:'unix:///var/run/dockershim.sock', 'tcp://localhost:3735'",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "execHandlerName": {
+      "description": "ExecHandlerName is the name of the handler to use for executing commands in containers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

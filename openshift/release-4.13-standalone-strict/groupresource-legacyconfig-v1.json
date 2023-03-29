@@ -1,0 +1,28 @@
+{
+  "description": "GroupResource points to a resource by its name and API group.",
+  "type": "object",
+  "required": [
+    "group",
+    "resource"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the name of an API group",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "description": "Resource is the name of a resource.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

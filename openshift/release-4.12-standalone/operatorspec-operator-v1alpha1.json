@@ -1,0 +1,69 @@
+{
+  "description": "OperatorSpec contains common fields for an operator to need.  It is intended to be anonymous included inside of the Spec struct for you particular operator.",
+  "type": "object",
+  "required": [
+    "managementState",
+    "imagePullSpec",
+    "imagePullPolicy",
+    "version"
+  ],
+  "properties": {
+    "imagePullPolicy": {
+      "description": "imagePullPolicy specifies the image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "imagePullSpec": {
+      "description": "imagePullSpec is the image to use for the component.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "logging": {
+      "description": "LoggingConfig holds information about configuring logging",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "level",
+        "vmodule"
+      ],
+      "properties": {
+        "level": {
+          "description": "level is passed to glog.",
+          "type": "integer",
+          "format": "int64",
+          "default": 0
+        },
+        "vmodule": {
+          "description": "vmodule is passed to glog.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "managementState": {
+      "description": "managementState indicates whether and how the operator should manage the component",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "version": {
+      "description": "version is the desired state in major.minor.micro-patch.  Usually patch is ignored.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

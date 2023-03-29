@@ -1,0 +1,27 @@
+{
+  "description": "LocalQuota contains options for controlling local volume quota on the node.",
+  "type": "object",
+  "required": [
+    "perFSGroup"
+  ],
+  "properties": {
+    "perFSGroup": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,28 @@
+{
+  "description": "NutanixPrismEndpoint holds the endpoint address and port to access the Nutanix Prism Central or Element (cluster)",
+  "type": "object",
+  "required": [
+    "address",
+    "port"
+  ],
+  "properties": {
+    "address": {
+      "description": "address is the endpoint address (DNS name or IP address) of the Nutanix Prism Central or Element (cluster)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "port": {
+      "description": "port is the port number to access the Nutanix Prism Central or Element (cluster)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

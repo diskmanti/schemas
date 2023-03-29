@@ -1,0 +1,32 @@
+{
+  "description": "LastOperation represents the detail of the last performed operation on the MachineObject.",
+  "type": "object",
+  "properties": {
+    "description": {
+      "description": "Description is the human-readable description of the last operation.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastUpdated": {
+      "description": "LastUpdated is the timestamp at which LastOperation API was last-updated.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "state": {
+      "description": "State is the current status of the last performed operation. E.g. Processing, Failed, Successful etc",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type is the type of operation which was last performed. E.g. Create, Delete, Update etc",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

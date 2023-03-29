@@ -1,0 +1,87 @@
+{
+  "description": "OAuthConfig holds the necessary configuration options for OAuth authentication",
+  "type": "object",
+  "required": [
+    "masterCA",
+    "masterURL",
+    "masterPublicURL",
+    "assetPublicURL",
+    "alwaysShowProviderSelection",
+    "identityProviders",
+    "grantConfig",
+    "sessionConfig",
+    "tokenConfig",
+    "templates"
+  ],
+  "properties": {
+    "alwaysShowProviderSelection": {
+      "description": "AlwaysShowProviderSelection will force the provider selection page to render even when there is only a single provider.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "assetPublicURL": {
+      "description": "AssetPublicURL is used for building valid client redirect URLs for external access",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "grantConfig": {
+      "description": "GrantConfig describes how to handle grants",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.GrantConfig"
+    },
+    "identityProviders": {
+      "description": "IdentityProviders is an ordered list of ways for a user to identify themselves",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.IdentityProvider"
+      }
+    },
+    "masterCA": {
+      "description": "MasterCA is the CA for verifying the TLS connection back to the MasterURL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "masterPublicURL": {
+      "description": "MasterPublicURL is used for building valid client redirect URLs for internal and external access",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "masterURL": {
+      "description": "MasterURL is used for making server-to-server calls to exchange authorization codes for access tokens",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sessionConfig": {
+      "description": "SessionConfig hold information about configuring sessions.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.SessionConfig"
+    },
+    "templates": {
+      "description": "Templates allow you to customize pages like the login page.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.OAuthTemplates"
+    },
+    "tokenConfig": {
+      "description": "TokenConfig contains options for authorization and access tokens",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.TokenConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

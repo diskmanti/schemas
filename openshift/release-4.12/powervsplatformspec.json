@@ -1,0 +1,22 @@
+{
+  "description": "PowerVSPlatformSpec holds the desired state of the IBM Power Systems Virtual Servers infrastructure provider. This only includes fields that can be modified in the cluster.",
+  "type": "object",
+  "properties": {
+    "serviceEndpoints": {
+      "description": "serviceEndpoints is a list of custom endpoints which will override the default service endpoints of a Power VS service.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSServiceEndpoint"
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "NodeVolumeConfig contains options for configuring volumes on the node.",
+  "type": "object",
+  "required": [
+    "localQuota"
+  ],
+  "properties": {
+    "localQuota": {
+      "description": "LocalQuota contains options for controlling local volume quota on the node.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.legacyconfig.v1.LocalQuota"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

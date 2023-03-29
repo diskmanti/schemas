@@ -1,0 +1,193 @@
+{
+  "type": "object",
+  "properties": {
+    "filter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "cidr": {
+          "description": "cidr filters subnets by CIDR.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "description": "description filters subnets by description.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "enableDhcp": {
+          "description": "Deprecated: enableDhcp is silently ignored. It has no replacement.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "gateway_ip": {
+          "description": "gateway_ip filters subnets by gateway IP.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "description": "id is the uuid of a specific subnet to use. If specified, id will not be validated. Instead server creation will fail with an appropriate error.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ipVersion": {
+          "description": "ipVersion filters subnets by IP version.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "ipv6AddressMode": {
+          "description": "ipv6AddressMode filters subnets by IPv6 address mode.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ipv6RaMode": {
+          "description": "ipv6RaMode filters subnets by IPv6 router adversiement mode.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "description": "Deprecated: limit is silently ignored. It has no replacement.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "marker": {
+          "description": "Deprecated: marker is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "name filters subnets by name.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "networkId": {
+          "description": "Deprecated: networkId is silently ignored. Set uuid on the containing network definition instead.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notTags": {
+          "description": "notTags filters by subnets which don't match all specified tags. NOT (t1 AND t2...) Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notTagsAny": {
+          "description": "notTagsAny filters by subnets which don't match any specified tags. NOT (t1 OR t2...) Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "projectId": {
+          "description": "projectId filters subnets by project ID.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortDir": {
+          "description": "Deprecated: sortDir is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortKey": {
+          "description": "Deprecated: sortKey is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "subnetpoolId": {
+          "description": "subnetpoolId filters subnets by subnet pool ID.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tags": {
+          "description": "tags filters by subnets containing all specified tags. Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tagsAny": {
+          "description": "tagsAny filters by subnets containing any specified tags. Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tenantId": {
+          "description": "tenantId filters subnets by tenant ID. Deprecated: use projectId instead. tenantId will be ignored if projectId is set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "portSecurity": {
+      "description": "PortSecurity optionally enables or disables security on ports managed by OpenStack",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "portTags": {
+      "description": "PortTags are tags that are added to ports created on this subnet",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "uuid": {
+      "description": "The UUID of the network. Required if you omit the port attribute.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

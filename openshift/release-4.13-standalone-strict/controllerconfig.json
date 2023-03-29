@@ -1,0 +1,107 @@
+{
+  "description": "ControllerConfig holds configuration values for controllers",
+  "type": "object",
+  "required": [
+    "controllers",
+    "election",
+    "serviceServingCert"
+  ],
+  "properties": {
+    "controllers": {
+      "description": "Controllers is a list of controllers to enable.  '*' enables all on-by-default controllers, 'foo' enables the controller \"+ named 'foo', '-foo' disables the controller named 'foo'. Defaults to \"*\".",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "election": {
+      "description": "ControllerElectionConfig contains configuration values for deciding how a controller will be elected to act as leader.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "lockName",
+        "lockNamespace",
+        "lockResource"
+      ],
+      "properties": {
+        "lockName": {
+          "description": "LockName is the resource name used to act as the lock for determining which controller instance should lead.",
+          "type": "string",
+          "default": ""
+        },
+        "lockNamespace": {
+          "description": "LockNamespace is the resource namespace used to act as the lock for determining which controller instance should lead. It defaults to \"kube-system\"",
+          "type": "string",
+          "default": ""
+        },
+        "lockResource": {
+          "description": "GroupResource points to a resource by its name and API group.",
+          "type": "object",
+          "required": [
+            "group",
+            "resource"
+          ],
+          "properties": {
+            "group": {
+              "description": "Group is the name of an API group",
+              "type": "string",
+              "default": ""
+            },
+            "resource": {
+              "description": "Resource is the name of a resource.",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "serviceServingCert": {
+      "description": "ServiceServingCert holds configuration for service serving cert signer which creates cert/key pairs for pods fulfilling a service to serve with.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "signer"
+      ],
+      "properties": {
+        "signer": {
+          "description": "CertInfo relates a certificate with a private key",
+          "type": "object",
+          "required": [
+            "certFile",
+            "keyFile"
+          ],
+          "properties": {
+            "certFile": {
+              "description": "CertFile is a file containing a PEM-encoded certificate",
+              "type": "string",
+              "default": ""
+            },
+            "keyFile": {
+              "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+              "type": "string",
+              "default": ""
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

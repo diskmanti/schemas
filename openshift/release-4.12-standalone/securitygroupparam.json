@@ -1,0 +1,120 @@
+{
+  "type": "object",
+  "properties": {
+    "filter": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "description": {
+          "description": "description filters security groups by description.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "description": "id specifies the ID of a security group to use. If set, id will not be validated before use. An invalid id will result in failure to create a server with an appropriate error message.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limit": {
+          "description": "Deprecated: limit is silently ignored. It has no replacement.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "marker": {
+          "description": "Deprecated: marker is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "description": "name filters security groups by name.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notTags": {
+          "description": "notTags filters by security groups which don't match all specified tags. NOT (t1 AND t2...) Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notTagsAny": {
+          "description": "notTagsAny filters by security groups which don't match any specified tags. NOT (t1 OR t2...) Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "projectId": {
+          "description": "projectId filters security groups by project ID.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortDir": {
+          "description": "Deprecated: sortDir is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sortKey": {
+          "description": "Deprecated: sortKey is silently ignored. It has no replacement.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tags": {
+          "description": "tags filters by security groups containing all specified tags. Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tagsAny": {
+          "description": "tagsAny filters by security groups containing any specified tags. Multiple tags are comma separated.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tenantId": {
+          "description": "tenantId filters security groups by tenant ID. Deprecated: use projectId instead. tenantId will be ignored if projectId is set.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "name": {
+      "description": "Security Group name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "uuid": {
+      "description": "Security Group UUID",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

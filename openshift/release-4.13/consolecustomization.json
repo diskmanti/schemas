@@ -1,0 +1,68 @@
+{
+  "description": "ConsoleCustomization defines a list of optional configuration for the console UI.",
+  "type": "object",
+  "properties": {
+    "addPage": {
+      "description": "addPage allows customizing actions on the Add page in developer perspective.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AddPage"
+    },
+    "brand": {
+      "description": "brand is the default branding of the web console which can be overridden by providing the brand field.  There is a limited set of specific brand options. This field controls elements of the console such as the logo. Invalid value will prevent a console rollout.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "customLogoFile": {
+      "description": "customLogoFile replaces the default OpenShift logo in the masthead and about dialog. It is a reference to a ConfigMap in the openshift-config namespace. This can be created with a command like 'oc create configmap custom-logo --from-file=/path/to/file -n openshift-config'. Image size must be less than 1 MB due to constraints on the ConfigMap size. The ConfigMap key should include a file extension so that the console serves the file with the correct MIME type. Recommended logo specifications: Dimensions: Max height of 68px and max width of 200px SVG format preferred",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapFileReference"
+    },
+    "customProductName": {
+      "description": "customProductName is the name that will be displayed in page titles, logo alt text, and the about dialog instead of the normal OpenShift product name.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "developerCatalog": {
+      "description": "developerCatalog allows to configure the shown developer catalog categories (filters) and types (sub-catalogs).",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogCustomization"
+    },
+    "documentationBaseURL": {
+      "description": "documentationBaseURL links to external documentation are shown in various sections of the web console.  Providing documentationBaseURL will override the default documentation URL. Invalid value will prevent a console rollout.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "perspectives": {
+      "description": "perspectives allows enabling/disabling of perspective(s) that user can see in the Perspective switcher dropdown.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.Perspective"
+      },
+      "x-kubernetes-list-map-keys": [
+        "id"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "projectAccess": {
+      "description": "projectAccess allows customizing the available list of ClusterRoles in the Developer perspective Project access page which can be used by a project admin to specify roles to other users and restrict access within the project. If set, the list will replace the default ClusterRole options.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ProjectAccess"
+    },
+    "quickStarts": {
+      "description": "quickStarts allows customization of available ConsoleQuickStart resources in console.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.QuickStarts"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

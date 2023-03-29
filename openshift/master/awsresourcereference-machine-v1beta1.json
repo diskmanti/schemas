@@ -1,0 +1,32 @@
+{
+  "description": "AWSResourceReference is a reference to a specific AWS resource by ID, ARN, or filters. Only one of ID, ARN or Filters may be specified. Specifying more than one will result in a validation error.",
+  "type": "object",
+  "properties": {
+    "arn": {
+      "description": "ARN of resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filters": {
+      "description": "Filters is a set of filters used to identify a resource",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Filter"
+      }
+    },
+    "id": {
+      "description": "ID of resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

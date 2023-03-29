@@ -1,0 +1,98 @@
+{
+  "description": "UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!",
+  "type": "object",
+  "required": [
+    "requiredClients",
+    "deniedClients",
+    "defaultRejectionMessage"
+  ],
+  "properties": {
+    "defaultRejectionMessage": {
+      "description": "defaultRejectionMessage is the message shown when rejecting a client.  If it is not a set, a generic message is given.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "deniedClients": {
+      "description": "deniedClients if this list is non-empty, then a User-Agent must not match any of the UserAgentRegexes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "UserAgentDenyRule adds a rejection message that can be used to help a user figure out how to get an approved client",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "regex",
+          "httpVerbs",
+          "rejectionMessage"
+        ],
+        "properties": {
+          "httpVerbs": {
+            "description": "httpVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          },
+          "regex": {
+            "description": "regex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
+            "type": "string",
+            "default": ""
+          },
+          "rejectionMessage": {
+            "description": "RejectionMessage is the message shown when rejecting a client.  If it is not a set, the default message is used.",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "requiredClients": {
+      "description": "requiredClients if this list is non-empty, then a User-Agent must match one of the UserAgentRegexes to be allowed",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "UserAgentMatchRule describes how to match a given request based on User-Agent and HTTPVerb",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "regex",
+          "httpVerbs"
+        ],
+        "properties": {
+          "httpVerbs": {
+            "description": "httpVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          },
+          "regex": {
+            "description": "regex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

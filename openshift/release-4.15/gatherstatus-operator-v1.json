@@ -1,0 +1,28 @@
+{
+  "description": "gatherStatus provides information about the last known gather event.",
+  "type": "object",
+  "properties": {
+    "gatherers": {
+      "description": "gatherers is a list of active gatherers (and their statuses) in the last gathering.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GathererStatus"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "lastGatherDuration": {
+      "description": "lastGatherDuration is the total time taken to process all gatherers during the last gather event.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    "lastGatherTime": {
+      "description": "lastGatherTime is the last time when Insights data gathering finished. An empty value means that no data has been gathered yet.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

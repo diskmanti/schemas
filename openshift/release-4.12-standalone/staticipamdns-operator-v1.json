@@ -1,0 +1,42 @@
+{
+  "description": "StaticIPAMDNS provides DNS related information for static IPAM",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "description": "Domain configures the domainname the local domain used for short hostname lookups",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nameservers": {
+      "description": "Nameservers points DNS servers for IP lookup",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "search": {
+      "description": "Search configures priority ordered search domains for short hostname lookups",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

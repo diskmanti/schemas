@@ -1,0 +1,81 @@
+{
+  "description": "AWSPlatformStatus holds the current status of the Amazon Web Services infrastructure provider.",
+  "type": "object",
+  "required": [
+    "region"
+  ],
+  "properties": {
+    "region": {
+      "description": "region holds the default AWS region for new AWS resources created by the cluster.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resourceTags": {
+      "description": "resourceTags is a list of additional tags to apply to AWS resources created for the cluster. See https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html for information on tagging AWS resources. AWS supports a maximum of 50 tags per resource. OpenShift reserves 25 tags for its use, leaving 25 tags available for the user.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "AWSResourceTag is a tag to apply to AWS resources created for the cluster.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "key",
+          "value"
+        ],
+        "properties": {
+          "key": {
+            "description": "key is the key of the tag",
+            "type": "string",
+            "default": ""
+          },
+          "value": {
+            "description": "value is the value of the tag. Some AWS service do not support empty values. Since tags are added to resources in many services, the length of the tag value must meet the requirements of all services.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "serviceEndpoints": {
+      "description": "ServiceEndpoints list contains custom endpoints which will override default service endpoint of AWS Services. There must be only one ServiceEndpoint for a service.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "AWSServiceEndpoint store the configuration of a custom url to override existing defaults of AWS Services.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "description": "name is the name of the AWS service. The list of all the service names can be found at https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html This must be provided and cannot be empty.",
+            "type": "string",
+            "default": ""
+          },
+          "url": {
+            "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

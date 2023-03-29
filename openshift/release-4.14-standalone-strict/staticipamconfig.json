@@ -1,0 +1,117 @@
+{
+  "description": "StaticIPAMConfig contains configurations for static IPAM (IP Address Management)",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "description": "Addresses configures IP address for the interface",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "StaticIPAMAddresses provides IP address and Gateway for static IPAM addresses",
+        "type": [
+          "object",
+          "null"
+        ],
+        "properties": {
+          "address": {
+            "description": "Address is the IP address in CIDR format",
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          },
+          "gateway": {
+            "description": "Gateway is IP inside of subnet to designate as the gateway",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dns": {
+      "description": "StaticIPAMDNS provides DNS related information for static IPAM",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "domain": {
+          "description": "Domain configures the domainname the local domain used for short hostname lookups",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nameservers": {
+          "description": "Nameservers points DNS servers for IP lookup",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "search": {
+          "description": "Search configures priority ordered search domains for short hostname lookups",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "routes": {
+      "description": "Routes configures IP routes for the interface",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "StaticIPAMRoutes provides Destination/Gateway pairs for static IPAM routes",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "destination"
+        ],
+        "properties": {
+          "destination": {
+            "description": "Destination points the IP route destination",
+            "type": "string",
+            "default": ""
+          },
+          "gateway": {
+            "description": "Gateway is the route's next-hop IP address If unset, a default gateway is assumed (as determined by the CNI plugin).",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

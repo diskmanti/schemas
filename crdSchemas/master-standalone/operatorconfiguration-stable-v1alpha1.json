@@ -1,0 +1,948 @@
+{
+  "description": "OperatorConfiguration is the Schema for the operatorconfigurations API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "OperatorConfigurationSpec defines the desired state of OperatorConfiguration",
+      "properties": {
+        "buildCustomCASecretName": {
+          "description": "DEPRECATED - This attribute is being replaced with other configuration options. BuildCustomCASecretName is secret name of a secret that has custom.crt key containing the registry\u2019s root CA.",
+          "type": "string"
+        },
+        "buildProxySecretName": {
+          "type": "string"
+        },
+        "buildResources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "buildRuntimeBaseImage": {
+          "description": "BuildRuntimeBaseImage it the templatized name of the runtime base image used to build Mendix app images.",
+          "type": "string"
+        },
+        "builderImage": {
+          "type": "string"
+        },
+        "builderServiceAccount": {
+          "type": "string"
+        },
+        "dockerfile": {
+          "description": "DEPRECATED - This attribute is being replaced with other configuration options. Dockerfile defines the HTTP(S) URL where the Dockerfile can be downloaded to build the image.",
+          "type": "string"
+        },
+        "endpoint": {
+          "description": "EndpointConfigurationSpec defines the configuration for an Endpoint",
+          "properties": {
+            "ingress": {
+              "description": "Ingress specifies the default configuration for Ingress objects.",
+              "properties": {
+                "annotations": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Annotations specifies the annotations which should be added to an Ingress or OpenShift Route.",
+                  "type": "object"
+                },
+                "domain": {
+                  "description": "Domain will be used to generate an AppURL if no AppURL is provided. It's not used when the AppURL is not empty. It's can be left blank for OpenShift - in that case, the default OpenShift apps domain will be used.",
+                  "type": "string"
+                },
+                "enableTLS": {
+                  "description": "EnableTLS specifies if TLS should be enabled.",
+                  "type": "boolean"
+                },
+                "ingressClassName": {
+                  "description": "IngressClassName specifies IngressClassName for ingress. MendixApp IngressClassName has higher priority.",
+                  "type": "string"
+                },
+                "path": {
+                  "description": "Path ingress default path value. By default (or when empty), it uses \"/\" value. E.g. Google Cloud requires \"/*\" value. Can be overwritten in MendixApp CRD.",
+                  "type": "string"
+                },
+                "pathType": {
+                  "description": "PathType ingress pathType. By default, it's empty and not presented in the ingress object. Can be overwritten in MendixApp CRD.",
+                  "type": "string"
+                },
+                "tlsSecretName": {
+                  "description": "TLSSecretName specifies the name of the secret containing TLS keys. Can be left empty to use the default secret, or to provide the secret through Key and Certificate.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enableTLS"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "openshiftRoute": {
+              "description": "OpenshiftRoute specifies the default configuration for OpenShift Routes.",
+              "properties": {
+                "annotations": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Annotations specifies the annotations which should be added to an Ingress or OpenShift Route.",
+                  "type": "object"
+                },
+                "domain": {
+                  "description": "Domain will be used to generate an AppURL if no AppURL is provided. It's not used when the AppURL is not empty. It's can be left blank for OpenShift - in that case, the default OpenShift apps domain will be used.",
+                  "type": "string"
+                },
+                "enableTLS": {
+                  "description": "EnableTLS specifies if TLS should be enabled.",
+                  "type": "boolean"
+                },
+                "tlsSecretName": {
+                  "description": "TLSSecretName specifies the name of the secret containing TLS keys. Can be left empty to use the default secret, or to provide the secret through Key and Certificate.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "enableTLS"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "serviceAnnotations": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "ServiceAnnotations annotations for the service. Supports templates.",
+              "type": "object"
+            },
+            "servicePorts": {
+              "description": "ServicePorts opens specified ports in service with target port \"mendix-app\". If empty uses 8080 port.",
+              "items": {
+                "format": "int32",
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "serviceType": {
+              "description": "ServiceType is service type. By default it equals to \"ClusterIP\". Also supports \"LoadBalancer\".",
+              "type": "string"
+            },
+            "type": {
+              "description": "Type specifies the endpoint type.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "licenseKeySecretName": {
+          "type": "string"
+        },
+        "licenseManager": {
+          "description": "LicenseManager defines the URL of Private Cloud License Manager server  and the authentication credentials. Its definition implies that this is the licensing mechanism used by the operator. Otherwise, the legacy mode will be used.",
+          "properties": {
+            "credentialsSecretName": {
+              "description": "CredentialsSecretName defines the authentication credentials.",
+              "type": "string"
+            },
+            "serverURL": {
+              "description": "ServerURL defines the license manager server URL.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "metricsSidecarImage": {
+          "type": "string"
+        },
+        "metricsSidecarResources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "registry": {
+          "description": "RegistrySpec defines optional registry settings for specific build",
+          "properties": {
+            "credentials": {
+              "type": "string"
+            },
+            "imageNameTemplate": {
+              "description": "ImageNameTemplate is the template used to generate the image+tag, if it's not specified in OperatorConfiguration. It's a go template which is used to generate the image name and tag and allows to use both OpenShift-style \"repository per app\" and ECR-style \"tag per app\". \n Available parameters: - uses internal app name.  - uses the current value of the Build CR\u2019s Generation attribute (https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace#generation). - uses the value of `sourceVersion` key from MendixApp CR.  - uses the current UNIX timestamp, with at least millisecond precision.  - uses the current timestamp in the next format: 20211231.081224.789 is the next date - 2021-12-31 08:12:24.789. \n Examples: * \"my-ecr-repository:\" (ECR repository called my-ecr-repository, each app will be saved in its own tag) * \"my-ns/\" (OpenShift repository for namespace my-ns, each app will be saved in its own image) * \"my-username/\" (Docker Hub repository for user my-username, each app will be saved in its own image)",
+              "type": "string"
+            },
+            "pullURL": {
+              "type": "string"
+            },
+            "pushURL": {
+              "type": "string"
+            },
+            "type": {
+              "description": "RegistryType represents the type of docker registry",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeAutomountServiceAccountToken": {
+          "type": "boolean"
+        },
+        "runtimeDeploymentPodAnnotations": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "RuntimeDeploymentPodAnnotations is deployment annotations for the `master` and `worker` deployments. Merges with the same field in the MendixApp CR, MendixApp has higher priority.",
+          "type": "object"
+        },
+        "runtimeLivenessProbe": {
+          "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+          "properties": {
+            "exec": {
+              "description": "Exec specifies the action to take.",
+              "properties": {
+                "command": {
+                  "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            },
+            "failureThreshold": {
+              "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "grpc": {
+              "description": "GRPC specifies an action involving a GRPC port. This is a beta field and requires enabling GRPCContainerProbe feature gate.",
+              "properties": {
+                "port": {
+                  "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "service": {
+                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). \n If this is not specified, the default behavior is defined by gRPC.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "httpGet": {
+              "description": "HTTPGet specifies the http request to perform.",
+              "properties": {
+                "host": {
+                  "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                  "type": "string"
+                },
+                "httpHeaders": {
+                  "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                  "items": {
+                    "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                    "properties": {
+                      "name": {
+                        "description": "The header field name",
+                        "type": "string"
+                      },
+                      "value": {
+                        "description": "The header field value",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ],
+                    "type": "object",
+                    "additionalProperties": false
+                  },
+                  "type": "array"
+                },
+                "path": {
+                  "description": "Path to access on the HTTP server.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                },
+                "scheme": {
+                  "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "initialDelaySeconds": {
+              "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            },
+            "periodSeconds": {
+              "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "successThreshold": {
+              "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "tcpSocket": {
+              "description": "TCPSocket specifies an action involving a TCP port.",
+              "properties": {
+                "host": {
+                  "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "terminationGracePeriodSeconds": {
+              "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "timeoutSeconds": {
+              "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeMetricsConfiguration": {
+          "description": "RuntimeMetricsConfiguration specifies the default configuration for collecting Prometheus metrics from the Mendix Runtime. Merges with the same field in the MendixApp CR, MendixApp has higher priority.",
+          "properties": {
+            "interval": {
+              "description": "StepInterval specifies a custom step for windowed statistics such as max. This should be aligned with your Prometheus scrape interval (1 minute by default) and can be left empty. This value is only used when using the native scraping mode. The value should be provided in ISO 8601 Duration format (e.g. 'PT1M').",
+              "type": "string"
+            },
+            "mode": {
+              "description": "Mode specifies the metrics mode to use (native or compatibility). If left empty, metrics will not be collected.",
+              "type": "string"
+            },
+            "mxAgentConfig": {
+              "description": "MxAgentConfig specifies a configuration for MxAgent, a Mendix Java instrumentation agent. This parameter works exactly like `METRICS_AGENT_CONFIG` in CF Buildpack and Mendix Cloud V4. Specifying a non-empty MxAgentConfig will enable collection of additional metrics in Mendix Runtime 9.7 and later versions. Warning: a future version of the Mendix Runtime will replace MxAgent with a native tracing feature, and MxAgent is expected to be deprecated in Mendix 10.",
+              "type": "string"
+            },
+            "mxAgentInstrumentationConfig": {
+              "description": "MxAgentInstrumentationConfig specifies instrumentation configuration for MxAgent, a Mendix Java instrumentation agent. This parameter works exactly like `METRICS_AGENT_INSTRUMENTATION_CONFIG` in CF Buildpack and Mendix Cloud V4. Specifying a non-empty MxAgentInstrumentationConfig will use a custom instrumentation config instead of the MxAgent configuration. This parameter is only used when MxAgentConfig is not empty. Warning: a future version of the Mendix Runtime will replace MxAgent with a native tracing feature, and MxAgent is expected to be deprecated in Mendix 10.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeReadinessProbe": {
+          "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+          "properties": {
+            "exec": {
+              "description": "Exec specifies the action to take.",
+              "properties": {
+                "command": {
+                  "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            },
+            "failureThreshold": {
+              "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "grpc": {
+              "description": "GRPC specifies an action involving a GRPC port. This is a beta field and requires enabling GRPCContainerProbe feature gate.",
+              "properties": {
+                "port": {
+                  "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "service": {
+                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). \n If this is not specified, the default behavior is defined by gRPC.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "httpGet": {
+              "description": "HTTPGet specifies the http request to perform.",
+              "properties": {
+                "host": {
+                  "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                  "type": "string"
+                },
+                "httpHeaders": {
+                  "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                  "items": {
+                    "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                    "properties": {
+                      "name": {
+                        "description": "The header field name",
+                        "type": "string"
+                      },
+                      "value": {
+                        "description": "The header field value",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ],
+                    "type": "object",
+                    "additionalProperties": false
+                  },
+                  "type": "array"
+                },
+                "path": {
+                  "description": "Path to access on the HTTP server.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                },
+                "scheme": {
+                  "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "initialDelaySeconds": {
+              "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            },
+            "periodSeconds": {
+              "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "successThreshold": {
+              "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "tcpSocket": {
+              "description": "TCPSocket specifies an action involving a TCP port.",
+              "properties": {
+                "host": {
+                  "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "terminationGracePeriodSeconds": {
+              "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "timeoutSeconds": {
+              "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeResources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeStartupProbe": {
+          "description": "Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.",
+          "properties": {
+            "exec": {
+              "description": "Exec specifies the action to take.",
+              "properties": {
+                "command": {
+                  "description": "Command is the command line to execute inside the container, the working directory for the command  is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.",
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object",
+              "additionalProperties": false
+            },
+            "failureThreshold": {
+              "description": "Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "grpc": {
+              "description": "GRPC specifies an action involving a GRPC port. This is a beta field and requires enabling GRPCContainerProbe feature gate.",
+              "properties": {
+                "port": {
+                  "description": "Port number of the gRPC service. Number must be in the range 1 to 65535.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "service": {
+                  "description": "Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). \n If this is not specified, the default behavior is defined by gRPC.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "httpGet": {
+              "description": "HTTPGet specifies the http request to perform.",
+              "properties": {
+                "host": {
+                  "description": "Host name to connect to, defaults to the pod IP. You probably want to set \"Host\" in httpHeaders instead.",
+                  "type": "string"
+                },
+                "httpHeaders": {
+                  "description": "Custom headers to set in the request. HTTP allows repeated headers.",
+                  "items": {
+                    "description": "HTTPHeader describes a custom header to be used in HTTP probes",
+                    "properties": {
+                      "name": {
+                        "description": "The header field name",
+                        "type": "string"
+                      },
+                      "value": {
+                        "description": "The header field value",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "value"
+                    ],
+                    "type": "object",
+                    "additionalProperties": false
+                  },
+                  "type": "array"
+                },
+                "path": {
+                  "description": "Path to access on the HTTP server.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                },
+                "scheme": {
+                  "description": "Scheme to use for connecting to the host. Defaults to HTTP.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "initialDelaySeconds": {
+              "description": "Number of seconds after the container has started before liveness probes are initiated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            },
+            "periodSeconds": {
+              "description": "How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "successThreshold": {
+              "description": "Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1.",
+              "format": "int32",
+              "type": "integer"
+            },
+            "tcpSocket": {
+              "description": "TCPSocket specifies an action involving a TCP port.",
+              "properties": {
+                "host": {
+                  "description": "Optional: Host name to connect to, defaults to the pod IP.",
+                  "type": "string"
+                },
+                "port": {
+                  "anyOf": [
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "description": "Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.",
+                  "x-kubernetes-int-or-string": true
+                }
+              },
+              "required": [
+                "port"
+              ],
+              "type": "object",
+              "additionalProperties": false
+            },
+            "terminationGracePeriodSeconds": {
+              "description": "Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is a beta field and requires enabling ProbeTerminationGracePeriod feature gate. Minimum value is 1. spec.terminationGracePeriodSeconds is used if unset.",
+              "format": "int64",
+              "type": "integer"
+            },
+            "timeoutSeconds": {
+              "description": "Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
+              "format": "int32",
+              "type": "integer"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "runtimeTerminationGracePeriodSeconds": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "sidecarImage": {
+          "type": "string"
+        },
+        "sidecarResources": {
+          "description": "ResourceRequirements describes the compute resource requirements.",
+          "properties": {
+            "claims": {
+              "description": "Claims lists the names of resources, defined in spec.resourceClaims, that are used by this container. \n This is an alpha field and requires enabling the DynamicResourceAllocation feature gate. \n This field is immutable.",
+              "items": {
+                "description": "ResourceClaim references one entry in PodSpec.ResourceClaims.",
+                "properties": {
+                  "name": {
+                    "description": "Name must match the name of one entry in pod.spec.resourceClaims of the Pod where this field is used. It makes that resource available inside a container.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name"
+                ],
+                "type": "object",
+                "additionalProperties": false
+              },
+              "type": "array",
+              "x-kubernetes-list-map-keys": [
+                "name"
+              ],
+              "x-kubernetes-list-type": "map"
+            },
+            "limits": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            },
+            "requests": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "pattern": "^(\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\\+|-)?(([0-9]+(\\.[0-9]*)?)|(\\.[0-9]+))))?$",
+                "x-kubernetes-int-or-string": true
+              },
+              "description": "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+              "type": "object"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "trust": {
+          "description": "Trust specifies the trust certificates CA's.",
+          "properties": {
+            "customCASecretName": {
+              "description": "CustomCASecretName the secret's name that contains custom.crt with additional trusted Certificate Authorities.",
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "OperatorConfigurationStatus defines the observed state of OperatorConfiguration",
+      "type": "object"
+    }
+  },
+  "type": "object"
+}

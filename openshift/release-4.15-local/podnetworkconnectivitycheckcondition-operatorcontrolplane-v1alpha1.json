@@ -1,0 +1,47 @@
+{
+  "description": "PodNetworkConnectivityCheckCondition represents the overall status of the pod network connectivity.",
+  "type": "object",
+  "required": [
+    "type",
+    "status",
+    "lastTransitionTime"
+  ],
+  "properties": {
+    "lastTransitionTime": {
+      "description": "Last time the condition transitioned from one status to another.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message indicating details about last transition in a human readable format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "Reason for the condition's last status transition in a machine readable format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "Type of the condition",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

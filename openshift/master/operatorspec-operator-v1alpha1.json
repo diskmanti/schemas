@@ -1,0 +1,50 @@
+{
+  "description": "OperatorSpec contains common fields for an operator to need.  It is intended to be anonymous included inside of the Spec struct for you particular operator.",
+  "type": "object",
+  "required": [
+    "managementState",
+    "imagePullSpec",
+    "imagePullPolicy",
+    "version"
+  ],
+  "properties": {
+    "imagePullPolicy": {
+      "description": "imagePullPolicy specifies the image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "imagePullSpec": {
+      "description": "imagePullSpec is the image to use for the component.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "logging": {
+      "description": "logging contains glog parameters for the component pods.  It's always a command line arg for the moment",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.LoggingConfig"
+    },
+    "managementState": {
+      "description": "managementState indicates whether and how the operator should manage the component",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "version": {
+      "description": "version is the desired state in major.minor.micro-patch.  Usually patch is ignored.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

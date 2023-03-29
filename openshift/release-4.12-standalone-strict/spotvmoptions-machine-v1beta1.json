@@ -1,0 +1,24 @@
+{
+  "description": "SpotVMOptions defines the options relevant to running the Machine on Spot VMs",
+  "type": "object",
+  "properties": {
+    "maxPrice": {
+      "oneOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

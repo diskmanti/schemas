@@ -1,0 +1,20 @@
+{
+  "description": "AlertingRuleStatus is the status of an AlertingRule resource.",
+  "type": "object",
+  "properties": {
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "prometheusRule": {
+      "description": "prometheusRule is the generated PrometheusRule for this AlertingRule.  Each AlertingRule instance results in a generated PrometheusRule object in the same namespace, which is always the openshift-monitoring namespace.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.PrometheusRuleRef"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

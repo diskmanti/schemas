@@ -1,0 +1,34 @@
+{
+  "description": "UnhealthyCondition represents a Node condition type and value with a timeout specified as a duration.  When the named condition has been in the given status for at least the timeout value, a node is considered unhealthy.",
+  "type": "object",
+  "required": [
+    "type",
+    "status",
+    "timeout"
+  ],
+  "properties": {
+    "status": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "timeout": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

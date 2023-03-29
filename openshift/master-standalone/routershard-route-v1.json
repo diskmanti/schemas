@@ -1,0 +1,27 @@
+{
+  "description": "RouterShard has information of a routing shard and is used to generate host names and routing table entries when a routing shard is allocated for a specific route. Caveat: This is WIP and will likely undergo modifications when sharding support is added.",
+  "type": "object",
+  "required": [
+    "shardName",
+    "dnsSuffix"
+  ],
+  "properties": {
+    "dnsSuffix": {
+      "description": "dnsSuffix for the shard ala: shard-1.v3.openshift.com",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "shardName": {
+      "description": "shardName uniquely identifies a router shard in the \"set\" of routers used for routing traffic to the services.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

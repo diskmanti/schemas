@@ -1,0 +1,32 @@
+{
+  "description": "OAuthSpec contains desired cluster auth configuration",
+  "type": "object",
+  "required": [
+    "tokenConfig"
+  ],
+  "properties": {
+    "identityProviders": {
+      "description": "identityProviders is an ordered list of ways for a user to identify themselves. When this list is empty, no identities are provisioned for users.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.IdentityProvider"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "templates": {
+      "description": "templates allow you to customize pages like the login page.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.OAuthTemplates"
+    },
+    "tokenConfig": {
+      "description": "tokenConfig contains options for authorization and access tokens",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.TokenConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

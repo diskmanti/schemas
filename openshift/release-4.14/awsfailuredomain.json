@@ -1,0 +1,16 @@
+{
+  "description": "AWSFailureDomain configures failure domain information for the AWS platform.",
+  "type": "object",
+  "properties": {
+    "placement": {
+      "description": "Placement configures the placement information for this instance.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSFailureDomainPlacement"
+    },
+    "subnet": {
+      "description": "Subnet is a reference to the subnet to use for this instance.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1.AWSResourceReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

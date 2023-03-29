@@ -1,0 +1,18 @@
+{
+  "description": "StatuspageProvider provides identity for statuspage account.",
+  "type": "object",
+  "required": [
+    "pageID"
+  ],
+  "properties": {
+    "pageID": {
+      "description": "pageID is the unique ID assigned by Statuspage for your page. This must be a public page.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,42 @@
+{
+  "description": "gathererStatus represents information about a particular data gatherer.",
+  "type": "object",
+  "required": [
+    "conditions",
+    "name",
+    "lastGatherDuration"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions provide details on the status of each gatherer.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map",
+      "x-kubernetes-patch-merge-key": "type",
+      "x-kubernetes-patch-strategy": "merge"
+    },
+    "lastGatherDuration": {
+      "description": "lastGatherDuration represents the time spent gathering.",
+      "default": 0,
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    "name": {
+      "description": "name is the name of the gatherer.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

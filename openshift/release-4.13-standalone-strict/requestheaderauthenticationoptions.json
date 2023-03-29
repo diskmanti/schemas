@@ -1,0 +1,79 @@
+{
+  "description": "RequestHeaderAuthenticationOptions provides options for setting up a front proxy against the entire API instead of against the /oauth endpoint.",
+  "type": "object",
+  "required": [
+    "clientCA",
+    "clientCommonNames",
+    "usernameHeaders",
+    "groupHeaders",
+    "extraHeaderPrefixes"
+  ],
+  "properties": {
+    "clientCA": {
+      "description": "ClientCA is a file with the trusted signer certs.  It is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientCommonNames": {
+      "description": "ClientCommonNames is a required list of common names to require a match from.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "extraHeaderPrefixes": {
+      "description": "ExtraHeaderPrefixes is the set of request header prefixes to inspect for user extra. X-Remote-Extra- is suggested.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "groupHeaders": {
+      "description": "GroupNameHeader is the set of headers to check for group information.  All are unioned.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "usernameHeaders": {
+      "description": "UsernameHeaders is the list of headers to check for user information.  First hit wins.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

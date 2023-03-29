@@ -1,0 +1,15 @@
+{
+  "description": "SecurityProfile specifies the Security profile settings for a virtual machine or virtual machine scale set.",
+  "type": "object",
+  "properties": {
+    "encryptionAtHost": {
+      "description": "This field indicates whether Host Encryption should be enabled or disabled for a virtual machine or virtual machine scale set. Default is disabled.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

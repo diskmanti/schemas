@@ -1,0 +1,24 @@
+{
+  "description": "NamedClusterRole relates a name with a cluster role",
+  "type": "object",
+  "required": [
+    "name",
+    "role"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name is the name of the cluster role",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "role": {
+      "description": "Role is the cluster role being named",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.ClusterRole"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

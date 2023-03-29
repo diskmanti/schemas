@@ -1,0 +1,39 @@
+{
+  "description": "Server defines the schema for a server that runs per instance of CoreDNS.",
+  "type": "object",
+  "required": [
+    "name",
+    "zones",
+    "forwardPlugin"
+  ],
+  "properties": {
+    "forwardPlugin": {
+      "description": "forwardPlugin defines a schema for configuring CoreDNS to proxy DNS messages to upstream resolvers.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ForwardPlugin"
+    },
+    "name": {
+      "description": "name is required and specifies a unique name for the server. Name must comply with the Service Name Syntax of rfc6335.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "zones": {
+      "description": "zones is required and specifies the subdomains that Server is authoritative for. Zones must conform to the rfc1123 definition of a subdomain. Specifying the cluster domain (i.e., \"cluster.local\") is invalid.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

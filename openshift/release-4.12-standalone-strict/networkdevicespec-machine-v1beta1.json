@@ -1,0 +1,19 @@
+{
+  "description": "NetworkDeviceSpec defines the network configuration for a virtual machine's network device.",
+  "type": "object",
+  "required": [
+    "networkName"
+  ],
+  "properties": {
+    "networkName": {
+      "description": "NetworkName is the name of the vSphere network to which the device will be connected.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

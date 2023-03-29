@@ -1,0 +1,75 @@
+{
+  "description": "LoggingDestination describes a destination for log messages.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "container": {
+      "description": "ContainerLoggingDestinationParameters describes parameters for the Container logging destination type.",
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "syslog": {
+      "description": "SyslogLoggingDestinationParameters describes parameters for the Syslog logging destination type.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "address",
+        "port"
+      ],
+      "properties": {
+        "address": {
+          "description": "address is the IP address of the syslog endpoint that receives log messages.",
+          "type": "string",
+          "default": ""
+        },
+        "facility": {
+          "description": "facility specifies the syslog facility of log messages.\n\nIf this field is empty, the facility is \"local1\".",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "maxLength": {
+          "description": "maxLength is the maximum length of the syslog message\n\nIf this field is empty, the maxLength is set to \"1024\".",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "port": {
+          "description": "port is the UDP port number of the syslog endpoint that receives log messages.",
+          "type": "integer",
+          "format": "int64",
+          "default": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "type": {
+      "description": "type is the type of destination for logs.  It must be one of the following:\n\n* Container\n\nThe ingress operator configures the sidecar container named \"logs\" on the ingress controller pod and configures the ingress controller to write logs to the sidecar.  The logs are then available as container logs.  The expectation is that the administrator configures a custom logging solution that reads logs from this sidecar.  Note that using container logs means that logs may be dropped if the rate of logs exceeds the container runtime's or the custom logging solution's capacity.\n\n* Syslog\n\nLogs are sent to a syslog endpoint.  The administrator must specify an endpoint that can receive syslog messages.  The expectation is that the administrator has configured a custom syslog instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "container": "Container",
+        "syslog": "Syslog"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

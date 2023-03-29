@@ -1,0 +1,36 @@
+{
+  "description": "RedirectReference specifies the target in the current namespace that resolves into redirect URIs.  Only the 'Route' kind is currently allowed.",
+  "type": "object",
+  "required": [
+    "group",
+    "kind",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "The group of the target that is being referred to.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "The kind of the target that is being referred to.  Currently, only 'Route' is allowed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "The name of the target that is being referred to. e.g. name of the Route.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

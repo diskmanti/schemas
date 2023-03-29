@@ -1,0 +1,28 @@
+{
+  "description": "CertInfo relates a certificate with a private key",
+  "type": "object",
+  "required": [
+    "certFile",
+    "keyFile"
+  ],
+  "properties": {
+    "certFile": {
+      "description": "CertFile is a file containing a PEM-encoded certificate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyFile": {
+      "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

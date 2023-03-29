@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "forcePull": {
+      "description": "ForcePull overrides, if set, the equivalent value in the builds, i.e. false disables force pull for all builds, true enables force pull for all builds, independently of what each build specifies itself",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "imageLabels": {
+      "description": "ImageLabels is a list of docker labels that are applied to the resulting image. If user provided a label in their Build/BuildConfig with the same name as one in this list, the user's label will be overwritten.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageLabel"
+      }
+    },
+    "nodeSelector": {
+      "description": "NodeSelector is a selector which must be true for the build pod to fit on a node",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tolerations": {
+      "description": "Tolerations is a list of Tolerations that will override any existing tolerations set on a build pod.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

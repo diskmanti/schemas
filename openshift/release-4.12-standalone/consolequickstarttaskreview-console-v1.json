@@ -1,0 +1,27 @@
+{
+  "description": "ConsoleQuickStartTaskReview contains instructions that validate a task was completed successfully.",
+  "type": "object",
+  "required": [
+    "instructions",
+    "failedTaskHelp"
+  ],
+  "properties": {
+    "failedTaskHelp": {
+      "description": "failedTaskHelp contains suggestions for a failed task review and is shown at the end of task. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "instructions": {
+      "description": "instructions contains steps that user needs to take in order to validate his work after going through a task. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

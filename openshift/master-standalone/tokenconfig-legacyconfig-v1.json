@@ -1,0 +1,37 @@
+{
+  "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+  "type": "object",
+  "required": [
+    "authorizeTokenMaxAgeSeconds",
+    "accessTokenMaxAgeSeconds"
+  ],
+  "properties": {
+    "accessTokenInactivityTimeoutSeconds": {
+      "description": "AccessTokenInactivityTimeoutSeconds defined the default token inactivity timeout for tokens granted by any client. Setting it to nil means the feature is completely disabled (default) The default setting can be overriden on OAuthClient basis. The value represents the maximum amount of time that can occur between consecutive uses of the token. Tokens become invalid if they are not used within this temporal window. The user will need to acquire a new token to regain access once a token times out. Valid values are: - 0: Tokens never time out - X: Tokens time out if there is no activity for X seconds The current minimum allowed value for X is 300 (5 minutes)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "accessTokenMaxAgeSeconds": {
+      "description": "AccessTokenMaxAgeSeconds defines the maximum age of access tokens",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "authorizeTokenMaxAgeSeconds": {
+      "description": "AuthorizeTokenMaxAgeSeconds defines the maximum age of authorize tokens",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

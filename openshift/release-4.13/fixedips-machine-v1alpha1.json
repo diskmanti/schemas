@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "subnetID"
+  ],
+  "properties": {
+    "ipAddress": {
+      "description": "ipAddress is a specific IP address to use in the given subnet. Port creation will fail if the address is not available. If not specified, an available IP from the given subnet will be selected automatically.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subnetID": {
+      "description": "subnetID specifies the ID of the subnet where the fixed IP will be allocated.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

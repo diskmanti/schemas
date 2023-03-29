@@ -1,0 +1,27 @@
+{
+  "description": "MTUMigrationValues contains the values for a MTU migration.",
+  "type": "object",
+  "required": [
+    "to"
+  ],
+  "properties": {
+    "from": {
+      "description": "From is the MTU to migrate from.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "to": {
+      "description": "To is the MTU to migrate to.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

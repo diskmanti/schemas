@@ -1,0 +1,15 @@
+{
+  "description": "DiskEncryptionSetParameters is the disk encryption set properties",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "ID is the disk encryption set ID Empty value means no opinion and the platform chooses a default, which is subject to change over time. Currently the default is: \"Default\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

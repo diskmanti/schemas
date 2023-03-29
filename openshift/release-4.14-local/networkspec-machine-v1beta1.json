@@ -1,0 +1,21 @@
+{
+  "description": "NetworkSpec defines the virtual machine's network configuration.",
+  "type": "object",
+  "required": [
+    "devices"
+  ],
+  "properties": {
+    "devices": {
+      "description": "Devices defines the virtual machine's network interfaces.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.NetworkDeviceSpec"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

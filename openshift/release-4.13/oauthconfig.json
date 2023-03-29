@@ -1,0 +1,96 @@
+{
+  "description": "OAuthConfig holds the necessary configuration options for OAuth authentication",
+  "type": "object",
+  "required": [
+    "masterCA",
+    "masterURL",
+    "masterPublicURL",
+    "loginURL",
+    "assetPublicURL",
+    "alwaysShowProviderSelection",
+    "identityProviders",
+    "grantConfig",
+    "sessionConfig",
+    "tokenConfig",
+    "templates"
+  ],
+  "properties": {
+    "alwaysShowProviderSelection": {
+      "description": "alwaysShowProviderSelection will force the provider selection page to render even when there is only a single provider.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "assetPublicURL": {
+      "description": "assetPublicURL is used for building valid client redirect URLs for external access",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "grantConfig": {
+      "description": "grantConfig describes how to handle grants",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.osin.v1.GrantConfig"
+    },
+    "identityProviders": {
+      "description": "identityProviders is an ordered list of ways for a user to identify themselves",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.osin.v1.IdentityProvider"
+      }
+    },
+    "loginURL": {
+      "description": "loginURL, along with masterCA, masterURL and masterPublicURL have distinct meanings depending on how the OAuth server is run.  The two states are: 1. embedded in the kube api server (all 3.x releases) 2. as a standalone external process (all 4.x releases) in the embedded configuration, loginURL is equivalent to masterPublicURL and the other fields have functionality that matches their docs. in the standalone configuration, the fields are used as: loginURL is the URL required to login to the cluster: oc login --server=<loginURL> masterPublicURL is the issuer URL it is accessible from inside (service network) and outside (ingress) of the cluster masterURL is the loopback variation of the token_endpoint URL with no path component it is only accessible from inside (service network) of the cluster masterCA is used to perform TLS verification for connections made to masterURL For further details, see the IETF Draft: https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "masterCA": {
+      "description": "masterCA is the CA for verifying the TLS connection back to the MasterURL. This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "masterPublicURL": {
+      "description": "masterPublicURL is used for building valid client redirect URLs for internal and external access This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "masterURL": {
+      "description": "masterURL is used for making server-to-server calls to exchange authorization codes for access tokens This field is deprecated and will be removed in a future release. See loginURL for details. Deprecated",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sessionConfig": {
+      "description": "sessionConfig hold information about configuring sessions.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.osin.v1.SessionConfig"
+    },
+    "templates": {
+      "description": "templates allow you to customize pages like the login page.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.osin.v1.OAuthTemplates"
+    },
+    "tokenConfig": {
+      "description": "tokenConfig contains options for authorization and access tokens",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.osin.v1.TokenConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

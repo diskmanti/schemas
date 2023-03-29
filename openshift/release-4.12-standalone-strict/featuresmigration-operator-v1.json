@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "egressFirewall": {
+      "description": "egressFirewall specifies whether or not the Egress Firewall configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and Egress Firewall configure is migrated.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "egressIP": {
+      "description": "egressIP specifies whether or not the Egress IP configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and Egress IP configure is migrated.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "multicast": {
+      "description": "multicast specifies whether or not the multicast configuration is migrated automatically when changing the cluster default network provider. If unset, this property defaults to 'true' and multicast configure is migrated.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

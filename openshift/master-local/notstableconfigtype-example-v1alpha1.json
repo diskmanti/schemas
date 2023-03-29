@@ -1,0 +1,35 @@
+{
+  "description": "NotStableConfigType is a stable config type that is TechPreviewNoUpgrade only.\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "spec is the specification of the desired behavior of the NotStableConfigType.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigTypeSpec"
+    },
+    "status": {
+      "description": "status is the most recently observed status of the NotStableConfigType.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.example.v1alpha1.NotStableConfigTypeStatus"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

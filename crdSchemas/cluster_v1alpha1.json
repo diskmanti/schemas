@@ -1,0 +1,181 @@
+{
+  "description": "Cluster is the Schema for the clusters API",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": "string"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "spec": {
+      "description": "ClusterSpec defines the desired state of Cluster",
+      "properties": {
+        "acrDomain": {
+          "type": "string"
+        },
+        "apiIntIP": {
+          "type": "string"
+        },
+        "architectureVersion": {
+          "type": "integer"
+        },
+        "azEnvironment": {
+          "type": "string"
+        },
+        "banner": {
+          "description": "Banner defines if a Banner should be shown to the customer",
+          "properties": {
+            "content": {
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "clusterResourceGroupId": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "gatewayDomains": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "gatewayPrivateEndpointIP": {
+          "type": "string"
+        },
+        "genevaLogging": {
+          "properties": {
+            "configVersion": {
+              "pattern": "[0-9]+.[0-9]+",
+              "type": "string"
+            },
+            "monitoringGCSAccount": {
+              "enum": [
+                "AROClusterLogsINT",
+                "AROClusterLogsPROD",
+                "AROClusterLogs"
+              ],
+              "type": "string"
+            },
+            "monitoringGCSEnvironment": {
+              "enum": [
+                "DiagnosticsProd",
+                "Test",
+                "CaFairfax"
+              ],
+              "type": "string"
+            },
+            "monitoringGCSNamespace": {
+              "enum": [
+                "AROClusterLogsINT",
+                "AROClusterLogsPROD",
+                "AROClusterLogs"
+              ],
+              "type": "string"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "infraId": {
+          "type": "string"
+        },
+        "ingressIP": {
+          "type": "string"
+        },
+        "internetChecker": {
+          "properties": {
+            "urls": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object",
+          "additionalProperties": false
+        },
+        "location": {
+          "type": "string"
+        },
+        "operatorflags": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "OperatorFlags defines feature gates for the ARO Operator",
+          "type": "object"
+        },
+        "resourceId": {
+          "description": "ResourceID is the Azure resourceId of the cluster",
+          "type": "string"
+        },
+        "serviceSubnets": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "storageSuffix": {
+          "type": "string"
+        },
+        "vnetId": {
+          "type": "string"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ClusterStatus defines the observed state of Cluster",
+      "properties": {
+        "conditions": {
+          "items": {
+            "description": "OperatorCondition is just the standard condition fields.",
+            "properties": {
+              "lastTransitionTime": {
+                "format": "date-time",
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "additionalProperties": false
+          },
+          "type": "array"
+        },
+        "operatorVersion": {
+          "type": "string"
+        },
+        "redHatKeysPresent": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object",
+      "additionalProperties": false
+    }
+  },
+  "type": "object"
+}

@@ -1,0 +1,40 @@
+{
+  "description": "NodeVolumeConfig contains options for configuring volumes on the node.",
+  "type": "object",
+  "required": [
+    "localQuota"
+  ],
+  "properties": {
+    "localQuota": {
+      "description": "LocalQuota contains options for controlling local volume quota on the node.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "perFSGroup"
+      ],
+      "properties": {
+        "perFSGroup": {
+          "oneOf": [
+            {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

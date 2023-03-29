@@ -1,0 +1,190 @@
+{
+  "description": "ConsolePluginSpec is the desired plugin configuration.",
+  "type": "object",
+  "required": [
+    "displayName",
+    "backend"
+  ],
+  "properties": {
+    "backend": {
+      "description": "ConsolePluginBackend holds information about the endpoint which serves the console's plugin",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "service": {
+          "description": "ConsolePluginService holds information on Service that is serving console dynamic plugin assets.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "name",
+            "namespace",
+            "port"
+          ],
+          "properties": {
+            "basePath": {
+              "description": "basePath is the path to the plugin's assets. The primary asset it the manifest file called `plugin-manifest.json`, which is a JSON document that contains metadata about the plugin and the extensions.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            },
+            "name": {
+              "description": "name of Service that is serving the plugin assets.",
+              "type": "string",
+              "default": ""
+            },
+            "namespace": {
+              "description": "namespace of Service that is serving the plugin assets.",
+              "type": "string",
+              "default": ""
+            },
+            "port": {
+              "description": "port on which the Service that is serving the plugin is listening to.",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        },
+        "type": {
+          "description": "type is the backend type which servers the console's plugin. Currently only \"Service\" is supported.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "x-kubernetes-unions": [
+        {
+          "discriminator": "type",
+          "fields-to-discriminateBy": {
+            "service": "Service"
+          }
+        }
+      ]
+    },
+    "displayName": {
+      "description": "displayName is the display name of the plugin. The dispalyName should be between 1 and 128 characters.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "i18n": {
+      "description": "ConsolePluginI18n holds information on localization resources that are served by the dynamic plugin.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "loadType"
+      ],
+      "properties": {
+        "loadType": {
+          "description": "loadType indicates how the plugin's localization resource should be loaded. Valid values are Preload, Lazy and the empty string. When set to Preload, all localization resources are fetched when the plugin is loaded. When set to Lazy, localization resources are lazily loaded as and when they are required by the console. When omitted or set to the empty string, the behaviour is equivalent to Lazy type.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "proxy": {
+      "description": "proxy is a list of proxies that describe various service type to which the plugin needs to connect to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ConsolePluginProxy holds information on various service types to which console's backend will proxy the plugin's requests.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "endpoint",
+          "alias"
+        ],
+        "properties": {
+          "alias": {
+            "description": "alias is a proxy name that identifies the plugin's proxy. An alias name should be unique per plugin. The console backend exposes following proxy endpoint:\n\n/api/proxy/plugin/<plugin-name>/<proxy-alias>/<request-path>?<optional-query-parameters>\n\nRequest example path:\n\n/api/proxy/plugin/acm/search/pods?namespace=openshift-apiserver",
+            "type": "string",
+            "default": ""
+          },
+          "authorization": {
+            "description": "authorization provides information about authorization type, which the proxied request should contain",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "caCertificate": {
+            "description": "caCertificate provides the cert authority certificate contents, in case the proxied Service is using custom service CA. By default, the service CA bundle provided by the service-ca operator is used.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "endpoint": {
+            "description": "ConsolePluginProxyEndpoint holds information about the endpoint to which request will be proxied to.",
+            "type": "object",
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "service": {
+                "description": "ProxyTypeServiceConfig holds information on Service to which console's backend will proxy the plugin's requests.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "name",
+                  "namespace",
+                  "port"
+                ],
+                "properties": {
+                  "name": {
+                    "description": "name of Service that the plugin needs to connect to.",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "namespace": {
+                    "description": "namespace of Service that the plugin needs to connect to",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "port": {
+                    "description": "port on which the Service that the plugin needs to connect to is listening on.",
+                    "type": "integer",
+                    "format": "int32",
+                    "default": 0
+                  }
+                }
+              },
+              "type": {
+                "description": "type is the type of the console plugin's proxy. Currently only \"Service\" is supported.",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "x-kubernetes-unions": [
+              {
+                "discriminator": "type",
+                "fields-to-discriminateBy": {
+                  "service": "Service"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

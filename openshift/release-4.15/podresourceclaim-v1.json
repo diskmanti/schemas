@@ -1,0 +1,23 @@
+{
+  "description": "PodResourceClaim references exactly one ResourceClaim through a ClaimSource. It adds a name to it that uniquely identifies the ResourceClaim inside the Pod. Containers that need access to the ResourceClaim reference it with this name.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name uniquely identifies this resource claim inside the pod. This must be a DNS_LABEL.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "source": {
+      "description": "Source describes where to find the ResourceClaim.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.ClaimSource"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

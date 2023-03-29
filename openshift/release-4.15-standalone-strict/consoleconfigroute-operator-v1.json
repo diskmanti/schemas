@@ -1,0 +1,37 @@
+{
+  "description": "ConsoleConfigRoute holds information on external route access to console. DEPRECATED",
+  "type": "object",
+  "required": [
+    "hostname"
+  ],
+  "properties": {
+    "hostname": {
+      "description": "hostname is the desired custom domain under which console will be available.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "secret": {
+      "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced secret",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,57 @@
+{
+  "description": "PodAttachOptions is the query options to a Pod's remote attach call.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "container": {
+      "description": "The container in which to execute the command. Defaults to only container if there is only one container in the pod.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stderr": {
+      "description": "Stderr if true indicates that stderr is to be redirected for the attach call. Defaults to true.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "stdin": {
+      "description": "Stdin if true, redirects the standard input stream of the pod for this call. Defaults to false.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "stdout": {
+      "description": "Stdout if true indicates that stdout is to be redirected for the attach call. Defaults to true.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "tty": {
+      "description": "TTY if true indicates that a tty will be allocated for the attach call. This is passed through the container runtime so the tty is allocated on the worker node by the container runtime. Defaults to false.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

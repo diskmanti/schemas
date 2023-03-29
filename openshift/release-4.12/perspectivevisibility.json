@@ -1,0 +1,30 @@
+{
+  "description": "PerspectiveVisibility defines the criteria to show/hide a perspective",
+  "type": "object",
+  "required": [
+    "state"
+  ],
+  "properties": {
+    "accessReview": {
+      "description": "accessReview defines required and missing access review checks.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ResourceAttributesAccessReview"
+    },
+    "state": {
+      "description": "state defines the perspective is enabled or disabled or access review check is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "state",
+      "fields-to-discriminateBy": {
+        "accessReview": "AccessReview"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

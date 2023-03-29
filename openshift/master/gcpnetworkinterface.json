@@ -1,0 +1,35 @@
+{
+  "description": "GCPNetworkInterface describes network interfaces for GCP",
+  "type": "object",
+  "properties": {
+    "network": {
+      "description": "Network is the network name.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "projectID": {
+      "description": "ProjectID is the project in which the GCP machine provider will create the VM.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "publicIP": {
+      "description": "PublicIP indicates if true a public IP will be used",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "subnetwork": {
+      "description": "Subnetwork is the subnetwork name.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

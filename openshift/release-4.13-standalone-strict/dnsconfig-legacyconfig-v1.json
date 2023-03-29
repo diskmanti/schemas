@@ -1,0 +1,37 @@
+{
+  "description": "DNSConfig holds the necessary configuration options for DNS",
+  "type": "object",
+  "required": [
+    "bindAddress",
+    "bindNetwork",
+    "allowRecursiveQueries"
+  ],
+  "properties": {
+    "allowRecursiveQueries": {
+      "description": "AllowRecursiveQueries allows the DNS server on the master to answer queries recursively. Note that open resolvers can be used for DNS amplification attacks and the master DNS should not be made accessible to public networks.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "bindAddress": {
+      "description": "BindAddress is the ip:port to serve DNS on",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "bindNetwork": {
+      "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

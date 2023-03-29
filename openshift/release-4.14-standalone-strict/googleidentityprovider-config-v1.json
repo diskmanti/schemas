@@ -1,0 +1,46 @@
+{
+  "description": "GoogleIdentityProvider provides identities for users authenticating using Google credentials",
+  "type": "object",
+  "required": [
+    "clientID",
+    "clientSecret"
+  ],
+  "properties": {
+    "clientID": {
+      "description": "clientID is the oauth client ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientSecret": {
+      "description": "SecretNameReference references a secret in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced secret",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "hostedDomain": {
+      "description": "hostedDomain is the optional Google App domain (e.g. \"mycompany.com\") to restrict logins to",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

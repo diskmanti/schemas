@@ -1,0 +1,22 @@
+{
+  "description": "QuickStarts allow cluster admins to customize available ConsoleQuickStart resources.",
+  "type": "object",
+  "properties": {
+    "disabled": {
+      "description": "disabled is a list of ConsoleQuickStart resource names that are not shown to users.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,52 @@
+{
+  "description": "EtcdConnectionInfo holds information necessary for connecting to an etcd server",
+  "type": "object",
+  "required": [
+    "urls",
+    "ca",
+    "certFile",
+    "keyFile"
+  ],
+  "properties": {
+    "ca": {
+      "description": "CA is a file containing trusted roots for the etcd server certificates",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "certFile": {
+      "description": "CertFile is a file containing a PEM-encoded certificate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyFile": {
+      "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "urls": {
+      "description": "URLs are the URLs for etcd",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

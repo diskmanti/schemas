@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "properties": {
+    "disabled": {
+      "description": "disabled is a list of all feature gates that you want to force off",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "enabled": {
+      "description": "enabled is a list of all feature gates that you want to force on",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

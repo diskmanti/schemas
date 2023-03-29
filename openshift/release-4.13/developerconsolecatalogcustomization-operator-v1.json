@@ -1,0 +1,23 @@
+{
+  "description": "DeveloperConsoleCatalogCustomization allow cluster admin to configure developer catalog.",
+  "type": "object",
+  "properties": {
+    "categories": {
+      "description": "categories which are shown in the developer catalog.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogCategory"
+      }
+    },
+    "types": {
+      "description": "types allows enabling or disabling of sub-catalog types that user can see in the Developer catalog. When omitted, all the sub-catalog types will be shown.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.operator.v1.DeveloperConsoleCatalogTypes"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

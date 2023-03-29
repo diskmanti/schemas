@@ -1,0 +1,107 @@
+{
+  "description": "RequestHeaderIdentityProvider provides identities for users authenticating using request header credentials",
+  "type": "object",
+  "required": [
+    "loginURL",
+    "challengeURL",
+    "ca",
+    "headers",
+    "preferredUsernameHeaders",
+    "nameHeaders",
+    "emailHeaders"
+  ],
+  "properties": {
+    "ca": {
+      "description": "ca is a required reference to a config map by name containing the PEM-encoded CA bundle. It is used as a trust anchor to validate the TLS certificate presented by the remote server. Specifically, it allows verification of incoming requests to prevent header spoofing. The key \"ca.crt\" is used to locate the data. If the config map or expected key is not found, the identity provider is not honored. If the specified ca data is not valid, the identity provider is not honored. The namespace for this config map is openshift-config.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.ConfigMapNameReference"
+    },
+    "challengeURL": {
+      "description": "challengeURL is a URL to redirect unauthenticated /authorize requests to Unauthenticated requests from OAuth clients which expect WWW-Authenticate challenges will be redirected here. ${url} is replaced with the current URL, escaped to be safe in a query parameter\n  https://www.example.com/sso-login?then=${url}\n${query} is replaced with the current query string\n  https://www.example.com/auth-proxy/oauth/authorize?${query}\nRequired when challenge is set to true.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "clientCommonNames": {
+      "description": "clientCommonNames is an optional list of common names to require a match from. If empty, any client certificate validated against the clientCA bundle is considered authoritative.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "emailHeaders": {
+      "description": "emailHeaders is the set of headers to check for the email address",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "headers": {
+      "description": "headers is the set of headers to check for identity information",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "loginURL": {
+      "description": "loginURL is a URL to redirect unauthenticated /authorize requests to Unauthenticated requests from OAuth clients which expect interactive logins will be redirected here ${url} is replaced with the current URL, escaped to be safe in a query parameter\n  https://www.example.com/sso-login?then=${url}\n${query} is replaced with the current query string\n  https://www.example.com/auth-proxy/oauth/authorize?${query}\nRequired when login is set to true.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "nameHeaders": {
+      "description": "nameHeaders is the set of headers to check for the display name",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "preferredUsernameHeaders": {
+      "description": "preferredUsernameHeaders is the set of headers to check for the preferred username",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,89 @@
+{
+  "description": "ForwardPlugin defines a schema for configuring the CoreDNS forward plugin.",
+  "type": "object",
+  "required": [
+    "upstreams"
+  ],
+  "properties": {
+    "policy": {
+      "description": "policy is used to determine the order in which upstream servers are selected for querying. Any one of the following values may be specified:\n\n* \"Random\" picks a random upstream server for each query. * \"RoundRobin\" picks upstream servers in a round-robin order, moving to the next server for each new query. * \"Sequential\" tries querying upstream servers in a sequential order until one responds, starting with the first server for each new query.\n\nThe default value is \"Random\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "transportConfig": {
+      "description": "DNSTransportConfig groups related configuration parameters used for configuring forwarding to upstream resolvers that support DNS-over-TLS.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "tls": {
+          "description": "DNSOverTLSConfig describes optional DNSTransportConfig fields that should be captured.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "serverName"
+          ],
+          "properties": {
+            "caBundle": {
+              "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "name"
+              ],
+              "properties": {
+                "name": {
+                  "description": "name is the metadata.name of the referenced config map",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            "serverName": {
+              "description": "serverName is the upstream server to connect to when forwarding DNS queries. This is required when Transport is set to \"TLS\". ServerName will be validated against the DNS naming conventions in RFC 1123 and should match the TLS certificate installed in the upstream resolver(s).",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "transport": {
+          "description": "transport allows cluster administrators to opt-in to using a DNS-over-TLS connection between cluster DNS and an upstream resolver(s). Configuring TLS as the transport at this level without configuring a CABundle will result in the system certificates being used to verify the serving certificate of the upstream resolver(s).\n\nPossible values: \"\" (empty) - This means no explicit choice has been made and the platform chooses the default which is subject to change over time. The current default is \"Cleartext\". \"Cleartext\" - Cluster admin specified cleartext option. This results in the same functionality as an empty value but may be useful when a cluster admin wants to be more explicit about the transport, or wants to switch from \"TLS\" to \"Cleartext\" explicitly. \"TLS\" - This indicates that DNS queries should be sent over a TLS connection. If Transport is set to TLS, you MUST also set ServerName. If a port is not included with the upstream IP, port 853 will be tried by default per RFC 7858 section 3.1; https://datatracker.ietf.org/doc/html/rfc7858#section-3.1.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "x-kubernetes-unions": [
+        {
+          "discriminator": "transport",
+          "fields-to-discriminateBy": {
+            "tls": "TLS"
+          }
+        }
+      ]
+    },
+    "upstreams": {
+      "description": "upstreams is a list of resolvers to forward name queries for subdomains of Zones. Each instance of CoreDNS performs health checking of Upstreams. When a healthy upstream returns an error during the exchange, another resolver is tried from Upstreams. The Upstreams are selected in the order specified in Policy. Each upstream is represented by an IP address or IP:port if the upstream listens on a port other than 53.\n\nA maximum of 15 upstreams is allowed per ForwardPlugin.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,79 @@
+{
+  "description": "Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "serviceServingCert",
+    "projectConfig",
+    "extendedArguments"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extendedArguments": {
+      "description": "extendedArguments is used to configure the kube-controller-manager",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "projectConfig": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "defaultNodeSelector"
+      ],
+      "properties": {
+        "defaultNodeSelector": {
+          "description": "defaultNodeSelector holds default project node label selector",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "serviceServingCert": {
+      "description": "ServiceServingCert holds configuration for service serving cert signer which creates cert/key pairs for pods fulfilling a service to serve with.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "certFile"
+      ],
+      "properties": {
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

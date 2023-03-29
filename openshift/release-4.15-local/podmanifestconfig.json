@@ -1,0 +1,28 @@
+{
+  "description": "PodManifestConfig holds the necessary configuration options for using pod manifests",
+  "type": "object",
+  "required": [
+    "path",
+    "fileCheckIntervalSeconds"
+  ],
+  "properties": {
+    "fileCheckIntervalSeconds": {
+      "description": "FileCheckIntervalSeconds is the interval in seconds for checking the manifest file(s) for new data The interval needs to be a positive value",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "path": {
+      "description": "Path specifies the path for the pod manifest file or directory If its a directory, its expected to contain on or more manifest files This is used by the Kubelet to create pods on the node",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

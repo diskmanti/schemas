@@ -1,0 +1,39 @@
+{
+  "description": "AWSPlatformSpec holds the desired state of the Amazon Web Services infrastructure provider. This only includes fields that can be modified in the cluster.",
+  "type": "object",
+  "properties": {
+    "serviceEndpoints": {
+      "description": "serviceEndpoints list contains custom endpoints which will override default service endpoint of AWS Services. There must be only one ServiceEndpoint for a service.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "AWSServiceEndpoint store the configuration of a custom url to override existing defaults of AWS Services.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "url"
+        ],
+        "properties": {
+          "name": {
+            "description": "name is the name of the AWS service. The list of all the service names can be found at https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html This must be provided and cannot be empty.",
+            "type": "string",
+            "default": ""
+          },
+          "url": {
+            "description": "url is fully qualified URI with scheme https, that overrides the default generated endpoint for a client. This must be provided and cannot be empty.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

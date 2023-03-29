@@ -1,0 +1,22 @@
+{
+  "description": "OSDiskManagedDiskParameters is the parameters of a OSDisk managed disk.",
+  "type": "object",
+  "required": [
+    "storageAccountType"
+  ],
+  "properties": {
+    "diskEncryptionSet": {
+      "description": "DiskEncryptionSet is the disk encryption set properties",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.DiskEncryptionSetParameters"
+    },
+    "storageAccountType": {
+      "description": "StorageAccountType is the storage account type to use. Possible values include \"Standard_LRS\", \"Premium_LRS\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

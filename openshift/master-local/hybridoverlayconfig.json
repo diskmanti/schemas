@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "required": [
+    "hybridClusterNetwork"
+  ],
+  "properties": {
+    "hybridClusterNetwork": {
+      "description": "HybridClusterNetwork defines a network space given to nodes on an additional overlay network.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.operator.v1.ClusterNetworkEntry"
+      }
+    },
+    "hybridOverlayVXLANPort": {
+      "description": "HybridOverlayVXLANPort defines the VXLAN port number to be used by the additional overlay network. Default is 4789",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,27 @@
+{
+  "description": "gathererConfig allows to configure specific gatherers",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of specific gatherer",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "state": {
+      "description": "state allows you to configure specific gatherer. Valid values are \"Enabled\", \"Disabled\" and omitted. When omitted, this means no opinion and the platform is left to choose a reasonable default. The current default is Enabled.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

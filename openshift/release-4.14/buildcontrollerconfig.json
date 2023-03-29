@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "imageTemplateFormat",
+    "buildDefaults",
+    "buildOverrides",
+    "additionalTrustedCA"
+  ],
+  "properties": {
+    "additionalTrustedCA": {
+      "description": "additionalTrustedCA is a path to a pem bundle file containing additional CAs that should be trusted for image pushes and pulls during builds.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "buildDefaults": {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildDefaultsConfig"
+    },
+    "buildOverrides": {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildOverridesConfig"
+    },
+    "imageTemplateFormat": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImageConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

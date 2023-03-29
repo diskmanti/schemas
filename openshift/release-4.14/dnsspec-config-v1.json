@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "baseDomain"
+  ],
+  "properties": {
+    "baseDomain": {
+      "description": "baseDomain is the base domain of the cluster. All managed DNS records will be sub-domains of this base.\n\nFor example, given the base domain `openshift.example.com`, an API server DNS record may be created for `cluster-api.openshift.example.com`.\n\nOnce set, this field cannot be changed.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "privateZone": {
+      "description": "privateZone is the location where all the DNS records that are only available internally to the cluster exist.\n\nIf this field is nil, no private records should be created.\n\nOnce set, this field cannot be changed.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSZone"
+    },
+    "publicZone": {
+      "description": "publicZone is the location where all the DNS records that are publicly accessible to the internet exist.\n\nIf this field is nil, no public records should be created.\n\nOnce set, this field cannot be changed.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSZone"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

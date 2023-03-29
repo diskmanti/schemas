@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "defaultProxy": {
+      "description": "DefaultProxy contains the default proxy settings for all build operations, including image pull/push and source download.\n\nValues can be overrode by setting the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables in the build config's strategy.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.ProxySpec"
+    },
+    "env": {
+      "description": "Env is a set of default environment variables that will be applied to the build if the specified variables do not exist on the build",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+      }
+    },
+    "gitProxy": {
+      "description": "GitProxy contains the proxy settings for git operations only. If set, this will override any Proxy settings for all git commands, such as git clone.\n\nValues that are not set here will be inherited from DefaultProxy.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.ProxySpec"
+    },
+    "imageLabels": {
+      "description": "ImageLabels is a list of docker labels that are applied to the resulting image. User can override a default label by providing a label with the same name in their Build/BuildConfig.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.ImageLabel"
+      }
+    },
+    "resources": {
+      "description": "Resources defines resource requirements to execute the build.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

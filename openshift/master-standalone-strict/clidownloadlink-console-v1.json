@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "required": [
+    "href"
+  ],
+  "properties": {
+    "href": {
+      "description": "href is the absolute secure URL for the link (must use https)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "text": {
+      "description": "text is the display text for the link",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,37 @@
+{
+  "description": "DNSOverTLSConfig describes optional DNSTransportConfig fields that should be captured.",
+  "type": "object",
+  "required": [
+    "serverName"
+  ],
+  "properties": {
+    "caBundle": {
+      "description": "ConfigMapNameReference references a config map in a specific namespace. The namespace must be specified at the point of use.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the metadata.name of the referenced config map",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "serverName": {
+      "description": "serverName is the upstream server to connect to when forwarding DNS queries. This is required when Transport is set to \"TLS\". ServerName will be validated against the DNS naming conventions in RFC 1123 and should match the TLS certificate installed in the upstream resolver(s).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

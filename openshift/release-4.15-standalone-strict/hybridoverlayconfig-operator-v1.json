@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "required": [
+    "hybridClusterNetwork"
+  ],
+  "properties": {
+    "hybridClusterNetwork": {
+      "description": "HybridClusterNetwork defines a network space given to nodes on an additional overlay network.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "ClusterNetworkEntry is a subnet from which to allocate PodIPs. A network of size HostPrefix (in CIDR notation) will be allocated when nodes join the cluster. If the HostPrefix field is not used by the plugin, it can be left unset. Not all network providers support multiple ClusterNetworks",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "cidr"
+        ],
+        "properties": {
+          "cidr": {
+            "type": "string",
+            "default": ""
+          },
+          "hostPrefix": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "hybridOverlayVXLANPort": {
+      "description": "HybridOverlayVXLANPort defines the VXLAN port number to be used by the additional overlay network. Default is 4789",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

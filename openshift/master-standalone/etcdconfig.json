@@ -1,0 +1,242 @@
+{
+  "description": "EtcdConfig holds the necessary configuration options for connecting with an etcd database",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "address",
+    "peerServingInfo",
+    "peerAddress",
+    "storageDirectory"
+  ],
+  "properties": {
+    "address": {
+      "description": "Address is the advertised host:port for client connections to etcd",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "peerAddress": {
+      "description": "PeerAddress is the advertised host:port for peer connections to etcd",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "peerServingInfo": {
+      "description": "ServingInfo holds information about serving web pages",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "bindAddress",
+        "bindNetwork",
+        "certFile",
+        "keyFile",
+        "clientCA",
+        "namedCertificates"
+      ],
+      "properties": {
+        "bindAddress": {
+          "description": "BindAddress is the ip:port to serve on",
+          "type": "string",
+          "default": ""
+        },
+        "bindNetwork": {
+          "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "cipherSuites": {
+          "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "clientCA": {
+          "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "minTLSVersion": {
+          "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namedCertificates": {
+          "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+          "type": "array",
+          "items": {
+            "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "names",
+              "certFile",
+              "keyFile"
+            ],
+            "properties": {
+              "certFile": {
+                "description": "CertFile is a file containing a PEM-encoded certificate",
+                "type": "string",
+                "default": ""
+              },
+              "keyFile": {
+                "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                "type": "string",
+                "default": ""
+              },
+              "names": {
+                "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "servingInfo": {
+      "description": "ServingInfo holds information about serving web pages",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "bindAddress",
+        "bindNetwork",
+        "certFile",
+        "keyFile",
+        "clientCA",
+        "namedCertificates"
+      ],
+      "properties": {
+        "bindAddress": {
+          "description": "BindAddress is the ip:port to serve on",
+          "type": "string",
+          "default": ""
+        },
+        "bindNetwork": {
+          "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "cipherSuites": {
+          "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "clientCA": {
+          "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "minTLSVersion": {
+          "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namedCertificates": {
+          "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+          "type": "array",
+          "items": {
+            "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "names",
+              "certFile",
+              "keyFile"
+            ],
+            "properties": {
+              "certFile": {
+                "description": "CertFile is a file containing a PEM-encoded certificate",
+                "type": "string",
+                "default": ""
+              },
+              "keyFile": {
+                "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                "type": "string",
+                "default": ""
+              },
+              "names": {
+                "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "storageDirectory": {
+      "description": "StorageDir is the path to the etcd storage directory",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

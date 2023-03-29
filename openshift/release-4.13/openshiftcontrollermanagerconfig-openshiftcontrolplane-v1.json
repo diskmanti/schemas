@@ -1,0 +1,119 @@
+{
+  "description": "Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "kubeClientConfig",
+    "servingInfo",
+    "leaderElection",
+    "controllers",
+    "resourceQuota",
+    "serviceServingCert",
+    "deployer",
+    "build",
+    "serviceAccount",
+    "dockerPullSecret",
+    "network",
+    "ingress",
+    "imageImport",
+    "securityAllocator",
+    "featureGates"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "build": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.BuildControllerConfig"
+    },
+    "controllers": {
+      "description": "controllers is a list of controllers to enable.  '*' enables all on-by-default controllers, 'foo' enables the controller \"+ named 'foo', '-foo' disables the controller named 'foo'. Defaults to \"*\".",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "deployer": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.DeployerControllerConfig"
+    },
+    "dockerPullSecret": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.DockerPullSecretControllerConfig"
+    },
+    "featureGates": {
+      "description": "featureGates are the set of extra OpenShift feature gates for openshift-controller-manager. These feature gates can be used to enable features that are tech preview or otherwise not available on OpenShift by default.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "imageImport": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImageImportControllerConfig"
+    },
+    "ingress": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.IngressControllerConfig"
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeClientConfig": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.KubeClientConfig"
+    },
+    "leaderElection": {
+      "description": "leaderElection defines the configuration for electing a controller instance to make changes to the cluster. If unspecified, the ControllerTTL value is checked to determine whether the legacy direct etcd election code will be used.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.LeaderElection"
+    },
+    "network": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.NetworkControllerConfig"
+    },
+    "resourceQuota": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ResourceQuotaControllerConfig"
+    },
+    "securityAllocator": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.SecurityAllocator"
+    },
+    "serviceAccount": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ServiceAccountControllerConfig"
+    },
+    "serviceServingCert": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ServiceServingCert"
+    },
+    "servingInfo": {
+      "description": "servingInfo describes how to start serving",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.config.v1.HTTPServingInfo"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

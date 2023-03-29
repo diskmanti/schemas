@@ -1,0 +1,48 @@
+{
+  "description": "LogEntry records events",
+  "type": "object",
+  "required": [
+    "time",
+    "success"
+  ],
+  "properties": {
+    "latency": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "description": "Message explaining status in a human readable format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "Reason for status in a machine readable format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "success": {
+      "description": "Success indicates if the log entry indicates a success or failure.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "time": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

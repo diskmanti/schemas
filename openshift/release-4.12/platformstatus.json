@@ -1,0 +1,70 @@
+{
+  "description": "PlatformStatus holds the current status specific to the underlying infrastructure provider of the current cluster. Since these are used at status-level for the underlying cluster, it is supposed that only one of the status structs is set.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "alibabaCloud": {
+      "description": "AlibabaCloud contains settings specific to the Alibaba Cloud infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.AlibabaCloudPlatformStatus"
+    },
+    "aws": {
+      "description": "AWS contains settings specific to the Amazon Web Services infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSPlatformStatus"
+    },
+    "azure": {
+      "description": "Azure contains settings specific to the Azure infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.AzurePlatformStatus"
+    },
+    "baremetal": {
+      "description": "BareMetal contains settings specific to the BareMetal platform.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.BareMetalPlatformStatus"
+    },
+    "equinixMetal": {
+      "description": "EquinixMetal contains settings specific to the Equinix Metal infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.EquinixMetalPlatformStatus"
+    },
+    "gcp": {
+      "description": "GCP contains settings specific to the Google Cloud Platform infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.GCPPlatformStatus"
+    },
+    "ibmcloud": {
+      "description": "IBMCloud contains settings specific to the IBMCloud infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.IBMCloudPlatformStatus"
+    },
+    "kubevirt": {
+      "description": "Kubevirt contains settings specific to the kubevirt infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.KubevirtPlatformStatus"
+    },
+    "nutanix": {
+      "description": "Nutanix contains settings specific to the Nutanix infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.NutanixPlatformStatus"
+    },
+    "openstack": {
+      "description": "OpenStack contains settings specific to the OpenStack infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.OpenStackPlatformStatus"
+    },
+    "ovirt": {
+      "description": "Ovirt contains settings specific to the oVirt infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.OvirtPlatformStatus"
+    },
+    "powervs": {
+      "description": "PowerVS contains settings specific to the Power Systems Virtual Servers infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.PowerVSPlatformStatus"
+    },
+    "type": {
+      "description": "type is the underlying infrastructure provider for the cluster. This value controls whether infrastructure automation such as service load balancers, dynamic volume provisioning, machine creation and deletion, and other integrations are enabled. If None, no infrastructure automation is enabled. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"Libvirt\", \"OpenStack\", \"VSphere\", \"oVirt\", \"EquinixMetal\", \"PowerVS\", \"AlibabaCloud\", \"Nutanix\" and \"None\". Individual components may not support all platforms, and must handle unrecognized platforms as None if they do not support that platform.\n\nThis value will be synced with to the `status.platform` and `status.platformStatus.type`. Currently this value cannot be changed once set.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "vsphere": {
+      "description": "VSphere contains settings specific to the VSphere infrastructure provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.config.v1.VSpherePlatformStatus"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

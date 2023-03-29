@@ -1,0 +1,40 @@
+{
+  "description": "ProviderLoadBalancerParameters holds desired load balancer information specific to the underlying infrastructure provider.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "aws": {
+      "description": "aws provides configuration settings that are specific to AWS load balancers.\n\nIf empty, defaults will be applied. See specific aws fields for details about their defaults.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.AWSLoadBalancerParameters"
+    },
+    "gcp": {
+      "description": "gcp provides configuration settings that are specific to GCP load balancers.\n\nIf empty, defaults will be applied. See specific gcp fields for details about their defaults.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.GCPLoadBalancerParameters"
+    },
+    "ibm": {
+      "description": "ibm provides configuration settings that are specific to IBM Cloud load balancers.\n\nIf empty, defaults will be applied. See specific ibm fields for details about their defaults.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.operator.v1.IBMLoadBalancerParameters"
+    },
+    "type": {
+      "description": "type is the underlying infrastructure provider for the load balancer. Allowed values are \"AWS\", \"Azure\", \"BareMetal\", \"GCP\", \"IBM\", \"Nutanix\", \"OpenStack\", and \"VSphere\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "aws": "AWS",
+        "gcp": "GCP",
+        "ibm": "IBM"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,47 @@
+{
+  "description": "ConsolePluginService holds information on Service that is serving console dynamic plugin assets.",
+  "type": "object",
+  "required": [
+    "name",
+    "namespace",
+    "port",
+    "basePath"
+  ],
+  "properties": {
+    "basePath": {
+      "description": "basePath is the path to the plugin's assets. The primary asset it the manifest file called `plugin-manifest.json`, which is a JSON document that contains metadata about the plugin and the extensions.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "name of Service that is serving the plugin assets.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "namespace of Service that is serving the plugin assets.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "port": {
+      "description": "port on which the Service that is serving the plugin is listening to.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

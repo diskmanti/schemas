@@ -1,0 +1,72 @@
+{
+  "description": "ConsoleSpec is the specification of the desired behavior of the Console.",
+  "type": "object",
+  "required": [
+    "managementState",
+    "providers"
+  ],
+  "properties": {
+    "customization": {
+      "description": "customization is used to optionally provide a small set of customization options to the web console.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleCustomization"
+    },
+    "logLevel": {
+      "description": "logLevel is an intent based logging for an overall component.  It does not give fine grained control, but it is a simple way to manage coarse grained logging choices that operators have to interpret for their operands.\n\nValid values are: \"Normal\", \"Debug\", \"Trace\", \"TraceAll\". Defaults to \"Normal\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "managementState": {
+      "description": "managementState indicates whether and how the operator should manage the component",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "observedConfig": {
+      "description": "observedConfig holds a sparse config that controller has observed from the cluster state.  It exists in spec because it is an input to the level for the operator",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    "operatorLogLevel": {
+      "description": "operatorLogLevel is an intent based logging for the operator itself.  It does not give fine grained control, but it is a simple way to manage coarse grained logging choices that operators have to interpret for themselves.\n\nValid values are: \"Normal\", \"Debug\", \"Trace\", \"TraceAll\". Defaults to \"Normal\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "plugins": {
+      "description": "plugins defines a list of enabled console plugin names.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "providers": {
+      "description": "providers contains configuration for using specific service providers.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleProviders"
+    },
+    "route": {
+      "description": "route contains hostname and secret reference that contains the serving certificate. If a custom route is specified, a new route will be created with the provided hostname, under which console will be available. In case of custom hostname uses the default routing suffix of the cluster, the Secret specification for a serving certificate will not be needed. In case of custom hostname points to an arbitrary domain, manual DNS configurations steps are necessary. The default console route will be maintained to reserve the default hostname for console if the custom route is removed. If not specified, default route will be used. DEPRECATED",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.operator.v1.ConsoleConfigRoute"
+    },
+    "unsupportedConfigOverrides": {
+      "description": "unsupportedConfigOverrides overrides the final configuration that was computed by the operator. Red Hat does not support the use of this field. Misuse of this field could lead to unexpected behavior or conflict with other configuration options. Seek guidance from the Red Hat support before using this field. Use of this property blocks cluster upgrades, it must be removed before upgrading your cluster.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

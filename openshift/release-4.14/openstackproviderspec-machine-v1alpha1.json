@@ -1,0 +1,191 @@
+{
+  "description": "OpenstackProviderSpec is the type that will be embedded in a Machine.Spec.ProviderSpec field for an OpenStack Instance. It is used by the Openstack machine actuator to create a single machine instance. Compatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "cloudsSecret",
+    "cloudName",
+    "flavor",
+    "image"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "availabilityZone": {
+      "description": "The availability zone from which to launch the server.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cloudName": {
+      "description": "The name of the cloud to use from the clouds secret",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "cloudsSecret": {
+      "description": "The name of the secret containing the openstack credentials",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
+    },
+    "configDrive": {
+      "description": "Config Drive support",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "flavor": {
+      "description": "The flavor reference for the flavor for your server instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "floatingIP": {
+      "description": "floatingIP specifies a floating IP to be associated with the machine. Note that it is not safe to use this parameter in a MachineSet, as only one Machine may be assigned the same floating IP.\n\nDeprecated: floatingIP will be removed in a future release as it cannot be implemented correctly.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image": {
+      "description": "The name of the image to use for your server instance. If the RootVolume is specified, this will be ignored and use rootVolume directly.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyName": {
+      "description": "The ssh key to inject in the instance",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "networks": {
+      "description": "A networks object. Required parameter when there are multiple networks defined for the tenant. When you do not specify the networks parameter, the server attaches to the only network created for the current tenant.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.NetworkParam"
+      }
+    },
+    "ports": {
+      "description": "Create and assign additional ports to instances",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.PortOpts"
+      }
+    },
+    "primarySubnet": {
+      "description": "The subnet that a set of machines will get ingress/egress traffic from",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rootVolume": {
+      "description": "The volume metadata to boot from",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.RootVolume"
+    },
+    "securityGroups": {
+      "description": "The names of the security groups to assign to the instance",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/com.github.openshift.api.machine.v1alpha1.SecurityGroupParam"
+      }
+    },
+    "serverGroupID": {
+      "description": "The server group to assign the machine to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serverGroupName": {
+      "description": "The server group to assign the machine to. A server group with that name will be created if it does not exist. If both ServerGroupID and ServerGroupName are non-empty, they must refer to the same OpenStack resource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serverMetadata": {
+      "description": "Metadata mapping. Allows you to create a map of key value pairs to add to the server instance.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sshUserName": {
+      "description": "The machine ssh username",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "description": "Machine tags Requires Nova api 2.52 minimum!",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "trunk": {
+      "description": "Whether the server instance is created on a trunk port or not.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "userDataSecret": {
+      "description": "The name of the secret containing the user data (startup script in most cases)",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.api.core.v1.SecretReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

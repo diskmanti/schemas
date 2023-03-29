@@ -1,0 +1,163 @@
+{
+  "description": "PerspectiveVisibility defines the criteria to show/hide a perspective",
+  "type": "object",
+  "required": [
+    "state"
+  ],
+  "properties": {
+    "accessReview": {
+      "description": "ResourceAttributesAccessReview defines the visibility of the perspective depending on the access review checks. `required` and  `missing` can work together esp. in the case where the cluster admin wants to show another perspective to users without specific permissions. Out of `required` and `missing` atleast one property should be non-empty.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "missing": {
+          "description": "missing defines a list of permission checks. The perspective will only be shown when at least one check fails. When omitted, the access review is skipped and the perspective will not be shown unless it is required to do so based on the configuration of the required access review list.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface",
+            "type": "object",
+            "properties": {
+              "group": {
+                "description": "Group is the API Group of the Resource.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "Name is the name of the resource being requested for a \"get\" or deleted for a \"delete\". \"\" (empty) means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces \"\" (empty) is defaulted for LocalSubjectAccessReviews \"\" (empty) is empty for cluster-scoped resources \"\" (empty) means \"all\" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "resource": {
+                "description": "Resource is one of the existing resource types.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "subresource": {
+                "description": "Subresource is one of the existing resource types.  \"\" means none.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "verb": {
+                "description": "Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "version": {
+                "description": "Version is the API Version of the Resource.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "required": {
+          "description": "required defines a list of permission checks. The perspective will only be shown when all checks are successful. When omitted, the access review is skipped and the perspective will not be shown unless it is required to do so based on the configuration of the missing access review list.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface",
+            "type": "object",
+            "properties": {
+              "group": {
+                "description": "Group is the API Group of the Resource.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "name": {
+                "description": "Name is the name of the resource being requested for a \"get\" or deleted for a \"delete\". \"\" (empty) means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "namespace": {
+                "description": "Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces \"\" (empty) is defaulted for LocalSubjectAccessReviews \"\" (empty) is empty for cluster-scoped resources \"\" (empty) means \"all\" for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "resource": {
+                "description": "Resource is one of the existing resource types.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "subresource": {
+                "description": "Subresource is one of the existing resource types.  \"\" means none.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "verb": {
+                "description": "Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "version": {
+                "description": "Version is the API Version of the Resource.  \"*\" means all.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "state": {
+      "description": "state defines the perspective is enabled or disabled or access review check is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "state",
+      "fields-to-discriminateBy": {
+        "accessReview": "AccessReview"
+      }
+    }
+  ],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

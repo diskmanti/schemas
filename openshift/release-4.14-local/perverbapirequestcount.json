@@ -1,0 +1,28 @@
+{
+  "description": "PerVerbAPIRequestCount requestCounts requests by API request verb.",
+  "type": "object",
+  "required": [
+    "verb",
+    "requestCount"
+  ],
+  "properties": {
+    "requestCount": {
+      "description": "requestCount of requests for verb.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "verb": {
+      "description": "verb of API request (get, list, create, etc...)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

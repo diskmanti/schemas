@@ -1,0 +1,32 @@
+{
+  "description": "BlockDeviceMappingSpec describes a block device mapping",
+  "type": "object",
+  "properties": {
+    "deviceName": {
+      "description": "The device name exposed to the machine (for example, /dev/sdh or xvdh).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ebs": {
+      "description": "Parameters used to automatically set up EBS volumes when the machine is launched.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.EBSBlockDeviceSpec"
+    },
+    "noDevice": {
+      "description": "Suppresses the specified device included in the block device mapping of the AMI.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "virtualName": {
+      "description": "The virtual device name (ephemeralN). Machine store volumes are numbered starting from 0. An machine type with 2 available machine store volumes can specify mappings for ephemeral0 and ephemeral1.The number of available machine store volumes depends on the machine type. After you connect to the machine, you must mount the volume.\n\nConstraints: For M3 machines, you must specify machine store volumes in the block device mapping for the machine. When you launch an M3 machine, we ignore any machine store volumes specified in the block device mapping for the AMI.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

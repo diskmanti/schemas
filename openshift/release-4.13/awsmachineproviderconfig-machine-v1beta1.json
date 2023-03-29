@@ -1,0 +1,150 @@
+{
+  "description": "AWSMachineProviderConfig is the Schema for the awsmachineproviderconfigs API Compatibility level 2: Stable within a major release for a minimum of 9 months or 3 minor releases (whichever is longer).",
+  "type": "object",
+  "required": [
+    "ami",
+    "instanceType",
+    "deviceIndex",
+    "subnet",
+    "placement"
+  ],
+  "properties": {
+    "ami": {
+      "description": "AMI is the reference to the AMI from which to create the machine instance.",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "blockDevices": {
+      "description": "BlockDevices is the set of block device mapping associated to this instance, block device without a name will be used as a root device and only one device without a name is allowed https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.BlockDeviceMappingSpec"
+      }
+    },
+    "credentialsSecret": {
+      "description": "CredentialsSecret is a reference to the secret with AWS credentials. Otherwise, defaults to permissions provided by attached IAM role where the actuator is running.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    "deviceIndex": {
+      "description": "DeviceIndex is the index of the device on the instance for the network interface attachment. Defaults to 0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "iamInstanceProfile": {
+      "description": "IAMInstanceProfile is a reference to an IAM role to assign to the instance",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    "instanceType": {
+      "description": "InstanceType is the type of instance to create. Example: m4.xlarge",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keyName": {
+      "description": "KeyName is the name of the KeyPair to use for SSH",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "loadBalancers": {
+      "description": "LoadBalancers is the set of load balancers to which the new instance should be added once it is created.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.LoadBalancerReference"
+      }
+    },
+    "metadata": {
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "metadataServiceOptions": {
+      "description": "MetadataServiceOptions allows users to configure instance metadata service interaction options. If nothing specified, default AWS IMDS settings will be applied. https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMetadataOptionsRequest.html",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.MetadataServiceOptions"
+    },
+    "networkInterfaceType": {
+      "description": "NetworkInterfaceType specifies the type of network interface to be used for the primary network interface. Valid values are \"ENA\", \"EFA\", and omitted, which means no opinion and the platform chooses a good default which may change over time. The current default value is \"ENA\". Please visit https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html to learn more about the AWS Elastic Fabric Adapter interface option.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "placement": {
+      "description": "Placement specifies where to create the instance in AWS",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Placement"
+    },
+    "publicIp": {
+      "description": "PublicIP specifies whether the instance should get a public IP. If not present, it should use the default of its subnet.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "securityGroups": {
+      "description": "SecurityGroups is an array of references to security groups that should be applied to the instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+      }
+    },
+    "spotMarketOptions": {
+      "description": "SpotMarketOptions allows users to configure instances to be run using AWS Spot instances.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.SpotMarketOptions"
+    },
+    "subnet": {
+      "description": "Subnet is a reference to the subnet to use for this instance",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    "tags": {
+      "description": "Tags is the set of tags to add to apply to an instance, in addition to the ones added by default by the actuator. These tags are additive. The actuator will ensure these tags are present, but will not remove any other tags that may exist on the instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.TagSpecification"
+      }
+    },
+    "userDataSecret": {
+      "description": "UserDataSecret contains a local reference to a secret that contains the UserData to apply to the instance",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

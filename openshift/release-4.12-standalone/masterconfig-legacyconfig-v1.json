@@ -1,0 +1,1832 @@
+{
+  "description": "MasterConfig holds the necessary configuration options for the OpenShift master\n\nCompatibility level 4: No compatibility is provided, the API can change at any point for any reason. These capabilities should not be used by applications needing long term support.",
+  "type": "object",
+  "required": [
+    "servingInfo",
+    "authConfig",
+    "aggregatorConfig",
+    "corsAllowedOrigins",
+    "apiLevels",
+    "masterPublicURL",
+    "controllers",
+    "admissionConfig",
+    "controllerConfig",
+    "etcdStorageConfig",
+    "etcdClientInfo",
+    "kubeletClientInfo",
+    "kubernetesMasterConfig",
+    "etcdConfig",
+    "oauthConfig",
+    "dnsConfig",
+    "serviceAccountConfig",
+    "masterClients",
+    "imageConfig",
+    "imagePolicyConfig",
+    "policyConfig",
+    "projectConfig",
+    "routingConfig",
+    "networkConfig",
+    "volumeConfig",
+    "jenkinsPipelineConfig",
+    "auditConfig"
+  ],
+  "properties": {
+    "admissionConfig": {
+      "description": "AdmissionConfig holds the necessary configuration options for admission",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "pluginConfig"
+      ],
+      "properties": {
+        "pluginConfig": {
+          "description": "PluginConfig allows specifying a configuration file per admission control plugin",
+          "type": "object",
+          "additionalProperties": {
+            "description": "AdmissionPluginConfig holds the necessary configuration options for admission plugins",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "location",
+              "configuration"
+            ],
+            "properties": {
+              "configuration": {
+                "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+                "type": "object"
+              },
+              "location": {
+                "description": "Location is the path to a configuration file that contains the plugin's configuration",
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        },
+        "pluginOrderOverride": {
+          "description": "PluginOrderOverride is a list of admission control plugin names that will be installed on the master. Order is significant. If empty, a default list of plugins is used.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      }
+    },
+    "aggregatorConfig": {
+      "description": "AggregatorConfig holds information required to make the aggregator function.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "proxyClientInfo"
+      ],
+      "properties": {
+        "proxyClientInfo": {
+          "description": "CertInfo relates a certificate with a private key",
+          "type": "object",
+          "required": [
+            "certFile",
+            "keyFile"
+          ],
+          "properties": {
+            "certFile": {
+              "description": "CertFile is a file containing a PEM-encoded certificate",
+              "type": "string",
+              "default": ""
+            },
+            "keyFile": {
+              "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "apiLevels": {
+      "description": "APILevels is a list of API levels that should be enabled on startup: v1 as examples",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auditConfig": {
+      "description": "AuditConfig holds configuration for the audit capabilities",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "enabled",
+        "auditFilePath",
+        "maximumFileRetentionDays",
+        "maximumRetainedFiles",
+        "maximumFileSizeMegabytes",
+        "policyFile",
+        "policyConfiguration",
+        "logFormat",
+        "webHookKubeConfig",
+        "webHookMode"
+      ],
+      "properties": {
+        "auditFilePath": {
+          "description": "All requests coming to the apiserver will be logged to this file.",
+          "type": "string",
+          "default": ""
+        },
+        "enabled": {
+          "description": "If this flag is set, audit log will be printed in the logs. The logs contains, method, user and a requested URL.",
+          "type": "boolean",
+          "default": false
+        },
+        "logFormat": {
+          "description": "Format of saved audits (legacy or json).",
+          "type": "string",
+          "default": ""
+        },
+        "maximumFileRetentionDays": {
+          "description": "Maximum number of days to retain old log files based on the timestamp encoded in their filename.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "maximumFileSizeMegabytes": {
+          "description": "Maximum size in megabytes of the log file before it gets rotated. Defaults to 100MB.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "maximumRetainedFiles": {
+          "description": "Maximum number of old log files to retain.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "policyConfiguration": {
+          "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+          "type": "object"
+        },
+        "policyFile": {
+          "description": "PolicyFile is a path to the file that defines the audit policy configuration.",
+          "type": "string",
+          "default": ""
+        },
+        "webHookKubeConfig": {
+          "description": "Path to a .kubeconfig formatted file that defines the audit webhook configuration.",
+          "type": "string",
+          "default": ""
+        },
+        "webHookMode": {
+          "description": "Strategy for sending audit events (block or batch).",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "authConfig": {
+      "description": "MasterAuthConfig configures authentication options in addition to the standard oauth token and client certificate authenticators",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "requestHeader",
+        "webhookTokenAuthenticators",
+        "oauthMetadataFile"
+      ],
+      "properties": {
+        "oauthMetadataFile": {
+          "description": "OAuthMetadataFile is a path to a file containing the discovery endpoint for OAuth 2.0 Authorization Server Metadata for an external OAuth server. See IETF Draft: // https://tools.ietf.org/html/draft-ietf-oauth-discovery-04#section-2 This option is mutually exclusive with OAuthConfig",
+          "type": "string",
+          "default": ""
+        },
+        "requestHeader": {
+          "description": "RequestHeaderAuthenticationOptions provides options for setting up a front proxy against the entire API instead of against the /oauth endpoint.",
+          "type": "object",
+          "required": [
+            "clientCA",
+            "clientCommonNames",
+            "usernameHeaders",
+            "groupHeaders",
+            "extraHeaderPrefixes"
+          ],
+          "properties": {
+            "clientCA": {
+              "description": "ClientCA is a file with the trusted signer certs.  It is required.",
+              "type": "string",
+              "default": ""
+            },
+            "clientCommonNames": {
+              "description": "ClientCommonNames is a required list of common names to require a match from.",
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "extraHeaderPrefixes": {
+              "description": "ExtraHeaderPrefixes is the set of request header prefixes to inspect for user extra. X-Remote-Extra- is suggested.",
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "groupHeaders": {
+              "description": "GroupNameHeader is the set of headers to check for group information.  All are unioned.",
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "usernameHeaders": {
+              "description": "UsernameHeaders is the list of headers to check for user information.  First hit wins.",
+              "type": "array",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            }
+          }
+        },
+        "webhookTokenAuthenticators": {
+          "description": "WebhookTokenAuthnConfig, if present configures remote token reviewers",
+          "type": "array",
+          "items": {
+            "description": "WebhookTokenAuthenticators holds the necessary configuation options for external token authenticators",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "configFile",
+              "cacheTTL"
+            ],
+            "properties": {
+              "cacheTTL": {
+                "description": "CacheTTL indicates how long an authentication result should be cached. It takes a valid time duration string (e.g. \"5m\"). If empty, you get a default timeout of 2 minutes. If zero (e.g. \"0m\"), caching is disabled",
+                "type": "string",
+                "default": ""
+              },
+              "configFile": {
+                "description": "ConfigFile is a path to a Kubeconfig file with the webhook configuration",
+                "type": "string",
+                "default": ""
+              }
+            }
+          }
+        }
+      }
+    },
+    "controllerConfig": {
+      "description": "ControllerConfig holds configuration values for controllers",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "controllers",
+        "election",
+        "serviceServingCert"
+      ],
+      "properties": {
+        "controllers": {
+          "description": "Controllers is a list of controllers to enable.  '*' enables all on-by-default controllers, 'foo' enables the controller \"+ named 'foo', '-foo' disables the controller named 'foo'. Defaults to \"*\".",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "election": {
+          "description": "ControllerElectionConfig contains configuration values for deciding how a controller will be elected to act as leader.",
+          "type": "object",
+          "required": [
+            "lockName",
+            "lockNamespace",
+            "lockResource"
+          ],
+          "properties": {
+            "lockName": {
+              "description": "LockName is the resource name used to act as the lock for determining which controller instance should lead.",
+              "type": "string",
+              "default": ""
+            },
+            "lockNamespace": {
+              "description": "LockNamespace is the resource namespace used to act as the lock for determining which controller instance should lead. It defaults to \"kube-system\"",
+              "type": "string",
+              "default": ""
+            },
+            "lockResource": {
+              "description": "GroupResource points to a resource by its name and API group.",
+              "type": "object",
+              "required": [
+                "group",
+                "resource"
+              ],
+              "properties": {
+                "group": {
+                  "description": "Group is the name of an API group",
+                  "type": "string",
+                  "default": ""
+                },
+                "resource": {
+                  "description": "Resource is the name of a resource.",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "serviceServingCert": {
+          "description": "ServiceServingCert holds configuration for service serving cert signer which creates cert/key pairs for pods fulfilling a service to serve with.",
+          "type": "object",
+          "required": [
+            "signer"
+          ],
+          "properties": {
+            "signer": {
+              "description": "CertInfo relates a certificate with a private key",
+              "type": "object",
+              "required": [
+                "certFile",
+                "keyFile"
+              ],
+              "properties": {
+                "certFile": {
+                  "description": "CertFile is a file containing a PEM-encoded certificate",
+                  "type": "string",
+                  "default": ""
+                },
+                "keyFile": {
+                  "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "controllers": {
+      "description": "Controllers is a list of the controllers that should be started. If set to \"none\", no controllers will start automatically. The default value is \"*\" which will start all controllers. When using \"*\", you may exclude controllers by prepending a \"-\" in front of their name. No other values are recognized at this time.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "corsAllowedOrigins": {
+      "description": "CORSAllowedOrigins",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "dnsConfig": {
+      "description": "DNSConfig holds the necessary configuration options for DNS",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "bindAddress",
+        "bindNetwork",
+        "allowRecursiveQueries"
+      ],
+      "properties": {
+        "allowRecursiveQueries": {
+          "description": "AllowRecursiveQueries allows the DNS server on the master to answer queries recursively. Note that open resolvers can be used for DNS amplification attacks and the master DNS should not be made accessible to public networks.",
+          "type": "boolean",
+          "default": false
+        },
+        "bindAddress": {
+          "description": "BindAddress is the ip:port to serve DNS on",
+          "type": "string",
+          "default": ""
+        },
+        "bindNetwork": {
+          "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "etcdClientInfo": {
+      "description": "EtcdConnectionInfo holds information necessary for connecting to an etcd server",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "urls",
+        "ca",
+        "certFile",
+        "keyFile"
+      ],
+      "properties": {
+        "ca": {
+          "description": "CA is a file containing trusted roots for the etcd server certificates",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "urls": {
+          "description": "URLs are the URLs for etcd",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      }
+    },
+    "etcdConfig": {
+      "description": "EtcdConfig holds the necessary configuration options for connecting with an etcd database",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "servingInfo",
+        "address",
+        "peerServingInfo",
+        "peerAddress",
+        "storageDirectory"
+      ],
+      "properties": {
+        "address": {
+          "description": "Address is the advertised host:port for client connections to etcd",
+          "type": "string",
+          "default": ""
+        },
+        "peerAddress": {
+          "description": "PeerAddress is the advertised host:port for peer connections to etcd",
+          "type": "string",
+          "default": ""
+        },
+        "peerServingInfo": {
+          "description": "ServingInfo holds information about serving web pages",
+          "type": "object",
+          "required": [
+            "bindAddress",
+            "bindNetwork",
+            "certFile",
+            "keyFile",
+            "clientCA",
+            "namedCertificates"
+          ],
+          "properties": {
+            "bindAddress": {
+              "description": "BindAddress is the ip:port to serve on",
+              "type": "string",
+              "default": ""
+            },
+            "bindNetwork": {
+              "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+              "type": "string",
+              "default": ""
+            },
+            "certFile": {
+              "description": "CertFile is a file containing a PEM-encoded certificate",
+              "type": "string",
+              "default": ""
+            },
+            "cipherSuites": {
+              "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "clientCA": {
+              "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+              "type": "string",
+              "default": ""
+            },
+            "keyFile": {
+              "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+              "type": "string",
+              "default": ""
+            },
+            "minTLSVersion": {
+              "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "namedCertificates": {
+              "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+              "type": "array",
+              "items": {
+                "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "names",
+                  "certFile",
+                  "keyFile"
+                ],
+                "properties": {
+                  "certFile": {
+                    "description": "CertFile is a file containing a PEM-encoded certificate",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "keyFile": {
+                    "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "names": {
+                    "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "servingInfo": {
+          "description": "ServingInfo holds information about serving web pages",
+          "type": "object",
+          "required": [
+            "bindAddress",
+            "bindNetwork",
+            "certFile",
+            "keyFile",
+            "clientCA",
+            "namedCertificates"
+          ],
+          "properties": {
+            "bindAddress": {
+              "description": "BindAddress is the ip:port to serve on",
+              "type": "string",
+              "default": ""
+            },
+            "bindNetwork": {
+              "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+              "type": "string",
+              "default": ""
+            },
+            "certFile": {
+              "description": "CertFile is a file containing a PEM-encoded certificate",
+              "type": "string",
+              "default": ""
+            },
+            "cipherSuites": {
+              "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "default": ""
+              }
+            },
+            "clientCA": {
+              "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+              "type": "string",
+              "default": ""
+            },
+            "keyFile": {
+              "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+              "type": "string",
+              "default": ""
+            },
+            "minTLSVersion": {
+              "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "namedCertificates": {
+              "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+              "type": "array",
+              "items": {
+                "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "names",
+                  "certFile",
+                  "keyFile"
+                ],
+                "properties": {
+                  "certFile": {
+                    "description": "CertFile is a file containing a PEM-encoded certificate",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "keyFile": {
+                    "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "names": {
+                    "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "storageDirectory": {
+          "description": "StorageDir is the path to the etcd storage directory",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "etcdStorageConfig": {
+      "description": "EtcdStorageConfig holds the necessary configuration options for the etcd storage underlying OpenShift and Kubernetes",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "kubernetesStorageVersion",
+        "kubernetesStoragePrefix",
+        "openShiftStorageVersion",
+        "openShiftStoragePrefix"
+      ],
+      "properties": {
+        "kubernetesStoragePrefix": {
+          "description": "KubernetesStoragePrefix is the path within etcd that the Kubernetes resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'kubernetes.io'.",
+          "type": "string",
+          "default": ""
+        },
+        "kubernetesStorageVersion": {
+          "description": "KubernetesStorageVersion is the API version that Kube resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
+          "type": "string",
+          "default": ""
+        },
+        "openShiftStoragePrefix": {
+          "description": "OpenShiftStoragePrefix is the path within etcd that the OpenShift resources will be rooted under. This value, if changed, will mean existing objects in etcd will no longer be located. The default value is 'openshift.io'.",
+          "type": "string",
+          "default": ""
+        },
+        "openShiftStorageVersion": {
+          "description": "OpenShiftStorageVersion is the API version that OS resources in etcd should be serialized to. This value should *not* be advanced until all clients in the cluster that read from etcd have code that allows them to read the new version.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "imageConfig": {
+      "description": "ImageConfig holds the necessary configuration options for building image names for system components",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "format",
+        "latest"
+      ],
+      "properties": {
+        "format": {
+          "description": "Format is the format of the name to be built for the system component",
+          "type": "string",
+          "default": ""
+        },
+        "latest": {
+          "description": "Latest determines if the latest tag will be pulled from the registry",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "imagePolicyConfig": {
+      "description": "ImagePolicyConfig holds the necessary configuration options for limits and behavior for importing images",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "maxImagesBulkImportedPerRepository",
+        "disableScheduledImport",
+        "scheduledImageImportMinimumIntervalSeconds",
+        "maxScheduledImageImportsPerMinute"
+      ],
+      "properties": {
+        "additionalTrustedCA": {
+          "description": "AdditionalTrustedCA is a path to a pem bundle file containing additional CAs that should be trusted during imagestream import.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "allowedRegistriesForImport": {
+          "description": "AllowedRegistriesForImport limits the container image registries that normal users may import images from. Set this list to the registries that you trust to contain valid Docker images and that you want applications to be able to import from. Users with permission to create Images or ImageStreamMappings via the API are not affected by this policy - typically only administrators or system integrations will have those permissions.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "RegistryLocation contains a location of the registry specified by the registry domain name. The domain name might include wildcards, like '*' or '??'.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "domainName"
+            ],
+            "properties": {
+              "domainName": {
+                "description": "DomainName specifies a domain name for the registry In case the registry use non-standard (80 or 443) port, the port should be included in the domain name as well.",
+                "type": "string",
+                "default": ""
+              },
+              "insecure": {
+                "description": "Insecure indicates whether the registry is secure (https) or insecure (http) By default (if not specified) the registry is assumed as secure.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "disableScheduledImport": {
+          "description": "DisableScheduledImport allows scheduled background import of images to be disabled.",
+          "type": "boolean",
+          "default": false
+        },
+        "externalRegistryHostname": {
+          "description": "ExternalRegistryHostname sets the hostname for the default external image registry. The external hostname should be set only when the image registry is exposed externally. The value is used in 'publicDockerImageRepository' field in ImageStreams. The value must be in \"hostname[:port]\" format.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "internalRegistryHostname": {
+          "description": "InternalRegistryHostname sets the hostname for the default internal image registry. The value must be in \"hostname[:port]\" format. For backward compatibility, users can still use OPENSHIFT_DEFAULT_REGISTRY environment variable but this setting overrides the environment variable.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "maxImagesBulkImportedPerRepository": {
+          "description": "MaxImagesBulkImportedPerRepository controls the number of images that are imported when a user does a bulk import of a container repository. This number defaults to 50 to prevent users from importing large numbers of images accidentally. Set -1 for no limit.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "maxScheduledImageImportsPerMinute": {
+          "description": "MaxScheduledImageImportsPerMinute is the maximum number of scheduled image streams that will be imported in the background per minute. The default value is 60. Set to -1 for unlimited.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "scheduledImageImportMinimumIntervalSeconds": {
+          "description": "ScheduledImageImportMinimumIntervalSeconds is the minimum number of seconds that can elapse between when image streams scheduled for background import are checked against the upstream repository. The default value is 15 minutes.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "jenkinsPipelineConfig": {
+      "description": "JenkinsPipelineConfig holds configuration for the Jenkins pipeline strategy",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "autoProvisionEnabled",
+        "templateNamespace",
+        "templateName",
+        "serviceName",
+        "parameters"
+      ],
+      "properties": {
+        "autoProvisionEnabled": {
+          "description": "AutoProvisionEnabled determines whether a Jenkins server will be spawned from the provided template when the first build config in the project with type JenkinsPipeline is created. When not specified this option defaults to true.",
+          "type": "boolean"
+        },
+        "parameters": {
+          "description": "Parameters specifies a set of optional parameters to the Jenkins template.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "serviceName": {
+          "description": "ServiceName is the name of the Jenkins service OpenShift uses to detect whether a Jenkins pipeline handler has already been installed in a project. This value *must* match a service name in the provided template.",
+          "type": "string",
+          "default": ""
+        },
+        "templateName": {
+          "description": "TemplateName is the name of the default Jenkins template",
+          "type": "string",
+          "default": ""
+        },
+        "templateNamespace": {
+          "description": "TemplateNamespace contains the namespace name where the Jenkins template is stored",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubeletClientInfo": {
+      "description": "KubeletConnectionInfo holds information necessary for connecting to a kubelet",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "port",
+        "ca",
+        "certFile",
+        "keyFile"
+      ],
+      "properties": {
+        "ca": {
+          "description": "CA is the CA for verifying TLS connections to kubelets",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "port": {
+          "description": "Port is the port to connect to kubelets on",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "kubernetesMasterConfig": {
+      "description": "KubernetesMasterConfig holds the necessary configuration options for the Kubernetes master",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "apiLevels",
+        "disabledAPIGroupVersions",
+        "masterIP",
+        "masterEndpointReconcileTTL",
+        "servicesSubnet",
+        "servicesNodePortRange",
+        "schedulerConfigFile",
+        "podEvictionTimeout",
+        "proxyClientInfo",
+        "apiServerArguments",
+        "controllerArguments",
+        "schedulerArguments"
+      ],
+      "properties": {
+        "apiLevels": {
+          "description": "APILevels is a list of API levels that should be enabled on startup: v1 as examples",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "apiServerArguments": {
+          "description": "APIServerArguments are key value pairs that will be passed directly to the Kube apiserver that match the apiservers's command line arguments.  These are not migrated, but if you reference a value that does not exist the server will not start. These values may override other settings in KubernetesMasterConfig which may cause invalid configurations.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "controllerArguments": {
+          "description": "ControllerArguments are key value pairs that will be passed directly to the Kube controller manager that match the controller manager's command line arguments.  These are not migrated, but if you reference a value that does not exist the server will not start. These values may override other settings in KubernetesMasterConfig which may cause invalid configurations.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "disabledAPIGroupVersions": {
+          "description": "DisabledAPIGroupVersions is a map of groups to the versions (or *) that should be disabled.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "masterEndpointReconcileTTL": {
+          "description": "MasterEndpointReconcileTTL sets the time to live in seconds of an endpoint record recorded by each master. The endpoints are checked at an interval that is 2/3 of this value and this value defaults to 15s if unset. In very large clusters, this value may be increased to reduce the possibility that the master endpoint record expires (due to other load on the etcd server) and causes masters to drop in and out of the kubernetes service record. It is not recommended to set this value below 15s.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "masterIP": {
+          "description": "MasterIP is the public IP address of kubernetes stuff.  If empty, the first result from net.InterfaceAddrs will be used.",
+          "type": "string",
+          "default": ""
+        },
+        "podEvictionTimeout": {
+          "description": "PodEvictionTimeout controls grace period for deleting pods on failed nodes. It takes valid time duration string. If empty, you get the default pod eviction timeout.",
+          "type": "string",
+          "default": ""
+        },
+        "proxyClientInfo": {
+          "description": "CertInfo relates a certificate with a private key",
+          "type": "object",
+          "required": [
+            "certFile",
+            "keyFile"
+          ],
+          "properties": {
+            "certFile": {
+              "description": "CertFile is a file containing a PEM-encoded certificate",
+              "type": "string",
+              "default": ""
+            },
+            "keyFile": {
+              "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "schedulerArguments": {
+          "description": "SchedulerArguments are key value pairs that will be passed directly to the Kube scheduler that match the scheduler's command line arguments.  These are not migrated, but if you reference a value that does not exist the server will not start. These values may override other settings in KubernetesMasterConfig which may cause invalid configurations.",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": ""
+            }
+          }
+        },
+        "schedulerConfigFile": {
+          "description": "SchedulerConfigFile points to a file that describes how to set up the scheduler. If empty, you get the default scheduling rules.",
+          "type": "string",
+          "default": ""
+        },
+        "servicesNodePortRange": {
+          "description": "ServicesNodePortRange is the range to use for assigning service public ports on a host.",
+          "type": "string",
+          "default": ""
+        },
+        "servicesSubnet": {
+          "description": "ServicesSubnet is the subnet to use for assigning service IPs",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "masterClients": {
+      "description": "MasterClients holds references to `.kubeconfig` files that qualify master clients for OpenShift and Kubernetes",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "openshiftLoopbackKubeConfig",
+        "openshiftLoopbackClientConnectionOverrides"
+      ],
+      "properties": {
+        "openshiftLoopbackClientConnectionOverrides": {
+          "description": "ClientConnectionOverrides are a set of overrides to the default client connection settings.",
+          "type": "object",
+          "required": [
+            "acceptContentTypes",
+            "contentType",
+            "qps",
+            "burst"
+          ],
+          "properties": {
+            "acceptContentTypes": {
+              "description": "AcceptContentTypes defines the Accept header sent by clients when connecting to a server, overriding the default value of 'application/json'. This field will control all connections to the server used by a particular client.",
+              "type": "string",
+              "default": ""
+            },
+            "burst": {
+              "description": "Burst allows extra queries to accumulate when a client is exceeding its rate.",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "contentType": {
+              "description": "ContentType is the content type used when sending data to the server from this client.",
+              "type": "string",
+              "default": ""
+            },
+            "qps": {
+              "description": "QPS controls the number of queries per second allowed for this connection.",
+              "type": "number",
+              "format": "float",
+              "default": 0
+            }
+          }
+        },
+        "openshiftLoopbackKubeConfig": {
+          "description": "OpenShiftLoopbackKubeConfig is a .kubeconfig filename for system components to loopback to this master",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "masterPublicURL": {
+      "description": "MasterPublicURL is how clients can access the OpenShift API server",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "networkConfig": {
+      "description": "MasterNetworkConfig to be passed to the compiled in network plugin",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "networkPluginName",
+        "clusterNetworks",
+        "serviceNetworkCIDR",
+        "externalIPNetworkCIDRs",
+        "ingressIPNetworkCIDR"
+      ],
+      "properties": {
+        "clusterNetworkCIDR": {
+          "description": "ClusterNetworkCIDR is the CIDR string to specify the global overlay network's L3 space.  Deprecated, but maintained for backwards compatibility, use ClusterNetworks instead.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "clusterNetworks": {
+          "description": "ClusterNetworks is a list of ClusterNetwork objects that defines the global overlay network's L3 space by specifying a set of CIDR and netmasks that the SDN can allocate addressed from.  If this is specified, then ClusterNetworkCIDR and HostSubnetLength may not be set.",
+          "type": "array",
+          "items": {
+            "description": "ClusterNetworkEntry defines an individual cluster network. The CIDRs cannot overlap with other cluster network CIDRs, CIDRs reserved for external ips, CIDRs reserved for service networks, and CIDRs reserved for ingress ips.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "cidr",
+              "hostSubnetLength"
+            ],
+            "properties": {
+              "cidr": {
+                "description": "CIDR defines the total range of a cluster networks address space.",
+                "type": "string",
+                "default": ""
+              },
+              "hostSubnetLength": {
+                "description": "HostSubnetLength is the number of bits of the accompanying CIDR address to allocate to each node. eg, 8 would mean that each node would have a /24 slice of the overlay network for its pod.",
+                "type": "integer",
+                "format": "int64",
+                "default": 0
+              }
+            }
+          }
+        },
+        "externalIPNetworkCIDRs": {
+          "description": "ExternalIPNetworkCIDRs controls what values are acceptable for the service external IP field. If empty, no externalIP may be set. It may contain a list of CIDRs which are checked for access. If a CIDR is prefixed with !, IPs in that CIDR will be rejected. Rejections will be applied first, then the IP checked against one of the allowed CIDRs. You should ensure this range does not overlap with your nodes, pods, or service CIDRs for security reasons.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "hostSubnetLength": {
+          "description": "HostSubnetLength is the number of bits to allocate to each host's subnet e.g. 8 would mean a /24 network on the host.  Deprecated, but maintained for backwards compatibility, use ClusterNetworks instead.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "ingressIPNetworkCIDR": {
+          "description": "IngressIPNetworkCIDR controls the range to assign ingress ips from for services of type LoadBalancer on bare metal. If empty, ingress ips will not be assigned. It may contain a single CIDR that will be allocated from. For security reasons, you should ensure that this range does not overlap with the CIDRs reserved for external ips, nodes, pods, or services.",
+          "type": "string",
+          "default": ""
+        },
+        "networkPluginName": {
+          "description": "NetworkPluginName is the name of the network plugin to use",
+          "type": "string",
+          "default": ""
+        },
+        "serviceNetworkCIDR": {
+          "description": "ServiceNetwork is the CIDR string to specify the service networks",
+          "type": "string",
+          "default": ""
+        },
+        "vxlanPort": {
+          "description": "VXLANPort is the VXLAN port used by the cluster defaults. If it is not set, 4789 is the default value",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        }
+      }
+    },
+    "oauthConfig": {
+      "description": "OAuthConfig holds the necessary configuration options for OAuth authentication",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "masterCA",
+        "masterURL",
+        "masterPublicURL",
+        "assetPublicURL",
+        "alwaysShowProviderSelection",
+        "identityProviders",
+        "grantConfig",
+        "sessionConfig",
+        "tokenConfig",
+        "templates"
+      ],
+      "properties": {
+        "alwaysShowProviderSelection": {
+          "description": "AlwaysShowProviderSelection will force the provider selection page to render even when there is only a single provider.",
+          "type": "boolean",
+          "default": false
+        },
+        "assetPublicURL": {
+          "description": "AssetPublicURL is used for building valid client redirect URLs for external access",
+          "type": "string",
+          "default": ""
+        },
+        "grantConfig": {
+          "description": "GrantConfig holds the necessary configuration options for grant handlers",
+          "type": "object",
+          "required": [
+            "method",
+            "serviceAccountMethod"
+          ],
+          "properties": {
+            "method": {
+              "description": "Method determines the default strategy to use when an OAuth client requests a grant. This method will be used only if the specific OAuth client doesn't provide a strategy of their own. Valid grant handling methods are:\n - auto:   always approves grant requests, useful for trusted clients\n - prompt: prompts the end user for approval of grant requests, useful for third-party clients\n - deny:   always denies grant requests, useful for black-listed clients",
+              "type": "string",
+              "default": ""
+            },
+            "serviceAccountMethod": {
+              "description": "ServiceAccountMethod is used for determining client authorization for service account oauth client. It must be either: deny, prompt",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "identityProviders": {
+          "description": "IdentityProviders is an ordered list of ways for a user to identify themselves",
+          "type": "array",
+          "items": {
+            "description": "IdentityProvider provides identities for users authenticating using credentials",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "name",
+              "challenge",
+              "login",
+              "mappingMethod",
+              "provider"
+            ],
+            "properties": {
+              "challenge": {
+                "description": "UseAsChallenger indicates whether to issue WWW-Authenticate challenges for this provider",
+                "type": "boolean",
+                "default": false
+              },
+              "login": {
+                "description": "UseAsLogin indicates whether to use this identity provider for unauthenticated browsers to login against",
+                "type": "boolean",
+                "default": false
+              },
+              "mappingMethod": {
+                "description": "MappingMethod determines how identities from this provider are mapped to users",
+                "type": "string",
+                "default": ""
+              },
+              "name": {
+                "description": "Name is used to qualify the identities returned by this provider",
+                "type": "string",
+                "default": ""
+              },
+              "provider": {
+                "description": "RawExtension is used to hold extensions in external versions.\n\nTo use this, make a field which has RawExtension as its type in your external, versioned struct, and Object in your internal struct. You also need to register your various plugin types.\n\n// Internal package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.Object `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// External package:\n\n\ttype MyAPIObject struct {\n\t\truntime.TypeMeta `json:\",inline\"`\n\t\tMyPlugin runtime.RawExtension `json:\"myPlugin\"`\n\t}\n\n\ttype PluginA struct {\n\t\tAOption string `json:\"aOption\"`\n\t}\n\n// On the wire, the JSON will look something like this:\n\n\t{\n\t\t\"kind\":\"MyAPIObject\",\n\t\t\"apiVersion\":\"v1\",\n\t\t\"myPlugin\": {\n\t\t\t\"kind\":\"PluginA\",\n\t\t\t\"aOption\":\"foo\",\n\t\t},\n\t}\n\nSo what happens? Decode first uses json or yaml to unmarshal the serialized data into your external MyAPIObject. That causes the raw JSON to be stored, but not unpacked. The next step is to copy (using pkg/conversion) into the internal struct. The runtime package's DefaultScheme has conversion functions installed which will unpack the JSON stored in RawExtension, turning it into the correct object type, and storing it in the Object. (TODO: In the case where the object is of an unknown type, a runtime.Unknown object will be created and stored.)",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "masterCA": {
+          "description": "MasterCA is the CA for verifying the TLS connection back to the MasterURL.",
+          "type": "string"
+        },
+        "masterPublicURL": {
+          "description": "MasterPublicURL is used for building valid client redirect URLs for internal and external access",
+          "type": "string",
+          "default": ""
+        },
+        "masterURL": {
+          "description": "MasterURL is used for making server-to-server calls to exchange authorization codes for access tokens",
+          "type": "string",
+          "default": ""
+        },
+        "sessionConfig": {
+          "description": "SessionConfig specifies options for cookie-based sessions. Used by AuthRequestHandlerSession",
+          "type": "object",
+          "required": [
+            "sessionSecretsFile",
+            "sessionMaxAgeSeconds",
+            "sessionName"
+          ],
+          "properties": {
+            "sessionMaxAgeSeconds": {
+              "description": "SessionMaxAgeSeconds specifies how long created sessions last. Used by AuthRequestHandlerSession",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "sessionName": {
+              "description": "SessionName is the cookie name used to store the session",
+              "type": "string",
+              "default": ""
+            },
+            "sessionSecretsFile": {
+              "description": "SessionSecretsFile is a reference to a file containing a serialized SessionSecrets object If no file is specified, a random signing and encryption key are generated at each server start",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "templates": {
+          "description": "OAuthTemplates allow for customization of pages like the login page",
+          "type": "object",
+          "required": [
+            "login",
+            "providerSelection",
+            "error"
+          ],
+          "properties": {
+            "error": {
+              "description": "Error is a path to a file containing a go template used to render error pages during the authentication or grant flow If unspecified, the default error page is used.",
+              "type": "string",
+              "default": ""
+            },
+            "login": {
+              "description": "Login is a path to a file containing a go template used to render the login page. If unspecified, the default login page is used.",
+              "type": "string",
+              "default": ""
+            },
+            "providerSelection": {
+              "description": "ProviderSelection is a path to a file containing a go template used to render the provider selection page. If unspecified, the default provider selection page is used.",
+              "type": "string",
+              "default": ""
+            }
+          }
+        },
+        "tokenConfig": {
+          "description": "TokenConfig holds the necessary configuration options for authorization and access tokens",
+          "type": "object",
+          "required": [
+            "authorizeTokenMaxAgeSeconds",
+            "accessTokenMaxAgeSeconds"
+          ],
+          "properties": {
+            "accessTokenInactivityTimeoutSeconds": {
+              "description": "AccessTokenInactivityTimeoutSeconds defined the default token inactivity timeout for tokens granted by any client. Setting it to nil means the feature is completely disabled (default) The default setting can be overriden on OAuthClient basis. The value represents the maximum amount of time that can occur between consecutive uses of the token. Tokens become invalid if they are not used within this temporal window. The user will need to acquire a new token to regain access once a token times out. Valid values are: - 0: Tokens never time out - X: Tokens time out if there is no activity for X seconds The current minimum allowed value for X is 300 (5 minutes)",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "accessTokenMaxAgeSeconds": {
+              "description": "AccessTokenMaxAgeSeconds defines the maximum age of access tokens",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "authorizeTokenMaxAgeSeconds": {
+              "description": "AuthorizeTokenMaxAgeSeconds defines the maximum age of authorize tokens",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        }
+      }
+    },
+    "policyConfig": {
+      "description": "holds the necessary configuration options for",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "userAgentMatchingConfig"
+      ],
+      "properties": {
+        "userAgentMatchingConfig": {
+          "description": "UserAgentMatchingConfig controls how API calls from *voluntarily* identifying clients will be handled.  THIS DOES NOT DEFEND AGAINST MALICIOUS CLIENTS!",
+          "type": "object",
+          "required": [
+            "requiredClients",
+            "deniedClients",
+            "defaultRejectionMessage"
+          ],
+          "properties": {
+            "defaultRejectionMessage": {
+              "description": "DefaultRejectionMessage is the message shown when rejecting a client.  If it is not a set, a generic message is given.",
+              "type": "string",
+              "default": ""
+            },
+            "deniedClients": {
+              "description": "If this list is non-empty, then a User-Agent must not match any of the UserAgentRegexes",
+              "type": "array",
+              "items": {
+                "description": "UserAgentDenyRule adds a rejection message that can be used to help a user figure out how to get an approved client",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "regex",
+                  "httpVerbs",
+                  "rejectionMessage"
+                ],
+                "properties": {
+                  "httpVerbs": {
+                    "description": "HTTPVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "regex": {
+                    "description": "UserAgentRegex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "rejectionMessage": {
+                    "description": "RejectionMessage is the message shown when rejecting a client.  If it is not a set, the default message is used.",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            },
+            "requiredClients": {
+              "description": "If this list is non-empty, then a User-Agent must match one of the UserAgentRegexes to be allowed",
+              "type": "array",
+              "items": {
+                "description": "UserAgentMatchRule describes how to match a given request based on User-Agent and HTTPVerb",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "regex",
+                  "httpVerbs"
+                ],
+                "properties": {
+                  "httpVerbs": {
+                    "description": "HTTPVerbs specifies which HTTP verbs should be matched.  An empty list means \"match all verbs\".",
+                    "type": "array",
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "default": ""
+                    }
+                  },
+                  "regex": {
+                    "description": "UserAgentRegex is a regex that is checked against the User-Agent. Known variants of oc clients 1. oc accessing kube resources: oc/v1.2.0 (linux/amd64) kubernetes/bc4550d 2. oc accessing openshift resources: oc/v1.1.3 (linux/amd64) openshift/b348c2f 3. openshift kubectl accessing kube resources:  openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 4. openshift kubectl accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f 5. oadm accessing kube resources: oadm/v1.2.0 (linux/amd64) kubernetes/bc4550d 6. oadm accessing openshift resources: oadm/v1.1.3 (linux/amd64) openshift/b348c2f 7. openshift cli accessing kube resources: openshift/v1.2.0 (linux/amd64) kubernetes/bc4550d 8. openshift cli accessing openshift resources: openshift/v1.1.3 (linux/amd64) openshift/b348c2f",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "projectConfig": {
+      "description": "holds the necessary configuration options for",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "defaultNodeSelector",
+        "projectRequestMessage",
+        "projectRequestTemplate",
+        "securityAllocator"
+      ],
+      "properties": {
+        "defaultNodeSelector": {
+          "description": "DefaultNodeSelector holds default project node label selector",
+          "type": "string",
+          "default": ""
+        },
+        "projectRequestMessage": {
+          "description": "ProjectRequestMessage is the string presented to a user if they are unable to request a project via the projectrequest api endpoint",
+          "type": "string",
+          "default": ""
+        },
+        "projectRequestTemplate": {
+          "description": "ProjectRequestTemplate is the template to use for creating projects in response to projectrequest. It is in the format namespace/template and it is optional. If it is not specified, a default template is used.",
+          "type": "string",
+          "default": ""
+        },
+        "securityAllocator": {
+          "description": "SecurityAllocator controls the automatic allocation of UIDs and MCS labels to a project. If nil, allocation is disabled.",
+          "type": "object",
+          "required": [
+            "uidAllocatorRange",
+            "mcsAllocatorRange",
+            "mcsLabelsPerProject"
+          ],
+          "properties": {
+            "mcsAllocatorRange": {
+              "description": "MCSAllocatorRange defines the range of MCS categories that will be assigned to namespaces. The format is \"<prefix>/<numberOfLabels>[,<maxCategory>]\". The default is \"s0/2\" and will allocate from c0 -> c1023, which means a total of 535k labels are available (1024 choose 2 ~ 535k). If this value is changed after startup, new projects may receive labels that are already allocated to other projects. Prefix may be any valid SELinux set of terms (including user, role, and type), although leaving them as the default will allow the server to set them automatically.\n\nExamples: * s0:/2     - Allocate labels from s0:c0,c0 to s0:c511,c511 * s0:/2,512 - Allocate labels from s0:c0,c0,c0 to s0:c511,c511,511",
+              "type": "string",
+              "default": ""
+            },
+            "mcsLabelsPerProject": {
+              "description": "MCSLabelsPerProject defines the number of labels that should be reserved per project. The default is 5 to match the default UID and MCS ranges (100k namespaces, 535k/5 labels).",
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            },
+            "uidAllocatorRange": {
+              "description": "UIDAllocatorRange defines the total set of Unix user IDs (UIDs) that will be allocated to projects automatically, and the size of the block each namespace gets. For example, 1000-1999/10 will allocate ten UIDs per namespace, and will be able to allocate up to 100 blocks before running out of space. The default is to allocate from 1 billion to 2 billion in 10k blocks (which is the expected size of the ranges container images will use once user namespaces are started).",
+              "type": "string",
+              "default": ""
+            }
+          }
+        }
+      }
+    },
+    "routingConfig": {
+      "description": "RoutingConfig holds the necessary configuration options for routing to subdomains",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "subdomain"
+      ],
+      "properties": {
+        "subdomain": {
+          "description": "Subdomain is the suffix appended to $service.$namespace. to form the default route hostname DEPRECATED: This field is being replaced by routers setting their own defaults. This is the \"default\" route.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "serviceAccountConfig": {
+      "description": "ServiceAccountConfig holds the necessary configuration options for a service account",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "managedNames",
+        "limitSecretReferences",
+        "privateKeyFile",
+        "publicKeyFiles",
+        "masterCA"
+      ],
+      "properties": {
+        "limitSecretReferences": {
+          "description": "LimitSecretReferences controls whether or not to allow a service account to reference any secret in a namespace without explicitly referencing them",
+          "type": "boolean",
+          "default": false
+        },
+        "managedNames": {
+          "description": "ManagedNames is a list of service account names that will be auto-created in every namespace. If no names are specified, the ServiceAccountsController will not be started.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "masterCA": {
+          "description": "MasterCA is the CA for verifying the TLS connection back to the master.  The service account controller will automatically inject the contents of this file into pods so they can verify connections to the master.",
+          "type": "string",
+          "default": ""
+        },
+        "privateKeyFile": {
+          "description": "PrivateKeyFile is a file containing a PEM-encoded private RSA key, used to sign service account tokens. If no private key is specified, the service account TokensController will not be started.",
+          "type": "string",
+          "default": ""
+        },
+        "publicKeyFiles": {
+          "description": "PublicKeyFiles is a list of files, each containing a PEM-encoded public RSA key. (If any file contains a private key, the public portion of the key is used) The list of public keys is used to verify presented service account tokens. Each key is tried in order until the list is exhausted or verification succeeds. If no keys are specified, no service account authentication will be available.",
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        }
+      }
+    },
+    "servingInfo": {
+      "description": "HTTPServingInfo holds configuration for serving HTTP",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "bindAddress",
+        "bindNetwork",
+        "certFile",
+        "keyFile",
+        "clientCA",
+        "namedCertificates",
+        "maxRequestsInFlight",
+        "requestTimeoutSeconds"
+      ],
+      "properties": {
+        "bindAddress": {
+          "description": "BindAddress is the ip:port to serve on",
+          "type": "string",
+          "default": ""
+        },
+        "bindNetwork": {
+          "description": "BindNetwork is the type of network to bind to - defaults to \"tcp4\", accepts \"tcp\", \"tcp4\", and \"tcp6\"",
+          "type": "string",
+          "default": ""
+        },
+        "certFile": {
+          "description": "CertFile is a file containing a PEM-encoded certificate",
+          "type": "string",
+          "default": ""
+        },
+        "cipherSuites": {
+          "description": "CipherSuites contains an overridden list of ciphers for the server to support. Values must match cipher suite IDs from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": ""
+          }
+        },
+        "clientCA": {
+          "description": "ClientCA is the certificate bundle for all the signers that you'll recognize for incoming client certificates",
+          "type": "string",
+          "default": ""
+        },
+        "keyFile": {
+          "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+          "type": "string",
+          "default": ""
+        },
+        "maxRequestsInFlight": {
+          "description": "MaxRequestsInFlight is the number of concurrent requests allowed to the server. If zero, no limit.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        },
+        "minTLSVersion": {
+          "description": "MinTLSVersion is the minimum TLS version supported. Values must match version names from https://golang.org/pkg/crypto/tls/#pkg-constants",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "namedCertificates": {
+          "description": "NamedCertificates is a list of certificates to use to secure requests to specific hostnames",
+          "type": "array",
+          "items": {
+            "description": "NamedCertificate specifies a certificate/key, and the names it should be served for",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "names",
+              "certFile",
+              "keyFile"
+            ],
+            "properties": {
+              "certFile": {
+                "description": "CertFile is a file containing a PEM-encoded certificate",
+                "type": "string",
+                "default": ""
+              },
+              "keyFile": {
+                "description": "KeyFile is a file containing a PEM-encoded private key for the certificate specified by CertFile",
+                "type": "string",
+                "default": ""
+              },
+              "names": {
+                "description": "Names is a list of DNS names this certificate should be used to secure A name can be a normal DNS name, or can contain leading wildcard segments.",
+                "type": "array",
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "requestTimeoutSeconds": {
+          "description": "RequestTimeoutSeconds is the number of seconds before requests are timed out. The default is 60 minutes, if -1 there is no limit on requests.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "volumeConfig": {
+      "description": "MasterVolumeConfig contains options for configuring volume plugins in the master node.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "dynamicProvisioningEnabled"
+      ],
+      "properties": {
+        "dynamicProvisioningEnabled": {
+          "description": "DynamicProvisioningEnabled is a boolean that toggles dynamic provisioning off when false, defaults to true",
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

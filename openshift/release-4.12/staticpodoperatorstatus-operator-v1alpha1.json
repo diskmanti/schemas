@@ -1,0 +1,72 @@
+{
+  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked.",
+  "type": "object",
+  "required": [
+    "latestAvailableDeploymentGeneration",
+    "nodeStatuses"
+  ],
+  "properties": {
+    "conditions": {
+      "description": "conditions is a list of conditions and their status",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.OperatorCondition"
+      }
+    },
+    "currentVersionAvailability": {
+      "description": "currentVersionAvailability is availability information for the current version.  If it is unmanged or removed, this doesn't exist.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.VersionAvailability"
+    },
+    "latestAvailableDeploymentGeneration": {
+      "description": "latestAvailableDeploymentGeneration is the deploymentID of the most recent deployment",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "nodeStatuses": {
+      "description": "nodeStatuses track the deployment values and errors across individual nodes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.NodeStatus"
+      }
+    },
+    "observedGeneration": {
+      "description": "observedGeneration is the last generation change you've dealt with",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "state": {
+      "description": "state indicates what the operator has observed to be its current operational status.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetVersionAvailability": {
+      "description": "targetVersionAvailability is availability information for the target version if we are migrating",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.12/_definitions.json#/definitions/com.github.openshift.api.operator.v1alpha1.VersionAvailability"
+    },
+    "taskSummary": {
+      "description": "taskSummary is a high level summary of what the controller is currently attempting to do.  It is high-level, human-readable and not guaranteed in any way. (I needed this for debugging and realized it made a great summary).",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

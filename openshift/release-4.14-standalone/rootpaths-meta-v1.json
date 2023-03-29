@@ -1,0 +1,24 @@
+{
+  "description": "RootPaths lists the paths available at root. For example: \"/healthz\", \"/apis\".",
+  "type": "object",
+  "required": [
+    "paths"
+  ],
+  "properties": {
+    "paths": {
+      "description": "paths are the paths available at root.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

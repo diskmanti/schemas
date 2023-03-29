@@ -1,0 +1,27 @@
+{
+  "description": "Tag  The tags of ECS Instance",
+  "type": "object",
+  "required": [
+    "Key",
+    "Value"
+  ],
+  "properties": {
+    "Key": {
+      "description": "Key is the name of the key pair",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "Value": {
+      "description": "Value is the value or data of the key pair",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

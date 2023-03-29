@@ -1,0 +1,27 @@
+{
+  "description": "ConsoleQuickStartTaskSummary contains information about a passed step.",
+  "type": "object",
+  "required": [
+    "success",
+    "failed"
+  ],
+  "properties": {
+    "failed": {
+      "description": "failed briefly describes the unsuccessfully passed task. (includes markdown)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "success": {
+      "description": "success describes the succesfully passed task.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "NamedRoleBinding relates a role binding with a name",
+  "type": "object",
+  "required": [
+    "name",
+    "roleBinding"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name is the name of the role binding",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "roleBinding": {
+      "description": "RoleBinding is the role binding being named",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.13/_definitions.json#/definitions/com.github.openshift.api.authorization.v1.RoleBinding"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,25 @@
+{
+  "description": "ExternalIPConfig specifies some IP blocks relevant for the ExternalIP field of a Service resource.",
+  "type": "object",
+  "properties": {
+    "autoAssignCIDRs": {
+      "description": "autoAssignCIDRs is a list of CIDRs from which to automatically assign Service.ExternalIP. These are assigned when the service is of type LoadBalancer. In general, this is only useful for bare-metal clusters. In Openshift 3.x, this was misleadingly called \"IngressIPs\". Automatically assigned External IPs are not affected by any ExternalIPPolicy rules. Currently, only one entry may be provided.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "policy": {
+      "description": "policy is a set of restrictions applied to the ExternalIP field. If nil or empty, then ExternalIP is not allowed to be set.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.ExternalIPPolicy"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

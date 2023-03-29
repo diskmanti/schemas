@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": [
+    "imageTemplateFormat"
+  ],
+  "properties": {
+    "imageTemplateFormat": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.openshiftcontrolplane.v1.ImageConfig"
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

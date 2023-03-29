@@ -1,0 +1,19 @@
+{
+  "description": "RoutingConfig holds the necessary configuration options for routing to subdomains",
+  "type": "object",
+  "required": [
+    "subdomain"
+  ],
+  "properties": {
+    "subdomain": {
+      "description": "subdomain is the suffix appended to $service.$namespace. to form the default route hostname DEPRECATED: This field is being replaced by routers setting their own defaults. This is the \"default\" route.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

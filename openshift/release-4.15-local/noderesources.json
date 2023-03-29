@@ -1,0 +1,21 @@
+{
+  "description": "NodeResources is an object for conveying resource information about a node. see https://kubernetes.io/docs/concepts/architecture/nodes/#capacity for more details.",
+  "type": "object",
+  "required": [
+    "Capacity"
+  ],
+  "properties": {
+    "Capacity": {
+      "description": "Capacity represents the available resources of a node",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

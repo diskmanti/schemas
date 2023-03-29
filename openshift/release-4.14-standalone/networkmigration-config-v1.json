@@ -1,0 +1,73 @@
+{
+  "description": "NetworkMigration represents the cluster network configuration.",
+  "type": "object",
+  "properties": {
+    "mtu": {
+      "description": "MTUMigration contains infomation about MTU migration.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "machine": {
+          "description": "MTUMigrationValues contains the values for a MTU migration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "to"
+          ],
+          "properties": {
+            "from": {
+              "description": "From is the MTU to migrate from.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int64"
+            },
+            "to": {
+              "description": "To is the MTU to migrate to.",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "network": {
+          "description": "MTUMigrationValues contains the values for a MTU migration.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "to"
+          ],
+          "properties": {
+            "from": {
+              "description": "From is the MTU to migrate from.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int64"
+            },
+            "to": {
+              "description": "To is the MTU to migrate to.",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        }
+      }
+    },
+    "networkType": {
+      "description": "NetworkType is the target plugin that is to be deployed. Currently supported values are: OpenShiftSDN, OVNKubernetes",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}
