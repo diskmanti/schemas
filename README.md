@@ -4,6 +4,7 @@
 - [SCHEMAS](#schemas)
   - [Overview](#overview)
   - [Openshift](#openshift)
+  - [CRDs](#crds)
 <!--toc:end-->
 
 ## Overview
@@ -24,5 +25,4 @@ The script `build.sh` downloads this schema and converts it to jsonschema.
 ## CRDs
 
 All the CRDs are downloaded from the cluster you are currently connected to and converts them to jsonschema.
-
 The script `crds.sh` is responsible for this.
