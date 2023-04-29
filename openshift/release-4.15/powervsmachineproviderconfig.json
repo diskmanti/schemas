@@ -39,6 +39,17 @@
         "null"
       ]
     },
+    "loadBalancers": {
+      "description": "loadBalancers is the set of load balancers to which the new control plane instance should be added once it is created.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.LoadBalancerReference"
+      }
+    },
     "memoryGiB": {
       "description": "memoryGiB is the size of a virtual machine's memory, in GiB. maximum value for the MemoryGiB depends on the selected SystemType. when SystemType is set to e880 maximum MemoryGiB value is 7463 GiB. when SystemType is set to e980 maximum MemoryGiB value is 15307 GiB. when SystemType is set to s922 maximum MemoryGiB value is 942 GiB. The minimum memory is 32 GiB. When omitted, this means the user has no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 32.",
       "type": [

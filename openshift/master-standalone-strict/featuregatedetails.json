@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "required": [
+    "version"
+  ],
+  "properties": {
+    "disabled": {
+      "description": "disabled is a list of all feature gates that are disabled in the cluster for the named version.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "name is the name of the FeatureGate.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "enabled": {
+      "description": "enabled is a list of all feature gates that are enabled in the cluster for the named version.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "description": "name is the name of the FeatureGate.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "version": {
+      "description": "version matches the version provided by the ClusterVersion and in the ClusterOperator.Status.Versions field.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

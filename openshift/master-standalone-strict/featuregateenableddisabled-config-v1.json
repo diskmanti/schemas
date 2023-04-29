@@ -11,11 +11,49 @@
         "null"
       ],
       "items": {
+        "description": "FeatureGateDescription is a golang-only interface used to contains details for a feature gate.",
         "type": [
-          "string",
+          "object",
           "null"
         ],
-        "default": ""
+        "required": [
+          "FeatureGateAttributes",
+          "OwningJiraComponent",
+          "ResponsiblePerson",
+          "OwningProduct"
+        ],
+        "properties": {
+          "FeatureGateAttributes": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "name is the name of the FeatureGate.",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          },
+          "OwningJiraComponent": {
+            "description": "OwningJiraComponent is the jira component that owns most of the impl and first assignment for the bug. This is the team that owns the feature long term.",
+            "type": "string",
+            "default": ""
+          },
+          "OwningProduct": {
+            "description": "OwningProduct is the product that owns the lifecycle of the gate.",
+            "type": "string",
+            "default": ""
+          },
+          "ResponsiblePerson": {
+            "description": "ResponsiblePerson is the person who is on the hook for first contact.  This is often, but not always, a team lead. It is someone who can make the promise on the behalf of the team.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
       }
     },
     "Enabled": {
@@ -24,11 +62,49 @@
         "null"
       ],
       "items": {
+        "description": "FeatureGateDescription is a golang-only interface used to contains details for a feature gate.",
         "type": [
-          "string",
+          "object",
           "null"
         ],
-        "default": ""
+        "required": [
+          "FeatureGateAttributes",
+          "OwningJiraComponent",
+          "ResponsiblePerson",
+          "OwningProduct"
+        ],
+        "properties": {
+          "FeatureGateAttributes": {
+            "type": "object",
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "description": "name is the name of the FeatureGate.",
+                "type": "string",
+                "default": ""
+              }
+            },
+            "additionalProperties": false
+          },
+          "OwningJiraComponent": {
+            "description": "OwningJiraComponent is the jira component that owns most of the impl and first assignment for the bug. This is the team that owns the feature long term.",
+            "type": "string",
+            "default": ""
+          },
+          "OwningProduct": {
+            "description": "OwningProduct is the product that owns the lifecycle of the gate.",
+            "type": "string",
+            "default": ""
+          },
+          "ResponsiblePerson": {
+            "description": "ResponsiblePerson is the person who is on the hook for first contact.  This is often, but not always, a team lead. It is someone who can make the promise on the behalf of the team.",
+            "type": "string",
+            "default": ""
+          }
+        },
+        "additionalProperties": false
       }
     }
   },

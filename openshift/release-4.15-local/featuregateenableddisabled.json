@@ -11,11 +11,8 @@
         "null"
       ],
       "items": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "default": ""
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
       }
     },
     "Enabled": {
@@ -24,11 +21,8 @@
         "null"
       ],
       "items": {
-        "type": [
-          "string",
-          "null"
-        ],
-        "default": ""
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
       }
     }
   },

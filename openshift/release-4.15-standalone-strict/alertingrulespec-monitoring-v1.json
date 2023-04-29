@@ -1,0 +1,122 @@
+{
+  "description": "AlertingRuleSpec is the desired state of an AlertingRule resource.",
+  "type": "object",
+  "required": [
+    "groups"
+  ],
+  "properties": {
+    "groups": {
+      "description": "groups is a list of grouped alerting rules.  Rule groups are the unit at which Prometheus parallelizes rule processing.  All rules in a single group share a configured evaluation interval.  All rules in the group will be processed together on this interval, sequentially, and all rules will be processed.\n\nIt's common to group related alerting rules into a single AlertingRule resources, and within that resource, closely related alerts, or simply alerts with the same interval, into individual groups.  You are also free to create AlertingRule resources with only a single rule group, but be aware that this can have a performance impact on Prometheus if the group is extremely large or has very complex query expressions to evaluate. Spreading very complex rules across multiple groups to allow them to be processed in parallel is also a common use-case.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "description": "RuleGroup is a list of sequentially evaluated alerting rules.",
+        "type": [
+          "object",
+          "null"
+        ],
+        "required": [
+          "name",
+          "rules"
+        ],
+        "properties": {
+          "interval": {
+            "description": "interval is how often rules in the group are evaluated.  If not specified, it defaults to the global.evaluation_interval configured in Prometheus, which itself defaults to 30 seconds.  You can check if this value has been modified from the default on your cluster by inspecting the platform Prometheus configuration: The relevant field in that resource is: spec.evaluationInterval",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "description": "name is the name of the group.",
+            "type": "string",
+            "default": ""
+          },
+          "rules": {
+            "description": "rules is a list of sequentially evaluated alerting rules.  Prometheus may process rule groups in parallel, but rules within a single group are always processed sequentially, and all rules are processed.",
+            "type": "array",
+            "items": {
+              "description": "Rule describes an alerting rule. See Prometheus documentation: - https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "alert",
+                "expr"
+              ],
+              "properties": {
+                "alert": {
+                  "description": "alert is the name of the alert. Must be a valid label value, i.e. may contain any Unicode character.",
+                  "type": "string",
+                  "default": ""
+                },
+                "annotations": {
+                  "description": "annotations to add to each alert.  These are values that can be used to store longer additional information that you won't query on, such as alert descriptions or runbook links.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "default": ""
+                  }
+                },
+                "expr": {
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    {
+                      "type": [
+                        "integer",
+                        "null"
+                      ]
+                    }
+                  ]
+                },
+                "for": {
+                  "description": "for is the time period after which alerts are considered firing after first returning results.  Alerts which have not yet fired for long enough are considered pending.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "labels": {
+                  "description": "labels to add or overwrite for each alert.  The results of the PromQL expression for the alert will result in an existing set of labels for the alert, after evaluating the expression, for any label specified here with the same name as a label in that set, the label here wins and overwrites the previous value.  These should typically be short identifying values that may be useful to query against.  A common example is the alert severity, where one sets `severity: warning` under the `labels` key:",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "default": ""
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

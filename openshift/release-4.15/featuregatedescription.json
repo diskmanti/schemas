@@ -1,0 +1,42 @@
+{
+  "description": "FeatureGateDescription is a golang-only interface used to contains details for a feature gate.",
+  "type": "object",
+  "required": [
+    "FeatureGateAttributes",
+    "OwningJiraComponent",
+    "ResponsiblePerson",
+    "OwningProduct"
+  ],
+  "properties": {
+    "FeatureGateAttributes": {
+      "description": "FeatureGateAttributes is the information that appears in the API",
+      "default": {},
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+    },
+    "OwningJiraComponent": {
+      "description": "OwningJiraComponent is the jira component that owns most of the impl and first assignment for the bug. This is the team that owns the feature long term.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "OwningProduct": {
+      "description": "OwningProduct is the product that owns the lifecycle of the gate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "ResponsiblePerson": {
+      "description": "ResponsiblePerson is the person who is on the hook for first contact.  This is often, but not always, a team lead. It is someone who can make the promise on the behalf of the team.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

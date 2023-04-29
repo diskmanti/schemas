@@ -1,0 +1,37 @@
+{
+  "description": "RuleGroup is a list of sequentially evaluated alerting rules.",
+  "type": "object",
+  "required": [
+    "name",
+    "rules"
+  ],
+  "properties": {
+    "interval": {
+      "description": "interval is how often rules in the group are evaluated.  If not specified, it defaults to the global.evaluation_interval configured in Prometheus, which itself defaults to 30 seconds.  You can check if this value has been modified from the default on your cluster by inspecting the platform Prometheus configuration: The relevant field in that resource is: spec.evaluationInterval",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "name is the name of the group.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "rules": {
+      "description": "rules is a list of sequentially evaluated alerting rules.  Prometheus may process rule groups in parallel, but rules within a single group are always processed sequentially, and all rules are processed.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.Rule"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

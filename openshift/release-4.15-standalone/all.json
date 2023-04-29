@@ -622,6 +622,15 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGate"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDetails"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateEnabledDisabled"
     },
     {
@@ -1720,6 +1729,9 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.GCPFailureDomain"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.LoadBalancerReference"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.NutanixCategory"
     },
     {
@@ -1967,6 +1979,42 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Workspace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.PrometheusRuleRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.RelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.Rule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.RuleGroup"
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfig"

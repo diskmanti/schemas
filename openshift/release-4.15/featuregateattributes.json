@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "name is the name of the FeatureGate.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

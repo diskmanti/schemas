@@ -622,6 +622,15 @@
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGate"
     },
     {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateDetails"
+    },
+    {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.FeatureGateEnabledDisabled"
     },
     {
@@ -1720,6 +1729,9 @@
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1.GCPFailureDomain"
     },
     {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1.LoadBalancerReference"
+    },
+    {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1.NutanixCategory"
     },
     {
@@ -1967,6 +1979,42 @@
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.Workspace"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfig"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigList"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigSpec"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigStatus"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRule"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleList"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleSpec"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleStatus"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.PrometheusRuleRef"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.RelabelConfig"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.Rule"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1.RuleGroup"
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.monitoring.v1alpha1.AlertRelabelConfig"

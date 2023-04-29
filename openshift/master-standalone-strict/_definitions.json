@@ -6167,6 +6167,83 @@
       },
       "additionalProperties": false
     },
+    "com.github.openshift.api.config.v1.FeatureGateAttributes": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name is the name of the FeatureGate.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.config.v1.FeatureGateDescription": {
+      "description": "FeatureGateDescription is a golang-only interface used to contains details for a feature gate.",
+      "type": "object",
+      "required": [
+        "FeatureGateAttributes",
+        "OwningJiraComponent",
+        "ResponsiblePerson",
+        "OwningProduct"
+      ],
+      "properties": {
+        "FeatureGateAttributes": {
+          "description": "FeatureGateAttributes is the information that appears in the API",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+        },
+        "OwningJiraComponent": {
+          "description": "OwningJiraComponent is the jira component that owns most of the impl and first assignment for the bug. This is the team that owns the feature long term.",
+          "type": "string",
+          "default": ""
+        },
+        "OwningProduct": {
+          "description": "OwningProduct is the product that owns the lifecycle of the gate.",
+          "type": "string",
+          "default": ""
+        },
+        "ResponsiblePerson": {
+          "description": "ResponsiblePerson is the person who is on the hook for first contact.  This is often, but not always, a team lead. It is someone who can make the promise on the behalf of the team.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.config.v1.FeatureGateDetails": {
+      "type": "object",
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "disabled": {
+          "description": "disabled is a list of all feature gates that are disabled in the cluster for the named version.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+          }
+        },
+        "enabled": {
+          "description": "enabled is a list of all feature gates that are enabled in the cluster for the named version.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateAttributes"
+          }
+        },
+        "version": {
+          "description": "version matches the version provided by the ClusterVersion and in the ClusterOperator.Status.Versions field.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
     "com.github.openshift.api.config.v1.FeatureGateEnabledDisabled": {
       "type": "object",
       "required": [
@@ -6177,15 +6254,15 @@
         "Disabled": {
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
           }
         },
         "Enabled": {
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
           }
         }
       },
@@ -6267,7 +6344,37 @@
       "additionalProperties": false
     },
     "com.github.openshift.api.config.v1.FeatureGateStatus": {
-      "type": "object"
+      "type": "object",
+      "required": [
+        "featureGates"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "conditions represent the observations of the current state. Known .status.conditions.type are: \"DeterminationDegraded\"",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "featureGates": {
+          "description": "featureGates contains a list of enabled and disabled featureGates that are keyed by payloadVersion. Operators other than the CVO and cluster-config-operator, must read the .status.featureGates, locate the version they are managing, find the enabled/disabled featuregates and make the operand and operator match. The enabled/disabled values for a particular version may change during the life of the cluster as various .spec.featureSet values are selected. Operators may choose to restart their processes to pick up these changes, but remembering past enable/disable lists is beyond the scope of this API and is the responsibility of individual operators. Only featureGates with .version in the ClusterVersion.status will be present in this list.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateDetails"
+          },
+          "x-kubernetes-list-map-keys": [
+            "version"
+          ],
+          "x-kubernetes-list-type": "map"
+        }
+      },
+      "additionalProperties": false
     },
     "com.github.openshift.api.config.v1.GCPPlatformSpec": {
       "description": "GCPPlatformSpec holds the desired state of the Google Cloud Platform infrastructure provider. This only includes fields that can be modified in the cluster.",
@@ -10052,15 +10159,15 @@
         "forceOff": {
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
           }
         },
         "forceOn": {
           "type": "array",
           "items": {
-            "type": "string",
-            "default": ""
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.config.v1.FeatureGateDescription"
           }
         }
       },
@@ -17676,6 +17783,27 @@
       },
       "additionalProperties": false
     },
+    "com.github.openshift.api.machine.v1.LoadBalancerReference": {
+      "description": "LoadBalancerReference is a reference to a load balancer on IBM Cloud virtual private cloud(VPC).",
+      "type": "object",
+      "required": [
+        "name",
+        "type"
+      ],
+      "properties": {
+        "name": {
+          "description": "name of the LoadBalancer in IBM Cloud VPC. The name should be between 1 and 63 characters long and may consist of lowercase alphanumeric characters and hyphens only. The value must not end with a hyphen. It is a reference to existing LoadBalancer created by openshift installer component.",
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "description": "type of the LoadBalancer service supported by IBM Cloud VPC. Currently, only Application LoadBalancer is supported. More details about Application LoadBalancer https://cloud.ibm.com/docs/vpc?topic=vpc-load-balancers-about&interface=ui Supported values are Application.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
     "com.github.openshift.api.machine.v1.NutanixCategory": {
       "description": "NutanixCategory identifies a pair of prism category key and value",
       "type": "object",
@@ -17913,6 +18041,14 @@
         "kind": {
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
           "type": "string"
+        },
+        "loadBalancers": {
+          "description": "loadBalancers is the set of load balancers to which the new control plane instance should be added once it is created.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.machine.v1.LoadBalancerReference"
+          }
         },
         "memoryGiB": {
           "description": "memoryGiB is the size of a virtual machine's memory, in GiB. maximum value for the MemoryGiB depends on the selected SystemType. when SystemType is set to e880 maximum MemoryGiB value is 7463 GiB. when SystemType is set to e980 maximum MemoryGiB value is 15307 GiB. when SystemType is set to s922 maximum MemoryGiB value is 942 GiB. The minimum memory is 32 GiB. When omitted, this means the user has no opinion and the platform is left to choose a reasonable default, which is subject to change over time. The current default is 32.",
@@ -20668,6 +20804,329 @@
         "server": {
           "description": "Server is the IP address or FQDN of the vSphere endpoint.",
           "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertRelabelConfig": {
+      "description": "AlertRelabelConfig defines a set of relabel configs for alerts.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "spec describes the desired state of this AlertRelabelConfig object.",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigSpec"
+        },
+        "status": {
+          "description": "status describes the current state of this AlertRelabelConfig object.",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfigStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertRelabelConfigList": {
+      "description": "AlertRelabelConfigList is a list of AlertRelabelConfigs.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "items is a list of AlertRelabelConfigs.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertRelabelConfig"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertRelabelConfigSpec": {
+      "description": "AlertRelabelConfigsSpec is the desired state of an AlertRelabelConfig resource.",
+      "type": "object",
+      "required": [
+        "configs"
+      ],
+      "properties": {
+        "configs": {
+          "description": "configs is a list of sequentially evaluated alert relabel configs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.RelabelConfig"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertRelabelConfigStatus": {
+      "description": "AlertRelabelConfigStatus is the status of an AlertRelabelConfig resource.",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "description": "conditions contains details on the state of the AlertRelabelConfig, may be empty.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertingRule": {
+      "description": "AlertingRule represents a set of user-defined Prometheus rule groups containing alerting rules.  This resource is the supported method for cluster admins to create alerts based on metrics recorded by the platform monitoring stack in OpenShift, i.e. the Prometheus instance deployed to the openshift-monitoring namespace.  You might use this to create custom alerting rules not shipped with OpenShift based on metrics from components such as the node_exporter, which provides machine-level metrics such as CPU usage, or kube-state-metrics, which provides metrics on Kubernetes usage.\n\nThe API is mostly compatible with the upstream PrometheusRule type from the prometheus-operator.  The primary difference being that recording rules are not allowed here -- only alerting rules.  For each AlertingRule resource created, a corresponding PrometheusRule will be created in the openshift-monitoring namespace.  OpenShift requires admins to use the AlertingRule resource rather than the upstream type in order to allow better OpenShift specific defaulting and validation, while not modifying the upstream APIs directly.\n\nYou can find upstream API documentation for PrometheusRule resources here:\n\nhttps://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "spec describes the desired state of this AlertingRule object.",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleSpec"
+        },
+        "status": {
+          "description": "status describes the current state of this AlertOverrides object.",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertingRuleStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertingRuleList": {
+      "description": "AlertingRuleList is a list of AlertingRule objects.\n\nCompatibility level 1: Stable within a major release for a minimum of 12 months or 3 minor releases (whichever is longer).",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "items is a list of AlertingRule objects.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.AlertingRule"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "metadata is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertingRuleSpec": {
+      "description": "AlertingRuleSpec is the desired state of an AlertingRule resource.",
+      "type": "object",
+      "required": [
+        "groups"
+      ],
+      "properties": {
+        "groups": {
+          "description": "groups is a list of grouped alerting rules.  Rule groups are the unit at which Prometheus parallelizes rule processing.  All rules in a single group share a configured evaluation interval.  All rules in the group will be processed together on this interval, sequentially, and all rules will be processed.\n\nIt's common to group related alerting rules into a single AlertingRule resources, and within that resource, closely related alerts, or simply alerts with the same interval, into individual groups.  You are also free to create AlertingRule resources with only a single rule group, but be aware that this can have a performance impact on Prometheus if the group is extremely large or has very complex query expressions to evaluate. Spreading very complex rules across multiple groups to allow them to be processed in parallel is also a common use-case.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.RuleGroup"
+          },
+          "x-kubernetes-list-map-keys": [
+            "name"
+          ],
+          "x-kubernetes-list-type": "map"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.AlertingRuleStatus": {
+      "description": "AlertingRuleStatus is the status of an AlertingRule resource.",
+      "type": "object",
+      "properties": {
+        "observedGeneration": {
+          "description": "observedGeneration is the last generation change you've dealt with.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "prometheusRule": {
+          "description": "prometheusRule is the generated PrometheusRule for this AlertingRule.  Each AlertingRule instance results in a generated PrometheusRule object in the same namespace, which is always the openshift-monitoring namespace.",
+          "default": {},
+          "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.PrometheusRuleRef"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.PrometheusRuleRef": {
+      "description": "PrometheusRuleRef is a reference to an existing PrometheusRule object.  Each AlertingRule instance results in a generated PrometheusRule object in the same namespace, which is always the openshift-monitoring namespace.  This is used to point to the generated PrometheusRule object in the AlertingRule status.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "name of the referenced PrometheusRule.",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.RelabelConfig": {
+      "description": "RelabelConfig allows dynamic rewriting of label sets for alerts. See Prometheus documentation: - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+      "type": "object",
+      "properties": {
+        "action": {
+          "description": "action to perform based on regex matching. Must be one of: 'Replace', 'Keep', 'Drop', 'HashMod', 'LabelMap', 'LabelDrop', or 'LabelKeep'. Default is: 'Replace'",
+          "type": "string"
+        },
+        "modulus": {
+          "description": "modulus to take of the hash of the source label values.  This can be combined with the 'HashMod' action to set 'target_label' to the 'modulus' of a hash of the concatenated 'source_labels'. This is only valid if sourceLabels is not empty and action is not 'LabelKeep' or 'LabelDrop'.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "regex": {
+          "description": "regex against which the extracted value is matched. Default is: '(.*)' regex is required for all actions except 'HashMod'",
+          "type": "string"
+        },
+        "replacement": {
+          "description": "replacement value against which a regex replace is performed if the regular expression matches. This is required if the action is 'Replace' or 'LabelMap' and forbidden for actions 'LabelKeep' and 'LabelDrop'. Regex capture groups are available. Default is: '$1'",
+          "type": "string"
+        },
+        "separator": {
+          "description": "separator placed between concatenated source label values. When omitted, Prometheus will use its default value of ';'.",
+          "type": "string"
+        },
+        "sourceLabels": {
+          "description": "sourceLabels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the 'Replace', 'Keep', and 'Drop' actions. Not allowed for actions 'LabelKeep' and 'LabelDrop'.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "targetLabel": {
+          "description": "targetLabel to which the resulting value is written in a 'Replace' action. It is required for 'Replace' and 'HashMod' actions and forbidden for actions 'LabelKeep' and 'LabelDrop'. Regex capture groups are available.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.Rule": {
+      "description": "Rule describes an alerting rule. See Prometheus documentation: - https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules",
+      "type": "object",
+      "required": [
+        "alert",
+        "expr"
+      ],
+      "properties": {
+        "alert": {
+          "description": "alert is the name of the alert. Must be a valid label value, i.e. may contain any Unicode character.",
+          "type": "string",
+          "default": ""
+        },
+        "annotations": {
+          "description": "annotations to add to each alert.  These are values that can be used to store longer additional information that you won't query on, such as alert descriptions or runbook links.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "expr": {
+          "description": "expr is the PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending or firing alerts.  This is most often a string representing a PromQL expression, e.g.: mapi_current_pending_csr > mapi_max_pending_csr In rare cases this could be a simple integer, e.g. a simple \"1\" if the intent is to create an alert that is always firing.  This is sometimes used to create an always-firing \"Watchdog\" alert in order to ensure the alerting pipeline is functional.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+        },
+        "for": {
+          "description": "for is the time period after which alerts are considered firing after first returning results.  Alerts which have not yet fired for long enough are considered pending.",
+          "type": "string"
+        },
+        "labels": {
+          "description": "labels to add or overwrite for each alert.  The results of the PromQL expression for the alert will result in an existing set of labels for the alert, after evaluating the expression, for any label specified here with the same name as a label in that set, the label here wins and overwrites the previous value.  These should typically be short identifying values that may be useful to query against.  A common example is the alert severity, where one sets `severity: warning` under the `labels` key:",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "com.github.openshift.api.monitoring.v1.RuleGroup": {
+      "description": "RuleGroup is a list of sequentially evaluated alerting rules.",
+      "type": "object",
+      "required": [
+        "name",
+        "rules"
+      ],
+      "properties": {
+        "interval": {
+          "description": "interval is how often rules in the group are evaluated.  If not specified, it defaults to the global.evaluation_interval configured in Prometheus, which itself defaults to 30 seconds.  You can check if this value has been modified from the default on your cluster by inspecting the platform Prometheus configuration: The relevant field in that resource is: spec.evaluationInterval",
+          "type": "string"
+        },
+        "name": {
+          "description": "name is the name of the group.",
+          "type": "string",
+          "default": ""
+        },
+        "rules": {
+          "description": "rules is a list of sequentially evaluated alerting rules.  Prometheus may process rule groups in parallel, but rules within a single group are always processed sequentially, and all rules are processed.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.openshift.api.monitoring.v1.Rule"
+          }
         }
       },
       "additionalProperties": false
@@ -28322,7 +28781,7 @@
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
         },
         "vsphereStorageDriver": {
-          "description": "VSphereStorageDriver indicates the storage driver to use on VSphere clusters. Once this field is set to CSIWithMigrationDriver, it can not be changed. If this is empty, the platform will choose a good default, which may change over time without notice. DEPRECATED: This field will be removed in a future release.",
+          "description": "VSphereStorageDriver indicates the storage driver to use on VSphere clusters. Once this field is set to CSIWithMigrationDriver, it can not be changed. If this is empty, the platform will choose a good default, which may change over time without notice. The current default is CSIWithMigrationDriver and may not be changed. DEPRECATED: This field will be removed in a future release.",
           "type": "string",
           "default": ""
         }

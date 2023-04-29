@@ -1,0 +1,64 @@
+{
+  "description": "RelabelConfig allows dynamic rewriting of label sets for alerts. See Prometheus documentation: - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+  "type": "object",
+  "properties": {
+    "action": {
+      "description": "action to perform based on regex matching. Must be one of: 'Replace', 'Keep', 'Drop', 'HashMod', 'LabelMap', 'LabelDrop', or 'LabelKeep'. Default is: 'Replace'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modulus": {
+      "description": "modulus to take of the hash of the source label values.  This can be combined with the 'HashMod' action to set 'target_label' to the 'modulus' of a hash of the concatenated 'source_labels'. This is only valid if sourceLabels is not empty and action is not 'LabelKeep' or 'LabelDrop'.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "regex": {
+      "description": "regex against which the extracted value is matched. Default is: '(.*)' regex is required for all actions except 'HashMod'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replacement": {
+      "description": "replacement value against which a regex replace is performed if the regular expression matches. This is required if the action is 'Replace' or 'LabelMap' and forbidden for actions 'LabelKeep' and 'LabelDrop'. Regex capture groups are available. Default is: '$1'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "separator": {
+      "description": "separator placed between concatenated source label values. When omitted, Prometheus will use its default value of ';'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceLabels": {
+      "description": "sourceLabels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the 'Replace', 'Keep', and 'Drop' actions. Not allowed for actions 'LabelKeep' and 'LabelDrop'.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targetLabel": {
+      "description": "targetLabel to which the resulting value is written in a 'Replace' action. It is required for 'Replace' and 'HashMod' actions and forbidden for actions 'LabelKeep' and 'LabelDrop'. Regex capture groups are available.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}
