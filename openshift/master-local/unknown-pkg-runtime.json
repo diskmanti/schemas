@@ -2,7 +2,6 @@
   "description": "Unknown allows api objects with unknown types to be passed-through. This can be used to deal with the API objects from a plug-in. Unknown objects still have functioning TypeMeta features-- kind, version, etc. metadata and field mutatation.",
   "type": "object",
   "required": [
-    "Raw",
     "ContentEncoding",
     "ContentType"
   ],
@@ -22,14 +21,6 @@
         "null"
       ],
       "default": ""
-    },
-    "Raw": {
-      "description": "Raw will hold the complete serialized object which couldn't be matched with a registered type. Most likely, nothing should be done with this except for passing it through the system.",
-      "type": [
-        "string",
-        "null"
-      ],
-      "format": "byte"
     },
     "apiVersion": {
       "type": [

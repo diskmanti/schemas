@@ -114,6 +114,18 @@
       "description": "Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. Cannot be updated. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes",
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
     },
+    "resizePolicy": {
+      "description": "Resources resize policy for the container.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
     "resources": {
       "description": "Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
       "default": {},

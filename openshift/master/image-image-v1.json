@@ -55,8 +55,8 @@
     "dockerImageMetadata": {
       "description": "DockerImageMetadata contains metadata about this image",
       "default": {},
-      "x-kubernetes-patch-strategy": "replace",
-      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension",
+      "x-kubernetes-patch-strategy": "replace"
     },
     "dockerImageMetadataVersion": {
       "description": "DockerImageMetadataVersion conveys the version of the object, which if empty defaults to \"1.0\"",

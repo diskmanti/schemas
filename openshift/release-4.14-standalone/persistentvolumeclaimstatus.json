@@ -69,7 +69,7 @@
         "null"
       ],
       "items": {
-        "description": "PersistentVolumeClaimCondition contails details about state of pvc",
+        "description": "PersistentVolumeClaimCondition contains details about state of pvc",
         "type": [
           "object",
           "null"

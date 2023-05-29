@@ -114,6 +114,18 @@
       "description": "Probes are not allowed for ephemeral containers.",
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
     },
+    "resizePolicy": {
+      "description": "Resources resize policy for the container.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.14/_definitions.json#/definitions/io.k8s.api.core.v1.ContainerResizePolicy"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
     "resources": {
       "description": "Resources are not allowed for ephemeral containers. Ephemeral containers use spare resources already allocated to the pod.",
       "default": {},

@@ -49,8 +49,8 @@
     },
     "claimRef": {
       "description": "claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding",
-      "x-kubernetes-map-type": "granular",
-      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference"
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/io.k8s.api.core.v1.ObjectReference",
+      "x-kubernetes-map-type": "granular"
     },
     "csi": {
       "description": "csi represents storage that is handled by an external CSI driver (Beta feature).",

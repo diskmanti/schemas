@@ -104,7 +104,7 @@
       "x-kubernetes-patch-strategy": "merge"
     },
     "qosClass": {
-      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md\n\nPossible enum values:\n - `\"BestEffort\"` is the BestEffort qos class.\n - `\"Burstable\"` is the Burstable qos class.\n - `\"Guaranteed\"` is the Guaranteed qos class.",
+      "description": "The Quality of Service (QOS) classification assigned to the pod based on resource requirements See PodQOSClass type for available QOS classes More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-qos/#quality-of-service-classes\n\nPossible enum values:\n - `\"BestEffort\"` is the BestEffort qos class.\n - `\"Burstable\"` is the Burstable qos class.\n - `\"Guaranteed\"` is the Guaranteed qos class.",
       "type": [
         "string",
         "null"
@@ -117,6 +117,13 @@
     },
     "reason": {
       "description": "A brief CamelCase message indicating details about why the pod is in this state. e.g. 'Evicted'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resize": {
+      "description": "Status of resources resize desired for pod's containers. It is empty if no resources resize is pending. Any changes to container resources will automatically set this to \"Proposed\"",
       "type": [
         "string",
         "null"
