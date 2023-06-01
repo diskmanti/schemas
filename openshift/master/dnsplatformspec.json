@@ -1,0 +1,30 @@
+{
+  "description": "DNSPlatformSpec holds cloud-provider-specific configuration for DNS administration.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "aws": {
+      "description": "aws contains DNS configuration specific to the Amazon Web Services cloud provider.",
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/master/_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSDNSSpec"
+    },
+    "type": {
+      "description": "type is the underlying infrastructure provider for the cluster. Allowed values: \"\", \"AWS\".\n\nIndividual components may not support all platforms, and must handle unrecognized platforms with best-effort defaults.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "aws": "AWS"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

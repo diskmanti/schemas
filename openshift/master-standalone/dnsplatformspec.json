@@ -1,0 +1,43 @@
+{
+  "description": "DNSPlatformSpec holds cloud-provider-specific configuration for DNS administration.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "aws": {
+      "description": "AWSDNSSpec contains DNS configuration specific to the Amazon Web Services cloud provider.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "privateZoneIAMRole": {
+          "description": "privateZoneIAMRole contains the ARN of an IAM role that should be assumed when performing operations on the cluster's private hosted zone specified in the cluster DNS config. When left empty, no role should be assumed.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "type": {
+      "description": "type is the underlying infrastructure provider for the cluster. Allowed values: \"\", \"AWS\".\n\nIndividual components may not support all platforms, and must handle unrecognized platforms with best-effort defaults.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "x-kubernetes-unions": [
+    {
+      "discriminator": "type",
+      "fields-to-discriminateBy": {
+        "aws": "AWS"
+      }
+    }
+  ],
+  "$schema": "http://json-schema.org/schema#"
+}

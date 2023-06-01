@@ -397,6 +397,9 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.APIServerStatus"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSDNSSpec"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.AWSIngressSpec"
     },
     {
@@ -575,6 +578,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSPlatformSpec"
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.DNSSpec"
