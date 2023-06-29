@@ -1,0 +1,36 @@
+{
+  "description": "AddressesFromPool is an IPAddressPool that will be used to create IPAddressClaims for fulfillment by an external controller.",
+  "type": "object",
+  "required": [
+    "group",
+    "resource",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "group of the IP address pool type known to an external IPAM controller. This should be a fully qualified domain name, for example, externalipam.controller.io.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "name of an IP address pool, for example, pool-config-1.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "description": "resource of the IP address pool type known to an external IPAM controller. It is normally the plural form of the resource kind in lowercase, for example, ippools.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -493,6 +493,9 @@
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.ClientConnectionOverrides"
     },
     {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.CloudControllerManagerStatus"
+    },
+    {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterCondition"
     },
     {
@@ -1753,6 +1756,9 @@
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenShiftMachineV1Beta1MachineTemplate"
     },
     {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenStackFailureDomain"
+    },
+    {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSMachineProviderConfig"
     },
     {
@@ -1763,6 +1769,9 @@
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSSecretReference"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.RootVolume"
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.SystemDiskProperties"
@@ -1814,6 +1823,9 @@
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    {
+      "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AddressesFromPool"
     },
     {
       "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureBootDiagnostics"

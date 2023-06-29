@@ -38,6 +38,17 @@
         "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.GCPFailureDomain"
       }
     },
+    "openstack": {
+      "description": "OpenStack configures failure domain information for the OpenStack platform.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "https://raw.githubusercontent.com/diskmanti/schemas/main/openshift/release-4.15/_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenStackFailureDomain"
+      }
+    },
     "platform": {
       "description": "Platform identifies the platform for which the FailureDomain represents. Currently supported values are AWS, Azure, and GCP.",
       "type": [
@@ -53,7 +64,8 @@
       "fields-to-discriminateBy": {
         "aws": "AWS",
         "azure": "Azure",
-        "gcp": "GCP"
+        "gcp": "GCP",
+        "openstack": "OpenStack"
       }
     }
   ],

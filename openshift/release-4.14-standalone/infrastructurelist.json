@@ -1207,7 +1207,26 @@
                     "type": [
                       "object",
                       "null"
-                    ]
+                    ],
+                    "properties": {
+                      "cloudControllerManager": {
+                        "description": "CloudControllerManagerStatus holds the state of Cloud Controller Manager (a.k.a. CCM or CPI) related settings",
+                        "type": [
+                          "object",
+                          "null"
+                        ],
+                        "properties": {
+                          "state": {
+                            "description": "state determines whether or not an external Cloud Controller Manager is expected to be installed within the cluster. https://kubernetes.io/docs/tasks/administer-cluster/running-cloud-controller/#running-cloud-controller-manager\n\nValid values are \"External\", \"None\" and omitted. When set to \"External\", new nodes will be tainted as uninitialized when created, preventing them from running workloads until they are initialized by the cloud controller manager. When omitted or set to \"None\", new nodes will be not tainted and no extra initialization from the cloud controller manager is expected.",
+                            "type": [
+                              "string",
+                              "null"
+                            ],
+                            "default": ""
+                          }
+                        }
+                      }
+                    }
                   },
                   "gcp": {
                     "description": "GCPPlatformStatus holds the current status of the Google Cloud Platform infrastructure provider.",

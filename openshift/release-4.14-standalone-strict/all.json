@@ -493,6 +493,9 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClientConnectionOverrides"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.CloudControllerManagerStatus"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.config.v1.ClusterCondition"
     },
     {
@@ -1753,6 +1756,9 @@
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenShiftMachineV1Beta1MachineTemplate"
     },
     {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.OpenStackFailureDomain"
+    },
+    {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSMachineProviderConfig"
     },
     {
@@ -1763,6 +1769,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.PowerVSSecretReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.RootVolume"
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1.SystemDiskProperties"
@@ -1814,6 +1823,9 @@
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AWSResourceReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AddressesFromPool"
     },
     {
       "$ref": "_definitions.json#/definitions/com.github.openshift.api.machine.v1beta1.AzureBootDiagnostics"

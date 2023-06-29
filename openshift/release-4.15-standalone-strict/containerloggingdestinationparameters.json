@@ -1,6 +1,16 @@
 {
   "description": "ContainerLoggingDestinationParameters describes parameters for the Container logging destination type.",
   "type": "object",
-  "$schema": "http://json-schema.org/schema#",
-  "additionalProperties": false
+  "properties": {
+    "maxLength": {
+      "description": "maxLength is the maximum length of the log message.\n\nValid values are integers in the range 480 to 8192, inclusive.\n\nWhen omitted, the default value is 1024.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
 }
