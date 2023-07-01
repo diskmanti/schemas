@@ -1,5 +1,5 @@
 {
-  "description": "OperatorStatus contains common fields for an operator to need.  It is intended to be anonymous included inside of the Status struct for you particular operator.",
+  "description": "OperatorStatus contains common fields for an operator to need.  It is intended to be anonymous included inside of the Status struct for you particular operator. DEPRECATED: Use v1.OperatorStatus instead",
   "type": "object",
   "properties": {
     "conditions": {

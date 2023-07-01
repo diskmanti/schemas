@@ -1,5 +1,5 @@
 {
-  "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+  "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made. DEPRECATED: Use fields in v1.GenerationStatus instead",
   "type": "object",
   "required": [
     "group",

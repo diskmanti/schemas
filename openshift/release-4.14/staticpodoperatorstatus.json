@@ -1,5 +1,5 @@
 {
-  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked.",
+  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked. DEPRECATED: Use v1.StaticPodOperatorStatus instead",
   "type": "object",
   "required": [
     "latestAvailableDeploymentGeneration",

@@ -1,5 +1,5 @@
 {
-  "description": "LoggingConfig holds information about configuring logging",
+  "description": "LoggingConfig holds information about configuring logging DEPRECATED: Use v1.LogLevel instead",
   "type": "object",
   "required": [
     "level",

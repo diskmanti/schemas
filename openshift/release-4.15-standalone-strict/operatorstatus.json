@@ -1,5 +1,5 @@
 {
-  "description": "OperatorStatus contains common fields for an operator to need.  It is intended to be anonymous included inside of the Status struct for you particular operator.",
+  "description": "OperatorStatus contains common fields for an operator to need.  It is intended to be anonymous included inside of the Status struct for you particular operator. DEPRECATED: Use v1.OperatorStatus instead",
   "type": "object",
   "properties": {
     "conditions": {
@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "description": "OperatorCondition is just the standard condition fields.",
+        "description": "OperatorCondition is just the standard condition fields. DEPRECATED: Use v1.OperatorCondition instead",
         "type": [
           "object",
           "null"
@@ -52,7 +52,7 @@
       }
     },
     "currentVersionAvailability": {
-      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component DEPRECATED: Use fields in v1.OperatorStatus instead",
       "type": [
         "object",
         "null"
@@ -80,7 +80,7 @@
           "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
           "type": "array",
           "items": {
-            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made. DEPRECATED: Use fields in v1.GenerationStatus instead",
             "type": [
               "object",
               "null"
@@ -159,7 +159,7 @@
       ]
     },
     "targetVersionAvailability": {
-      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component DEPRECATED: Use fields in v1.OperatorStatus instead",
       "type": [
         "object",
         "null"
@@ -187,7 +187,7 @@
           "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
           "type": "array",
           "items": {
-            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made. DEPRECATED: Use fields in v1.GenerationStatus instead",
             "type": [
               "object",
               "null"

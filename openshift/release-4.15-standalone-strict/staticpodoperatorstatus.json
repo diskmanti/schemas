@@ -1,5 +1,5 @@
 {
-  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked.",
+  "description": "StaticPodOperatorStatus is status for controllers that manage static pods.  There are different needs because individual node status must be tracked. DEPRECATED: Use v1.StaticPodOperatorStatus instead",
   "type": "object",
   "required": [
     "latestAvailableDeploymentGeneration",
@@ -13,7 +13,7 @@
         "null"
       ],
       "items": {
-        "description": "OperatorCondition is just the standard condition fields.",
+        "description": "OperatorCondition is just the standard condition fields. DEPRECATED: Use v1.OperatorCondition instead",
         "type": [
           "object",
           "null"
@@ -56,7 +56,7 @@
       }
     },
     "currentVersionAvailability": {
-      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component DEPRECATED: Use fields in v1.OperatorStatus instead",
       "type": [
         "object",
         "null"
@@ -84,7 +84,7 @@
           "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
           "type": "array",
           "items": {
-            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made. DEPRECATED: Use fields in v1.GenerationStatus instead",
             "type": [
               "object",
               "null"
@@ -163,7 +163,7 @@
         "null"
       ],
       "items": {
-        "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+        "description": "NodeStatus provides information about the current state of a particular node managed by this operator. Deprecated: Use v1.NodeStatus instead",
         "type": [
           "object",
           "null"
@@ -230,7 +230,7 @@
       ]
     },
     "targetVersionAvailability": {
-      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component",
+      "description": "VersionAvailability gives information about the synchronization and operational status of a particular version of the component DEPRECATED: Use fields in v1.OperatorStatus instead",
       "type": [
         "object",
         "null"
@@ -258,7 +258,7 @@
           "description": "generations allows an operator to track what the generation of \"important\" resources was the last time we updated them",
           "type": "array",
           "items": {
-            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made.",
+            "description": "GenerationHistory keeps track of the generation for a given resource so that decisions about forced updated can be made. DEPRECATED: Use fields in v1.GenerationStatus instead",
             "type": [
               "object",
               "null"

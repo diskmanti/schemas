@@ -1,5 +1,5 @@
 {
-  "description": "NodeStatus provides information about the current state of a particular node managed by this operator.",
+  "description": "NodeStatus provides information about the current state of a particular node managed by this operator. Deprecated: Use v1.NodeStatus instead",
   "type": "object",
   "required": [
     "nodeName",

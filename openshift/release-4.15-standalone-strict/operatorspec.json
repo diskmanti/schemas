@@ -1,5 +1,5 @@
 {
-  "description": "OperatorSpec contains common fields for an operator to need.  It is intended to be anonymous included inside of the Spec struct for you particular operator.",
+  "description": "OperatorSpec contains common fields for an operator to need.  It is intended to be anonymous included inside of the Spec struct for you particular operator. DEPRECATED: Use v1.OperatorSpec instead",
   "type": "object",
   "required": [
     "managementState",
@@ -25,7 +25,7 @@
       "default": ""
     },
     "logging": {
-      "description": "LoggingConfig holds information about configuring logging",
+      "description": "LoggingConfig holds information about configuring logging DEPRECATED: Use v1.LogLevel instead",
       "type": [
         "object",
         "null"
